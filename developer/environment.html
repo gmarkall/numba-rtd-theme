@@ -1,0 +1,299 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>7.13. Environment Object &mdash; Numba 0.49.0dev0+636.ga4807f5d8 documentation</title>
+  
+
+  
+  
+    <link rel="shortcut icon" href="../_static/numba-blue-icon-rgb.svg"/>
+  
+  
+  
+    <link rel="canonical" href="http://numba.pydata.org/numba-doc/latest/index.htmldeveloper/environment.html"/>
+  
+
+  
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script type="text/javascript" src="../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="7.14. Notes on Hashing" href="hashing.html" />
+    <link rel="prev" title="7.12. Notes on Inlining" href="inlining.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> Numba
+          
+
+          
+            
+            <img src="../_static/numba-blue-icon-rgb.svg" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.49
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../user/index.html">1. User Manual</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reference/index.html">2. Reference Manual</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../cuda/index.html">3. Numba for CUDA GPUs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../cuda-reference/index.html">4. CUDA Python Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../roc/index.html">5. Numba for AMD ROC GPUs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../extending/index.html">6. Extending Numba</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">7. Developer Manual</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="contributing.html">7.1. Contributing to Numba</a></li>
+<li class="toctree-l2"><a class="reference internal" href="repomap.html">7.2. A Map of the Numba Repository</a></li>
+<li class="toctree-l2"><a class="reference internal" href="architecture.html">7.3. Numba architecture</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dispatching.html">7.4. Polymorphic dispatching</a></li>
+<li class="toctree-l2"><a class="reference internal" href="generators.html">7.5. Notes on generators</a></li>
+<li class="toctree-l2"><a class="reference internal" href="numba-runtime.html">7.6. Notes on Numba Runtime</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rewrites.html">7.7. Using the Numba Rewrite Pass for Fun and Optimization</a></li>
+<li class="toctree-l2"><a class="reference internal" href="live_variable_analysis.html">7.8. Live Variable Analysis</a></li>
+<li class="toctree-l2"><a class="reference internal" href="listings.html">7.9. Listings</a></li>
+<li class="toctree-l2"><a class="reference internal" href="stencil.html">7.10. Notes on stencils</a></li>
+<li class="toctree-l2"><a class="reference internal" href="custom_pipeline.html">7.11. Customizing the Compiler</a></li>
+<li class="toctree-l2"><a class="reference internal" href="inlining.html">7.12. Notes on Inlining</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">7.13. Environment Object</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#the-implementation">7.13.1. The Implementation</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#serialization">7.13.1.1. Serialization</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#usage">7.13.1.2. Usage</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="hashing.html">7.14. Notes on Hashing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="caching.html">7.15. Notes on Caching</a></li>
+<li class="toctree-l2"><a class="reference internal" href="threading_implementation.html">7.16. Notes on Numba’s threading implementation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="literal.html">7.17. Notes on Literal Types</a></li>
+<li class="toctree-l2"><a class="reference internal" href="debugging.html">7.18. Notes on Debugging</a></li>
+<li class="toctree-l2"><a class="reference internal" href="roadmap.html">7.19. Numba Project Roadmap</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../proposals/index.html">8. Numba Enhancement Proposals</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../glossary.html">9. Glossary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../release-notes.html">10. Release Notes</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Numba</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content style-external-links">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="index.html">7. Developer Manual</a> &raquo;</li>
+        
+      <li>7.13. Environment Object</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/developer/environment.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="environment-object">
+<h1>7.13. Environment Object<a class="headerlink" href="#environment-object" title="Permalink to this headline">¶</a></h1>
+<p>The Environment object (Env) is used to maintain references to python objects
+that are needed to support compiled functions for both object-mode and
+nopython-mode.</p>
+<p>In nopython-mode, the Env is used for:</p>
+<ul class="simple">
+<li><p>Storing pyobjects for reconstruction from native values,
+such as:
+* for printing native values of NumPy arrays;
+* for returning or yielding native values back to the interpreter.</p></li>
+</ul>
+<p>In object-mode, the Env is used for:</p>
+<ul class="simple">
+<li><p>storing constant values referenced in the code.</p></li>
+<li><p>storing a reference to the function’s global dictionary to load global
+values.</p></li>
+</ul>
+<div class="section" id="the-implementation">
+<h2>7.13.1. The Implementation<a class="headerlink" href="#the-implementation" title="Permalink to this headline">¶</a></h2>
+<p>The Env is implemented in two parts.  In <code class="docutils literal notranslate"><span class="pre">_dynfunc.c</span></code>, the Env is defined
+as <code class="docutils literal notranslate"><span class="pre">EnvironmentObject</span></code> as a Python C-extension type.  In <code class="docutils literal notranslate"><span class="pre">lowering.py</span></code>,
+the <cite>EnvironmentObject`</cite> (exported as <code class="docutils literal notranslate"><span class="pre">_dynfunc.Environment</span></code>) is extended
+to support necessary operations needed at lowering.</p>
+<div class="section" id="serialization">
+<h3>7.13.1.1. Serialization<a class="headerlink" href="#serialization" title="Permalink to this headline">¶</a></h3>
+<p>The Env supports being pickled.  Compilation cache files and ahead-of-time
+compiled modules serialize all the used Envs for recreation at the runtime.</p>
+</div>
+<div class="section" id="usage">
+<h3>7.13.1.2. Usage<a class="headerlink" href="#usage" title="Permalink to this headline">¶</a></h3>
+<p>At the start of the lowering for a function or a generator, an Env is created.
+Throughout the compilation, the Env is mutated to attach additional
+information.  The compiled code references an Env via a global variable in
+the emitted LLVM IR.  The global variable is zero-initialized with “common”
+linkage, which is the default linkage for C global values.  The use of this
+linkage allows multiple definitions of the global variable to be merged into
+a single definition when the modules are linked together.  The name of the
+global variable is computed from the name of the function
+(see <code class="docutils literal notranslate"><span class="pre">FunctionDescriptor.env_name</span></code> and <code class="docutils literal notranslate"><span class="pre">.get_env_name()</span></code> of the target
+context).</p>
+<p>The Env is initialized when the compiled-function is loaded. The JIT engine
+finds the address of the associated global variable for the Env and stores the
+address of the Env into it.  For cached functions, the same process applies.
+For ahead-of-time compiled functions, the module initializer in the generated
+library is responsible for initializing the global variables of all the Envs
+in the module.</p>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="hashing.html" class="btn btn-neutral float-right" title="7.14. Notes on Hashing" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="inlining.html" class="btn btn-neutral float-left" title="7.12. Notes on Inlining" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2012-2020, Anaconda, Inc. and others
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

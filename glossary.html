@@ -1,0 +1,301 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>9. Glossary &mdash; Numba 0.49.0dev0+636.ga4807f5d8 documentation</title>
+  
+
+  
+  
+    <link rel="shortcut icon" href="_static/numba-blue-icon-rgb.svg"/>
+  
+  
+  
+    <link rel="canonical" href="http://numba.pydata.org/numba-doc/latest/index.htmlglossary.html"/>
+  
+
+  
+  <script type="text/javascript" src="_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script type="text/javascript" src="_static/jquery.js"></script>
+        <script type="text/javascript" src="_static/underscore.js"></script>
+        <script type="text/javascript" src="_static/doctools.js"></script>
+        <script type="text/javascript" src="_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="10. Release Notes" href="release-notes.html" />
+    <link rel="prev" title="8.2.5. NBEP 6: Typing Recursion" href="proposals/typing_recursion.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="index.html" class="icon icon-home"> Numba
+          
+
+          
+            
+            <img src="_static/numba-blue-icon-rgb.svg" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.49
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="user/index.html">1. User Manual</a></li>
+<li class="toctree-l1"><a class="reference internal" href="reference/index.html">2. Reference Manual</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cuda/index.html">3. Numba for CUDA GPUs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cuda-reference/index.html">4. CUDA Python Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="roc/index.html">5. Numba for AMD ROC GPUs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="extending/index.html">6. Extending Numba</a></li>
+<li class="toctree-l1"><a class="reference internal" href="developer/index.html">7. Developer Manual</a></li>
+<li class="toctree-l1"><a class="reference internal" href="proposals/index.html">8. Numba Enhancement Proposals</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">9. Glossary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="release-notes.html">10. Release Notes</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Numba</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content style-external-links">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+      <li>9. Glossary</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/glossary.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="glossary">
+<h1>9. Glossary<a class="headerlink" href="#glossary" title="Permalink to this headline">¶</a></h1>
+<dl class="glossary">
+<dt id="term-ahead-of-time-compilation">ahead-of-time compilation</dt><dt id="term-aot-compilation">AOT compilation</dt><dt id="term-aot">AOT</dt><dd><p>Compilation of a function in a separate step before running the
+program code, producing an on-disk binary object which can be distributed
+independently.  This is the traditional kind of compilation known
+in languages such as C, C++ or Fortran.</p>
+</dd>
+<dt id="term-bytecode">bytecode</dt><dt id="term-python-bytecode">Python bytecode</dt><dd><p>The original form in which Python functions are executed.  Python
+bytecode describes a stack-machine executing abstract (untyped)
+operations using operands from both the function stack and the
+execution environment (e.g. global variables).</p>
+</dd>
+<dt id="term-compile-time-constant">compile-time constant</dt><dd><p>An expression whose value Numba can infer and freeze at compile-time.
+Global variables and closure variables are compile-time constants.</p>
+</dd>
+<dt id="term-just-in-time-compilation">just-in-time compilation</dt><dt id="term-jit-compilation">JIT compilation</dt><dt id="term-jit">JIT</dt><dd><p>Compilation of a function at execution time, as opposed to
+<a class="reference internal" href="#term-ahead-of-time-compilation"><span class="xref std std-term">ahead-of-time compilation</span></a>.</p>
+</dd>
+<dt id="term-jit-function">JIT function</dt><dd><p>Shorthand for “a function <a class="reference internal" href="#term-jit"><span class="xref std std-term">JIT-compiled</span></a> with Numba using
+the <a class="reference internal" href="user/jit.html#jit"><span class="std std-ref">&#64;jit</span></a> decorator.”</p>
+</dd>
+<dt id="term-loop-lifting">loop-lifting</dt><dt id="term-loop-jitting">loop-jitting</dt><dd><p>A feature of compilation in <a class="reference internal" href="#term-object-mode"><span class="xref std std-term">object mode</span></a> where a loop can be
+automatically extracted and compiled in <a class="reference internal" href="#term-nopython-mode"><span class="xref std std-term">nopython mode</span></a>.  This
+allows functions with operations unsupported in nopython mode to see
+significant performance improvements if they contain loops with only
+nopython-supported operations.</p>
+</dd>
+<dt id="term-lowering">lowering</dt><dd><p>The act of translating <a class="reference internal" href="#term-numba-ir"><span class="xref std std-term">Numba IR</span></a> into LLVM IR.  The term
+“lowering” stems from the fact that LLVM IR is low-level and
+machine-specific while Numba IR is high-level and abstract.</p>
+</dd>
+<dt id="term-nopython-mode">nopython mode</dt><dd><p>A Numba compilation mode that generates code that does not access the
+Python C API.  This compilation mode produces the highest performance
+code, but requires that the native types of all values in the function
+can be <a class="reference internal" href="#term-type-inference"><span class="xref std std-term">inferred</span></a>.  Unless otherwise instructed,
+the <code class="docutils literal notranslate"><span class="pre">&#64;jit</span></code> decorator will automatically fall back to <a class="reference internal" href="#term-object-mode"><span class="xref std std-term">object
+mode</span></a> if nopython mode cannot be used.</p>
+</dd>
+<dt id="term-numba-ir">Numba IR</dt><dt id="term-numba-intermediate-representation">Numba intermediate representation</dt><dd><p>A representation of a piece of Python code which is more amenable
+to analysis and transformations than the original Python
+<a class="reference internal" href="#term-bytecode"><span class="xref std std-term">bytecode</span></a>.</p>
+</dd>
+<dt id="term-object-mode">object mode</dt><dd><p>A Numba compilation mode that generates code that handles all values
+as Python objects and uses the Python C API to perform all operations
+on those objects.  Code compiled in object mode will often run
+no faster than Python interpreted code, unless the Numba compiler can
+take advantage of <a class="reference internal" href="#term-loop-jitting"><span class="xref std std-term">loop-jitting</span></a>.</p>
+</dd>
+<dt id="term-optionaltype"><code class="docutils literal notranslate"><span class="pre">OptionalType</span></code></dt><dd><p>An <code class="docutils literal notranslate"><span class="pre">OptionalType</span></code> is effectively a type union of a <code class="docutils literal notranslate"><span class="pre">type</span></code> and <code class="docutils literal notranslate"><span class="pre">None</span></code>.
+They typically occur in practice due to a variable being set to <code class="docutils literal notranslate"><span class="pre">None</span></code>
+and then in a branch the variable being set to some other value. It’s
+often not possible at compile time to determine if the branch will execute
+so to permit <a class="reference internal" href="#term-type-inference"><span class="xref std std-term">type inference</span></a> to complete, the type of the variable
+becomes the union of a <code class="docutils literal notranslate"><span class="pre">type</span></code> (from the value) and <code class="docutils literal notranslate"><span class="pre">None</span></code>,
+i.e. <code class="docutils literal notranslate"><span class="pre">OptionalType(type)</span></code>.</p>
+</dd>
+<dt id="term-type-inference">type inference</dt><dd><p>The process by which Numba determines the specialized types of all
+values within a function being compiled.  Type inference can fail
+if arguments or globals have Python types unknown to Numba, or if
+functions are used that are not recognized by Numba.  Successful
+type inference is a prerequisite for compilation in
+<a class="reference internal" href="#term-nopython-mode"><span class="xref std std-term">nopython mode</span></a>.</p>
+</dd>
+<dt id="term-typing">typing</dt><dd><p>The act of running <a class="reference internal" href="#term-type-inference"><span class="xref std std-term">type inference</span></a> on a value or operation.</p>
+</dd>
+<dt id="term-ufunc">ufunc</dt><dd><p>A NumPy <a class="reference external" href="http://docs.scipy.org/doc/numpy/reference/ufuncs.html">universal function</a>.
+Numba can create new compiled ufuncs with
+the <a class="reference internal" href="user/vectorize.html#vectorize"><span class="std std-ref">&#64;vectorize</span></a> decorator.</p>
+</dd>
+<dt id="term-reflection">reflection</dt><dd><p>In numba, when a mutable container is passed as argument to a nopython
+function from the Python interpreter, the container object and all its
+contained elements are converted into nopython values.  To match the
+semantics of Python, any mutation on the container inside the nopython
+function must be visible in the Python interpreter.  To do so, Numba
+must update the container and its elements and convert them back into
+Python objects during the transition back into the interpreter.</p>
+<p>Not to be confused with Python’s “reflection” in the context of binary
+operators (see <a class="reference external" href="https://docs.python.org/3.5/reference/datamodel.html">https://docs.python.org/3.5/reference/datamodel.html</a>).</p>
+</dd>
+</dl>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="release-notes.html" class="btn btn-neutral float-right" title="10. Release Notes" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="proposals/typing_recursion.html" class="btn btn-neutral float-left" title="8.2.5. NBEP 6: Typing Recursion" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2012-2020, Anaconda, Inc. and others
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

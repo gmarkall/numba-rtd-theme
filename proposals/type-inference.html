@@ -1,0 +1,352 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>8.2.4. NBEP 5: Type Inference &mdash; Numba 0.49.0dev0+636.ga4807f5d8 documentation</title>
+  
+
+  
+  
+    <link rel="shortcut icon" href="../_static/numba-blue-icon-rgb.svg"/>
+  
+  
+  
+    <link rel="canonical" href="http://numba.pydata.org/numba-doc/latest/index.htmlproposals/type-inference.html"/>
+  
+
+  
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script type="text/javascript" src="../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="8.2.5. NBEP 6: Typing Recursion" href="typing_recursion.html" />
+    <link rel="prev" title="8.2.3. NBEP 4: Defining C callbacks" href="cfunc.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> Numba
+          
+
+          
+            
+            <img src="../_static/numba-blue-icon-rgb.svg" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.49
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../user/index.html">1. User Manual</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reference/index.html">2. Reference Manual</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../cuda/index.html">3. Numba for CUDA GPUs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../cuda-reference/index.html">4. CUDA Python Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../roc/index.html">5. Numba for AMD ROC GPUs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../extending/index.html">6. Extending Numba</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../developer/index.html">7. Developer Manual</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">8. Numba Enhancement Proposals</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="index.html#implemented-proposals">8.1. Implemented proposals</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="index.html#other-proposals">8.2. Other proposals</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="extension-points.html">8.2.1. NBEP 2: Extension points</a></li>
+<li class="toctree-l3"><a class="reference internal" href="jit-classes.html">8.2.2. NBEP 3: JIT Classes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="cfunc.html">8.2.3. NBEP 4: Defining C callbacks</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">8.2.4. NBEP 5: Type Inference</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#introduction">8.2.4.1. Introduction</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#numba-type-semantic">8.2.4.2. Numba Type Semantic</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#type-inference">8.2.4.3. Type Inference</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="typing_recursion.html">8.2.5. NBEP 6: Typing Recursion</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../glossary.html">9. Glossary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../release-notes.html">10. Release Notes</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Numba</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content style-external-links">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="index.html">8. Numba Enhancement Proposals</a> &raquo;</li>
+        
+      <li>8.2.4. NBEP 5: Type Inference</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/proposals/type-inference.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="nbep-5-type-inference">
+<h1>8.2.4. NBEP 5: Type Inference<a class="headerlink" href="#nbep-5-type-inference" title="Permalink to this headline">¶</a></h1>
+<dl class="field-list simple">
+<dt class="field-odd">Author</dt>
+<dd class="field-odd"><p>Siu Kwan Lam</p>
+</dd>
+<dt class="field-even">Date</dt>
+<dd class="field-even"><p>Sept 2016</p>
+</dd>
+<dt class="field-odd">Status</dt>
+<dd class="field-odd"><p>Draft</p>
+</dd>
+</dl>
+<p>This document describes the current type inference implementation in numba.</p>
+<div class="section" id="introduction">
+<h2>8.2.4.1. Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h2>
+<p>Numba uses type information to ensure that every variable in the user code can
+be correctly lowered (translated into a low-level representation).  The type of
+a variable describes the set of valid operations and available attributes.
+Resolving this information during compilation avoids the overhead of type
+checking and dispatching at runtime.  However, Python is dynamically typed and
+the user does not declare variable types.  Since type information is absent,
+we use type inference to reconstruct the missing information.</p>
+</div>
+<div class="section" id="numba-type-semantic">
+<h2>8.2.4.2. Numba Type Semantic<a class="headerlink" href="#numba-type-semantic" title="Permalink to this headline">¶</a></h2>
+<p>Type inference operates on <a class="reference internal" href="../glossary.html#term-numba-ir"><span class="xref std std-term">Numba IR</span></a>, a mostly static-single-assignment (SSA)
+encoding of the Python bytecode.  Conceptually, all intermediate values in the
+Python code are explicitly assigned to a variable in the IR.  Numba enforces
+that each IR variable to have one type only.  A user variable (from the Python
+source code) can be mapped to multiple variables in the IR.  They are <em>versions</em>
+of a variable.  Each time a user variable is assigned to, a new version is
+created.  From that point, all subsequent references will use the new version.
+The user variable <em>evolves</em> as the function logic updates its type.  Merge
+points (e.g. subsequent block to an if-else, the loop body, etc..) in the control
+flow need extra care. At each merge point, a new version is implicitly created
+to merge the different variable versions from the incoming paths.
+The merging of the variable versions may translate into an implicit cast.</p>
+<p>Numba uses function overloading to emulate Python duck-typing.  The type of a
+function can contain multiple call signatures that accept different argument
+types and yield different return types.  The process to decide the best
+signature for an overloaded function is called <em>overload resolution</em>.
+Numba partially implements the C++ overload resolution scheme
+(<a class="reference external" href="http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2014/n4296.pdf">ISOCPP</a> 13.3 Overload Resolution).  The scheme uses a “best fit” algorithm by
+ranking each argument symmetrically.  The five possible rankings in increasing
+order of penalty are:</p>
+<ul class="simple">
+<li><p><em>Exact</em>: the expected type is the same as the actual type.</p></li>
+<li><p><em>Promotion</em>: the actual type can be upcast to the expected type by extending
+the precision without changing the behavior.</p></li>
+<li><p><em>Safe conversion</em>: the actual type can be cast to the expected type by changing
+the type without losing information.</p></li>
+<li><p><em>Unsafe conversion</em>: the actual type can be cast to the expected type by
+changing the type or downcasting the type even if it is imprecise.</p></li>
+<li><p><em>No match</em>: no valid operation can convert the actual type to the expected type.</p></li>
+</ul>
+<p>It is possible to have an ambiguous resolution.  For example, a function with
+signatures <code class="docutils literal notranslate"><span class="pre">(int16,</span> <span class="pre">int32)</span></code> and <code class="docutils literal notranslate"><span class="pre">(int32,</span> <span class="pre">int16)</span></code> can become ambiguous if
+presented with the argument types <code class="docutils literal notranslate"><span class="pre">(int32,</span> <span class="pre">int32)</span></code>, because demoting either
+argument to <code class="docutils literal notranslate"><span class="pre">int16</span></code> is equally “fit”.  Fortunately, numba can usually resolve
+such ambiguity by compiling a new version with the exact signature
+<code class="docutils literal notranslate"><span class="pre">(int32,</span> <span class="pre">int32)</span></code>.  When compilation is disabled and there are multiple
+signatures with equal fit, an exception is raised.</p>
+</div>
+<div class="section" id="type-inference">
+<h2>8.2.4.3. Type Inference<a class="headerlink" href="#type-inference" title="Permalink to this headline">¶</a></h2>
+<p>The type inference in numba has three important components—type
+variable, constraint network, and typing context.</p>
+<ul class="simple">
+<li><p>The <em>typing context</em> provides all the type information and typing related
+operations, including the logic for type unification, and the logic for typing
+of global and constant values.  It defines the semantic of the language that
+can be compiled by numba.</p></li>
+<li><p>A <em>type variable</em> holds the type of each variable (in the Numba IR).
+Conceptually, it is initialized to the universal type and, as it is re-assigned,
+it stores a common type by unifying the new type with the existing type.  The
+common type must be able to represent values of the new type and the existing
+type.  Type conversion is applied as necessary and precision loss is
+accepted for usability reason.</p></li>
+<li><p>The <em>constraint network</em> is a dependency graph built from the IR.  Each
+node represents an operation in the Numba IR and updates at least one type
+variable.  There may be cycles due to loops in user code.</p></li>
+</ul>
+<p>The type inference process starts by seeding the argument types.  These initial
+types are propagated in the constraint network, which eventually fills all the
+type variables.  Due to cycles in the network, the process repeats until all
+type variables converge or it fails with undecidable types.</p>
+<p>Type unification always returns a more “general” (quoted because unsafe conversion
+is allowed) type.  Types will converge to the least “general” type that
+can represent all possible values that the variable can hold.  Since unification
+will never move down the type hierarchy and there is a single top type, the
+universal type—<code class="docutils literal notranslate"><span class="pre">object</span></code>, the type inference is guaranteed to converge.</p>
+<p>A failure in type inference can be caused by two reasons.  The first reason is user
+error due to incorrect use of a type.  This type of error will also trigger an
+exception in regular python execution.  The second reason is due to the use of an
+unsupported feature, but the code is otherwise valid in regular python
+execution.  Upon an error, the type inference will set all types to the object
+type.  As a result, numba will fallback to <em>object-mode</em>.</p>
+<p>Since functions can be overloaded, the type inference needs to decide the
+type signature used at each call site.  The overload resolution is applied to
+all known overload versions of the callee function described in <em>call-templates</em>.
+A call-template can either be concrete or abstract.  A concrete call-template
+defines a fixed list of all possible signatures.  An abstract call-template
+defines the logic to compute the accepted signature and it is used to implement
+generic functions.</p>
+<p>Numba-compiled functions are generic functions due to their ability to compile
+new versions.  When it sees a new set of argument types, it triggers type
+inference to validate and determine the return type. When there are nested calls
+for numba-compiled functions, each call-site triggers type inference.
+This poses a problem to recursive functions because the type inference will also
+be triggered recursively.  Currently, simple single recursion is supported if
+the signature is user-annotated by the user, which avoids unbound recursion in
+type inference that will never terminate.</p>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="typing_recursion.html" class="btn btn-neutral float-right" title="8.2.5. NBEP 6: Typing Recursion" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="cfunc.html" class="btn btn-neutral float-left" title="8.2.3. NBEP 4: Defining C callbacks" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2012-2020, Anaconda, Inc. and others
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

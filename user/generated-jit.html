@@ -1,0 +1,306 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>1.5. Flexible specializations with @generated_jit &mdash; Numba 0.49.0dev0+636.ga4807f5d8 documentation</title>
+  
+
+  
+  
+    <link rel="shortcut icon" href="../_static/numba-blue-icon-rgb.svg"/>
+  
+  
+  
+    <link rel="canonical" href="http://numba.pydata.org/numba-doc/latest/index.htmluser/generated-jit.html"/>
+  
+
+  
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script type="text/javascript" src="../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="1.6. Creating Numpy universal functions" href="vectorize.html" />
+    <link rel="prev" title="1.4. Compiling Python code with @jit" href="jit.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> Numba
+          
+
+          
+            
+            <img src="../_static/numba-blue-icon-rgb.svg" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.49
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">1. User Manual</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="5minguide.html">1.1. A ~5 minute guide to Numba</a></li>
+<li class="toctree-l2"><a class="reference internal" href="overview.html">1.2. Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="installing.html">1.3. Installation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="jit.html">1.4. Compiling Python code with <code class="docutils literal notranslate"><span class="pre">&#64;jit</span></code></a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">1.5. Flexible specializations with <code class="docutils literal notranslate"><span class="pre">&#64;generated_jit</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#example">1.5.1. Example</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#compilation-options">1.5.2. Compilation options</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="vectorize.html">1.6. Creating Numpy universal functions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="jitclass.html">1.7. Compiling Python classes with <code class="docutils literal notranslate"><span class="pre">&#64;jitclass</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="cfunc.html">1.8. Creating C callbacks with <code class="docutils literal notranslate"><span class="pre">&#64;cfunc</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="pycc.html">1.9. Compiling code ahead of time</a></li>
+<li class="toctree-l2"><a class="reference internal" href="parallel.html">1.10. Automatic parallelization with <code class="docutils literal notranslate"><span class="pre">&#64;jit</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="stencil.html">1.11. Using the <code class="docutils literal notranslate"><span class="pre">&#64;stencil</span></code> decorator</a></li>
+<li class="toctree-l2"><a class="reference internal" href="withobjmode.html">1.12. Callback into the Python Interpreter from within JIT’ed code</a></li>
+<li class="toctree-l2"><a class="reference internal" href="jit-module.html">1.13. Automatic module jitting with <code class="docutils literal notranslate"><span class="pre">jit_module</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="performance-tips.html">1.14. Performance Tips</a></li>
+<li class="toctree-l2"><a class="reference internal" href="threading-layer.html">1.15. The Threading Layers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cli.html">1.16. Command line interface</a></li>
+<li class="toctree-l2"><a class="reference internal" href="troubleshoot.html">1.17. Troubleshooting and tips</a></li>
+<li class="toctree-l2"><a class="reference internal" href="faq.html">1.18. Frequently Asked Questions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="examples.html">1.19. Examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="talks.html">1.20. Talks and Tutorials</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../reference/index.html">2. Reference Manual</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../cuda/index.html">3. Numba for CUDA GPUs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../cuda-reference/index.html">4. CUDA Python Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../roc/index.html">5. Numba for AMD ROC GPUs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../extending/index.html">6. Extending Numba</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../developer/index.html">7. Developer Manual</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../proposals/index.html">8. Numba Enhancement Proposals</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../glossary.html">9. Glossary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../release-notes.html">10. Release Notes</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Numba</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content style-external-links">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="index.html">1. User Manual</a> &raquo;</li>
+        
+      <li>1.5. Flexible specializations with <code class="docutils literal notranslate"><span class="pre">&#64;generated_jit</span></code></li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/user/generated-jit.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="flexible-specializations-with-generated-jit">
+<span id="generated-jit"></span><h1>1.5. Flexible specializations with <code class="docutils literal notranslate"><span class="pre">&#64;generated_jit</span></code><a class="headerlink" href="#flexible-specializations-with-generated-jit" title="Permalink to this headline">¶</a></h1>
+<p>While the <a class="reference internal" href="../reference/jit-compilation.html#numba.jit" title="numba.jit"><code class="xref py py-func docutils literal notranslate"><span class="pre">jit()</span></code></a> decorator is useful for many situations,
+sometimes you want to write a function that has different implementations
+depending on its input types.  The <a class="reference internal" href="../reference/jit-compilation.html#numba.generated_jit" title="numba.generated_jit"><code class="xref py py-func docutils literal notranslate"><span class="pre">generated_jit()</span></code></a> decorator
+allows the user to control the selection of a specialization at compile-time,
+while fully retaining runtime execution speed of a JIT function.</p>
+<div class="section" id="example">
+<h2>1.5.1. Example<a class="headerlink" href="#example" title="Permalink to this headline">¶</a></h2>
+<p>Suppose you want to write a function which returns whether a given value
+is a “missing” value according to certain conventions.  For the sake of
+the example, let’s adopt the following definition:</p>
+<ul class="simple">
+<li><p>for floating-point arguments, a missing value is a <code class="docutils literal notranslate"><span class="pre">NaN</span></code></p></li>
+<li><p>for Numpy datetime64 and timedelta64 arguments, a missing value is a <code class="docutils literal notranslate"><span class="pre">NaT</span></code></p></li>
+<li><p>other types don’t have the concept of a missing value.</p></li>
+</ul>
+<p>That compile-time logic is easily implemented using the
+<a class="reference internal" href="../reference/jit-compilation.html#numba.generated_jit" title="numba.generated_jit"><code class="xref py py-func docutils literal notranslate"><span class="pre">generated_jit()</span></code></a> decorator:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="kn">from</span> <span class="nn">numba</span> <span class="kn">import</span> <span class="n">generated_jit</span><span class="p">,</span> <span class="n">types</span>
+
+<span class="nd">@generated_jit</span><span class="p">(</span><span class="n">nopython</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">is_missing</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Return True if the value is missing, False otherwise.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">types</span><span class="o">.</span><span class="n">Float</span><span class="p">):</span>
+        <span class="k">return</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">isnan</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+    <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="p">(</span><span class="n">types</span><span class="o">.</span><span class="n">NPDatetime</span><span class="p">,</span> <span class="n">types</span><span class="o">.</span><span class="n">NPTimedelta</span><span class="p">)):</span>
+        <span class="c1"># The corresponding Not-a-Time value</span>
+        <span class="n">missing</span> <span class="o">=</span> <span class="n">x</span><span class="p">(</span><span class="s1">&#39;NaT&#39;</span><span class="p">)</span>
+        <span class="k">return</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span> <span class="o">==</span> <span class="n">missing</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">return</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="kc">False</span>
+</pre></div>
+</div>
+<p>There are several things to note here:</p>
+<ul class="simple">
+<li><p>The decorated function is called with the <a class="reference internal" href="../reference/types.html#numba-types"><span class="std std-ref">Numba types</span></a>
+of the arguments, not their values.</p></li>
+<li><p>The decorated function doesn’t actually compute a result, it returns
+a callable implementing the actual definition of the function for the
+given types.</p></li>
+<li><p>It is possible to pre-compute some data at compile-time (the <code class="docutils literal notranslate"><span class="pre">missing</span></code>
+variable above) to have them reused inside the compiled implementation.</p></li>
+<li><p>The function definitions use the same names for arguments as in the
+decorated function, this is required to ensure passing arguments by
+name works as expected.</p></li>
+</ul>
+</div>
+<div class="section" id="compilation-options">
+<h2>1.5.2. Compilation options<a class="headerlink" href="#compilation-options" title="Permalink to this headline">¶</a></h2>
+<p>The <a class="reference internal" href="../reference/jit-compilation.html#numba.generated_jit" title="numba.generated_jit"><code class="xref py py-func docutils literal notranslate"><span class="pre">generated_jit()</span></code></a> decorator supports the same keyword-only
+arguments as the <a class="reference internal" href="../reference/jit-compilation.html#numba.jit" title="numba.jit"><code class="xref py py-func docutils literal notranslate"><span class="pre">jit()</span></code></a> decorator, for example the <code class="docutils literal notranslate"><span class="pre">nopython</span></code>
+and <code class="docutils literal notranslate"><span class="pre">cache</span></code> options.</p>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="vectorize.html" class="btn btn-neutral float-right" title="1.6. Creating Numpy universal functions" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="jit.html" class="btn btn-neutral float-left" title="1.4. Compiling Python code with @jit" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2012-2020, Anaconda, Inc. and others
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

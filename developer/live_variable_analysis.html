@@ -1,0 +1,318 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>7.8. Live Variable Analysis &mdash; Numba 0.49.0dev0+636.ga4807f5d8 documentation</title>
+  
+
+  
+  
+    <link rel="shortcut icon" href="../_static/numba-blue-icon-rgb.svg"/>
+  
+  
+  
+    <link rel="canonical" href="http://numba.pydata.org/numba-doc/latest/index.htmldeveloper/live_variable_analysis.html"/>
+  
+
+  
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script type="text/javascript" src="../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="7.9. Listings" href="listings.html" />
+    <link rel="prev" title="7.7. Using the Numba Rewrite Pass for Fun and Optimization" href="rewrites.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> Numba
+          
+
+          
+            
+            <img src="../_static/numba-blue-icon-rgb.svg" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.49
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../user/index.html">1. User Manual</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reference/index.html">2. Reference Manual</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../cuda/index.html">3. Numba for CUDA GPUs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../cuda-reference/index.html">4. CUDA Python Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../roc/index.html">5. Numba for AMD ROC GPUs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../extending/index.html">6. Extending Numba</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">7. Developer Manual</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="contributing.html">7.1. Contributing to Numba</a></li>
+<li class="toctree-l2"><a class="reference internal" href="repomap.html">7.2. A Map of the Numba Repository</a></li>
+<li class="toctree-l2"><a class="reference internal" href="architecture.html">7.3. Numba architecture</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dispatching.html">7.4. Polymorphic dispatching</a></li>
+<li class="toctree-l2"><a class="reference internal" href="generators.html">7.5. Notes on generators</a></li>
+<li class="toctree-l2"><a class="reference internal" href="numba-runtime.html">7.6. Notes on Numba Runtime</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rewrites.html">7.7. Using the Numba Rewrite Pass for Fun and Optimization</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">7.8. Live Variable Analysis</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#notes-on-behavior-of-the-live-variable-analysis">7.8.1. Notes on behavior of the live variable analysis</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#variable-deleted-before-definition">7.8.1.1. Variable deleted before definition</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="listings.html">7.9. Listings</a></li>
+<li class="toctree-l2"><a class="reference internal" href="stencil.html">7.10. Notes on stencils</a></li>
+<li class="toctree-l2"><a class="reference internal" href="custom_pipeline.html">7.11. Customizing the Compiler</a></li>
+<li class="toctree-l2"><a class="reference internal" href="inlining.html">7.12. Notes on Inlining</a></li>
+<li class="toctree-l2"><a class="reference internal" href="environment.html">7.13. Environment Object</a></li>
+<li class="toctree-l2"><a class="reference internal" href="hashing.html">7.14. Notes on Hashing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="caching.html">7.15. Notes on Caching</a></li>
+<li class="toctree-l2"><a class="reference internal" href="threading_implementation.html">7.16. Notes on Numba’s threading implementation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="literal.html">7.17. Notes on Literal Types</a></li>
+<li class="toctree-l2"><a class="reference internal" href="debugging.html">7.18. Notes on Debugging</a></li>
+<li class="toctree-l2"><a class="reference internal" href="roadmap.html">7.19. Numba Project Roadmap</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../proposals/index.html">8. Numba Enhancement Proposals</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../glossary.html">9. Glossary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../release-notes.html">10. Release Notes</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Numba</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content style-external-links">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="index.html">7. Developer Manual</a> &raquo;</li>
+        
+      <li>7.8. Live Variable Analysis</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/developer/live_variable_analysis.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="live-variable-analysis">
+<span id="id1"></span><h1>7.8. Live Variable Analysis<a class="headerlink" href="#live-variable-analysis" title="Permalink to this headline">¶</a></h1>
+<p>(Related issue <a class="reference external" href="https://github.com/numba/numba/pull/1611">https://github.com/numba/numba/pull/1611</a>)</p>
+<p>Numba uses reference-counting for garbage collection, a technique that
+requires cooperation by the compiler.  The Numba IR encodes the location
+where a decref must be inserted.  These locations are determined by live
+variable analysis.  The corresponding source code is the <code class="docutils literal notranslate"><span class="pre">_insert_var_dels()</span></code>
+method in <a class="reference external" href="https://github.com/numba/numba/blob/master/numba/interpreter.py">https://github.com/numba/numba/blob/master/numba/interpreter.py</a>.</p>
+<p>In Python semantic, once a variable is defined inside a function, it is alive
+until the variable is explicitly deleted or the function scope is ended.
+However, Numba analyzes the code to determine the minimum bound of the lifetime
+of each variable by its definition and usages during compilation.
+As soon as a variable is unreachable, a <code class="docutils literal notranslate"><span class="pre">del</span></code> instruction is inserted at the
+closest basic-block (either at the start of the next block(s) or at the
+end of the current block).  This means variables can be released earlier than in
+regular Python code.</p>
+<p>The behavior of the live variable analysis affects memory usage of the compiled
+code.  Internally, Numba does not differentiate temporary variables and user
+variables.  Since each operation generates at least one temporary variable,
+a function can accumulate a high number of temporary variables if they are not
+released as soon as possible.
+Our generator implementation can benefit from early releasing of variables,
+which reduces the size of the state to suspend at each yield point.</p>
+<div class="section" id="notes-on-behavior-of-the-live-variable-analysis">
+<h2>7.8.1. Notes on behavior of the live variable analysis<a class="headerlink" href="#notes-on-behavior-of-the-live-variable-analysis" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="variable-deleted-before-definition">
+<h3>7.8.1.1. Variable deleted before definition<a class="headerlink" href="#variable-deleted-before-definition" title="Permalink to this headline">¶</a></h3>
+<p>(Related issue: <a class="reference external" href="https://github.com/numba/numba/pull/1738">https://github.com/numba/numba/pull/1738</a>)</p>
+<p>When a variable lifetime is confined within the loop body (its definition and
+usage does not escape the loop body), like:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">f</span><span class="p">(</span><span class="n">arr</span><span class="p">):</span>
+  <span class="c1"># BB 0</span>
+  <span class="n">res</span> <span class="o">=</span> <span class="mi">0</span>
+  <span class="c1"># BB 1</span>
+  <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">):</span>
+      <span class="c1"># BB 2</span>
+      <span class="n">t</span> <span class="o">=</span> <span class="n">arr</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+      <span class="k">if</span> <span class="n">t</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span>
+          <span class="c1"># BB 3</span>
+          <span class="n">res</span> <span class="o">+=</span> <span class="n">t</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+  <span class="c1"># BB 4</span>
+  <span class="k">return</span> <span class="n">res</span>
+</pre></div>
+</div>
+<p>Variable <code class="docutils literal notranslate"><span class="pre">t</span></code> is never referenced outside of the loop.
+A <code class="docutils literal notranslate"><span class="pre">del</span></code> instruction is emitted for <code class="docutils literal notranslate"><span class="pre">t</span></code> at the head of the loop (BB 1)
+before a variable is defined.  The reason is obvious once we know the control
+flow graph:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>         <span class="o">+------------------------------&gt;</span> <span class="n">BB4</span>
+         <span class="o">|</span>
+         <span class="o">|</span>
+<span class="n">BB</span> <span class="mi">0</span> <span class="o">--&gt;</span> <span class="n">BB</span> <span class="mi">1</span>  <span class="o">--&gt;</span>  <span class="n">BB</span> <span class="mi">2</span> <span class="o">---&gt;</span> <span class="n">BB</span> <span class="mi">3</span>
+         <span class="o">^</span>          <span class="o">|</span>          <span class="o">|</span>
+         <span class="o">|</span>          <span class="n">V</span>          <span class="n">V</span>
+         <span class="o">+---------------------+</span>
+</pre></div>
+</div>
+<p>Variable <code class="docutils literal notranslate"><span class="pre">t</span></code> is defined in BB 1.  In BB 2, the evaluation of
+<code class="docutils literal notranslate"><span class="pre">t[i]</span> <span class="pre">&gt;</span> <span class="pre">1</span></code> uses <code class="docutils literal notranslate"><span class="pre">t</span></code>, which is the last use if execution takes the false
+branch and goto BB 1.  In BB 3, <code class="docutils literal notranslate"><span class="pre">t</span></code> is only used in <code class="docutils literal notranslate"><span class="pre">res</span> <span class="pre">+=</span> <span class="pre">t[i]</span></code>, which is
+the last use if execution takes the true branch.  Because BB 3, an outgoing
+branch of BB 2 uses <code class="docutils literal notranslate"><span class="pre">t</span></code>, <code class="docutils literal notranslate"><span class="pre">t</span></code> must be deleted at the common predecessor.
+The closest point is BB 1, which does not have <code class="docutils literal notranslate"><span class="pre">t</span></code> defined from the incoming
+edge of BB 0.</p>
+<p>Alternatively, if <code class="docutils literal notranslate"><span class="pre">t</span></code> is deleted at BB 4, we will still have to delete the
+variable before its definition because BB4 can be executed without executing
+the loop body (BB 2 and BB 3), where the variable is defined.</p>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="listings.html" class="btn btn-neutral float-right" title="7.9. Listings" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="rewrites.html" class="btn btn-neutral float-left" title="7.7. Using the Numba Rewrite Pass for Fun and Optimization" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2012-2020, Anaconda, Inc. and others
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

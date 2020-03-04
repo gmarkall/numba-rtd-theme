@@ -1,0 +1,556 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>1.14. Performance Tips &mdash; Numba 0.49.0dev0+636.ga4807f5d8 documentation</title>
+  
+
+  
+  
+    <link rel="shortcut icon" href="../_static/numba-blue-icon-rgb.svg"/>
+  
+  
+  
+    <link rel="canonical" href="http://numba.pydata.org/numba-doc/latest/index.htmluser/performance-tips.html"/>
+  
+
+  
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script type="text/javascript" src="../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="1.15. The Threading Layers" href="threading-layer.html" />
+    <link rel="prev" title="1.13. Automatic module jitting with jit_module" href="jit-module.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> Numba
+          
+
+          
+            
+            <img src="../_static/numba-blue-icon-rgb.svg" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.49
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">1. User Manual</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="5minguide.html">1.1. A ~5 minute guide to Numba</a></li>
+<li class="toctree-l2"><a class="reference internal" href="overview.html">1.2. Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="installing.html">1.3. Installation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="jit.html">1.4. Compiling Python code with <code class="docutils literal notranslate"><span class="pre">&#64;jit</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="generated-jit.html">1.5. Flexible specializations with <code class="docutils literal notranslate"><span class="pre">&#64;generated_jit</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="vectorize.html">1.6. Creating Numpy universal functions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="jitclass.html">1.7. Compiling Python classes with <code class="docutils literal notranslate"><span class="pre">&#64;jitclass</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="cfunc.html">1.8. Creating C callbacks with <code class="docutils literal notranslate"><span class="pre">&#64;cfunc</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="pycc.html">1.9. Compiling code ahead of time</a></li>
+<li class="toctree-l2"><a class="reference internal" href="parallel.html">1.10. Automatic parallelization with <code class="docutils literal notranslate"><span class="pre">&#64;jit</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="stencil.html">1.11. Using the <code class="docutils literal notranslate"><span class="pre">&#64;stencil</span></code> decorator</a></li>
+<li class="toctree-l2"><a class="reference internal" href="withobjmode.html">1.12. Callback into the Python Interpreter from within JIT’ed code</a></li>
+<li class="toctree-l2"><a class="reference internal" href="jit-module.html">1.13. Automatic module jitting with <code class="docutils literal notranslate"><span class="pre">jit_module</span></code></a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">1.14. Performance Tips</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#no-python-mode-vs-object-mode">1.14.1. No Python mode vs Object mode</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#loops">1.14.2. Loops</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#fastmath">1.14.3. Fastmath</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#parallel-true">1.14.4. Parallel=True</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#intel-svml">1.14.5. Intel SVML</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#linear-algebra">1.14.6. Linear algebra</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="threading-layer.html">1.15. The Threading Layers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cli.html">1.16. Command line interface</a></li>
+<li class="toctree-l2"><a class="reference internal" href="troubleshoot.html">1.17. Troubleshooting and tips</a></li>
+<li class="toctree-l2"><a class="reference internal" href="faq.html">1.18. Frequently Asked Questions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="examples.html">1.19. Examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="talks.html">1.20. Talks and Tutorials</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../reference/index.html">2. Reference Manual</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../cuda/index.html">3. Numba for CUDA GPUs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../cuda-reference/index.html">4. CUDA Python Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../roc/index.html">5. Numba for AMD ROC GPUs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../extending/index.html">6. Extending Numba</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../developer/index.html">7. Developer Manual</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../proposals/index.html">8. Numba Enhancement Proposals</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../glossary.html">9. Glossary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../release-notes.html">10. Release Notes</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Numba</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content style-external-links">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="index.html">1. User Manual</a> &raquo;</li>
+        
+      <li>1.14. Performance Tips</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/user/performance-tips.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="performance-tips">
+<span id="id1"></span><h1>1.14. Performance Tips<a class="headerlink" href="#performance-tips" title="Permalink to this headline">¶</a></h1>
+<p>This is a short guide to features present in Numba that can help with obtaining
+the best performance from code. Two examples are used, both are entirely
+contrived and exist purely for pedagogical reasons to motivate discussion.
+The first is the computation of the trigonometric identity
+<code class="docutils literal notranslate"><span class="pre">cos(x)^2</span> <span class="pre">+</span> <span class="pre">sin(x)^2</span></code>, the second is a simple element wise square root of a
+vector with reduction over summation. All performance numbers are indicative
+only and unless otherwise stated were taken from running on an Intel <code class="docutils literal notranslate"><span class="pre">i7-4790</span></code>
+CPU (4 hardware threads) with an input of <code class="docutils literal notranslate"><span class="pre">np.arange(1.e7)</span></code>.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>A reasonably effective approach to achieving high performance code is to
+profile the code running with real data and use that to guide performance
+tuning. The information presented here is to demonstrate features, not to act
+as canonical guidance!</p>
+</div>
+<div class="section" id="no-python-mode-vs-object-mode">
+<h2>1.14.1. No Python mode vs Object mode<a class="headerlink" href="#no-python-mode-vs-object-mode" title="Permalink to this headline">¶</a></h2>
+<p>A common pattern is to decorate functions with <code class="docutils literal notranslate"><span class="pre">&#64;jit</span></code> as this is the most
+flexible decorator offered by Numba. <code class="docutils literal notranslate"><span class="pre">&#64;jit</span></code> essentially encompasses two modes
+of compilation, first it will try and compile the decorated function in no
+Python mode, if this fails it will try again to compile the function using
+object mode. Whilst the use of looplifting in object mode can enable some
+performance increase, getting functions to compile under no python mode is
+really the key to good performance. To make it such that only no python mode is
+used and if compilation fails an exception is raised the decorators <code class="docutils literal notranslate"><span class="pre">&#64;njit</span></code>
+and <code class="docutils literal notranslate"><span class="pre">&#64;jit(nopython=True)</span></code> can be used (the first is an alias of the
+second for convenience).</p>
+</div>
+<div class="section" id="loops">
+<h2>1.14.2. Loops<a class="headerlink" href="#loops" title="Permalink to this headline">¶</a></h2>
+<p>Whilst NumPy has developed a strong idiom around the use of vector operations,
+Numba is perfectly happy with loops too. For users familiar with C or Fortran,
+writing Python in this style will work fine in Numba (after all, LLVM gets a
+lot of use in compiling C lineage languages). For example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nd">@njit</span>
+<span class="k">def</span> <span class="nf">ident_np</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="o">**</span> <span class="mi">2</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="o">**</span> <span class="mi">2</span>
+
+<span class="nd">@njit</span>
+<span class="k">def</span> <span class="nf">ident_loops</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+    <span class="n">r</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">empty_like</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+    <span class="n">n</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+        <span class="n">r</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="n">i</span><span class="p">])</span> <span class="o">**</span> <span class="mi">2</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="n">i</span><span class="p">])</span> <span class="o">**</span> <span class="mi">2</span>
+    <span class="k">return</span> <span class="n">r</span>
+</pre></div>
+</div>
+<p>The above run at almost identical speeds when decorated with <code class="docutils literal notranslate"><span class="pre">&#64;njit</span></code>, without
+the decorator the vectorized function is a couple of orders of magnitude faster.</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 43%" />
+<col style="width: 18%" />
+<col style="width: 40%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Function Name</p></th>
+<th class="head"><p>&#64;njit</p></th>
+<th class="head"><p>Execution time</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">ident_np</span></code></p></td>
+<td><p>No</p></td>
+<td><p>0.581s</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">ident_np</span></code></p></td>
+<td><p>Yes</p></td>
+<td><p>0.659s</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">ident_loops</span></code></p></td>
+<td><p>No</p></td>
+<td><p>25.2s</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">ident_loops</span></code></p></td>
+<td><p>Yes</p></td>
+<td><p>0.670s</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="fastmath">
+<h2>1.14.3. Fastmath<a class="headerlink" href="#fastmath" title="Permalink to this headline">¶</a></h2>
+<p>In certain classes of applications strict IEEE 754 compliance is less
+important. As a result it is possible to relax some numerical rigour with
+view of gaining additional performance. The way to achieve this behaviour in
+Numba is through the use of the <code class="docutils literal notranslate"><span class="pre">fastmath</span></code> keyword argument:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nd">@njit</span><span class="p">(</span><span class="n">fastmath</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">do_sum</span><span class="p">(</span><span class="n">A</span><span class="p">):</span>
+    <span class="n">acc</span> <span class="o">=</span> <span class="mf">0.</span>
+    <span class="c1"># without fastmath, this loop must accumulate in strict order</span>
+    <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">A</span><span class="p">:</span>
+        <span class="n">acc</span> <span class="o">+=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">acc</span>
+
+<span class="nd">@njit</span><span class="p">(</span><span class="n">fastmath</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">do_sum_fast</span><span class="p">(</span><span class="n">A</span><span class="p">):</span>
+    <span class="n">acc</span> <span class="o">=</span> <span class="mf">0.</span>
+    <span class="c1"># with fastmath, the reduction can be vectorized as floating point</span>
+    <span class="c1"># reassociation is permitted.</span>
+    <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">A</span><span class="p">:</span>
+        <span class="n">acc</span> <span class="o">+=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">acc</span>
+</pre></div>
+</div>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Function Name</p></th>
+<th class="head"><p>Execution time</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">do_sum</span></code></p></td>
+<td><p>35.2 ms</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">do_sum_fast</span></code></p></td>
+<td><p>17.8 ms</p></td>
+</tr>
+</tbody>
+</table>
+<p>In some cases you may wish to opt-in to only a subset of possible fast-math
+optimizations. This can be done by supplying a set of <a class="reference external" href="https://llvm.org/docs/LangRef.html#fast-math-flags">LLVM fast-math flags</a> to <code class="docutils literal notranslate"><span class="pre">fastmath</span></code>.:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">add_assoc</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
+    <span class="k">return</span> <span class="p">(</span><span class="n">x</span> <span class="o">-</span> <span class="n">y</span><span class="p">)</span> <span class="o">+</span> <span class="n">y</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">njit</span><span class="p">(</span><span class="n">fastmath</span><span class="o">=</span><span class="kc">False</span><span class="p">)(</span><span class="n">add_assoc</span><span class="p">)(</span><span class="mi">0</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">inf</span><span class="p">))</span> <span class="c1"># nan</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">njit</span><span class="p">(</span><span class="n">fastmath</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span> <span class="p">(</span><span class="n">add_assoc</span><span class="p">)(</span><span class="mi">0</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">inf</span><span class="p">))</span> <span class="c1"># 0.0</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">njit</span><span class="p">(</span><span class="n">fastmath</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;reassoc&#39;</span><span class="p">,</span> <span class="s1">&#39;nsz&#39;</span><span class="p">})(</span><span class="n">add_assoc</span><span class="p">)(</span><span class="mi">0</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">inf</span><span class="p">))</span> <span class="c1"># 0.0</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">njit</span><span class="p">(</span><span class="n">fastmath</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;reassoc&#39;</span><span class="p">})</span>       <span class="p">(</span><span class="n">add_assoc</span><span class="p">)(</span><span class="mi">0</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">inf</span><span class="p">))</span> <span class="c1"># nan</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">njit</span><span class="p">(</span><span class="n">fastmath</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;nsz&#39;</span><span class="p">})</span>           <span class="p">(</span><span class="n">add_assoc</span><span class="p">)(</span><span class="mi">0</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">inf</span><span class="p">))</span> <span class="c1"># nan</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="parallel-true">
+<h2>1.14.4. Parallel=True<a class="headerlink" href="#parallel-true" title="Permalink to this headline">¶</a></h2>
+<p>If code contains operations that are parallelisable (<a class="reference internal" href="parallel.html#numba-parallel-supported"><span class="std std-ref">and supported</span></a>) Numba can compile a version that will run in
+parallel on multiple native threads (no GIL!). This parallelisation is performed
+automatically and is enabled by simply adding the <code class="docutils literal notranslate"><span class="pre">parallel</span></code> keyword
+argument:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nd">@njit</span><span class="p">(</span><span class="n">parallel</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">ident_parallel</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="o">**</span> <span class="mi">2</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="o">**</span> <span class="mi">2</span>
+</pre></div>
+</div>
+<p>Executions times are as follows:</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 54%" />
+<col style="width: 46%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Function Name</p></th>
+<th class="head"><p>Execution time</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">ident_parallel</span></code></p></td>
+<td><p>112 ms</p></td>
+</tr>
+</tbody>
+</table>
+<p>The execution speed of this function with <code class="docutils literal notranslate"><span class="pre">parallel=True</span></code> present is
+approximately 5x that of the NumPy equivalent and 6x that of standard
+<code class="docutils literal notranslate"><span class="pre">&#64;njit</span></code>.</p>
+<p>Numba parallel execution also has support for explicit parallel loop
+declaration similar to that in OpenMP. To indicate that a loop should be
+executed in parallel the <code class="docutils literal notranslate"><span class="pre">numba.prange</span></code> function should be used, this function
+behaves like Python <code class="docutils literal notranslate"><span class="pre">range</span></code> and if <code class="docutils literal notranslate"><span class="pre">parallel=True</span></code> is not set it acts
+simply as an alias of <code class="docutils literal notranslate"><span class="pre">range</span></code>. Loops induced with <code class="docutils literal notranslate"><span class="pre">prange</span></code> can be used for
+embarrassingly parallel computation and also reductions.</p>
+<p>Revisiting the reduce over sum example, assuming it is safe for the sum to be
+accumulated out of order, the loop in <code class="docutils literal notranslate"><span class="pre">n</span></code> can be parallelised through the use
+of <code class="docutils literal notranslate"><span class="pre">prange</span></code>. Further, the <code class="docutils literal notranslate"><span class="pre">fastmath=True</span></code> keyword argument can be added
+without concern in this case as the assumption that out of order execution is
+valid has already been made through the use of <code class="docutils literal notranslate"><span class="pre">parallel=True</span></code> (as each thread
+computes a partial sum).</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nd">@njit</span><span class="p">(</span><span class="n">parallel</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">do_sum_parallel</span><span class="p">(</span><span class="n">A</span><span class="p">):</span>
+    <span class="c1"># each thread can accumulate its own partial sum, and then a cross</span>
+    <span class="c1"># thread reduction is performed to obtain the result to return</span>
+    <span class="n">n</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">A</span><span class="p">)</span>
+    <span class="n">acc</span> <span class="o">=</span> <span class="mf">0.</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">prange</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+        <span class="n">acc</span> <span class="o">+=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">A</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+    <span class="k">return</span> <span class="n">acc</span>
+
+<span class="nd">@njit</span><span class="p">(</span><span class="n">parallel</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">fastmath</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">do_sum_parallel_fast</span><span class="p">(</span><span class="n">A</span><span class="p">):</span>
+    <span class="n">n</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">A</span><span class="p">)</span>
+    <span class="n">acc</span> <span class="o">=</span> <span class="mf">0.</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">prange</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+        <span class="n">acc</span> <span class="o">+=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">A</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+    <span class="k">return</span> <span class="n">acc</span>
+</pre></div>
+</div>
+<p>Execution times are as follows, <code class="docutils literal notranslate"><span class="pre">fastmath</span></code> again improves performance.</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 60%" />
+<col style="width: 40%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Function Name</p></th>
+<th class="head"><p>Execution time</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">do_sum_parallel</span></code></p></td>
+<td><p>9.81 ms</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">do_sum_parallel_fast</span></code></p></td>
+<td><p>5.37 ms</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="intel-svml">
+<span id="id2"></span><h2>1.14.5. Intel SVML<a class="headerlink" href="#intel-svml" title="Permalink to this headline">¶</a></h2>
+<p>Intel provides a short vector math library (SVML) that contains a large number
+of optimised transcendental functions available for use as compiler
+intrinsics. If the <code class="docutils literal notranslate"><span class="pre">icc_rt</span></code> package is present in the environment (or the SVML
+libraries are simply locatable!) then Numba automatically configures the LLVM
+back end to use the SVML intrinsic functions where ever possible. SVML provides
+both high and low accuracy versions of each intrinsic and the version that is
+used is determined through the use of the <code class="docutils literal notranslate"><span class="pre">fastmath</span></code> keyword. The default is
+to use high accuracy which is accurate to within <code class="docutils literal notranslate"><span class="pre">1</span> <span class="pre">ULP</span></code>, however if
+<code class="docutils literal notranslate"><span class="pre">fastmath</span></code> is set to <code class="docutils literal notranslate"><span class="pre">True</span></code> then the lower accuracy versions of the
+intrinsics are used (answers to within <code class="docutils literal notranslate"><span class="pre">4</span> <span class="pre">ULP</span></code>).</p>
+<p>First obtain SVML, using conda for example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">conda</span> <span class="n">install</span> <span class="o">-</span><span class="n">c</span> <span class="n">numba</span> <span class="n">icc_rt</span>
+</pre></div>
+</div>
+<p>Rerunning the identity function example <code class="docutils literal notranslate"><span class="pre">ident_np</span></code> from above with various
+combinations of options to <code class="docutils literal notranslate"><span class="pre">&#64;njit</span></code> and with/without SVML yields the following
+performance results (input size <code class="docutils literal notranslate"><span class="pre">np.arange(1.e8)</span></code>). For reference, with just
+NumPy the function executed in <code class="docutils literal notranslate"><span class="pre">5.84s</span></code>:</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 56%" />
+<col style="width: 13%" />
+<col style="width: 31%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p><code class="docutils literal notranslate"><span class="pre">&#64;njit</span></code> kwargs</p></th>
+<th class="head"><p>SVML</p></th>
+<th class="head"><p>Execution time</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">None</span></code></p></td>
+<td><p>No</p></td>
+<td><p>5.95s</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">None</span></code></p></td>
+<td><p>Yes</p></td>
+<td><p>2.26s</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">fastmath=True</span></code></p></td>
+<td><p>No</p></td>
+<td><p>5.97s</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">fastmath=True</span></code></p></td>
+<td><p>Yes</p></td>
+<td><p>1.8s</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">parallel=True</span></code></p></td>
+<td><p>No</p></td>
+<td><p>1.36s</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">parallel=True</span></code></p></td>
+<td><p>Yes</p></td>
+<td><p>0.624s</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">parallel=True,</span> <span class="pre">fastmath=True</span></code></p></td>
+<td><p>No</p></td>
+<td><p>1.32s</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">parallel=True,</span> <span class="pre">fastmath=True</span></code></p></td>
+<td><p>Yes</p></td>
+<td><p>0.576s</p></td>
+</tr>
+</tbody>
+</table>
+<p>It is evident that SVML significantly increases the performance of this
+function. The impact of <code class="docutils literal notranslate"><span class="pre">fastmath</span></code> in the case of SVML not being present is
+zero, this is expected as there is nothing in the original function that would
+benefit from relaxing numerical strictness.</p>
+</div>
+<div class="section" id="linear-algebra">
+<h2>1.14.6. Linear algebra<a class="headerlink" href="#linear-algebra" title="Permalink to this headline">¶</a></h2>
+<p>Numba supports most of <code class="docutils literal notranslate"><span class="pre">numpy.linalg</span></code> in no Python mode. The internal
+implementation relies on a LAPACK and BLAS library to do the numerical work
+and it obtains the bindings for the necessary functions from SciPy. Therefore,
+to achieve good performance in <code class="docutils literal notranslate"><span class="pre">numpy.linalg</span></code> functions with Numba it is
+necessary to use a SciPy built against a well optimised LAPACK/BLAS library.
+In the case of the Anaconda distribution SciPy is built against Intel’s MKL
+which is highly optimised and as a result Numba makes use of this performance.</p>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="threading-layer.html" class="btn btn-neutral float-right" title="1.15. The Threading Layers" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="jit-module.html" class="btn btn-neutral float-left" title="1.13. Automatic module jitting with jit_module" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2012-2020, Anaconda, Inc. and others
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

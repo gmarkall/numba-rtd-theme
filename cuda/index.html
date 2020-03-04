@@ -1,0 +1,358 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>3. Numba for CUDA GPUs &mdash; Numba 0.49.0dev0+636.ga4807f5d8 documentation</title>
+  
+
+  
+  
+    <link rel="shortcut icon" href="../_static/numba-blue-icon-rgb.svg"/>
+  
+  
+  
+    <link rel="canonical" href="http://numba.pydata.org/numba-doc/latest/index.htmlcuda/index.html"/>
+  
+
+  
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script type="text/javascript" src="../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="3.1. Overview" href="overview.html" />
+    <link rel="prev" title="2.11. Deprecation Notices" href="../reference/deprecation.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> Numba
+          
+
+          
+            
+            <img src="../_static/numba-blue-icon-rgb.svg" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.49
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../user/index.html">1. User Manual</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reference/index.html">2. Reference Manual</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">3. Numba for CUDA GPUs</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="overview.html">3.1. Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="kernels.html">3.2. Writing CUDA Kernels</a></li>
+<li class="toctree-l2"><a class="reference internal" href="memory.html">3.3. Memory management</a></li>
+<li class="toctree-l2"><a class="reference internal" href="device-functions.html">3.4. Writing Device Functions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cudapysupported.html">3.5. Supported Python features in CUDA Python</a></li>
+<li class="toctree-l2"><a class="reference internal" href="intrinsics.html">3.6. Supported Atomic Operations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="random.html">3.7. Random Number Generation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="device-management.html">3.8. Device management</a></li>
+<li class="toctree-l2"><a class="reference internal" href="device-management.html#the-device-list">3.9. The Device List</a></li>
+<li class="toctree-l2"><a class="reference internal" href="examples.html">3.10. Examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="simulator.html">3.11. Debugging CUDA Python with the the CUDA Simulator</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reduction.html">3.12. GPU Reduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ufunc.html">3.13. CUDA Ufuncs and Generalized Ufuncs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ipc.html">3.14. Sharing CUDA Memory</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cuda_array_interface.html">3.15. CUDA Array Interface (Version 2)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="faq.html">3.16. CUDA Frequently Asked Questions</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../cuda-reference/index.html">4. CUDA Python Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../roc/index.html">5. Numba for AMD ROC GPUs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../extending/index.html">6. Extending Numba</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../developer/index.html">7. Developer Manual</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../proposals/index.html">8. Numba Enhancement Proposals</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../glossary.html">9. Glossary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../release-notes.html">10. Release Notes</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Numba</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content style-external-links">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+      <li>3. Numba for CUDA GPUs</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/cuda/index.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="numba-for-cuda-gpus">
+<span id="cuda-index"></span><h1>3. Numba for CUDA GPUs<a class="headerlink" href="#numba-for-cuda-gpus" title="Permalink to this headline">¶</a></h1>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="overview.html">3.1. Overview</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="overview.html#terminology">3.1.1. Terminology</a></li>
+<li class="toctree-l2"><a class="reference internal" href="overview.html#programming-model">3.1.2. Programming model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="overview.html#requirements">3.1.3. Requirements</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="overview.html#supported-gpus">3.1.3.1. Supported GPUs</a></li>
+<li class="toctree-l3"><a class="reference internal" href="overview.html#software">3.1.3.2. Software</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="overview.html#setting-cuda-installation-path">3.1.3.2.1. Setting CUDA Installation Path</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="overview.html#missing-cuda-features">3.1.4. Missing CUDA Features</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="kernels.html">3.2. Writing CUDA Kernels</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="kernels.html#introduction">3.2.1. Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="kernels.html#kernel-declaration">3.2.2. Kernel declaration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="kernels.html#kernel-invocation">3.2.3. Kernel invocation</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="kernels.html#choosing-the-block-size">3.2.3.1. Choosing the block size</a></li>
+<li class="toctree-l3"><a class="reference internal" href="kernels.html#multi-dimensional-blocks-and-grids">3.2.3.2. Multi-dimensional blocks and grids</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="kernels.html#thread-positioning">3.2.4. Thread positioning</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="kernels.html#absolute-positions">3.2.4.1. Absolute positions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="kernels.html#further-reading">3.2.4.2. Further Reading</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="memory.html">3.3. Memory management</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="memory.html#data-transfer">3.3.1. Data transfer</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="memory.html#device-arrays">3.3.1.1. Device arrays</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="memory.html#pinned-memory">3.3.2. Pinned memory</a></li>
+<li class="toctree-l2"><a class="reference internal" href="memory.html#streams">3.3.3. Streams</a></li>
+<li class="toctree-l2"><a class="reference internal" href="memory.html#shared-memory-and-thread-synchronization">3.3.4. Shared memory and thread synchronization</a></li>
+<li class="toctree-l2"><a class="reference internal" href="memory.html#local-memory">3.3.5. Local memory</a></li>
+<li class="toctree-l2"><a class="reference internal" href="memory.html#constant-memory">3.3.6. Constant memory</a></li>
+<li class="toctree-l2"><a class="reference internal" href="memory.html#deallocation-behavior">3.3.7. Deallocation Behavior</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="device-functions.html">3.4. Writing Device Functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cudapysupported.html">3.5. Supported Python features in CUDA Python</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="cudapysupported.html#language">3.5.1. Language</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="cudapysupported.html#execution-model">3.5.1.1. Execution Model</a></li>
+<li class="toctree-l3"><a class="reference internal" href="cudapysupported.html#constructs">3.5.1.2. Constructs</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="cudapysupported.html#built-in-types">3.5.2. Built-in types</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cudapysupported.html#built-in-functions">3.5.3. Built-in functions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cudapysupported.html#standard-library-modules">3.5.4. Standard library modules</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="cudapysupported.html#cmath">3.5.4.1. <code class="docutils literal notranslate"><span class="pre">cmath</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="cudapysupported.html#math">3.5.4.2. <code class="docutils literal notranslate"><span class="pre">math</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="cudapysupported.html#operator">3.5.4.3. <code class="docutils literal notranslate"><span class="pre">operator</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="cudapysupported.html#numpy-support">3.5.5. Numpy support</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="intrinsics.html">3.6. Supported Atomic Operations</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="intrinsics.html#example">3.6.1. Example</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="random.html">3.7. Random Number Generation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="random.html#example">3.7.1. Example</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="device-management.html">3.8. Device management</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="device-management.html#device-selection">3.8.1. Device Selection</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="device-management.html#the-device-list">3.9. The Device List</a></li>
+<li class="toctree-l1"><a class="reference internal" href="examples.html">3.10. Examples</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="examples.html#matrix-multiplication">3.10.1. Matrix multiplication</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="simulator.html">3.11. Debugging CUDA Python with the the CUDA Simulator</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="simulator.html#using-the-simulator">3.11.1. Using the simulator</a></li>
+<li class="toctree-l2"><a class="reference internal" href="simulator.html#supported-features">3.11.2. Supported features</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="reduction.html">3.12. GPU Reduction</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="reduction.html#reduce">3.12.1. <code class="docutils literal notranslate"><span class="pre">&#64;reduce</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="reduction.html#class-reduce">3.12.2. class Reduce</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="ufunc.html">3.13. CUDA Ufuncs and Generalized Ufuncs</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="ufunc.html#example-basic-example">3.13.1. Example: Basic Example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ufunc.html#example-calling-device-functions">3.13.2. Example: Calling Device Functions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ufunc.html#generalized-cuda-ufuncs">3.13.3. Generalized CUDA ufuncs</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="ipc.html">3.14. Sharing CUDA Memory</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="ipc.html#sharing-between-process">3.14.1. Sharing between process</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="ipc.html#export-device-array-to-another-process">3.14.1.1. Export device array to another process</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ipc.html#import-ipc-memory-from-another-process">3.14.1.2. Import IPC memory from another process</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="cuda_array_interface.html">3.15. CUDA Array Interface (Version 2)</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="cuda_array_interface.html#python-interface-specification">3.15.1. Python Interface Specification</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="cuda_array_interface.html#differences-with-cuda-array-interface-version-0">3.15.1.1. Differences with CUDA Array Interface (Version 0)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="cuda_array_interface.html#differences-with-cuda-array-interface-version-1">3.15.1.2. Differences with CUDA Array Interface (Version 1)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="cuda_array_interface.html#interoperability">3.15.1.3. Interoperability</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="faq.html">3.16. CUDA Frequently Asked Questions</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="faq.html#nvprof-reports-no-kernels-were-profiled">3.16.1. nvprof reports “No kernels were profiled”</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="overview.html" class="btn btn-neutral float-right" title="3.1. Overview" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="../reference/deprecation.html" class="btn btn-neutral float-left" title="2.11. Deprecation Notices" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2012-2020, Anaconda, Inc. and others
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

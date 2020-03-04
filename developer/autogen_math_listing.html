@@ -1,0 +1,566 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>7.9.1.2. Listings for math &mdash; Numba 0.49.0dev0+636.ga4807f5d8 documentation</title>
+  
+
+  
+  
+    <link rel="shortcut icon" href="../_static/numba-blue-icon-rgb.svg"/>
+  
+  
+  
+    <link rel="canonical" href="http://numba.pydata.org/numba-doc/latest/index.htmldeveloper/autogen_math_listing.html"/>
+  
+
+  
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script type="text/javascript" src="../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="7.9.1.3. Listings for cmath" href="autogen_cmath_listing.html" />
+    <link rel="prev" title="7.9.1.1. Listings for builtins" href="autogen_builtins_listing.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> Numba
+          
+
+          
+            
+            <img src="../_static/numba-blue-icon-rgb.svg" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.49
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../user/index.html">1. User Manual</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reference/index.html">2. Reference Manual</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../cuda/index.html">3. Numba for CUDA GPUs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../cuda-reference/index.html">4. CUDA Python Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../roc/index.html">5. Numba for AMD ROC GPUs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../extending/index.html">6. Extending Numba</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">7. Developer Manual</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="contributing.html">7.1. Contributing to Numba</a></li>
+<li class="toctree-l2"><a class="reference internal" href="repomap.html">7.2. A Map of the Numba Repository</a></li>
+<li class="toctree-l2"><a class="reference internal" href="architecture.html">7.3. Numba architecture</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dispatching.html">7.4. Polymorphic dispatching</a></li>
+<li class="toctree-l2"><a class="reference internal" href="generators.html">7.5. Notes on generators</a></li>
+<li class="toctree-l2"><a class="reference internal" href="numba-runtime.html">7.6. Notes on Numba Runtime</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rewrites.html">7.7. Using the Numba Rewrite Pass for Fun and Optimization</a></li>
+<li class="toctree-l2"><a class="reference internal" href="live_variable_analysis.html">7.8. Live Variable Analysis</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="listings.html">7.9. Listings</a><ul class="current">
+<li class="toctree-l3 current"><a class="reference internal" href="listings.html#new-style-listings">7.9.1. New style listings</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="autogen_builtins_listing.html">7.9.1.1. Listings for builtins</a></li>
+<li class="toctree-l4 current"><a class="current reference internal" href="#">7.9.1.2. Listings for math</a></li>
+<li class="toctree-l4"><a class="reference internal" href="autogen_cmath_listing.html">7.9.1.3. Listings for cmath</a></li>
+<li class="toctree-l4"><a class="reference internal" href="autogen_numpy_listing.html">7.9.1.4. Listings for numpy</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="listings.html#old-style-listings">7.9.2. Old style listings</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="stencil.html">7.10. Notes on stencils</a></li>
+<li class="toctree-l2"><a class="reference internal" href="custom_pipeline.html">7.11. Customizing the Compiler</a></li>
+<li class="toctree-l2"><a class="reference internal" href="inlining.html">7.12. Notes on Inlining</a></li>
+<li class="toctree-l2"><a class="reference internal" href="environment.html">7.13. Environment Object</a></li>
+<li class="toctree-l2"><a class="reference internal" href="hashing.html">7.14. Notes on Hashing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="caching.html">7.15. Notes on Caching</a></li>
+<li class="toctree-l2"><a class="reference internal" href="threading_implementation.html">7.16. Notes on Numba’s threading implementation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="literal.html">7.17. Notes on Literal Types</a></li>
+<li class="toctree-l2"><a class="reference internal" href="debugging.html">7.18. Notes on Debugging</a></li>
+<li class="toctree-l2"><a class="reference internal" href="roadmap.html">7.19. Numba Project Roadmap</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../proposals/index.html">8. Numba Enhancement Proposals</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../glossary.html">9. Glossary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../release-notes.html">10. Release Notes</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Numba</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content style-external-links">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="index.html">7. Developer Manual</a> &raquo;</li>
+        
+          <li><a href="listings.html">7.9. Listings</a> &raquo;</li>
+        
+      <li>7.9.1.2. Listings for math</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/developer/autogen_math_listing.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="listings-for-math">
+<h1>7.9.1.2. Listings for math<a class="headerlink" href="#listings-for-math" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="math">
+<h2>7.9.1.2.1. math<a class="headerlink" href="#math" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="math.acos">
+<code class="sig-prename descclassname">math.</code><code class="sig-name descname">acos</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#math.acos" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li><p>defined by <code class="docutils literal notranslate"><span class="pre">&lt;class</span> <span class="pre">'numba.core.typing.templates.Registry.register_global.&lt;locals&gt;.decorate.&lt;locals&gt;.Template'&gt;</span></code></p></li>
+</ul>
+</dd></dl>
+
+<dl class="function">
+<dt id="math.acosh">
+<code class="sig-prename descclassname">math.</code><code class="sig-name descname">acosh</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#math.acosh" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li><p>defined by <code class="docutils literal notranslate"><span class="pre">&lt;class</span> <span class="pre">'numba.core.typing.templates.Registry.register_global.&lt;locals&gt;.decorate.&lt;locals&gt;.Template'&gt;</span></code></p></li>
+</ul>
+</dd></dl>
+
+<dl class="function">
+<dt id="math.asin">
+<code class="sig-prename descclassname">math.</code><code class="sig-name descname">asin</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#math.asin" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li><p>defined by <code class="docutils literal notranslate"><span class="pre">&lt;class</span> <span class="pre">'numba.core.typing.templates.Registry.register_global.&lt;locals&gt;.decorate.&lt;locals&gt;.Template'&gt;</span></code></p></li>
+</ul>
+</dd></dl>
+
+<dl class="function">
+<dt id="math.asinh">
+<code class="sig-prename descclassname">math.</code><code class="sig-name descname">asinh</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#math.asinh" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li><p>defined by <code class="docutils literal notranslate"><span class="pre">&lt;class</span> <span class="pre">'numba.core.typing.templates.Registry.register_global.&lt;locals&gt;.decorate.&lt;locals&gt;.Template'&gt;</span></code></p></li>
+</ul>
+</dd></dl>
+
+<dl class="function">
+<dt id="math.atan">
+<code class="sig-prename descclassname">math.</code><code class="sig-name descname">atan</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#math.atan" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li><p>defined by <code class="docutils literal notranslate"><span class="pre">&lt;class</span> <span class="pre">'numba.core.typing.templates.Registry.register_global.&lt;locals&gt;.decorate.&lt;locals&gt;.Template'&gt;</span></code></p></li>
+</ul>
+</dd></dl>
+
+<dl class="function">
+<dt id="math.atan2">
+<code class="sig-prename descclassname">math.</code><code class="sig-name descname">atan2</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#math.atan2" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li><p>defined by <code class="docutils literal notranslate"><span class="pre">&lt;class</span> <span class="pre">'numba.core.typing.templates.Registry.register_global.&lt;locals&gt;.decorate.&lt;locals&gt;.Template'&gt;</span></code></p></li>
+</ul>
+</dd></dl>
+
+<dl class="function">
+<dt id="math.atanh">
+<code class="sig-prename descclassname">math.</code><code class="sig-name descname">atanh</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#math.atanh" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li><p>defined by <code class="docutils literal notranslate"><span class="pre">&lt;class</span> <span class="pre">'numba.core.typing.templates.Registry.register_global.&lt;locals&gt;.decorate.&lt;locals&gt;.Template'&gt;</span></code></p></li>
+</ul>
+</dd></dl>
+
+<dl class="function">
+<dt id="math.ceil">
+<code class="sig-prename descclassname">math.</code><code class="sig-name descname">ceil</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#math.ceil" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li><p>defined by <code class="docutils literal notranslate"><span class="pre">&lt;class</span> <span class="pre">'numba.core.typing.templates.Registry.register_global.&lt;locals&gt;.decorate.&lt;locals&gt;.Template'&gt;</span></code></p></li>
+</ul>
+</dd></dl>
+
+<dl class="function">
+<dt id="math.copysign">
+<code class="sig-prename descclassname">math.</code><code class="sig-name descname">copysign</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#math.copysign" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li><p>defined by <code class="docutils literal notranslate"><span class="pre">&lt;class</span> <span class="pre">'numba.core.typing.templates.Registry.register_global.&lt;locals&gt;.decorate.&lt;locals&gt;.Template'&gt;</span></code></p></li>
+</ul>
+</dd></dl>
+
+<dl class="function">
+<dt id="math.cos">
+<code class="sig-prename descclassname">math.</code><code class="sig-name descname">cos</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#math.cos" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li><p>defined by <code class="docutils literal notranslate"><span class="pre">&lt;class</span> <span class="pre">'numba.core.typing.templates.Registry.register_global.&lt;locals&gt;.decorate.&lt;locals&gt;.Template'&gt;</span></code></p></li>
+</ul>
+</dd></dl>
+
+<dl class="function">
+<dt id="math.cosh">
+<code class="sig-prename descclassname">math.</code><code class="sig-name descname">cosh</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#math.cosh" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li><p>defined by <code class="docutils literal notranslate"><span class="pre">&lt;class</span> <span class="pre">'numba.core.typing.templates.Registry.register_global.&lt;locals&gt;.decorate.&lt;locals&gt;.Template'&gt;</span></code></p></li>
+</ul>
+</dd></dl>
+
+<dl class="function">
+<dt id="math.degrees">
+<code class="sig-prename descclassname">math.</code><code class="sig-name descname">degrees</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#math.degrees" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li><p>defined by <code class="docutils literal notranslate"><span class="pre">&lt;class</span> <span class="pre">'numba.core.typing.templates.Registry.register_global.&lt;locals&gt;.decorate.&lt;locals&gt;.Template'&gt;</span></code></p></li>
+</ul>
+</dd></dl>
+
+<dl class="function">
+<dt id="math.erf">
+<code class="sig-prename descclassname">math.</code><code class="sig-name descname">erf</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#math.erf" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li><p>defined by <code class="docutils literal notranslate"><span class="pre">&lt;class</span> <span class="pre">'numba.core.typing.templates.Registry.register_global.&lt;locals&gt;.decorate.&lt;locals&gt;.Template'&gt;</span></code></p></li>
+</ul>
+</dd></dl>
+
+<dl class="function">
+<dt id="math.erfc">
+<code class="sig-prename descclassname">math.</code><code class="sig-name descname">erfc</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#math.erfc" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li><p>defined by <code class="docutils literal notranslate"><span class="pre">&lt;class</span> <span class="pre">'numba.core.typing.templates.Registry.register_global.&lt;locals&gt;.decorate.&lt;locals&gt;.Template'&gt;</span></code></p></li>
+</ul>
+</dd></dl>
+
+<dl class="function">
+<dt id="math.exp">
+<code class="sig-prename descclassname">math.</code><code class="sig-name descname">exp</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#math.exp" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li><p>defined by <code class="docutils literal notranslate"><span class="pre">&lt;class</span> <span class="pre">'numba.core.typing.templates.Registry.register_global.&lt;locals&gt;.decorate.&lt;locals&gt;.Template'&gt;</span></code></p></li>
+</ul>
+</dd></dl>
+
+<dl class="function">
+<dt id="math.expm1">
+<code class="sig-prename descclassname">math.</code><code class="sig-name descname">expm1</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#math.expm1" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li><p>defined by <code class="docutils literal notranslate"><span class="pre">&lt;class</span> <span class="pre">'numba.core.typing.templates.Registry.register_global.&lt;locals&gt;.decorate.&lt;locals&gt;.Template'&gt;</span></code></p></li>
+</ul>
+</dd></dl>
+
+<dl class="function">
+<dt id="math.fabs">
+<code class="sig-prename descclassname">math.</code><code class="sig-name descname">fabs</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#math.fabs" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li><p>defined by <code class="docutils literal notranslate"><span class="pre">&lt;class</span> <span class="pre">'numba.core.typing.templates.Registry.register_global.&lt;locals&gt;.decorate.&lt;locals&gt;.Template'&gt;</span></code></p></li>
+</ul>
+</dd></dl>
+
+<dl class="function">
+<dt id="math.floor">
+<code class="sig-prename descclassname">math.</code><code class="sig-name descname">floor</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#math.floor" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li><p>defined by <code class="docutils literal notranslate"><span class="pre">&lt;class</span> <span class="pre">'numba.core.typing.templates.Registry.register_global.&lt;locals&gt;.decorate.&lt;locals&gt;.Template'&gt;</span></code></p></li>
+</ul>
+</dd></dl>
+
+<dl class="function">
+<dt id="math.frexp">
+<code class="sig-prename descclassname">math.</code><code class="sig-name descname">frexp</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#math.frexp" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li><p>defined by <code class="docutils literal notranslate"><span class="pre">&lt;class</span> <span class="pre">'numba.core.typing.templates.Registry.register_global.&lt;locals&gt;.decorate.&lt;locals&gt;.Template'&gt;</span></code></p></li>
+</ul>
+</dd></dl>
+
+<dl class="function">
+<dt id="math.gamma">
+<code class="sig-prename descclassname">math.</code><code class="sig-name descname">gamma</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#math.gamma" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li><p>defined by <code class="docutils literal notranslate"><span class="pre">&lt;class</span> <span class="pre">'numba.core.typing.templates.Registry.register_global.&lt;locals&gt;.decorate.&lt;locals&gt;.Template'&gt;</span></code></p></li>
+</ul>
+</dd></dl>
+
+<dl class="function">
+<dt id="math.gcd">
+<code class="sig-prename descclassname">math.</code><code class="sig-name descname">gcd</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#math.gcd" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li><p>defined by <code class="docutils literal notranslate"><span class="pre">&lt;class</span> <span class="pre">'numba.core.typing.templates.Registry.register_global.&lt;locals&gt;.decorate.&lt;locals&gt;.Template'&gt;</span></code></p></li>
+</ul>
+</dd></dl>
+
+<dl class="function">
+<dt id="math.hypot">
+<code class="sig-prename descclassname">math.</code><code class="sig-name descname">hypot</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#math.hypot" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li><p>defined by <code class="docutils literal notranslate"><span class="pre">&lt;class</span> <span class="pre">'numba.core.typing.templates.Registry.register_global.&lt;locals&gt;.decorate.&lt;locals&gt;.Template'&gt;</span></code></p></li>
+</ul>
+</dd></dl>
+
+<dl class="function">
+<dt id="math.isfinite">
+<code class="sig-prename descclassname">math.</code><code class="sig-name descname">isfinite</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#math.isfinite" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li><p>defined by <code class="docutils literal notranslate"><span class="pre">&lt;class</span> <span class="pre">'numba.core.typing.templates.Registry.register_global.&lt;locals&gt;.decorate.&lt;locals&gt;.Template'&gt;</span></code></p></li>
+</ul>
+</dd></dl>
+
+<dl class="function">
+<dt id="math.isinf">
+<code class="sig-prename descclassname">math.</code><code class="sig-name descname">isinf</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#math.isinf" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li><p>defined by <code class="docutils literal notranslate"><span class="pre">&lt;class</span> <span class="pre">'numba.core.typing.templates.Registry.register_global.&lt;locals&gt;.decorate.&lt;locals&gt;.Template'&gt;</span></code></p></li>
+</ul>
+</dd></dl>
+
+<dl class="function">
+<dt id="math.isnan">
+<code class="sig-prename descclassname">math.</code><code class="sig-name descname">isnan</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#math.isnan" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li><p>defined by <code class="docutils literal notranslate"><span class="pre">&lt;class</span> <span class="pre">'numba.core.typing.templates.Registry.register_global.&lt;locals&gt;.decorate.&lt;locals&gt;.Template'&gt;</span></code></p></li>
+</ul>
+</dd></dl>
+
+<dl class="function">
+<dt id="math.ldexp">
+<code class="sig-prename descclassname">math.</code><code class="sig-name descname">ldexp</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#math.ldexp" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li><p>defined by <code class="docutils literal notranslate"><span class="pre">&lt;class</span> <span class="pre">'numba.core.typing.templates.Registry.register_global.&lt;locals&gt;.decorate.&lt;locals&gt;.Template'&gt;</span></code></p></li>
+</ul>
+</dd></dl>
+
+<dl class="function">
+<dt id="math.lgamma">
+<code class="sig-prename descclassname">math.</code><code class="sig-name descname">lgamma</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#math.lgamma" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li><p>defined by <code class="docutils literal notranslate"><span class="pre">&lt;class</span> <span class="pre">'numba.core.typing.templates.Registry.register_global.&lt;locals&gt;.decorate.&lt;locals&gt;.Template'&gt;</span></code></p></li>
+</ul>
+</dd></dl>
+
+<dl class="function">
+<dt id="math.log">
+<code class="sig-prename descclassname">math.</code><code class="sig-name descname">log</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#math.log" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li><p>defined by <code class="docutils literal notranslate"><span class="pre">&lt;class</span> <span class="pre">'numba.core.typing.templates.Registry.register_global.&lt;locals&gt;.decorate.&lt;locals&gt;.Template'&gt;</span></code></p></li>
+</ul>
+</dd></dl>
+
+<dl class="function">
+<dt id="math.log10">
+<code class="sig-prename descclassname">math.</code><code class="sig-name descname">log10</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#math.log10" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li><p>defined by <code class="docutils literal notranslate"><span class="pre">&lt;class</span> <span class="pre">'numba.core.typing.templates.Registry.register_global.&lt;locals&gt;.decorate.&lt;locals&gt;.Template'&gt;</span></code></p></li>
+</ul>
+</dd></dl>
+
+<dl class="function">
+<dt id="math.log1p">
+<code class="sig-prename descclassname">math.</code><code class="sig-name descname">log1p</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#math.log1p" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li><p>defined by <code class="docutils literal notranslate"><span class="pre">&lt;class</span> <span class="pre">'numba.core.typing.templates.Registry.register_global.&lt;locals&gt;.decorate.&lt;locals&gt;.Template'&gt;</span></code></p></li>
+</ul>
+</dd></dl>
+
+<dl class="function">
+<dt id="math.pow">
+<code class="sig-prename descclassname">math.</code><code class="sig-name descname">pow</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#math.pow" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li><p>defined by <code class="docutils literal notranslate"><span class="pre">&lt;class</span> <span class="pre">'numba.core.typing.templates.Registry.register_global.&lt;locals&gt;.decorate.&lt;locals&gt;.Template'&gt;</span></code></p></li>
+</ul>
+</dd></dl>
+
+<dl class="function">
+<dt id="math.radians">
+<code class="sig-prename descclassname">math.</code><code class="sig-name descname">radians</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#math.radians" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li><p>defined by <code class="docutils literal notranslate"><span class="pre">&lt;class</span> <span class="pre">'numba.core.typing.templates.Registry.register_global.&lt;locals&gt;.decorate.&lt;locals&gt;.Template'&gt;</span></code></p></li>
+</ul>
+</dd></dl>
+
+<dl class="function">
+<dt id="math.sin">
+<code class="sig-prename descclassname">math.</code><code class="sig-name descname">sin</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#math.sin" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li><p>defined by <code class="docutils literal notranslate"><span class="pre">&lt;class</span> <span class="pre">'numba.core.typing.templates.Registry.register_global.&lt;locals&gt;.decorate.&lt;locals&gt;.Template'&gt;</span></code></p></li>
+</ul>
+</dd></dl>
+
+<dl class="function">
+<dt id="math.sinh">
+<code class="sig-prename descclassname">math.</code><code class="sig-name descname">sinh</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#math.sinh" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li><p>defined by <code class="docutils literal notranslate"><span class="pre">&lt;class</span> <span class="pre">'numba.core.typing.templates.Registry.register_global.&lt;locals&gt;.decorate.&lt;locals&gt;.Template'&gt;</span></code></p></li>
+</ul>
+</dd></dl>
+
+<dl class="function">
+<dt id="math.sqrt">
+<code class="sig-prename descclassname">math.</code><code class="sig-name descname">sqrt</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#math.sqrt" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li><p>defined by <code class="docutils literal notranslate"><span class="pre">&lt;class</span> <span class="pre">'numba.core.typing.templates.Registry.register_global.&lt;locals&gt;.decorate.&lt;locals&gt;.Template'&gt;</span></code></p></li>
+</ul>
+</dd></dl>
+
+<dl class="function">
+<dt id="math.tan">
+<code class="sig-prename descclassname">math.</code><code class="sig-name descname">tan</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#math.tan" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li><p>defined by <code class="docutils literal notranslate"><span class="pre">&lt;class</span> <span class="pre">'numba.core.typing.templates.Registry.register_global.&lt;locals&gt;.decorate.&lt;locals&gt;.Template'&gt;</span></code></p></li>
+</ul>
+</dd></dl>
+
+<dl class="function">
+<dt id="math.tanh">
+<code class="sig-prename descclassname">math.</code><code class="sig-name descname">tanh</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#math.tanh" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li><p>defined by <code class="docutils literal notranslate"><span class="pre">&lt;class</span> <span class="pre">'numba.core.typing.templates.Registry.register_global.&lt;locals&gt;.decorate.&lt;locals&gt;.Template'&gt;</span></code></p></li>
+</ul>
+</dd></dl>
+
+<dl class="function">
+<dt id="math.trunc">
+<code class="sig-prename descclassname">math.</code><code class="sig-name descname">trunc</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#math.trunc" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li><p>defined by <code class="docutils literal notranslate"><span class="pre">&lt;class</span> <span class="pre">'numba.core.typing.templates.Registry.register_global.&lt;locals&gt;.decorate.&lt;locals&gt;.Template'&gt;</span></code></p></li>
+</ul>
+</dd></dl>
+
+<p>Not showing 7 unsupported functions.</p>
+<p>supported = 38 / 45 = 84.44%</p>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="autogen_cmath_listing.html" class="btn btn-neutral float-right" title="7.9.1.3. Listings for cmath" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="autogen_builtins_listing.html" class="btn btn-neutral float-left" title="7.9.1.1. Listings for builtins" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2012-2020, Anaconda, Inc. and others
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

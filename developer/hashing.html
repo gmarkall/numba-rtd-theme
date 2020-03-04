@@ -1,0 +1,298 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>7.14. Notes on Hashing &mdash; Numba 0.49.0dev0+636.ga4807f5d8 documentation</title>
+  
+
+  
+  
+    <link rel="shortcut icon" href="../_static/numba-blue-icon-rgb.svg"/>
+  
+  
+  
+    <link rel="canonical" href="http://numba.pydata.org/numba-doc/latest/index.htmldeveloper/hashing.html"/>
+  
+
+  
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script type="text/javascript" src="../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="7.15. Notes on Caching" href="caching.html" />
+    <link rel="prev" title="7.13. Environment Object" href="environment.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> Numba
+          
+
+          
+            
+            <img src="../_static/numba-blue-icon-rgb.svg" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.49
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../user/index.html">1. User Manual</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reference/index.html">2. Reference Manual</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../cuda/index.html">3. Numba for CUDA GPUs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../cuda-reference/index.html">4. CUDA Python Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../roc/index.html">5. Numba for AMD ROC GPUs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../extending/index.html">6. Extending Numba</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">7. Developer Manual</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="contributing.html">7.1. Contributing to Numba</a></li>
+<li class="toctree-l2"><a class="reference internal" href="repomap.html">7.2. A Map of the Numba Repository</a></li>
+<li class="toctree-l2"><a class="reference internal" href="architecture.html">7.3. Numba architecture</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dispatching.html">7.4. Polymorphic dispatching</a></li>
+<li class="toctree-l2"><a class="reference internal" href="generators.html">7.5. Notes on generators</a></li>
+<li class="toctree-l2"><a class="reference internal" href="numba-runtime.html">7.6. Notes on Numba Runtime</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rewrites.html">7.7. Using the Numba Rewrite Pass for Fun and Optimization</a></li>
+<li class="toctree-l2"><a class="reference internal" href="live_variable_analysis.html">7.8. Live Variable Analysis</a></li>
+<li class="toctree-l2"><a class="reference internal" href="listings.html">7.9. Listings</a></li>
+<li class="toctree-l2"><a class="reference internal" href="stencil.html">7.10. Notes on stencils</a></li>
+<li class="toctree-l2"><a class="reference internal" href="custom_pipeline.html">7.11. Customizing the Compiler</a></li>
+<li class="toctree-l2"><a class="reference internal" href="inlining.html">7.12. Notes on Inlining</a></li>
+<li class="toctree-l2"><a class="reference internal" href="environment.html">7.13. Environment Object</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">7.14. Notes on Hashing</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#the-implementation">7.14.1. The Implementation</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#unicode-hash-cache-differences">7.14.1.1. Unicode hash cache differences</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#the-accommodation-of-pythonhashseed">7.14.1.2. The accommodation of <code class="docutils literal notranslate"><span class="pre">PYTHONHASHSEED</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="caching.html">7.15. Notes on Caching</a></li>
+<li class="toctree-l2"><a class="reference internal" href="threading_implementation.html">7.16. Notes on Numba’s threading implementation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="literal.html">7.17. Notes on Literal Types</a></li>
+<li class="toctree-l2"><a class="reference internal" href="debugging.html">7.18. Notes on Debugging</a></li>
+<li class="toctree-l2"><a class="reference internal" href="roadmap.html">7.19. Numba Project Roadmap</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../proposals/index.html">8. Numba Enhancement Proposals</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../glossary.html">9. Glossary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../release-notes.html">10. Release Notes</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Numba</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content style-external-links">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="index.html">7. Developer Manual</a> &raquo;</li>
+        
+      <li>7.14. Notes on Hashing</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/developer/hashing.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="notes-on-hashing">
+<h1>7.14. Notes on Hashing<a class="headerlink" href="#notes-on-hashing" title="Permalink to this headline">¶</a></h1>
+<p>Numba supports the built-in <a class="reference external" href="https://docs.python.org/3/library/functions.html#hash" title="(in Python v3.8)"><code class="xref py py-func docutils literal notranslate"><span class="pre">hash()</span></code></a> and does so by simply calling the
+<code class="xref py py-func docutils literal notranslate"><span class="pre">__hash__()</span></code> member function on the supplied argument. This makes it
+trivial to add hash support for new types as all that is required is the
+application of the extension API <code class="xref py py-func docutils literal notranslate"><span class="pre">overload_method()</span></code> decorator to overload
+a function for computing the hash value for the new type registered to the
+type’s <code class="xref py py-func docutils literal notranslate"><span class="pre">__hash__()</span></code> method. For example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">numba.extending</span> <span class="kn">import</span> <span class="n">overload_method</span>
+
+<span class="nd">@overload_method</span><span class="p">(</span><span class="n">myType</span><span class="p">,</span> <span class="s1">&#39;__hash__&#39;</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">myType_hash_overload</span><span class="p">(</span><span class="n">obj</span><span class="p">):</span>
+    <span class="c1"># implementation details</span>
+</pre></div>
+</div>
+<div class="section" id="the-implementation">
+<h2>7.14.1. The Implementation<a class="headerlink" href="#the-implementation" title="Permalink to this headline">¶</a></h2>
+<p>The implementation of the Numba hashing functions strictly follows that of
+Python 3. The only exception to this is that for hashing Unicode and bytes (for
+content longer than <code class="docutils literal notranslate"><span class="pre">sys.hash_info.cutoff</span></code>) the only supported algorithm is
+<code class="docutils literal notranslate"><span class="pre">siphash24</span></code> (default in CPython 3). As a result Numba will match Python 3
+hash values for all supported types under the default conditions described.</p>
+<div class="section" id="unicode-hash-cache-differences">
+<h3>7.14.1.1. Unicode hash cache differences<a class="headerlink" href="#unicode-hash-cache-differences" title="Permalink to this headline">¶</a></h3>
+<p>Both Numba and CPython Unicode string internal representations have a <code class="docutils literal notranslate"><span class="pre">hash</span></code>
+member for the purposes of caching the string’s hash value. This member is
+always checked ahead of computing a hash value the with view of simply providing
+a value from cache as it is considerably cheaper to do so. The Numba Unicode
+string hash caching implementation behaves in a similar way to that of
+CPython’s. The only notable behavioral change (and its only impact is a minor
+potential change in performance) is that Numba always computes and caches the
+hash for Unicode strings created in <code class="docutils literal notranslate"><span class="pre">nopython</span> <span class="pre">mode</span></code> at the time they are boxed
+for reuse in Python, this is too eager in some cases in comparison to CPython
+which may delay hashing a new Unicode string depending on creation method. It
+should also be noted that Numba copies in the <code class="docutils literal notranslate"><span class="pre">hash</span></code> member of the CPython
+internal representation for Unicode strings when unboxing them to its own
+representation so as to not recompute the hash of a string that already has a
+hash value associated with it.</p>
+</div>
+<div class="section" id="the-accommodation-of-pythonhashseed">
+<h3>7.14.1.2. The accommodation of <code class="docutils literal notranslate"><span class="pre">PYTHONHASHSEED</span></code><a class="headerlink" href="#the-accommodation-of-pythonhashseed" title="Permalink to this headline">¶</a></h3>
+<p>The <code class="docutils literal notranslate"><span class="pre">PYTHONHASHSEED</span></code> environment variable can be used to seed the CPython
+hashing algorithms for e.g. the purposes of reproduciblity. The Numba hashing
+implementation directly reads the CPython hashing algorithms’ internal state and
+as a result the influence of <code class="docutils literal notranslate"><span class="pre">PYTHONHASHSEED</span></code> is replicated in Numba’s
+hashing implementations.</p>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="caching.html" class="btn btn-neutral float-right" title="7.15. Notes on Caching" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="environment.html" class="btn btn-neutral float-left" title="7.13. Environment Object" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2012-2020, Anaconda, Inc. and others
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

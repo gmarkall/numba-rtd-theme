@@ -1,0 +1,336 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>7.19. Numba Project Roadmap &mdash; Numba 0.49.0dev0+636.ga4807f5d8 documentation</title>
+  
+
+  
+  
+    <link rel="shortcut icon" href="../_static/numba-blue-icon-rgb.svg"/>
+  
+  
+  
+    <link rel="canonical" href="http://numba.pydata.org/numba-doc/latest/index.htmldeveloper/roadmap.html"/>
+  
+
+  
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script type="text/javascript" src="../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="8. Numba Enhancement Proposals" href="../proposals/index.html" />
+    <link rel="prev" title="7.18. Notes on Debugging" href="debugging.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> Numba
+          
+
+          
+            
+            <img src="../_static/numba-blue-icon-rgb.svg" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.49
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../user/index.html">1. User Manual</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reference/index.html">2. Reference Manual</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../cuda/index.html">3. Numba for CUDA GPUs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../cuda-reference/index.html">4. CUDA Python Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../roc/index.html">5. Numba for AMD ROC GPUs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../extending/index.html">6. Extending Numba</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">7. Developer Manual</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="contributing.html">7.1. Contributing to Numba</a></li>
+<li class="toctree-l2"><a class="reference internal" href="repomap.html">7.2. A Map of the Numba Repository</a></li>
+<li class="toctree-l2"><a class="reference internal" href="architecture.html">7.3. Numba architecture</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dispatching.html">7.4. Polymorphic dispatching</a></li>
+<li class="toctree-l2"><a class="reference internal" href="generators.html">7.5. Notes on generators</a></li>
+<li class="toctree-l2"><a class="reference internal" href="numba-runtime.html">7.6. Notes on Numba Runtime</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rewrites.html">7.7. Using the Numba Rewrite Pass for Fun and Optimization</a></li>
+<li class="toctree-l2"><a class="reference internal" href="live_variable_analysis.html">7.8. Live Variable Analysis</a></li>
+<li class="toctree-l2"><a class="reference internal" href="listings.html">7.9. Listings</a></li>
+<li class="toctree-l2"><a class="reference internal" href="stencil.html">7.10. Notes on stencils</a></li>
+<li class="toctree-l2"><a class="reference internal" href="custom_pipeline.html">7.11. Customizing the Compiler</a></li>
+<li class="toctree-l2"><a class="reference internal" href="inlining.html">7.12. Notes on Inlining</a></li>
+<li class="toctree-l2"><a class="reference internal" href="environment.html">7.13. Environment Object</a></li>
+<li class="toctree-l2"><a class="reference internal" href="hashing.html">7.14. Notes on Hashing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="caching.html">7.15. Notes on Caching</a></li>
+<li class="toctree-l2"><a class="reference internal" href="threading_implementation.html">7.16. Notes on Numba’s threading implementation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="literal.html">7.17. Notes on Literal Types</a></li>
+<li class="toctree-l2"><a class="reference internal" href="debugging.html">7.18. Notes on Debugging</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">7.19. Numba Project Roadmap</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#short-term-2019h1">7.19.1. Short Term: 2019H1</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#medium-term-2019h2">7.19.2. Medium Term: 2019H2</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#long-term-2020-and-beyond">7.19.3. Long Term: 2020 and beyond</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../proposals/index.html">8. Numba Enhancement Proposals</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../glossary.html">9. Glossary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../release-notes.html">10. Release Notes</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Numba</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content style-external-links">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="index.html">7. Developer Manual</a> &raquo;</li>
+        
+      <li>7.19. Numba Project Roadmap</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/developer/roadmap.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="numba-project-roadmap">
+<h1>7.19. Numba Project Roadmap<a class="headerlink" href="#numba-project-roadmap" title="Permalink to this headline">¶</a></h1>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This page was last revised in <em>December 2018</em>.</p>
+</div>
+<p>This roadmap is for informational purposes only.  Priorities and resources
+change, so we may choose to reorder or abandon things on this list.
+Additionally, the further out items are, the less concrete they will be.  If
+you have an interest in working on one of these items, please open an issue
+where we can discuss the design and approach first.</p>
+<div class="section" id="short-term-2019h1">
+<h2>7.19.1. Short Term: 2019H1<a class="headerlink" href="#short-term-2019h1" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>Container improvements:</p>
+<ul>
+<li><p>Numba dictionary support</p></li>
+<li><p>Refactor lists to follow new container best practices.
+See the discussion in <a class="reference external" href="https://github.com/numba/numba/issues/3546#issuecomment-443008201">issue 3546</a>.</p></li>
+</ul>
+</li>
+<li><p>Deprecate Python 2.7 support</p></li>
+<li><p>Improve caching:</p>
+<ul>
+<li><p>Full support for functions compiled with ParallelAccelerator</p></li>
+<li><p>Safe caching of generated functions (eval of strings)</p></li>
+<li><p>Expire cache when any function in call chain (even in other files) changes</p></li>
+<li><p>Process for distributing pre-populated cache</p></li>
+</ul>
+</li>
+<li><p>Continue to improve usability and debugging:</p>
+<ul>
+<li><p>Trap more unsupported features earlier in pipeline (especially things that parfors can’t handle)</p></li>
+<li><p>Error messages</p></li>
+<li><p>Diagnostic tools for debugging and understanding performance</p></li>
+<li><p>Better on-boarding for new users and contributors (revise docs, more examples)</p></li>
+</ul>
+</li>
+<li><p>Begin refactoring existing features that cause common bug reports:</p>
+<ul>
+<li><p>Enhance description of interfaces provided by Numba functions to give more type information</p></li>
+<li><p>Convert older Numba function implementations to use public extension mechanisms</p></li>
+<li><p>More unit testing and modularization of ParallelAccelerator passes</p></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="medium-term-2019h2">
+<h2>7.19.2. Medium Term: 2019H2<a class="headerlink" href="#medium-term-2019h2" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>Unify dispatch of regular functions, ufuncs, and gufuncs</p></li>
+<li><p>Declare Numba 1.0 with stable interfaces</p></li>
+<li><p>Continue to improve usability and debugging (see above)</p></li>
+<li><p>Continue refactoring Numba internals to solve common bug reports (see above)</p></li>
+<li><p>JIT class review and improvement</p></li>
+<li><p>Improve compilation speed</p></li>
+<li><p>Improve memory management of Numba-allocated memory</p></li>
+<li><p>Better support for writing code transformation passes</p></li>
+<li><p>Make caching and parallel execution features opt-out instead of opt-in</p>
+<ul>
+<li><p>add heuristic to determine if parfor passes will be beneficial</p></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="long-term-2020-and-beyond">
+<h2>7.19.3. Long Term: 2020 and beyond<a class="headerlink" href="#long-term-2020-and-beyond" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>Unify GPU backends (share more code and interfaces)</p></li>
+<li><p>Improve ahead of time compilation (for low powered devices)</p></li>
+<li><p>Improve cross language connections (C++, JVM?, Julia?, R?)</p>
+<ul>
+<li><p>Call Numba from other languages,</p></li>
+<li><p>Call from Numba into other languages</p></li>
+</ul>
+</li>
+<li><p>Better support for “hybrid” CPU/GPU/TPU/etc programming</p></li>
+<li><p>Partial / deferred compilation of functions</p></li>
+<li><p>Foster integration of Numba into core PyData packages:</p>
+<ul>
+<li><p>scipy/scikit-learn/scikit-image/pandas</p></li>
+</ul>
+</li>
+<li><p>More support for efforts to put Numba into other applications (databases, etc) for compiling user-defined functions</p></li>
+<li><p>More support for usage of Numba as a “compiler toolkit” to create custom compilers (like HPAT, automatic differentiation of functions, etc)</p></li>
+<li><p>Investigate AST-based Numba frontend in addition to existing bytecode-based frontend</p></li>
+</ul>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../proposals/index.html" class="btn btn-neutral float-right" title="8. Numba Enhancement Proposals" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="debugging.html" class="btn btn-neutral float-left" title="7.18. Notes on Debugging" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2012-2020, Anaconda, Inc. and others
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

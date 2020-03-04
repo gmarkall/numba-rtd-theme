@@ -1,0 +1,339 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>7.15. Notes on Caching &mdash; Numba 0.49.0dev0+636.ga4807f5d8 documentation</title>
+  
+
+  
+  
+    <link rel="shortcut icon" href="../_static/numba-blue-icon-rgb.svg"/>
+  
+  
+  
+    <link rel="canonical" href="http://numba.pydata.org/numba-doc/latest/index.htmldeveloper/caching.html"/>
+  
+
+  
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script type="text/javascript" src="../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="7.16. Notes on Numba’s threading implementation" href="threading_implementation.html" />
+    <link rel="prev" title="7.14. Notes on Hashing" href="hashing.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> Numba
+          
+
+          
+            
+            <img src="../_static/numba-blue-icon-rgb.svg" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.49
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../user/index.html">1. User Manual</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reference/index.html">2. Reference Manual</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../cuda/index.html">3. Numba for CUDA GPUs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../cuda-reference/index.html">4. CUDA Python Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../roc/index.html">5. Numba for AMD ROC GPUs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../extending/index.html">6. Extending Numba</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">7. Developer Manual</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="contributing.html">7.1. Contributing to Numba</a></li>
+<li class="toctree-l2"><a class="reference internal" href="repomap.html">7.2. A Map of the Numba Repository</a></li>
+<li class="toctree-l2"><a class="reference internal" href="architecture.html">7.3. Numba architecture</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dispatching.html">7.4. Polymorphic dispatching</a></li>
+<li class="toctree-l2"><a class="reference internal" href="generators.html">7.5. Notes on generators</a></li>
+<li class="toctree-l2"><a class="reference internal" href="numba-runtime.html">7.6. Notes on Numba Runtime</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rewrites.html">7.7. Using the Numba Rewrite Pass for Fun and Optimization</a></li>
+<li class="toctree-l2"><a class="reference internal" href="live_variable_analysis.html">7.8. Live Variable Analysis</a></li>
+<li class="toctree-l2"><a class="reference internal" href="listings.html">7.9. Listings</a></li>
+<li class="toctree-l2"><a class="reference internal" href="stencil.html">7.10. Notes on stencils</a></li>
+<li class="toctree-l2"><a class="reference internal" href="custom_pipeline.html">7.11. Customizing the Compiler</a></li>
+<li class="toctree-l2"><a class="reference internal" href="inlining.html">7.12. Notes on Inlining</a></li>
+<li class="toctree-l2"><a class="reference internal" href="environment.html">7.13. Environment Object</a></li>
+<li class="toctree-l2"><a class="reference internal" href="hashing.html">7.14. Notes on Hashing</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">7.15. Notes on Caching</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#the-implementation">7.15.1. The Implementation</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#requirements-for-cacheability">7.15.1.1. Requirements for Cacheability</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#features-compatible-with-caching">7.15.1.2. Features Compatible with Caching</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#caching-limitations">7.15.1.3. Caching Limitations</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#cache-sharing">7.15.1.4. Cache Sharing</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#cache-clearing">7.15.1.5. Cache Clearing</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#related-environment-variables">7.15.1.6. Related Environment Variables</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="threading_implementation.html">7.16. Notes on Numba’s threading implementation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="literal.html">7.17. Notes on Literal Types</a></li>
+<li class="toctree-l2"><a class="reference internal" href="debugging.html">7.18. Notes on Debugging</a></li>
+<li class="toctree-l2"><a class="reference internal" href="roadmap.html">7.19. Numba Project Roadmap</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../proposals/index.html">8. Numba Enhancement Proposals</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../glossary.html">9. Glossary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../release-notes.html">10. Release Notes</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Numba</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content style-external-links">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="index.html">7. Developer Manual</a> &raquo;</li>
+        
+      <li>7.15. Notes on Caching</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/developer/caching.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="notes-on-caching">
+<span id="developer-caching"></span><h1>7.15. Notes on Caching<a class="headerlink" href="#notes-on-caching" title="Permalink to this headline">¶</a></h1>
+<p>Numba supports caching of compiled functions into the filesystem for future
+use of the same functions.</p>
+<div class="section" id="the-implementation">
+<h2>7.15.1. The Implementation<a class="headerlink" href="#the-implementation" title="Permalink to this headline">¶</a></h2>
+<p>Caching is done by saving the compiled <em>object code</em>, the ELF object of the
+executable code.  By using the <em>object code</em>, cached functions have minimal
+overhead because no compilation is needed. The cached data is saved under the
+cache directory (see <span class="target" id="index-0"></span><a class="reference internal" href="../reference/envvars.html#envvar-NUMBA_CACHE_DIR"><code class="xref std std-envvar docutils literal notranslate"><span class="pre">NUMBA_CACHE_DIR</span></code></a>). The index of the cache is
+stored in a <code class="docutils literal notranslate"><span class="pre">.nbi</span></code> file, with one index per function, and it lists all the
+overloaded signatures compiled for the function. The <em>object code</em> is stored in
+files with an <code class="docutils literal notranslate"><span class="pre">.nbc</span></code> extension, one file per overload.</p>
+<div class="section" id="requirements-for-cacheability">
+<h3>7.15.1.1. Requirements for Cacheability<a class="headerlink" href="#requirements-for-cacheability" title="Permalink to this headline">¶</a></h3>
+<p>Developers should note the requirements of a function to permit it to be cached
+to ensure that the features they are working on are compatible with caching.</p>
+<p>Requirements for cacheable function:</p>
+<ul class="simple">
+<li><p>The LLVM module must be <em>self-contained</em>, meaning that it cannot rely on
+other compiled units without linking to them.</p></li>
+<li><p>The only allowed external symbols are from the
+<a class="reference internal" href="numba-runtime.html#arch-numba-runtime"><span class="std std-ref">NRT</span></a> or other common symbols from system libraries
+(i.e. libc and libm).</p></li>
+</ul>
+<p>Debugging note:</p>
+<ul class="simple">
+<li><p>Look for the usage of <code class="docutils literal notranslate"><span class="pre">inttoptr</span></code> in the LLVM IR or
+<code class="docutils literal notranslate"><span class="pre">target_context.add_dynamic_add()</span></code> in the lowering code in Python.
+They indicate potential usage of runtime address. Not all uses are
+problematic and some are necessary. Only the conversion of constant integers
+into pointers will affect caching.</p></li>
+<li><p>Misuse of dynamic address or dynamic symbols will likely result in a
+segfault.</p></li>
+<li><p>Linking order matters because unused symbols are dropped after linking.
+Linking should start from the leaf nodes of the dependency graph.</p></li>
+</ul>
+</div>
+<div class="section" id="features-compatible-with-caching">
+<h3>7.15.1.2. Features Compatible with Caching<a class="headerlink" href="#features-compatible-with-caching" title="Permalink to this headline">¶</a></h3>
+<p>The following features are explicitly verified to work with caching.</p>
+<ul class="simple">
+<li><p>ufuncs and gufuncs for the <code class="docutils literal notranslate"><span class="pre">cpu</span></code> and <code class="docutils literal notranslate"><span class="pre">parallel</span></code> target</p></li>
+<li><p>parallel accelerator features (i.e. <code class="docutils literal notranslate"><span class="pre">parallel=True</span></code>)</p></li>
+</ul>
+</div>
+<div class="section" id="caching-limitations">
+<h3>7.15.1.3. Caching Limitations<a class="headerlink" href="#caching-limitations" title="Permalink to this headline">¶</a></h3>
+<p>This is a list of known limitation of the cache:</p>
+<ul class="simple">
+<li><p>Cache invalidation fails to recognize changes in symbols defined in a
+different file.</p></li>
+<li><p>Global variables are treated as constants. The cache will remember the value
+in the global variable used at compilation. On cache load, the cached
+function will not rebind to the new value of the global variable.</p></li>
+</ul>
+</div>
+<div class="section" id="cache-sharing">
+<span id="id1"></span><h3>7.15.1.4. Cache Sharing<a class="headerlink" href="#cache-sharing" title="Permalink to this headline">¶</a></h3>
+<p>It is safe to share and reuse the contents in the cache directory on a
+different machine. The cache remembers the CPU model and the available
+CPU features during compilation. If the CPU model and the CPU features do
+not match exactly, the cache contents will not be considered.
+(Also see <span class="target" id="index-1"></span><a class="reference internal" href="../reference/envvars.html#envvar-NUMBA_CPU_NAME"><code class="xref std std-envvar docutils literal notranslate"><span class="pre">NUMBA_CPU_NAME</span></code></a>)</p>
+<p>If the cache directory is shared on a network filesystem, concurrent
+read/write of the cache is safe only if file replacement operation is atomic
+for the filesystem. Numba always writes to a unique temporary file first, it
+then replaces the target cache file path with the temporary file. Numba is
+tolerant against lost cache files and lost cache entries.</p>
+</div>
+<div class="section" id="cache-clearing">
+<span id="id2"></span><h3>7.15.1.5. Cache Clearing<a class="headerlink" href="#cache-clearing" title="Permalink to this headline">¶</a></h3>
+<p>The cache is invalidated when the corresponding source file is modified.
+However, it is necessary sometimes to clear the cache directory manually.
+For instance, changes in the compiler will not be recognized because the source
+files are not modified.</p>
+<p>To clear the cache, the cache directory can be simply removed.</p>
+<p>Removing the cache directory when a Numba application is running may cause an
+<code class="docutils literal notranslate"><span class="pre">OSError</span></code> exception to be raised at the compilation site.</p>
+</div>
+<div class="section" id="related-environment-variables">
+<h3>7.15.1.6. Related Environment Variables<a class="headerlink" href="#related-environment-variables" title="Permalink to this headline">¶</a></h3>
+<p>See <a class="reference internal" href="../reference/envvars.html#numba-envvars-caching"><span class="std std-ref">env-vars for caching</span></a>.</p>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="threading_implementation.html" class="btn btn-neutral float-right" title="7.16. Notes on Numba’s threading implementation" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="hashing.html" class="btn btn-neutral float-left" title="7.14. Notes on Hashing" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2012-2020, Anaconda, Inc. and others
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

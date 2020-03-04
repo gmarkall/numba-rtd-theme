@@ -1,0 +1,318 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>3.8. Device management &mdash; Numba 0.49.0dev0+636.ga4807f5d8 documentation</title>
+  
+
+  
+  
+    <link rel="shortcut icon" href="../_static/numba-blue-icon-rgb.svg"/>
+  
+  
+  
+    <link rel="canonical" href="http://numba.pydata.org/numba-doc/latest/index.htmlcuda/device-management.html"/>
+  
+
+  
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script type="text/javascript" src="../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="3.10. Examples" href="examples.html" />
+    <link rel="prev" title="3.7. Random Number Generation" href="random.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> Numba
+          
+
+          
+            
+            <img src="../_static/numba-blue-icon-rgb.svg" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.49
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../user/index.html">1. User Manual</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reference/index.html">2. Reference Manual</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">3. Numba for CUDA GPUs</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="overview.html">3.1. Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="kernels.html">3.2. Writing CUDA Kernels</a></li>
+<li class="toctree-l2"><a class="reference internal" href="memory.html">3.3. Memory management</a></li>
+<li class="toctree-l2"><a class="reference internal" href="device-functions.html">3.4. Writing Device Functions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cudapysupported.html">3.5. Supported Python features in CUDA Python</a></li>
+<li class="toctree-l2"><a class="reference internal" href="intrinsics.html">3.6. Supported Atomic Operations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="random.html">3.7. Random Number Generation</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">3.8. Device management</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#device-selection">3.8.1. Device Selection</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#the-device-list">3.9. The Device List</a></li>
+<li class="toctree-l2"><a class="reference internal" href="examples.html">3.10. Examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="simulator.html">3.11. Debugging CUDA Python with the the CUDA Simulator</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reduction.html">3.12. GPU Reduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ufunc.html">3.13. CUDA Ufuncs and Generalized Ufuncs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ipc.html">3.14. Sharing CUDA Memory</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cuda_array_interface.html">3.15. CUDA Array Interface (Version 2)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="faq.html">3.16. CUDA Frequently Asked Questions</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../cuda-reference/index.html">4. CUDA Python Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../roc/index.html">5. Numba for AMD ROC GPUs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../extending/index.html">6. Extending Numba</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../developer/index.html">7. Developer Manual</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../proposals/index.html">8. Numba Enhancement Proposals</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../glossary.html">9. Glossary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../release-notes.html">10. Release Notes</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Numba</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content style-external-links">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="index.html">3. Numba for CUDA GPUs</a> &raquo;</li>
+        
+      <li>3.8. Device management</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/cuda/device-management.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="device-management">
+<h1>3.8. Device management<a class="headerlink" href="#device-management" title="Permalink to this headline">¶</a></h1>
+<p>For multi-GPU machines, users may want to select which GPU to use.
+By default the CUDA driver selects the fastest GPU as the device 0,
+which is the default device used by Numba.</p>
+<p>The features introduced on this page are generally not of interest
+unless working with systems hosting/offering more than one CUDA-capable GPU.</p>
+<div class="section" id="device-selection">
+<h2>3.8.1. Device Selection<a class="headerlink" href="#device-selection" title="Permalink to this headline">¶</a></h2>
+<p>If at all required, device selection must be done before any CUDA feature is
+used.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">numba</span> <span class="kn">import</span> <span class="n">cuda</span>
+<span class="n">cuda</span><span class="o">.</span><span class="n">select_device</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>The device can be closed by:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cuda</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>Users can then create a new context with another device.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cuda</span><span class="o">.</span><span class="n">select_device</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>  <span class="c1"># assuming we have 2 GPUs</span>
+</pre></div>
+</div>
+<dl class="function">
+<dt>
+<code class="sig-prename descclassname">numba.cuda.</code><code class="sig-name descname">select_device</code><span class="sig-paren">(</span><em class="sig-param">device_id</em><span class="sig-paren">)</span></dt>
+<dd><p>Create a new CUDA context for the selected <em>device_id</em>.  <em>device_id</em>
+should be the number of the device (starting from 0; the device order
+is determined by the CUDA libraries).  The context is associated with
+the current thread.  Numba currently allows only one context per thread.</p>
+<p>If successful, this function returns a device instance.</p>
+</dd></dl>
+
+<dl class="function">
+<dt>
+<code class="sig-prename descclassname">numba.cuda.</code><code class="sig-name descname">close</code><span class="sig-paren">(</span><span class="sig-paren">)</span></dt>
+<dd><p>Explicitly close all contexts in the current thread.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Compiled functions are associated with the CUDA context.
+This makes it not very useful to close and create new devices, though it
+is certainly useful for choosing which device to use when the machine
+has multiple GPUs.</p>
+</div>
+</dd></dl>
+
+</div>
+</div>
+<div class="section" id="the-device-list">
+<h1>3.9. The Device List<a class="headerlink" href="#the-device-list" title="Permalink to this headline">¶</a></h1>
+<p>The Device List is a list of all the GPUs in the system, and can be indexed to
+obtain a context manager that ensures execution on the selected GPU.</p>
+<dl class="attribute">
+<dt>
+<code class="sig-prename descclassname">numba.cuda.</code><code class="sig-name descname">gpus</code></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="numba.cuda.cudadrv.devices.gpus">
+<code class="sig-prename descclassname">numba.cuda.cudadrv.devices.</code><code class="sig-name descname">gpus</code><a class="headerlink" href="#numba.cuda.cudadrv.devices.gpus" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<p><a class="reference internal" href="../cuda-reference/host.html#numba.cuda.gpus" title="numba.cuda.gpus"><code class="xref py py-data docutils literal notranslate"><span class="pre">numba.cuda.gpus</span></code></a> is an instance of the <code class="docutils literal notranslate"><span class="pre">_DeviceList</span></code> class, from
+which the current GPU context can also be retrieved:</p>
+<dl class="class">
+<dt>
+<em class="property">class </em><code class="sig-prename descclassname">numba.cuda.cudadrv.devices.</code><code class="sig-name descname">_DeviceList</code></dt>
+<dd><dl class="method">
+<dt>
+<em class="property">property </em><code class="sig-name descname">current</code></dt>
+<dd><p>Returns the active device or None if there’s no active device</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="examples.html" class="btn btn-neutral float-right" title="3.10. Examples" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="random.html" class="btn btn-neutral float-left" title="3.7. Random Number Generation" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2012-2020, Anaconda, Inc. and others
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

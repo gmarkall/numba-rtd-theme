@@ -1,0 +1,267 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>2.4. Utilities &mdash; Numba 0.49.0dev0+636.ga4807f5d8 documentation</title>
+  
+
+  
+  
+    <link rel="shortcut icon" href="../_static/numba-blue-icon-rgb.svg"/>
+  
+  
+  
+    <link rel="canonical" href="http://numba.pydata.org/numba-doc/latest/index.htmlreference/utils.html"/>
+  
+
+  
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script type="text/javascript" src="../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="2.5. Environment variables" href="envvars.html" />
+    <link rel="prev" title="2.3. Ahead-of-Time compilation" href="aot-compilation.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> Numba
+          
+
+          
+            
+            <img src="../_static/numba-blue-icon-rgb.svg" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.49
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../user/index.html">1. User Manual</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">2. Reference Manual</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="types.html">2.1. Types and signatures</a></li>
+<li class="toctree-l2"><a class="reference internal" href="jit-compilation.html">2.2. Just-in-Time compilation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="aot-compilation.html">2.3. Ahead-of-Time compilation</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">2.4. Utilities</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#dealing-with-pointers">2.4.1. Dealing with pointers</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="envvars.html">2.5. Environment variables</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pysupported.html">2.6. Supported Python features</a></li>
+<li class="toctree-l2"><a class="reference internal" href="numpysupported.html">2.7. Supported NumPy features</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pysemantics.html">2.8. Deviations from Python Semantics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fpsemantics.html">2.9. Floating-point pitfalls</a></li>
+<li class="toctree-l2"><a class="reference internal" href="python27-eol.html">2.10. Python 2.7 End of Life Plan</a></li>
+<li class="toctree-l2"><a class="reference internal" href="deprecation.html">2.11. Deprecation Notices</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../cuda/index.html">3. Numba for CUDA GPUs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../cuda-reference/index.html">4. CUDA Python Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../roc/index.html">5. Numba for AMD ROC GPUs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../extending/index.html">6. Extending Numba</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../developer/index.html">7. Developer Manual</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../proposals/index.html">8. Numba Enhancement Proposals</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../glossary.html">9. Glossary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../release-notes.html">10. Release Notes</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Numba</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content style-external-links">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="index.html">2. Reference Manual</a> &raquo;</li>
+        
+      <li>2.4. Utilities</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/reference/utils.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="utilities">
+<h1>2.4. Utilities<a class="headerlink" href="#utilities" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="dealing-with-pointers">
+<h2>2.4.1. Dealing with pointers<a class="headerlink" href="#dealing-with-pointers" title="Permalink to this headline">¶</a></h2>
+<p>These functions can be called from pure Python as well as in
+<a class="reference internal" href="../glossary.html#term-nopython-mode"><span class="xref std std-term">nopython mode</span></a>.</p>
+<dl class="function">
+<dt id="numba.carray">
+<code class="sig-prename descclassname">numba.</code><code class="sig-name descname">carray</code><span class="sig-paren">(</span><em class="sig-param">ptr</em>, <em class="sig-param">shape</em>, <em class="sig-param">dtype=None</em><span class="sig-paren">)</span><a class="headerlink" href="#numba.carray" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return a Numpy array view over the data pointed to by <em>ptr</em> with the
+given <em>shape</em>, in C order.  If <em>dtype</em> is given, it is used as the array’s
+dtype, otherwise the array’s dtype is inferred from <em>ptr</em>’s type.
+As the returned array is a view, not a copy, writing to it will modify
+the original data.</p>
+<p><em>ptr</em> should be a ctypes pointer object (either a typed pointer
+as created using <a class="reference external" href="https://docs.python.org/3/library/ctypes.html#ctypes.POINTER" title="(in Python v3.8)"><code class="xref py py-func docutils literal notranslate"><span class="pre">POINTER()</span></code></a>, or a <a class="reference external" href="https://docs.python.org/3/library/ctypes.html#ctypes.c_void_p" title="(in Python v3.8)"><code class="xref py py-class docutils literal notranslate"><span class="pre">c_void_p</span></code></a>).</p>
+<p><em>shape</em> should be an integer or a tuple of integers.</p>
+<p><em>dtype</em> should be a Numpy dtype or scalar class (i.e. both
+<code class="docutils literal notranslate"><span class="pre">np.dtype('int8')</span></code> and <code class="docutils literal notranslate"><span class="pre">np.int8</span></code> are accepted).</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="numba.farray">
+<code class="sig-prename descclassname">numba.</code><code class="sig-name descname">farray</code><span class="sig-paren">(</span><em class="sig-param">ptr</em>, <em class="sig-param">shape</em>, <em class="sig-param">dtype=None</em><span class="sig-paren">)</span><a class="headerlink" href="#numba.farray" title="Permalink to this definition">¶</a></dt>
+<dd><p>Same as <a class="reference internal" href="#numba.carray" title="numba.carray"><code class="xref py py-func docutils literal notranslate"><span class="pre">carray()</span></code></a>, but the data is assumed to be laid out
+in Fortran order, and the array view is constructed accordingly.</p>
+</dd></dl>
+
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="envvars.html" class="btn btn-neutral float-right" title="2.5. Environment variables" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="aot-compilation.html" class="btn btn-neutral float-left" title="2.3. Ahead-of-Time compilation" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2012-2020, Anaconda, Inc. and others
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

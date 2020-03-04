@@ -1,0 +1,572 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>3.3. Memory management &mdash; Numba 0.49.0dev0+636.ga4807f5d8 documentation</title>
+  
+
+  
+  
+    <link rel="shortcut icon" href="../_static/numba-blue-icon-rgb.svg"/>
+  
+  
+  
+    <link rel="canonical" href="http://numba.pydata.org/numba-doc/latest/index.htmlcuda/memory.html"/>
+  
+
+  
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script type="text/javascript" src="../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="3.4. Writing Device Functions" href="device-functions.html" />
+    <link rel="prev" title="3.2. Writing CUDA Kernels" href="kernels.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> Numba
+          
+
+          
+            
+            <img src="../_static/numba-blue-icon-rgb.svg" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.49
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../user/index.html">1. User Manual</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reference/index.html">2. Reference Manual</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">3. Numba for CUDA GPUs</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="overview.html">3.1. Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="kernels.html">3.2. Writing CUDA Kernels</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">3.3. Memory management</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#data-transfer">3.3.1. Data transfer</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#device-arrays">3.3.1.1. Device arrays</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#pinned-memory">3.3.2. Pinned memory</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#streams">3.3.3. Streams</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#shared-memory-and-thread-synchronization">3.3.4. Shared memory and thread synchronization</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#local-memory">3.3.5. Local memory</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#constant-memory">3.3.6. Constant memory</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#deallocation-behavior">3.3.7. Deallocation Behavior</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="device-functions.html">3.4. Writing Device Functions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cudapysupported.html">3.5. Supported Python features in CUDA Python</a></li>
+<li class="toctree-l2"><a class="reference internal" href="intrinsics.html">3.6. Supported Atomic Operations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="random.html">3.7. Random Number Generation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="device-management.html">3.8. Device management</a></li>
+<li class="toctree-l2"><a class="reference internal" href="device-management.html#the-device-list">3.9. The Device List</a></li>
+<li class="toctree-l2"><a class="reference internal" href="examples.html">3.10. Examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="simulator.html">3.11. Debugging CUDA Python with the the CUDA Simulator</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reduction.html">3.12. GPU Reduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ufunc.html">3.13. CUDA Ufuncs and Generalized Ufuncs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ipc.html">3.14. Sharing CUDA Memory</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cuda_array_interface.html">3.15. CUDA Array Interface (Version 2)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="faq.html">3.16. CUDA Frequently Asked Questions</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../cuda-reference/index.html">4. CUDA Python Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../roc/index.html">5. Numba for AMD ROC GPUs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../extending/index.html">6. Extending Numba</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../developer/index.html">7. Developer Manual</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../proposals/index.html">8. Numba Enhancement Proposals</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../glossary.html">9. Glossary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../release-notes.html">10. Release Notes</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Numba</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content style-external-links">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="index.html">3. Numba for CUDA GPUs</a> &raquo;</li>
+        
+      <li>3.3. Memory management</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/cuda/memory.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="memory-management">
+<h1>3.3. Memory management<a class="headerlink" href="#memory-management" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="data-transfer">
+<span id="cuda-device-memory"></span><h2>3.3.1. Data transfer<a class="headerlink" href="#data-transfer" title="Permalink to this headline">¶</a></h2>
+<p>Even though Numba can automatically transfer NumPy arrays to the device,
+it can only do so conservatively by always transferring device memory back to
+the host when a kernel finishes. To avoid the unnecessary transfer for
+read-only arrays, you can use the following APIs to manually control the
+transfer:</p>
+<dl class="function">
+<dt>
+<code class="sig-prename descclassname">numba.cuda.</code><code class="sig-name descname">device_array</code><span class="sig-paren">(</span><em class="sig-param">shape</em>, <em class="sig-param">dtype=np.float</em>, <em class="sig-param">strides=None</em>, <em class="sig-param">order='C'</em>, <em class="sig-param">stream=0</em><span class="sig-paren">)</span></dt>
+<dd><p>Allocate an empty device ndarray. Similar to <a class="reference internal" href="../developer/autogen_numpy_listing.html#numpy.empty" title="numpy.empty"><code class="xref py py-meth docutils literal notranslate"><span class="pre">numpy.empty()</span></code></a>.</p>
+</dd></dl>
+
+<dl class="function">
+<dt>
+<code class="sig-prename descclassname">numba.cuda.</code><code class="sig-name descname">device_array_like</code><span class="sig-paren">(</span><em class="sig-param">ary</em>, <em class="sig-param">stream=0</em><span class="sig-paren">)</span></dt>
+<dd><p>Call cuda.devicearray() with information from the array.</p>
+</dd></dl>
+
+<dl class="function">
+<dt>
+<code class="sig-prename descclassname">numba.cuda.</code><code class="sig-name descname">to_device</code><span class="sig-paren">(</span><em class="sig-param">obj</em>, <em class="sig-param">stream=0</em>, <em class="sig-param">copy=True</em>, <em class="sig-param">to=None</em><span class="sig-paren">)</span></dt>
+<dd><p>Allocate and transfer a numpy ndarray or structured scalar to the device.</p>
+<p>To copy host-&gt;device a numpy array:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ary</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+<span class="n">d_ary</span> <span class="o">=</span> <span class="n">cuda</span><span class="o">.</span><span class="n">to_device</span><span class="p">(</span><span class="n">ary</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>To enqueue the transfer to a stream:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">stream</span> <span class="o">=</span> <span class="n">cuda</span><span class="o">.</span><span class="n">stream</span><span class="p">()</span>
+<span class="n">d_ary</span> <span class="o">=</span> <span class="n">cuda</span><span class="o">.</span><span class="n">to_device</span><span class="p">(</span><span class="n">ary</span><span class="p">,</span> <span class="n">stream</span><span class="o">=</span><span class="n">stream</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>The resulting <code class="docutils literal notranslate"><span class="pre">d_ary</span></code> is a <code class="docutils literal notranslate"><span class="pre">DeviceNDArray</span></code>.</p>
+<p>To copy device-&gt;host:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">hary</span> <span class="o">=</span> <span class="n">d_ary</span><span class="o">.</span><span class="n">copy_to_host</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>To copy device-&gt;host to an existing array:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ary</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">empty</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="n">d_ary</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">d_ary</span><span class="o">.</span><span class="n">dtype</span><span class="p">)</span>
+<span class="n">d_ary</span><span class="o">.</span><span class="n">copy_to_host</span><span class="p">(</span><span class="n">ary</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>To enqueue the transfer to a stream:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">hary</span> <span class="o">=</span> <span class="n">d_ary</span><span class="o">.</span><span class="n">copy_to_host</span><span class="p">(</span><span class="n">stream</span><span class="o">=</span><span class="n">stream</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<p>In addition to the device arrays, Numba can consume any object that implements
+<a class="reference internal" href="cuda_array_interface.html#cuda-array-interface"><span class="std std-ref">cuda array interface</span></a>.  These objects also can be
+manually converted into a Numba device array by creating a view of the GPU
+buffer using the following APIs:</p>
+<dl class="function">
+<dt>
+<code class="sig-prename descclassname">numba.cuda.</code><code class="sig-name descname">as_cuda_array</code><span class="sig-paren">(</span><em class="sig-param">obj</em><span class="sig-paren">)</span></dt>
+<dd><p>Create a DeviceNDArray from any object that implements
+the <a class="reference internal" href="cuda_array_interface.html#cuda-array-interface"><span class="std std-ref">cuda array interface</span></a>.</p>
+<p>A view of the underlying GPU buffer is created.  No copying of the data
+is done.  The resulting DeviceNDArray will acquire a reference from <cite>obj</cite>.</p>
+</dd></dl>
+
+<dl class="function">
+<dt>
+<code class="sig-prename descclassname">numba.cuda.</code><code class="sig-name descname">is_cuda_array</code><span class="sig-paren">(</span><em class="sig-param">obj</em><span class="sig-paren">)</span></dt>
+<dd><p>Test if the object has defined the <cite>__cuda_array_interface__</cite> attribute.</p>
+<p>Does not verify the validity of the interface.</p>
+</dd></dl>
+
+<div class="section" id="device-arrays">
+<h3>3.3.1.1. Device arrays<a class="headerlink" href="#device-arrays" title="Permalink to this headline">¶</a></h3>
+<p>Device array references have the following methods.  These methods are to be
+called in host code, not within CUDA-jitted functions.</p>
+<dl class="class">
+<dt>
+<em class="property">class </em><code class="sig-prename descclassname">numba.cuda.cudadrv.devicearray.</code><code class="sig-name descname">DeviceNDArray</code><span class="sig-paren">(</span><em class="sig-param">shape</em>, <em class="sig-param">strides</em>, <em class="sig-param">dtype</em>, <em class="sig-param">stream=0</em>, <em class="sig-param">writeback=None</em>, <em class="sig-param">gpu_data=None</em><span class="sig-paren">)</span></dt>
+<dd><p>An on-GPU array type</p>
+<dl class="method">
+<dt>
+<code class="sig-name descname">copy_to_host</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">ary=None</em>, <em class="sig-param">stream=0</em><span class="sig-paren">)</span></dt>
+<dd><p>Copy <code class="docutils literal notranslate"><span class="pre">self</span></code> to <code class="docutils literal notranslate"><span class="pre">ary</span></code> or create a new Numpy ndarray
+if <code class="docutils literal notranslate"><span class="pre">ary</span></code> is <code class="docutils literal notranslate"><span class="pre">None</span></code>.</p>
+<p>If a CUDA <code class="docutils literal notranslate"><span class="pre">stream</span></code> is given, then the transfer will be made
+asynchronously as part as the given stream.  Otherwise, the transfer is
+synchronous: the function returns after the copy is finished.</p>
+<p>Always returns the host array.</p>
+<p>Example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">from</span> <span class="nn">numba</span> <span class="kn">import</span> <span class="n">cuda</span>
+
+<span class="n">arr</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">1000</span><span class="p">)</span>
+<span class="n">d_arr</span> <span class="o">=</span> <span class="n">cuda</span><span class="o">.</span><span class="n">to_device</span><span class="p">(</span><span class="n">arr</span><span class="p">)</span>
+
+<span class="n">my_kernel</span><span class="p">[</span><span class="mi">100</span><span class="p">,</span> <span class="mi">100</span><span class="p">](</span><span class="n">d_arr</span><span class="p">)</span>
+
+<span class="n">result_array</span> <span class="o">=</span> <span class="n">d_arr</span><span class="o">.</span><span class="n">copy_to_host</span><span class="p">()</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="method">
+<dt>
+<code class="sig-name descname">is_c_contiguous</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span></dt>
+<dd><p>Return true if the array is C-contiguous.</p>
+</dd></dl>
+
+<dl class="method">
+<dt>
+<code class="sig-name descname">is_f_contiguous</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span></dt>
+<dd><p>Return true if the array is Fortran-contiguous.</p>
+</dd></dl>
+
+<dl class="method">
+<dt>
+<code class="sig-name descname">ravel</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">order='C'</em>, <em class="sig-param">stream=0</em><span class="sig-paren">)</span></dt>
+<dd><p>Flatten the array without changing its contents, similar to
+<a class="reference external" href="https://docs.scipy.org/doc/numpy/reference/generated/numpy.ndarray.ravel.html#numpy.ndarray.ravel" title="(in NumPy v1.17)"><code class="xref py py-meth docutils literal notranslate"><span class="pre">numpy.ndarray.ravel()</span></code></a>.</p>
+</dd></dl>
+
+<dl class="method">
+<dt>
+<code class="sig-name descname">reshape</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">*newshape</em>, <em class="sig-param">**kws</em><span class="sig-paren">)</span></dt>
+<dd><p>Reshape the array without changing its contents, similarly to
+<a class="reference external" href="https://docs.scipy.org/doc/numpy/reference/generated/numpy.ndarray.reshape.html#numpy.ndarray.reshape" title="(in NumPy v1.17)"><code class="xref py py-meth docutils literal notranslate"><span class="pre">numpy.ndarray.reshape()</span></code></a>. Example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">d_arr</span> <span class="o">=</span> <span class="n">d_arr</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="mi">50</span><span class="p">,</span> <span class="n">order</span><span class="o">=</span><span class="s1">&#39;F&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</dd></dl>
+
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>DeviceNDArray defines the <a class="reference internal" href="cuda_array_interface.html#cuda-array-interface"><span class="std std-ref">cuda array interface</span></a>.</p>
+</div>
+</div>
+</div>
+<div class="section" id="pinned-memory">
+<h2>3.3.2. Pinned memory<a class="headerlink" href="#pinned-memory" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt>
+<code class="sig-prename descclassname">numba.cuda.</code><code class="sig-name descname">pinned</code><span class="sig-paren">(</span><em class="sig-param">*arylist</em><span class="sig-paren">)</span></dt>
+<dd><p>A context manager for temporary pinning a sequence of host ndarrays.</p>
+</dd></dl>
+
+<dl class="function">
+<dt>
+<code class="sig-prename descclassname">numba.cuda.</code><code class="sig-name descname">pinned_array</code><span class="sig-paren">(</span><em class="sig-param">shape</em>, <em class="sig-param">dtype=np.float</em>, <em class="sig-param">strides=None</em>, <em class="sig-param">order='C'</em><span class="sig-paren">)</span></dt>
+<dd><p>Allocate a np.ndarray with a buffer that is pinned (pagelocked).
+Similar to np.empty().</p>
+</dd></dl>
+
+</div>
+<div class="section" id="streams">
+<h2>3.3.3. Streams<a class="headerlink" href="#streams" title="Permalink to this headline">¶</a></h2>
+<p>Streams can be passed to functions that accept them (e.g. copies between the
+host and device) and into kernel launch configurations so that the operations
+are executed asynchronously.</p>
+<dl class="function">
+<dt>
+<code class="sig-prename descclassname">numba.cuda.</code><code class="sig-name descname">stream</code><span class="sig-paren">(</span><span class="sig-paren">)</span></dt>
+<dd><p>Create a CUDA stream that represents a command queue for the device.</p>
+</dd></dl>
+
+<dl class="function">
+<dt>
+<code class="sig-prename descclassname">numba.cuda.</code><code class="sig-name descname">default_stream</code><span class="sig-paren">(</span><span class="sig-paren">)</span></dt>
+<dd><p>Get the default CUDA stream.</p>
+</dd></dl>
+
+<p>CUDA streams have the following methods:</p>
+<dl class="class">
+<dt>
+<em class="property">class </em><code class="sig-prename descclassname">numba.cuda.cudadrv.driver.</code><code class="sig-name descname">Stream</code><span class="sig-paren">(</span><em class="sig-param">context</em>, <em class="sig-param">handle</em>, <em class="sig-param">finalizer</em><span class="sig-paren">)</span></dt>
+<dd><dl class="method">
+<dt>
+<code class="sig-name descname">auto_synchronize</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span></dt>
+<dd><p>A context manager that waits for all commands in this stream to execute
+and commits any pending memory transfers upon exiting the context.</p>
+</dd></dl>
+
+<dl class="method">
+<dt>
+<code class="sig-name descname">synchronize</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span></dt>
+<dd><p>Wait for all commands in this stream to execute. This will commit any
+pending memory transfers.</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="shared-memory-and-thread-synchronization">
+<span id="cuda-shared-memory"></span><h2>3.3.4. Shared memory and thread synchronization<a class="headerlink" href="#shared-memory-and-thread-synchronization" title="Permalink to this headline">¶</a></h2>
+<p>A limited amount of shared memory can be allocated on the device to speed
+up access to data, when necessary.  That memory will be shared (i.e. both
+readable and writable) amongst all threads belonging to a given block
+and has faster access times than regular device memory.  It also allows
+threads to cooperate on a given solution.  You can think of it as a
+manually-managed data cache.</p>
+<p>The memory is allocated once for the duration of the kernel, unlike
+traditional dynamic memory management.</p>
+<dl class="function">
+<dt>
+<code class="sig-prename descclassname">numba.cuda.shared.</code><code class="sig-name descname">array</code><span class="sig-paren">(</span><em class="sig-param">shape</em>, <em class="sig-param">type</em><span class="sig-paren">)</span></dt>
+<dd><p>Allocate a shared array of the given <em>shape</em> and <em>type</em> on the device.
+This function must be called on the device (i.e. from a kernel or
+device function). <em>shape</em> is either an integer or a tuple of integers
+representing the array’s dimensions and must be a simple constant
+expression. <em>type</em> is a <a class="reference internal" href="../reference/types.html#numba-types"><span class="std std-ref">Numba type</span></a> of the elements
+needing to be stored in the array.</p>
+<p>The returned array-like object can be read and written to like any normal
+device array (e.g. through indexing).</p>
+<p>A common pattern is to have each thread populate one element in the
+shared array and then wait for all threads to finish using <a class="reference internal" href="../cuda-reference/kernel.html#numba.cuda.syncthreads" title="numba.cuda.syncthreads"><code class="xref py py-func docutils literal notranslate"><span class="pre">syncthreads()</span></code></a>.</p>
+</dd></dl>
+
+<dl class="function">
+<dt>
+<code class="sig-prename descclassname">numba.cuda.</code><code class="sig-name descname">syncthreads</code><span class="sig-paren">(</span><span class="sig-paren">)</span></dt>
+<dd><p>Synchronize all threads in the same thread block.  This function
+implements the same pattern as <a class="reference external" href="http://en.wikipedia.org/wiki/Barrier_%28computer_science%29">barriers</a>
+in traditional multi-threaded programming: this function waits
+until all threads in the block call it, at which point it returns
+control to all its callers.</p>
+</dd></dl>
+
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="examples.html#cuda-matmul"><span class="std std-ref">Matrix multiplication example</span></a>.</p>
+</div>
+</div>
+<div class="section" id="local-memory">
+<span id="cuda-local-memory"></span><h2>3.3.5. Local memory<a class="headerlink" href="#local-memory" title="Permalink to this headline">¶</a></h2>
+<p>Local memory is an area of memory private to each thread.  Using local
+memory helps allocate some scratchpad area when scalar local variables
+are not enough.  The memory is allocated once for the duration of the kernel,
+unlike traditional dynamic memory management.</p>
+<dl class="function">
+<dt>
+<code class="sig-prename descclassname">numba.cuda.local.</code><code class="sig-name descname">array</code><span class="sig-paren">(</span><em class="sig-param">shape</em>, <em class="sig-param">type</em><span class="sig-paren">)</span></dt>
+<dd><p>Allocate a local array of the given <em>shape</em> and <em>type</em> on the device.
+<em>shape</em> is either an integer or a tuple of integers representing the array’s
+dimensions and must be a simple constant expression. <em>type</em> is a
+<a class="reference internal" href="../reference/types.html#numba-types"><span class="std std-ref">Numba type</span></a> of the elements needing to be stored in the
+array. The array is private to the current thread. An array-like object is
+returned which can be read and written to like any standard array
+(e.g. through indexing).</p>
+</dd></dl>
+
+</div>
+<div class="section" id="constant-memory">
+<h2>3.3.6. Constant memory<a class="headerlink" href="#constant-memory" title="Permalink to this headline">¶</a></h2>
+<p>Constant memory is an area of memory that is read only, cached and off-chip, it
+is accessible by all threads and is host allocated. A method of
+creating an array in constant memory is through the use of:</p>
+<dl class="function">
+<dt>
+<code class="sig-prename descclassname">numba.cuda.const.</code><code class="sig-name descname">array_like</code><span class="sig-paren">(</span><em class="sig-param">arr</em><span class="sig-paren">)</span></dt>
+<dd><p>Allocate and make accessible an array in constant memory based on array-like
+<em>arr</em>.</p>
+</dd></dl>
+
+</div>
+<div class="section" id="deallocation-behavior">
+<h2>3.3.7. Deallocation Behavior<a class="headerlink" href="#deallocation-behavior" title="Permalink to this headline">¶</a></h2>
+<p>Deallocation of all CUDA resources are tracked on a per-context basis.
+When the last reference to a device memory is dropped, the underlying memory
+is scheduled to be deallocated.  The deallocation does not occur immediately.
+It is added to a queue of pending deallocations.  This design has two benefits:</p>
+<ol class="arabic simple">
+<li><p>Resource deallocation API may cause the device to synchronize; thus, breaking
+any asynchronous execution.  Deferring the deallocation could avoid latency
+in performance critical code section.</p></li>
+<li><p>Some deallocation errors may cause all the remaining deallocations to fail.
+Continued deallocation errors can cause critical errors at the CUDA driver
+level.  In some cases, this could mean a segmentation fault in the CUDA
+driver. In the worst case, this could cause the system GUI to freeze and
+could only recover with a system reset.  When an error occurs during a
+deallocation, the remaining pending deallocations are cancelled.  Any
+deallocation error will be reported.  When the process is terminated, the
+CUDA driver is able to release all allocated resources by the terminated
+process.</p></li>
+</ol>
+<p>The deallocation queue is flushed automatically as soon as the following events
+occur:</p>
+<ul class="simple">
+<li><p>An allocation failed due to out-of-memory error.  Allocation is retried after
+flushing all deallocations.</p></li>
+<li><p>The deallocation queue has reached its maximum size, which is default to 10.
+User can override by setting the environment variable
+<cite>NUMBA_CUDA_MAX_PENDING_DEALLOCS_COUNT</cite>.  For example,
+<cite>NUMBA_CUDA_MAX_PENDING_DEALLOCS_COUNT=20</cite>, increases the limit to 20.</p></li>
+<li><p>The maximum accumulated byte size of resources that are pending deallocation
+is reached.  This is default to 20% of the device memory capacity.
+User can override by setting the environment variable
+<cite>NUMBA_CUDA_MAX_PENDING_DEALLOCS_RATIO</cite>. For example,
+<cite>NUMBA_CUDA_MAX_PENDING_DEALLOCS_RATIO=0.5</cite> sets the limit to 50% of the
+capacity.</p></li>
+</ul>
+<p>Sometimes, it is desired to defer resource deallocation until a code section
+ends.  Most often, users want to avoid any implicit synchronization due to
+deallocation.  This can be done by using the following context manager:</p>
+<dl class="function">
+<dt id="numba.cuda.defer_cleanup">
+<code class="sig-prename descclassname">numba.cuda.</code><code class="sig-name descname">defer_cleanup</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#numba.cuda.defer_cleanup" title="Permalink to this definition">¶</a></dt>
+<dd><p>Temporarily disable memory deallocation.
+Use this to prevent resource deallocation breaking asynchronous execution.</p>
+<p>For example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">with</span> <span class="n">defer_cleanup</span><span class="p">():</span>
+    <span class="c1"># all cleanup is deferred in here</span>
+    <span class="n">do_speed_critical_code</span><span class="p">()</span>
+<span class="c1"># cleanup can occur here</span>
+</pre></div>
+</div>
+<p>Note: this context manager can be nested.</p>
+</dd></dl>
+
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="device-functions.html" class="btn btn-neutral float-right" title="3.4. Writing Device Functions" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="kernels.html" class="btn btn-neutral float-left" title="3.2. Writing CUDA Kernels" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2012-2020, Anaconda, Inc. and others
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

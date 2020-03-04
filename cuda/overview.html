@@ -1,0 +1,325 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>3.1. Overview &mdash; Numba 0.49.0dev0+636.ga4807f5d8 documentation</title>
+  
+
+  
+  
+    <link rel="shortcut icon" href="../_static/numba-blue-icon-rgb.svg"/>
+  
+  
+  
+    <link rel="canonical" href="http://numba.pydata.org/numba-doc/latest/index.htmlcuda/overview.html"/>
+  
+
+  
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script type="text/javascript" src="../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="3.2. Writing CUDA Kernels" href="kernels.html" />
+    <link rel="prev" title="3. Numba for CUDA GPUs" href="index.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> Numba
+          
+
+          
+            
+            <img src="../_static/numba-blue-icon-rgb.svg" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.49
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../user/index.html">1. User Manual</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reference/index.html">2. Reference Manual</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">3. Numba for CUDA GPUs</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">3.1. Overview</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#terminology">3.1.1. Terminology</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#programming-model">3.1.2. Programming model</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#requirements">3.1.3. Requirements</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#supported-gpus">3.1.3.1. Supported GPUs</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#software">3.1.3.2. Software</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#missing-cuda-features">3.1.4. Missing CUDA Features</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="kernels.html">3.2. Writing CUDA Kernels</a></li>
+<li class="toctree-l2"><a class="reference internal" href="memory.html">3.3. Memory management</a></li>
+<li class="toctree-l2"><a class="reference internal" href="device-functions.html">3.4. Writing Device Functions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cudapysupported.html">3.5. Supported Python features in CUDA Python</a></li>
+<li class="toctree-l2"><a class="reference internal" href="intrinsics.html">3.6. Supported Atomic Operations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="random.html">3.7. Random Number Generation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="device-management.html">3.8. Device management</a></li>
+<li class="toctree-l2"><a class="reference internal" href="device-management.html#the-device-list">3.9. The Device List</a></li>
+<li class="toctree-l2"><a class="reference internal" href="examples.html">3.10. Examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="simulator.html">3.11. Debugging CUDA Python with the the CUDA Simulator</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reduction.html">3.12. GPU Reduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ufunc.html">3.13. CUDA Ufuncs and Generalized Ufuncs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ipc.html">3.14. Sharing CUDA Memory</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cuda_array_interface.html">3.15. CUDA Array Interface (Version 2)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="faq.html">3.16. CUDA Frequently Asked Questions</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../cuda-reference/index.html">4. CUDA Python Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../roc/index.html">5. Numba for AMD ROC GPUs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../extending/index.html">6. Extending Numba</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../developer/index.html">7. Developer Manual</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../proposals/index.html">8. Numba Enhancement Proposals</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../glossary.html">9. Glossary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../release-notes.html">10. Release Notes</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Numba</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content style-external-links">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="index.html">3. Numba for CUDA GPUs</a> &raquo;</li>
+        
+      <li>3.1. Overview</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/cuda/overview.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="overview">
+<h1>3.1. Overview<a class="headerlink" href="#overview" title="Permalink to this headline">¶</a></h1>
+<p>Numba supports CUDA GPU programming by directly compiling a restricted subset
+of Python code into CUDA kernels and device functions following the CUDA
+execution model.  Kernels written in Numba appear to have direct access
+to NumPy arrays.  NumPy arrays are transferred between the CPU and the
+GPU automatically.</p>
+<div class="section" id="terminology">
+<h2>3.1.1. Terminology<a class="headerlink" href="#terminology" title="Permalink to this headline">¶</a></h2>
+<p>Several important terms in the topic of CUDA programming are listed here:</p>
+<ul class="simple">
+<li><p><em>host</em>: the CPU</p></li>
+<li><p><em>device</em>: the GPU</p></li>
+<li><p><em>host memory</em>: the system main memory</p></li>
+<li><p><em>device memory</em>: onboard memory on a GPU card</p></li>
+<li><p><em>kernels</em>: a GPU function launched by the host and executed on the device</p></li>
+<li><p><em>device function</em>: a GPU function executed on the device which can only be
+called from the device (i.e. from a kernel or another device function)</p></li>
+</ul>
+</div>
+<div class="section" id="programming-model">
+<h2>3.1.2. Programming model<a class="headerlink" href="#programming-model" title="Permalink to this headline">¶</a></h2>
+<p>Most CUDA programming facilities exposed by Numba map directly to the CUDA
+C language offered by NVidia.  Therefore, it is recommended you read the
+official <a class="reference external" href="http://docs.nvidia.com/cuda/cuda-c-programming-guide">CUDA C programming guide</a>.</p>
+</div>
+<div class="section" id="requirements">
+<h2>3.1.3. Requirements<a class="headerlink" href="#requirements" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="supported-gpus">
+<h3>3.1.3.1. Supported GPUs<a class="headerlink" href="#supported-gpus" title="Permalink to this headline">¶</a></h3>
+<p>Numba supports CUDA-enabled GPU with compute capability 2.0 or above with an
+up-to-data Nvidia driver.</p>
+</div>
+<div class="section" id="software">
+<h3>3.1.3.2. Software<a class="headerlink" href="#software" title="Permalink to this headline">¶</a></h3>
+<p>You will need the CUDA toolkit version 8.0 or later installed.  If you are
+using Conda, just type:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ conda install cudatoolkit
+</pre></div>
+</div>
+<p>If you are not using Conda or if you want to use a different version of CUDA
+toolkit, the following describe how Numba searches for a CUDA toolkit
+installation.</p>
+<div class="section" id="setting-cuda-installation-path">
+<span id="cudatoolkit-lookup"></span><h4>3.1.3.2.1. Setting CUDA Installation Path<a class="headerlink" href="#setting-cuda-installation-path" title="Permalink to this headline">¶</a></h4>
+<p>Numba searches for a CUDA toolkit installation in the following order:</p>
+<ol class="arabic simple">
+<li><p>Conda installed <cite>cudatoolkit</cite> package.</p></li>
+<li><p>Environment variable <code class="docutils literal notranslate"><span class="pre">CUDA_HOME</span></code>, which points to the directory of the
+installed CUDA toolkit (i.e. <code class="docutils literal notranslate"><span class="pre">/home/user/cuda-10</span></code>)</p></li>
+<li><p>System-wide installation at exactly <code class="docutils literal notranslate"><span class="pre">/usr/local/cuda</span></code> on Linux platforms.
+Versioned installation paths (i.e. <code class="docutils literal notranslate"><span class="pre">/usr/local/cuda-10.0</span></code>) are intentionally
+ignored.  Users can use <code class="docutils literal notranslate"><span class="pre">CUDA_HOME</span></code> to select specific versions.</p></li>
+</ol>
+<p>In addition to the CUDA toolkit libraries, which can be installed by conda into
+an environment or installed system-wide by the <a class="reference external" href="(https://developer.nvidia.com/cuda-downloads)">CUDA SDK installer</a>, the CUDA target in Numba
+also requires an up-to-date NVIDIA graphics driver.  Updated graphics drivers
+are also installed by the CUDA SDK installer, so there is no need to do both.
+Note that on macOS, the CUDA SDK must be installed to get the required driver,
+and the driver is only supported on macOS prior to 10.14 (Mojave).  If the
+<code class="docutils literal notranslate"><span class="pre">libcuda</span></code> library is in a non-standard location, users can set environment
+variable <code class="docutils literal notranslate"><span class="pre">NUMBA_CUDA_DRIVER</span></code> to the file path (not the directory path) of the
+shared library file.</p>
+</div>
+</div>
+</div>
+<div class="section" id="missing-cuda-features">
+<h2>3.1.4. Missing CUDA Features<a class="headerlink" href="#missing-cuda-features" title="Permalink to this headline">¶</a></h2>
+<p>Numba does not implement all features of CUDA, yet.  Some missing features
+are listed below:</p>
+<ul class="simple">
+<li><p>dynamic parallelism</p></li>
+<li><p>texture memory</p></li>
+</ul>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="kernels.html" class="btn btn-neutral float-right" title="3.2. Writing CUDA Kernels" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="index.html" class="btn btn-neutral float-left" title="3. Numba for CUDA GPUs" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2012-2020, Anaconda, Inc. and others
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

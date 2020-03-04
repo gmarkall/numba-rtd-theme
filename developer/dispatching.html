@@ -1,0 +1,501 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>7.4. Polymorphic dispatching &mdash; Numba 0.49.0dev0+636.ga4807f5d8 documentation</title>
+  
+
+  
+  
+    <link rel="shortcut icon" href="../_static/numba-blue-icon-rgb.svg"/>
+  
+  
+  
+    <link rel="canonical" href="http://numba.pydata.org/numba-doc/latest/index.htmldeveloper/dispatching.html"/>
+  
+
+  
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script type="text/javascript" src="../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="7.5. Notes on generators" href="generators.html" />
+    <link rel="prev" title="7.3. Numba architecture" href="architecture.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> Numba
+          
+
+          
+            
+            <img src="../_static/numba-blue-icon-rgb.svg" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.49
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../user/index.html">1. User Manual</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reference/index.html">2. Reference Manual</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../cuda/index.html">3. Numba for CUDA GPUs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../cuda-reference/index.html">4. CUDA Python Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../roc/index.html">5. Numba for AMD ROC GPUs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../extending/index.html">6. Extending Numba</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">7. Developer Manual</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="contributing.html">7.1. Contributing to Numba</a></li>
+<li class="toctree-l2"><a class="reference internal" href="repomap.html">7.2. A Map of the Numba Repository</a></li>
+<li class="toctree-l2"><a class="reference internal" href="architecture.html">7.3. Numba architecture</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">7.4. Polymorphic dispatching</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#requirements">7.4.1. Requirements</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#compile-time-vs-run-time">7.4.1.1. Compile-time vs. run-time</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#type-resolution">7.4.2. Type resolution</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#typecodes">7.4.2.1. Typecodes</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#hard-coded-fast-paths">7.4.2.2. Hard-coded fast paths</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#fingerprint-based-typecode-cache">7.4.2.3. Fingerprint-based typecode cache</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#summary">7.4.2.4. Summary</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#specialization-selection">7.4.3. Specialization selection</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#implicit-conversion-rules">7.4.3.1. Implicit conversion rules</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#candidates-and-best-match">7.4.3.2. Candidates and best match</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#implementation">7.4.3.3. Implementation</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id1">7.4.3.4. Summary</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#miscellaneous">7.4.4. Miscellaneous</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="generators.html">7.5. Notes on generators</a></li>
+<li class="toctree-l2"><a class="reference internal" href="numba-runtime.html">7.6. Notes on Numba Runtime</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rewrites.html">7.7. Using the Numba Rewrite Pass for Fun and Optimization</a></li>
+<li class="toctree-l2"><a class="reference internal" href="live_variable_analysis.html">7.8. Live Variable Analysis</a></li>
+<li class="toctree-l2"><a class="reference internal" href="listings.html">7.9. Listings</a></li>
+<li class="toctree-l2"><a class="reference internal" href="stencil.html">7.10. Notes on stencils</a></li>
+<li class="toctree-l2"><a class="reference internal" href="custom_pipeline.html">7.11. Customizing the Compiler</a></li>
+<li class="toctree-l2"><a class="reference internal" href="inlining.html">7.12. Notes on Inlining</a></li>
+<li class="toctree-l2"><a class="reference internal" href="environment.html">7.13. Environment Object</a></li>
+<li class="toctree-l2"><a class="reference internal" href="hashing.html">7.14. Notes on Hashing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="caching.html">7.15. Notes on Caching</a></li>
+<li class="toctree-l2"><a class="reference internal" href="threading_implementation.html">7.16. Notes on Numba’s threading implementation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="literal.html">7.17. Notes on Literal Types</a></li>
+<li class="toctree-l2"><a class="reference internal" href="debugging.html">7.18. Notes on Debugging</a></li>
+<li class="toctree-l2"><a class="reference internal" href="roadmap.html">7.19. Numba Project Roadmap</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../proposals/index.html">8. Numba Enhancement Proposals</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../glossary.html">9. Glossary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../release-notes.html">10. Release Notes</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Numba</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content style-external-links">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="index.html">7. Developer Manual</a> &raquo;</li>
+        
+      <li>7.4. Polymorphic dispatching</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/developer/dispatching.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="polymorphic-dispatching">
+<h1>7.4. Polymorphic dispatching<a class="headerlink" href="#polymorphic-dispatching" title="Permalink to this headline">¶</a></h1>
+<p>Functions compiled using <a class="reference internal" href="../reference/jit-compilation.html#numba.jit" title="numba.jit"><code class="xref py py-func docutils literal notranslate"><span class="pre">jit()</span></code></a> or <a class="reference internal" href="../reference/jit-compilation.html#numba.vectorize" title="numba.vectorize"><code class="xref py py-func docutils literal notranslate"><span class="pre">vectorize()</span></code></a>
+are open-ended: they can be called with many different input types and
+have to select (possibly compile on-the-fly) the right low-level
+specialization.  We hereby explain how this mechanism is implemented.</p>
+<div class="section" id="requirements">
+<h2>7.4.1. Requirements<a class="headerlink" href="#requirements" title="Permalink to this headline">¶</a></h2>
+<p>JIT-compiled functions can take several arguments and each of them is
+taken into account when selecting a specialization.  Thus it is a
+form of multiple dispatch, more complex than single dispatch.</p>
+<p>Each argument weighs in the selection based on its <a class="reference internal" href="../reference/types.html#numba-types"><span class="std std-ref">Numba type</span></a>.  Numba types are often more granular than Python types:
+for example, Numba types Numpy arrays differently depending on their
+dimensionality and their layout (C-contiguous, etc.).</p>
+<p>Once a Numba type is inferred for each argument, a specialization must
+be chosen amongst the available ones; or, if not suitable specialization
+is found, a new one must be compiled.  This is not a trivial decision:
+there can be multiple specializations compatible with a given concrete
+signature (for example, say a two-argument function has compiled
+specializations for <code class="docutils literal notranslate"><span class="pre">(float64,</span> <span class="pre">float64)</span></code> and <code class="docutils literal notranslate"><span class="pre">(complex64,</span> <span class="pre">complex64)</span></code>,
+and it is called with <code class="docutils literal notranslate"><span class="pre">(float32,</span> <span class="pre">float32)</span></code>).</p>
+<p>Therefore, there are two crucial steps in the dispatch mechanism:</p>
+<ol class="arabic simple">
+<li><p>infer the Numba types of the concrete arguments</p></li>
+<li><p>select the best available specialization (or choose to compile a new one)
+for the inferred Numba types</p></li>
+</ol>
+<div class="section" id="compile-time-vs-run-time">
+<h3>7.4.1.1. Compile-time vs. run-time<a class="headerlink" href="#compile-time-vs-run-time" title="Permalink to this headline">¶</a></h3>
+<p>This document discusses dispatching when it is done at runtime, i.e.
+when a JIT-compiled function is called from pure Python.  In that context,
+performance is important.  To stay in the realm of normal function call
+overhead in Python, the overhead of dispatching should stay under a
+microsecond.  Of course, <em>the faster the better</em>…</p>
+<p>When a JIT-compiled function is called from another JIT-compiled
+function (in <a class="reference internal" href="../glossary.html#term-nopython-mode"><span class="xref std std-term">nopython mode</span></a>), the polymorphism is resolved at
+compile-time, using a non-performance critical mechanism, bearing zero
+runtime performance overhead.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>In practice, the performance-critical parts described here are coded in C.</p>
+</div>
+</div>
+</div>
+<div class="section" id="type-resolution">
+<h2>7.4.2. Type resolution<a class="headerlink" href="#type-resolution" title="Permalink to this headline">¶</a></h2>
+<p>The first step is therefore to infer, at call-time, a Numba type for each
+of the function’s concrete arguments.  Given the finer granularity of
+Numba types compared to Python types, one cannot simply lookup an object’s
+class and key a dictionary with it to obtain the corresponding Numba type.</p>
+<p>Instead, there is a machinery to inspect the object and, based on its
+Python type, query various properties to infer the appropriate Numba
+type.  This can be more or less complex: for example, a Python <code class="docutils literal notranslate"><span class="pre">int</span></code>
+argument will always infer to a Numba <code class="docutils literal notranslate"><span class="pre">intp</span></code> (a pointer-sized integer),
+but a Python <code class="docutils literal notranslate"><span class="pre">tuple</span></code> argument can infer to multiple Numba types (depending
+on the tuple’s size and the concrete type of each of its elements).</p>
+<p>The Numba type system is high-level and written in pure Python; there is
+a pure Python machinery, based on a generic function, to do said inference
+(in <code class="xref py py-mod docutils literal notranslate"><span class="pre">numba.typing.typeof</span></code>).  That machinery is used for compile-time
+inference, e.g. on constants.  Unfortunately, it is too slow for run-time
+value-based dispatching.  It is only used as a fallback for rarely used
+(or difficult to infer) types, and exhibits multiple-microsecond overhead.</p>
+<div class="section" id="typecodes">
+<h3>7.4.2.1. Typecodes<a class="headerlink" href="#typecodes" title="Permalink to this headline">¶</a></h3>
+<p>The Numba type system is really too high-level to be manipulated efficiently
+from C code.  Therefore, the C dispatching layer uses another representation
+based on integer typecodes.  Each Numba type gets a unique integer typecode
+when constructed; also, an interning system ensure no two instances of same
+type are created.  The dispatching layer is therefore able to <em>eschew</em>
+the overhead of the Numba type system by working with simple integer
+typecodes, amenable to well-known optimizations (fast hash tables, etc.).</p>
+<p>The goal of the type resolution step becomes: infer a Numba <em>typecode</em>
+for each of the function’s concrete arguments.  Ideally, it doesn’t deal
+with Numba types anymore…</p>
+</div>
+<div class="section" id="hard-coded-fast-paths">
+<h3>7.4.2.2. Hard-coded fast paths<a class="headerlink" href="#hard-coded-fast-paths" title="Permalink to this headline">¶</a></h3>
+<p>While eschewing the abstraction and object-orientation overhead of the type
+system, the integer typecodes still have the same conceptual complexity.
+Therefore, an important technique to speed up inference is to first go
+through checks for the most important types, and hard-code a fast resolution
+for each of them.</p>
+<p>Several types benefit from such an optimization, notably:</p>
+<ul class="simple">
+<li><p>basic Python scalars (<code class="docutils literal notranslate"><span class="pre">bool</span></code>, <code class="docutils literal notranslate"><span class="pre">int</span></code>, <code class="docutils literal notranslate"><span class="pre">float</span></code>, <code class="docutils literal notranslate"><span class="pre">complex</span></code>);</p></li>
+<li><p>basic Numpy scalars (the various kinds of integer, floating-point,
+complex numbers);</p></li>
+<li><p>Numpy arrays of certain dimensionalities and basic element types.</p></li>
+</ul>
+<p>Each of those fast paths ideally uses a hard-coded result value or a direct
+table lookup after a few simple checks.</p>
+<p>However, we can’t apply that technique to all argument types; there would
+be an explosion of ad-hoc internal caches, and it would become difficult to
+maintain.  Besides, the recursive application of hard-coded fast paths
+would not necessarily combine into a low overhead (in the nested tuple
+case, for example).</p>
+</div>
+<div class="section" id="fingerprint-based-typecode-cache">
+<h3>7.4.2.3. Fingerprint-based typecode cache<a class="headerlink" href="#fingerprint-based-typecode-cache" title="Permalink to this headline">¶</a></h3>
+<p>For non-so-trivial types (imagine a tuple, or a Numpy <code class="docutils literal notranslate"><span class="pre">datetime64</span></code> array,
+for example), the hard-coded fast paths don’t match.  Another mechanism
+then kicks in, more generic.</p>
+<p>The principle here is to examine each argument value, as the pure Python
+machinery would do, and to describe its Numba type unambiguously.  The
+difference is that <em>we don’t actually compute a Numba type</em>.  Instead, we
+compute a simple bytestring, a low-level possible denotation of that
+Numba type: a <em>fingerprint</em>.  The fingerprint format is designed to be
+short and extremely simple to compute from C code (in practice, it has
+a bytecode-like format).</p>
+<p>Once the fingerprint is computed, it is looked up in a cache mapping
+fingerprints to typecodes.  The cache is a hash table, and the lookup
+is fast thanks to the fingerprints being generally very short (rarely
+more than 20 bytes).</p>
+<p>If the cache lookup fails, the typecode must first be computed using the
+slow pure Python machinery.  Luckily, this would only happen once: on
+subsequent calls, the cached typecode would be returned for the given
+fingerprint.</p>
+<p>In rare cases, a fingerprint cannot be computed efficiently.  This is
+the case for some types which cannot be easily inspected from C: for
+example <code class="docutils literal notranslate"><span class="pre">cffi</span></code> function pointers.  Then, the slow Pure Python machinery
+is invoked at each function call with such an argument.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Two fingerprints may denote a single Numba type.  This does not make
+the mechanism incorrect; it only creates more cache entries.</p>
+</div>
+</div>
+<div class="section" id="summary">
+<h3>7.4.2.4. Summary<a class="headerlink" href="#summary" title="Permalink to this headline">¶</a></h3>
+<p>Type resolution of a function argument involves the following mechanisms
+in order:</p>
+<ul class="simple">
+<li><p>Try a few hard-coded fast paths, for common simple types.</p></li>
+<li><p>If the above failed, compute a fingerprint for the argument and lookup
+its typecode in a cache.</p></li>
+<li><p>If all the above failed, invoke the pure Python machinery which will
+determine a Numba type for the argument (and look up its typecode).</p></li>
+</ul>
+</div>
+</div>
+<div class="section" id="specialization-selection">
+<h2>7.4.3. Specialization selection<a class="headerlink" href="#specialization-selection" title="Permalink to this headline">¶</a></h2>
+<p>At the previous step, an integer typecode has been determined for each
+concrete argument to the JIT-compiled function.  Now it remains to match
+that concrete signature against each of the available specializations for
+the function.  There can be three outcomes:</p>
+<ul class="simple">
+<li><p>There is a satisfying best match: the corresponding specialization
+is then invoked (it will handle argument unboxing and other details).</p></li>
+<li><p>There is a tie between two or more “best matches”: an exception is raised,
+refusing to solve the ambiguity.</p></li>
+<li><p>There is no satisfying match: a new specialization is compiled tailored
+for the concrete argument types that were inferred.</p></li>
+</ul>
+<p>The selection works by looping over all available specializations, and
+computing the compatibility of each concrete argument type with the
+corresponding type in the specialization’s intended signature.  Specifically,
+we are interested in:</p>
+<ol class="arabic simple">
+<li><p>Whether the concrete argument type is allowed to convert implicitly to
+the specialization’s argument type;</p></li>
+<li><p>If so, at what semantic (user-visible) cost the conversion comes.</p></li>
+</ol>
+<div class="section" id="implicit-conversion-rules">
+<h3>7.4.3.1. Implicit conversion rules<a class="headerlink" href="#implicit-conversion-rules" title="Permalink to this headline">¶</a></h3>
+<p>There are five possible kinds of implicit conversion from a source type
+to a destination type (note this is an asymmetric relationship):</p>
+<ol class="arabic simple">
+<li><p><em>exact match</em>: the two types are identical; this is the ideal case,
+since the specialization would behave exactly as intended;</p></li>
+<li><p><em>same-kind promotion</em>: the two types belong to the same “kind” (for
+example <code class="docutils literal notranslate"><span class="pre">int32</span></code> and <code class="docutils literal notranslate"><span class="pre">int64</span></code> are two integer types), and the source
+type can be converted losslessly to the destination type (e.g. from
+<code class="docutils literal notranslate"><span class="pre">int32</span></code> to <code class="docutils literal notranslate"><span class="pre">int64</span></code>, but not the reverse);</p></li>
+<li><p><em>safe conversion</em>: the two types belong to different kinds, but the
+source type can be reasonably converted to the destination type
+(e.g. from <code class="docutils literal notranslate"><span class="pre">int32</span></code> to <code class="docutils literal notranslate"><span class="pre">float64</span></code>, but not the reverse);</p></li>
+<li><p><em>unsafe conversion</em>: a conversion is available from the source type
+to the destination type, but it may lose precision, magnitude, or
+another desirable quality.</p></li>
+<li><p><em>no conversion</em>: there is no correct or reasonably efficient way to
+convert between the two types (for example between an <code class="docutils literal notranslate"><span class="pre">int64</span></code> and a
+<code class="docutils literal notranslate"><span class="pre">datetime64</span></code>, or a C-contiguous array and a Fortran-contiguous array).</p></li>
+</ol>
+<p>When a specialization is examined, the latter two cases eliminate it from
+the final choice: i.e. when at least one argument has <em>no conversion</em> or
+only an <em>unsafe conversion</em> to the signature’s argument type.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>However, if the function is compiled with explicit signatures
+in the <a class="reference internal" href="../reference/jit-compilation.html#numba.jit" title="numba.jit"><code class="xref py py-func docutils literal notranslate"><span class="pre">jit()</span></code></a> call (and therefore it is not allowed to compile
+new specializations), <em>unsafe conversion</em> is allowed.</p>
+</div>
+</div>
+<div class="section" id="candidates-and-best-match">
+<h3>7.4.3.2. Candidates and best match<a class="headerlink" href="#candidates-and-best-match" title="Permalink to this headline">¶</a></h3>
+<p>If a specialization is not eliminated by the rule above, it enters the
+list of <em>candidates</em> for the final choice.  Those candidates are ranked
+by an ordered 4-uple of integers: <code class="docutils literal notranslate"><span class="pre">(number</span> <span class="pre">of</span> <span class="pre">unsafe</span> <span class="pre">conversions,</span>
+<span class="pre">number</span> <span class="pre">of</span> <span class="pre">safe</span> <span class="pre">conversions,</span> <span class="pre">number</span> <span class="pre">of</span> <span class="pre">same-kind</span> <span class="pre">promotions,</span> <span class="pre">number</span> <span class="pre">of</span>
+<span class="pre">exact</span> <span class="pre">matches)</span></code> (note the sum of the tuple’s elements is equal to the
+number of arguments).  The best match is then the #1 result in sorted
+ascending order, thereby preferring exact matches over promotions,
+promotions over safe conversions, safe conversions over unsafe conversions.</p>
+</div>
+<div class="section" id="implementation">
+<h3>7.4.3.3. Implementation<a class="headerlink" href="#implementation" title="Permalink to this headline">¶</a></h3>
+<p>The above-described mechanism works on integer typecodes, not on Numba
+types.  It uses an internal hash table storing the possible conversion
+kind for each pair of compatible types.  The internal hash table is in part
+built at startup (for built-in trivial types such as <code class="docutils literal notranslate"><span class="pre">int32</span></code>, <code class="docutils literal notranslate"><span class="pre">int64</span></code>
+etc.), in part filled dynamically (for arbitrarily complex types such
+as array types: for example to allow using a C-contiguous 2D array where
+a function expects a non-contiguous 2D array).</p>
+</div>
+<div class="section" id="id1">
+<h3>7.4.3.4. Summary<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
+<p>Selecting the right specialization involves the following steps:</p>
+<ul class="simple">
+<li><p>Examine each available specialization and match it against the concrete
+argument types.</p></li>
+<li><p>Eliminate any specialization where at least one argument doesn’t offer
+sufficient compatibility.</p></li>
+<li><p>If there are remaining candidates, choose the best one in terms of
+preserving the types’ semantics.</p></li>
+</ul>
+</div>
+</div>
+<div class="section" id="miscellaneous">
+<h2>7.4.4. Miscellaneous<a class="headerlink" href="#miscellaneous" title="Permalink to this headline">¶</a></h2>
+<p>Some <a class="reference external" href="https://github.com/numba/numba-benchmark/blob/master/benchmarks/bench_dispatch.py">benchmarks of dispatch performance</a>
+exist in the <a class="reference external" href="https://github.com/numba/numba-benchmark">Numba benchmarks</a>
+repository.</p>
+<p>Some unit tests of specific aspects of the machinery are available
+in <code class="xref py py-mod docutils literal notranslate"><span class="pre">numba.tests.test_typeinfer</span></code> and <code class="xref py py-mod docutils literal notranslate"><span class="pre">numba.tests.test_typeof</span></code>.
+Higher-level dispatching tests are in <code class="xref py py-mod docutils literal notranslate"><span class="pre">numba.tests.test_dispatcher</span></code>.</p>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="generators.html" class="btn btn-neutral float-right" title="7.5. Notes on generators" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="architecture.html" class="btn btn-neutral float-left" title="7.3. Numba architecture" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2012-2020, Anaconda, Inc. and others
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>
