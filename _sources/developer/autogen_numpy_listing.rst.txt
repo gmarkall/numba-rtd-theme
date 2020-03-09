@@ -7,7 +7,7 @@ numpy
 .. function:: numpy.all
 
 
-   - defined by ``np_all(a)`` at `numba/np/arraymath.py:631-640 <https://github.com/numba/numba/blob/3a659b2578e95d07f62fbe2f5d10316e17486109/numba/np/arraymath.py#L631-L640>`_
+   - defined by ``np_all(a)`` at `numba/np/arraymath.py:631-640 <https://github.com/numba/numba/blob/a41f4317f9169e42443bf32d433025552bdb562a/numba/np/arraymath.py#L631-L640>`_
 
 .. function:: numpy.amax
 
@@ -27,17 +27,17 @@ numpy
 .. function:: numpy.any
 
 
-   - defined by ``np_any(a)`` at `numba/np/arraymath.py:643-652 <https://github.com/numba/numba/blob/3a659b2578e95d07f62fbe2f5d10316e17486109/numba/np/arraymath.py#L643-L652>`_
+   - defined by ``np_any(a)`` at `numba/np/arraymath.py:643-652 <https://github.com/numba/numba/blob/a41f4317f9169e42443bf32d433025552bdb562a/numba/np/arraymath.py#L643-L652>`_
 
 .. function:: numpy.append
 
 
-   - defined by ``np_append(arr, values, axis=None)`` at `numba/np/arrayobj.py:1709-1732 <https://github.com/numba/numba/blob/3a659b2578e95d07f62fbe2f5d10316e17486109/numba/np/arrayobj.py#L1709-L1732>`_
+   - defined by ``np_append(arr, values, axis=None)`` at `numba/np/arrayobj.py:1709-1732 <https://github.com/numba/numba/blob/a41f4317f9169e42443bf32d433025552bdb562a/numba/np/arrayobj.py#L1709-L1732>`_
 
 .. function:: numpy.arange
 
 
-   - defined by ``np_arange(start, stop=None, step=None, dtype=None)`` at `numba/np/arrayobj.py:3842-3908 <https://github.com/numba/numba/blob/3a659b2578e95d07f62fbe2f5d10316e17486109/numba/np/arrayobj.py#L3842-L3908>`_
+   - defined by ``np_arange(start, stop=None, step=None, dtype=None)`` at `numba/np/arrayobj.py:3842-3908 <https://github.com/numba/numba/blob/a41f4317f9169e42443bf32d433025552bdb562a/numba/np/arrayobj.py#L3842-L3908>`_
 
 .. function:: numpy.argmax
 
@@ -57,7 +57,7 @@ numpy
 .. function:: numpy.argwhere
 
 
-   - defined by ``np_argwhere(a)`` at `numba/np/arraymath.py:2643-2657 <https://github.com/numba/numba/blob/3a659b2578e95d07f62fbe2f5d10316e17486109/numba/np/arraymath.py#L2643-L2657>`_
+   - defined by ``np_argwhere(a)`` at `numba/np/arraymath.py:2643-2657 <https://github.com/numba/numba/blob/a41f4317f9169e42443bf32d433025552bdb562a/numba/np/arraymath.py#L2643-L2657>`_
 
 .. function:: numpy.around
 
@@ -72,12 +72,12 @@ numpy
 .. function:: numpy.array_equal
 
 
-   - defined by ``np_array_equal(a, b)`` at `numba/np/arraymath.py:3249-3268 <https://github.com/numba/numba/blob/3a659b2578e95d07f62fbe2f5d10316e17486109/numba/np/arraymath.py#L3249-L3268>`_
+   - defined by ``np_array_equal(a, b)`` at `numba/np/arraymath.py:3249-3268 <https://github.com/numba/numba/blob/a41f4317f9169e42443bf32d433025552bdb562a/numba/np/arraymath.py#L3249-L3268>`_
 
 .. function:: numpy.asarray
 
 
-   - defined by ``np_asarray(a, dtype=None)`` at `numba/np/arraymath.py:3848-3881 <https://github.com/numba/numba/blob/3a659b2578e95d07f62fbe2f5d10316e17486109/numba/np/arraymath.py#L3848-L3881>`_
+   - defined by ``np_asarray(a, dtype=None)`` at `numba/np/arraymath.py:3848-3881 <https://github.com/numba/numba/blob/a41f4317f9169e42443bf32d433025552bdb562a/numba/np/arraymath.py#L3848-L3881>`_
 
 .. function:: numpy.ascontiguousarray
 
@@ -107,17 +107,17 @@ numpy
 .. function:: numpy.bartlett
 
 
-   - defined by ``window_generator.<locals>.window_overload(M)`` at `numba/np/arraymath.py:3994-4006 <https://github.com/numba/numba/blob/3a659b2578e95d07f62fbe2f5d10316e17486109/numba/np/arraymath.py#L3994-L4006>`_
+   - defined by ``window_generator.<locals>.window_overload(M)`` at `numba/np/arraymath.py:3994-4006 <https://github.com/numba/numba/blob/a41f4317f9169e42443bf32d433025552bdb562a/numba/np/arraymath.py#L3994-L4006>`_
 
 .. function:: numpy.bincount
 
 
-   - defined by ``np_bincount(a, weights=None)`` at `numba/np/arraymath.py:3281-3330 <https://github.com/numba/numba/blob/3a659b2578e95d07f62fbe2f5d10316e17486109/numba/np/arraymath.py#L3281-L3330>`_
+   - defined by ``np_bincount(a, weights=None)`` at `numba/np/arraymath.py:3281-3330 <https://github.com/numba/numba/blob/a41f4317f9169e42443bf32d433025552bdb562a/numba/np/arraymath.py#L3281-L3330>`_
 
 .. function:: numpy.blackman
 
 
-   - defined by ``window_generator.<locals>.window_overload(M)`` at `numba/np/arraymath.py:3994-4006 <https://github.com/numba/numba/blob/3a659b2578e95d07f62fbe2f5d10316e17486109/numba/np/arraymath.py#L3994-L4006>`_
+   - defined by ``window_generator.<locals>.window_overload(M)`` at `numba/np/arraymath.py:3994-4006 <https://github.com/numba/numba/blob/a41f4317f9169e42443bf32d433025552bdb562a/numba/np/arraymath.py#L3994-L4006>`_
 
 .. function:: numpy.column_stack
 
@@ -132,7 +132,7 @@ numpy
 .. function:: numpy.convolve
 
 
-   - defined by ``np_convolve(a, v)`` at `numba/np/arraymath.py:3824-3845 <https://github.com/numba/numba/blob/3a659b2578e95d07f62fbe2f5d10316e17486109/numba/np/arraymath.py#L3824-L3845>`_
+   - defined by ``np_convolve(a, v)`` at `numba/np/arraymath.py:3824-3845 <https://github.com/numba/numba/blob/a41f4317f9169e42443bf32d433025552bdb562a/numba/np/arraymath.py#L3824-L3845>`_
 
 .. function:: numpy.copy
 
@@ -142,27 +142,27 @@ numpy
 .. function:: numpy.corrcoef
 
 
-   - defined by ``np_corrcoef(x, y=None, rowvar=True)`` at `numba/np/arraymath.py:2607-2637 <https://github.com/numba/numba/blob/3a659b2578e95d07f62fbe2f5d10316e17486109/numba/np/arraymath.py#L2607-L2637>`_
+   - defined by ``np_corrcoef(x, y=None, rowvar=True)`` at `numba/np/arraymath.py:2607-2637 <https://github.com/numba/numba/blob/a41f4317f9169e42443bf32d433025552bdb562a/numba/np/arraymath.py#L2607-L2637>`_
 
 .. function:: numpy.correlate
 
 
-   - defined by ``_np_correlate(a, v)`` at `numba/np/arraymath.py:3776-3821 <https://github.com/numba/numba/blob/3a659b2578e95d07f62fbe2f5d10316e17486109/numba/np/arraymath.py#L3776-L3821>`_
+   - defined by ``_np_correlate(a, v)`` at `numba/np/arraymath.py:3776-3821 <https://github.com/numba/numba/blob/a41f4317f9169e42443bf32d433025552bdb562a/numba/np/arraymath.py#L3776-L3821>`_
 
 .. function:: numpy.count_nonzero
 
 
-   - defined by ``np_count_nonzero(arr, axis=None)`` at `numba/np/arraymath.py:3142-3156 <https://github.com/numba/numba/blob/3a659b2578e95d07f62fbe2f5d10316e17486109/numba/np/arraymath.py#L3142-L3156>`_
+   - defined by ``np_count_nonzero(arr, axis=None)`` at `numba/np/arraymath.py:3142-3156 <https://github.com/numba/numba/blob/a41f4317f9169e42443bf32d433025552bdb562a/numba/np/arraymath.py#L3142-L3156>`_
 
 .. function:: numpy.cov
 
 
-   - defined by ``np_cov(m, y=None, rowvar=True, bias=False, ddof=None)`` at `numba/np/arraymath.py:2548-2604 <https://github.com/numba/numba/blob/3a659b2578e95d07f62fbe2f5d10316e17486109/numba/np/arraymath.py#L2548-L2604>`_
+   - defined by ``np_cov(m, y=None, rowvar=True, bias=False, ddof=None)`` at `numba/np/arraymath.py:2548-2604 <https://github.com/numba/numba/blob/a41f4317f9169e42443bf32d433025552bdb562a/numba/np/arraymath.py#L2548-L2604>`_
 
 .. function:: numpy.cross
 
 
-   - defined by ``np_cross(a, b)`` at `numba/np/arraymath.py:4175-4197 <https://github.com/numba/numba/blob/3a659b2578e95d07f62fbe2f5d10316e17486109/numba/np/arraymath.py#L4175-L4197>`_
+   - defined by ``np_cross(a, b)`` at `numba/np/arraymath.py:4175-4197 <https://github.com/numba/numba/blob/a41f4317f9169e42443bf32d433025552bdb562a/numba/np/arraymath.py#L4175-L4197>`_
 
 .. function:: numpy.cumprod
 
@@ -177,7 +177,7 @@ numpy
 .. function:: numpy.delete
 
 
-   - defined by ``np_delete(arr, obj)`` at `numba/np/arraymath.py:3163-3207 <https://github.com/numba/numba/blob/3a659b2578e95d07f62fbe2f5d10316e17486109/numba/np/arraymath.py#L3163-L3207>`_
+   - defined by ``np_delete(arr, obj)`` at `numba/np/arraymath.py:3163-3207 <https://github.com/numba/numba/blob/a41f4317f9169e42443bf32d433025552bdb562a/numba/np/arraymath.py#L3163-L3207>`_
 
 .. function:: numpy.diag
 
@@ -187,12 +187,12 @@ numpy
 .. function:: numpy.diff
 
 
-   - defined by ``np_diff_impl(a, n=1)`` at `numba/np/arraymath.py:3210-3246 <https://github.com/numba/numba/blob/3a659b2578e95d07f62fbe2f5d10316e17486109/numba/np/arraymath.py#L3210-L3246>`_
+   - defined by ``np_diff_impl(a, n=1)`` at `numba/np/arraymath.py:3210-3246 <https://github.com/numba/numba/blob/a41f4317f9169e42443bf32d433025552bdb562a/numba/np/arraymath.py#L3210-L3246>`_
 
 .. function:: numpy.digitize
 
 
-   - defined by ``np_digitize(x, bins, right=False)`` at `numba/np/arraymath.py:3398-3524 <https://github.com/numba/numba/blob/3a659b2578e95d07f62fbe2f5d10316e17486109/numba/np/arraymath.py#L3398-L3524>`_
+   - defined by ``np_digitize(x, bins, right=False)`` at `numba/np/arraymath.py:3398-3524 <https://github.com/numba/numba/blob/a41f4317f9169e42443bf32d433025552bdb562a/numba/np/arraymath.py#L3398-L3524>`_
 
 .. function:: numpy.dot
 
@@ -207,7 +207,7 @@ numpy
 .. function:: numpy.ediff1d
 
 
-   - defined by ``np_ediff1d(ary, to_end=None, to_begin=None)`` at `numba/np/arraymath.py:1596-1651 <https://github.com/numba/numba/blob/3a659b2578e95d07f62fbe2f5d10316e17486109/numba/np/arraymath.py#L1596-L1651>`_
+   - defined by ``np_ediff1d(ary, to_end=None, to_begin=None)`` at `numba/np/arraymath.py:1596-1651 <https://github.com/numba/numba/blob/a41f4317f9169e42443bf32d433025552bdb562a/numba/np/arraymath.py#L1596-L1651>`_
 
 .. function:: numpy.empty
 
@@ -227,37 +227,37 @@ numpy
 .. function:: numpy.extract
 
 
-   - defined by ``np_extract(condition, arr)`` at `numba/np/arraymath.py:3884-3907 <https://github.com/numba/numba/blob/3a659b2578e95d07f62fbe2f5d10316e17486109/numba/np/arraymath.py#L3884-L3907>`_
+   - defined by ``np_extract(condition, arr)`` at `numba/np/arraymath.py:3884-3907 <https://github.com/numba/numba/blob/a41f4317f9169e42443bf32d433025552bdb562a/numba/np/arraymath.py#L3884-L3907>`_
 
 .. function:: numpy.eye
 
 
-   - defined by ``numpy_eye(N, M=None, k=0, dtype=<class 'float'>)`` at `numba/np/arrayobj.py:3681-3704 <https://github.com/numba/numba/blob/3a659b2578e95d07f62fbe2f5d10316e17486109/numba/np/arrayobj.py#L3681-L3704>`_
+   - defined by ``numpy_eye(N, M=None, k=0, dtype=<class 'float'>)`` at `numba/np/arrayobj.py:3681-3704 <https://github.com/numba/numba/blob/a41f4317f9169e42443bf32d433025552bdb562a/numba/np/arrayobj.py#L3681-L3704>`_
 
 .. function:: numpy.fill_diagonal
 
 
-   - defined by ``np_fill_diagonal(a, val, wrap=False)`` at `numba/np/arraymath.py:2762-2792 <https://github.com/numba/numba/blob/3a659b2578e95d07f62fbe2f5d10316e17486109/numba/np/arraymath.py#L2762-L2792>`_
+   - defined by ``np_fill_diagonal(a, val, wrap=False)`` at `numba/np/arraymath.py:2762-2792 <https://github.com/numba/numba/blob/a41f4317f9169e42443bf32d433025552bdb562a/numba/np/arraymath.py#L2762-L2792>`_
 
 .. function:: numpy.flatnonzero
 
 
-   - defined by ``np_flatnonzero(a)`` at `numba/np/arraymath.py:2660-2675 <https://github.com/numba/numba/blob/3a659b2578e95d07f62fbe2f5d10316e17486109/numba/np/arraymath.py#L2660-L2675>`_
+   - defined by ``np_flatnonzero(a)`` at `numba/np/arraymath.py:2660-2675 <https://github.com/numba/numba/blob/a41f4317f9169e42443bf32d433025552bdb562a/numba/np/arraymath.py#L2660-L2675>`_
 
 .. function:: numpy.flip
 
 
-   - defined by ``np_flip(a)`` at `numba/np/arrayobj.py:4953-4964 <https://github.com/numba/numba/blob/3a659b2578e95d07f62fbe2f5d10316e17486109/numba/np/arrayobj.py#L4953-L4964>`_
+   - defined by ``np_flip(a)`` at `numba/np/arrayobj.py:4953-4964 <https://github.com/numba/numba/blob/a41f4317f9169e42443bf32d433025552bdb562a/numba/np/arrayobj.py#L4953-L4964>`_
 
 .. function:: numpy.fliplr
 
 
-   - defined by ``np_flip_lr(a)`` at `numba/np/arrayobj.py:4891-4905 <https://github.com/numba/numba/blob/3a659b2578e95d07f62fbe2f5d10316e17486109/numba/np/arrayobj.py#L4891-L4905>`_
+   - defined by ``np_flip_lr(a)`` at `numba/np/arrayobj.py:4891-4905 <https://github.com/numba/numba/blob/a41f4317f9169e42443bf32d433025552bdb562a/numba/np/arrayobj.py#L4891-L4905>`_
 
 .. function:: numpy.flipud
 
 
-   - defined by ``np_flip_ud(a)`` at `numba/np/arrayobj.py:4908-4922 <https://github.com/numba/numba/blob/3a659b2578e95d07f62fbe2f5d10316e17486109/numba/np/arrayobj.py#L4908-L4922>`_
+   - defined by ``np_flip_ud(a)`` at `numba/np/arrayobj.py:4908-4922 <https://github.com/numba/numba/blob/a41f4317f9169e42443bf32d433025552bdb562a/numba/np/arrayobj.py#L4908-L4922>`_
 
 .. function:: numpy.frombuffer
 
@@ -277,17 +277,17 @@ numpy
 .. function:: numpy.hamming
 
 
-   - defined by ``window_generator.<locals>.window_overload(M)`` at `numba/np/arraymath.py:3994-4006 <https://github.com/numba/numba/blob/3a659b2578e95d07f62fbe2f5d10316e17486109/numba/np/arraymath.py#L3994-L4006>`_
+   - defined by ``window_generator.<locals>.window_overload(M)`` at `numba/np/arraymath.py:3994-4006 <https://github.com/numba/numba/blob/a41f4317f9169e42443bf32d433025552bdb562a/numba/np/arraymath.py#L3994-L4006>`_
 
 .. function:: numpy.hanning
 
 
-   - defined by ``window_generator.<locals>.window_overload(M)`` at `numba/np/arraymath.py:3994-4006 <https://github.com/numba/numba/blob/3a659b2578e95d07f62fbe2f5d10316e17486109/numba/np/arraymath.py#L3994-L4006>`_
+   - defined by ``window_generator.<locals>.window_overload(M)`` at `numba/np/arraymath.py:3994-4006 <https://github.com/numba/numba/blob/a41f4317f9169e42443bf32d433025552bdb562a/numba/np/arraymath.py#L3994-L4006>`_
 
 .. function:: numpy.histogram
 
 
-   - defined by ``np_histogram(a, bins=10, range=None)`` at `numba/np/arraymath.py:3530-3610 <https://github.com/numba/numba/blob/3a659b2578e95d07f62fbe2f5d10316e17486109/numba/np/arraymath.py#L3530-L3610>`_
+   - defined by ``np_histogram(a, bins=10, range=None)`` at `numba/np/arraymath.py:3530-3610 <https://github.com/numba/numba/blob/a41f4317f9169e42443bf32d433025552bdb562a/numba/np/arraymath.py#L3530-L3610>`_
 
 .. function:: numpy.hstack
 
@@ -302,22 +302,22 @@ numpy
 .. function:: numpy.imag
 
 
-   - defined by ``np_imag(a)`` at `numba/np/arraymath.py:3131-3136 <https://github.com/numba/numba/blob/3a659b2578e95d07f62fbe2f5d10316e17486109/numba/np/arraymath.py#L3131-L3136>`_
+   - defined by ``np_imag(a)`` at `numba/np/arraymath.py:3131-3136 <https://github.com/numba/numba/blob/a41f4317f9169e42443bf32d433025552bdb562a/numba/np/arraymath.py#L3131-L3136>`_
 
 .. function:: numpy.interp
 
 
-   - defined by ``np_interp(x, xp, fp)`` at `numba/np/arraymath.py:2299-2360 <https://github.com/numba/numba/blob/3a659b2578e95d07f62fbe2f5d10316e17486109/numba/np/arraymath.py#L2299-L2360>`_
+   - defined by ``np_interp(x, xp, fp)`` at `numba/np/arraymath.py:2299-2360 <https://github.com/numba/numba/blob/a41f4317f9169e42443bf32d433025552bdb562a/numba/np/arraymath.py#L2299-L2360>`_
 
 .. function:: numpy.kaiser
 
 
-   - defined by ``np_kaiser(M, beta)`` at `numba/np/arraymath.py:4112-4131 <https://github.com/numba/numba/blob/3a659b2578e95d07f62fbe2f5d10316e17486109/numba/np/arraymath.py#L4112-L4131>`_
+   - defined by ``np_kaiser(M, beta)`` at `numba/np/arraymath.py:4112-4131 <https://github.com/numba/numba/blob/a41f4317f9169e42443bf32d433025552bdb562a/numba/np/arraymath.py#L4112-L4131>`_
 
 .. function:: numpy.kron
 
 
-   - defined by ``kron_impl(a, b)`` at `numba/np/linalg.py:2726-2780 <https://github.com/numba/numba/blob/3a659b2578e95d07f62fbe2f5d10316e17486109/numba/np/linalg.py#L2726-L2780>`_
+   - defined by ``kron_impl(a, b)`` at `numba/np/linalg.py:2726-2780 <https://github.com/numba/numba/blob/a41f4317f9169e42443bf32d433025552bdb562a/numba/np/linalg.py#L2726-L2780>`_
 
 .. function:: numpy.linspace
 
@@ -338,7 +338,7 @@ numpy
 .. function:: numpy.median
 
 
-   - defined by ``np_median(a)`` at `numba/np/arraymath.py:1109-1121 <https://github.com/numba/numba/blob/3a659b2578e95d07f62fbe2f5d10316e17486109/numba/np/arraymath.py#L1109-L1121>`_
+   - defined by ``np_median(a)`` at `numba/np/arraymath.py:1109-1121 <https://github.com/numba/numba/blob/a41f4317f9169e42443bf32d433025552bdb562a/numba/np/arraymath.py#L1109-L1121>`_
 
 .. function:: numpy.min
 
@@ -349,62 +349,62 @@ numpy
 .. function:: numpy.nancumprod
 
 
-   - defined by ``np_nancumprod(a)`` at `numba/np/arraymath.py:855-877 <https://github.com/numba/numba/blob/3a659b2578e95d07f62fbe2f5d10316e17486109/numba/np/arraymath.py#L855-L877>`_
+   - defined by ``np_nancumprod(a)`` at `numba/np/arraymath.py:855-877 <https://github.com/numba/numba/blob/a41f4317f9169e42443bf32d433025552bdb562a/numba/np/arraymath.py#L855-L877>`_
 
 .. function:: numpy.nancumsum
 
 
-   - defined by ``np_nancumsum(a)`` at `numba/np/arraymath.py:880-902 <https://github.com/numba/numba/blob/3a659b2578e95d07f62fbe2f5d10316e17486109/numba/np/arraymath.py#L880-L902>`_
+   - defined by ``np_nancumsum(a)`` at `numba/np/arraymath.py:880-902 <https://github.com/numba/numba/blob/a41f4317f9169e42443bf32d433025552bdb562a/numba/np/arraymath.py#L880-L902>`_
 
 .. function:: numpy.nanmax
 
 
-   - defined by ``np_nanmax(a)`` at `numba/np/arraymath.py:746-752 <https://github.com/numba/numba/blob/3a659b2578e95d07f62fbe2f5d10316e17486109/numba/np/arraymath.py#L746-L752>`_
+   - defined by ``np_nanmax(a)`` at `numba/np/arraymath.py:746-752 <https://github.com/numba/numba/blob/a41f4317f9169e42443bf32d433025552bdb562a/numba/np/arraymath.py#L746-L752>`_
 
 .. function:: numpy.nanmean
 
 
-   - defined by ``np_nanmean(a)`` at `numba/np/arraymath.py:755-772 <https://github.com/numba/numba/blob/3a659b2578e95d07f62fbe2f5d10316e17486109/numba/np/arraymath.py#L755-L772>`_
+   - defined by ``np_nanmean(a)`` at `numba/np/arraymath.py:755-772 <https://github.com/numba/numba/blob/a41f4317f9169e42443bf32d433025552bdb562a/numba/np/arraymath.py#L755-L772>`_
 
 .. function:: numpy.nanmedian
 
 
-   - defined by ``np_nanmedian(a)`` at `numba/np/arraymath.py:1293-1315 <https://github.com/numba/numba/blob/3a659b2578e95d07f62fbe2f5d10316e17486109/numba/np/arraymath.py#L1293-L1315>`_
+   - defined by ``np_nanmedian(a)`` at `numba/np/arraymath.py:1293-1315 <https://github.com/numba/numba/blob/a41f4317f9169e42443bf32d433025552bdb562a/numba/np/arraymath.py#L1293-L1315>`_
 
 .. function:: numpy.nanmin
 
 
-   - defined by ``np_nanmin(a)`` at `numba/np/arraymath.py:737-743 <https://github.com/numba/numba/blob/3a659b2578e95d07f62fbe2f5d10316e17486109/numba/np/arraymath.py#L737-L743>`_
+   - defined by ``np_nanmin(a)`` at `numba/np/arraymath.py:737-743 <https://github.com/numba/numba/blob/a41f4317f9169e42443bf32d433025552bdb562a/numba/np/arraymath.py#L737-L743>`_
 
 .. function:: numpy.nanpercentile
 
 
-   - defined by ``np_nanpercentile(a, q)`` at `numba/np/arraymath.py:1272-1276 <https://github.com/numba/numba/blob/3a659b2578e95d07f62fbe2f5d10316e17486109/numba/np/arraymath.py#L1272-L1276>`_
+   - defined by ``np_nanpercentile(a, q)`` at `numba/np/arraymath.py:1272-1276 <https://github.com/numba/numba/blob/a41f4317f9169e42443bf32d433025552bdb562a/numba/np/arraymath.py#L1272-L1276>`_
 
 .. function:: numpy.nanprod
 
 
-   - defined by ``np_nanprod(a)`` at `numba/np/arraymath.py:833-852 <https://github.com/numba/numba/blob/3a659b2578e95d07f62fbe2f5d10316e17486109/numba/np/arraymath.py#L833-L852>`_
+   - defined by ``np_nanprod(a)`` at `numba/np/arraymath.py:833-852 <https://github.com/numba/numba/blob/a41f4317f9169e42443bf32d433025552bdb562a/numba/np/arraymath.py#L833-L852>`_
 
 .. function:: numpy.nanquantile
 
 
-   - defined by ``np_nanquantile(a, q)`` at `numba/np/arraymath.py:1286-1290 <https://github.com/numba/numba/blob/3a659b2578e95d07f62fbe2f5d10316e17486109/numba/np/arraymath.py#L1286-L1290>`_
+   - defined by ``np_nanquantile(a, q)`` at `numba/np/arraymath.py:1286-1290 <https://github.com/numba/numba/blob/a41f4317f9169e42443bf32d433025552bdb562a/numba/np/arraymath.py#L1286-L1290>`_
 
 .. function:: numpy.nanstd
 
 
-   - defined by ``np_nanstd(a)`` at `numba/np/arraymath.py:800-808 <https://github.com/numba/numba/blob/3a659b2578e95d07f62fbe2f5d10316e17486109/numba/np/arraymath.py#L800-L808>`_
+   - defined by ``np_nanstd(a)`` at `numba/np/arraymath.py:800-808 <https://github.com/numba/numba/blob/a41f4317f9169e42443bf32d433025552bdb562a/numba/np/arraymath.py#L800-L808>`_
 
 .. function:: numpy.nansum
 
 
-   - defined by ``np_nansum(a)`` at `numba/np/arraymath.py:811-830 <https://github.com/numba/numba/blob/3a659b2578e95d07f62fbe2f5d10316e17486109/numba/np/arraymath.py#L811-L830>`_
+   - defined by ``np_nansum(a)`` at `numba/np/arraymath.py:811-830 <https://github.com/numba/numba/blob/a41f4317f9169e42443bf32d433025552bdb562a/numba/np/arraymath.py#L811-L830>`_
 
 .. function:: numpy.nanvar
 
 
-   - defined by ``np_nanvar(a)`` at `numba/np/arraymath.py:775-797 <https://github.com/numba/numba/blob/3a659b2578e95d07f62fbe2f5d10316e17486109/numba/np/arraymath.py#L775-L797>`_
+   - defined by ``np_nanvar(a)`` at `numba/np/arraymath.py:775-797 <https://github.com/numba/numba/blob/a41f4317f9169e42443bf32d433025552bdb562a/numba/np/arraymath.py#L775-L797>`_
 
 .. function:: numpy.nonzero
 
@@ -424,17 +424,17 @@ numpy
 .. function:: numpy.outer
 
 
-   - defined by ``outer_impl(a, b, out=None)`` at `numba/np/linalg.py:2649-2660 <https://github.com/numba/numba/blob/3a659b2578e95d07f62fbe2f5d10316e17486109/numba/np/linalg.py#L2649-L2660>`_
+   - defined by ``outer_impl(a, b, out=None)`` at `numba/np/linalg.py:2649-2660 <https://github.com/numba/numba/blob/a41f4317f9169e42443bf32d433025552bdb562a/numba/np/linalg.py#L2649-L2660>`_
 
 .. function:: numpy.partition
 
 
-   - defined by ``np_partition(a, kth)`` at `numba/np/arraymath.py:1374-1396 <https://github.com/numba/numba/blob/3a659b2578e95d07f62fbe2f5d10316e17486109/numba/np/arraymath.py#L1374-L1396>`_
+   - defined by ``np_partition(a, kth)`` at `numba/np/arraymath.py:1374-1396 <https://github.com/numba/numba/blob/a41f4317f9169e42443bf32d433025552bdb562a/numba/np/arraymath.py#L1374-L1396>`_
 
 .. function:: numpy.percentile
 
 
-   - defined by ``np_percentile(a, q)`` at `numba/np/arraymath.py:1265-1269 <https://github.com/numba/numba/blob/3a659b2578e95d07f62fbe2f5d10316e17486109/numba/np/arraymath.py#L1265-L1269>`_
+   - defined by ``np_percentile(a, q)`` at `numba/np/arraymath.py:1265-1269 <https://github.com/numba/numba/blob/a41f4317f9169e42443bf32d433025552bdb562a/numba/np/arraymath.py#L1265-L1269>`_
 
 .. function:: numpy.prod
 
@@ -444,12 +444,12 @@ numpy
 .. function:: numpy.ptp
 
 
-   - defined by ``np_ptp(a)`` at `numba/np/arraymath.py:964-989 <https://github.com/numba/numba/blob/3a659b2578e95d07f62fbe2f5d10316e17486109/numba/np/arraymath.py#L964-L989>`_
+   - defined by ``np_ptp(a)`` at `numba/np/arraymath.py:964-989 <https://github.com/numba/numba/blob/a41f4317f9169e42443bf32d433025552bdb562a/numba/np/arraymath.py#L964-L989>`_
 
 .. function:: numpy.quantile
 
 
-   - defined by ``np_quantile(a, q)`` at `numba/np/arraymath.py:1279-1283 <https://github.com/numba/numba/blob/3a659b2578e95d07f62fbe2f5d10316e17486109/numba/np/arraymath.py#L1279-L1283>`_
+   - defined by ``np_quantile(a, q)`` at `numba/np/arraymath.py:1279-1283 <https://github.com/numba/numba/blob/a41f4317f9169e42443bf32d433025552bdb562a/numba/np/arraymath.py#L1279-L1283>`_
 
 .. function:: numpy.ravel
 
@@ -459,27 +459,27 @@ numpy
 .. function:: numpy.real
 
 
-   - defined by ``np_real(a)`` at `numba/np/arraymath.py:3123-3128 <https://github.com/numba/numba/blob/3a659b2578e95d07f62fbe2f5d10316e17486109/numba/np/arraymath.py#L3123-L3128>`_
+   - defined by ``np_real(a)`` at `numba/np/arraymath.py:3123-3128 <https://github.com/numba/numba/blob/a41f4317f9169e42443bf32d433025552bdb562a/numba/np/arraymath.py#L3123-L3128>`_
 
 .. function:: numpy.repeat
 
 
-   - defined by ``np_repeat(a, repeats)`` at `numba/np/arrayobj.py:1925-1967 <https://github.com/numba/numba/blob/3a659b2578e95d07f62fbe2f5d10316e17486109/numba/np/arrayobj.py#L1925-L1967>`_
+   - defined by ``np_repeat(a, repeats)`` at `numba/np/arrayobj.py:1925-1967 <https://github.com/numba/numba/blob/a41f4317f9169e42443bf32d433025552bdb562a/numba/np/arrayobj.py#L1925-L1967>`_
 
 .. function:: numpy.reshape
 
 
-   - defined by ``np_reshape(a, shape)`` at `numba/np/arrayobj.py:1702-1706 <https://github.com/numba/numba/blob/3a659b2578e95d07f62fbe2f5d10316e17486109/numba/np/arrayobj.py#L1702-L1706>`_
+   - defined by ``np_reshape(a, shape)`` at `numba/np/arrayobj.py:1702-1706 <https://github.com/numba/numba/blob/a41f4317f9169e42443bf32d433025552bdb562a/numba/np/arrayobj.py#L1702-L1706>`_
 
 .. function:: numpy.roll
 
 
-   - defined by ``np_roll(a, shift)`` at `numba/np/arraymath.py:1786-1806 <https://github.com/numba/numba/blob/3a659b2578e95d07f62fbe2f5d10316e17486109/numba/np/arraymath.py#L1786-L1806>`_
+   - defined by ``np_roll(a, shift)`` at `numba/np/arraymath.py:1786-1806 <https://github.com/numba/numba/blob/a41f4317f9169e42443bf32d433025552bdb562a/numba/np/arraymath.py#L1786-L1806>`_
 
 .. function:: numpy.roots
 
 
-   - defined by ``roots_impl(p)`` at `numba/np/polynomial.py:14-59 <https://github.com/numba/numba/blob/3a659b2578e95d07f62fbe2f5d10316e17486109/numba/np/polynomial.py#L14-L59>`_
+   - defined by ``roots_impl(p)`` at `numba/np/polynomial.py:14-59 <https://github.com/numba/numba/blob/a41f4317f9169e42443bf32d433025552bdb562a/numba/np/polynomial.py#L14-L59>`_
 
 .. function:: numpy.round
 
@@ -500,17 +500,17 @@ numpy
 .. function:: numpy.searchsorted
 
 
-   - defined by ``searchsorted(a, v, side='left')`` at `numba/np/arraymath.py:3363-3395 <https://github.com/numba/numba/blob/3a659b2578e95d07f62fbe2f5d10316e17486109/numba/np/arraymath.py#L3363-L3395>`_
+   - defined by ``searchsorted(a, v, side='left')`` at `numba/np/arraymath.py:3363-3395 <https://github.com/numba/numba/blob/a41f4317f9169e42443bf32d433025552bdb562a/numba/np/arraymath.py#L3363-L3395>`_
 
 .. function:: numpy.select
 
 
-   - defined by ``np_select(condlist, choicelist, default=0)`` at `numba/np/arraymath.py:3910-3958 <https://github.com/numba/numba/blob/3a659b2578e95d07f62fbe2f5d10316e17486109/numba/np/arraymath.py#L3910-L3958>`_
+   - defined by ``np_select(condlist, choicelist, default=0)`` at `numba/np/arraymath.py:3910-3958 <https://github.com/numba/numba/blob/a41f4317f9169e42443bf32d433025552bdb562a/numba/np/arraymath.py#L3910-L3958>`_
 
 .. function:: numpy.shape
 
 
-   - defined by ``np_shape(a)`` at `numba/np/arrayobj.py:1903-1910 <https://github.com/numba/numba/blob/3a659b2578e95d07f62fbe2f5d10316e17486109/numba/np/arrayobj.py#L1903-L1910>`_
+   - defined by ``np_shape(a)`` at `numba/np/arrayobj.py:1903-1910 <https://github.com/numba/numba/blob/a41f4317f9169e42443bf32d433025552bdb562a/numba/np/arrayobj.py#L1903-L1910>`_
 
 .. function:: numpy.sinc
 
@@ -545,62 +545,62 @@ numpy
 .. function:: numpy.trace
 
 
-   - defined by ``matrix_trace_impl(a, offset=0)`` at `numba/np/linalg.py:2571-2599 <https://github.com/numba/numba/blob/3a659b2578e95d07f62fbe2f5d10316e17486109/numba/np/linalg.py#L2571-L2599>`_
+   - defined by ``matrix_trace_impl(a, offset=0)`` at `numba/np/linalg.py:2571-2599 <https://github.com/numba/numba/blob/a41f4317f9169e42443bf32d433025552bdb562a/numba/np/linalg.py#L2571-L2599>`_
 
 .. function:: numpy.transpose
 
 
-   - defined by ``numpy_transpose(a, axes=None)`` at `numba/np/arrayobj.py:1530-1542 <https://github.com/numba/numba/blob/3a659b2578e95d07f62fbe2f5d10316e17486109/numba/np/arrayobj.py#L1530-L1542>`_
+   - defined by ``numpy_transpose(a, axes=None)`` at `numba/np/arrayobj.py:1530-1542 <https://github.com/numba/numba/blob/a41f4317f9169e42443bf32d433025552bdb562a/numba/np/arrayobj.py#L1530-L1542>`_
 
 .. function:: numpy.trapz
 
 
-   - defined by ``np_trapz(y, x=None, dx=1.0)`` at `numba/np/arraymath.py:1688-1707 <https://github.com/numba/numba/blob/3a659b2578e95d07f62fbe2f5d10316e17486109/numba/np/arraymath.py#L1688-L1707>`_
+   - defined by ``np_trapz(y, x=None, dx=1.0)`` at `numba/np/arraymath.py:1688-1707 <https://github.com/numba/numba/blob/a41f4317f9169e42443bf32d433025552bdb562a/numba/np/arraymath.py#L1688-L1707>`_
 
 .. function:: numpy.tri
 
 
-   - defined by ``np_tri(N, M=None, k=0)`` at `numba/np/arraymath.py:1415-1426 <https://github.com/numba/numba/blob/3a659b2578e95d07f62fbe2f5d10316e17486109/numba/np/arraymath.py#L1415-L1426>`_
+   - defined by ``np_tri(N, M=None, k=0)`` at `numba/np/arraymath.py:1415-1426 <https://github.com/numba/numba/blob/a41f4317f9169e42443bf32d433025552bdb562a/numba/np/arraymath.py#L1415-L1426>`_
 
 .. function:: numpy.tril
 
 
-   - defined by ``my_tril(m, k=0)`` at `numba/np/arraymath.py:1452-1476 <https://github.com/numba/numba/blob/3a659b2578e95d07f62fbe2f5d10316e17486109/numba/np/arraymath.py#L1452-L1476>`_
+   - defined by ``my_tril(m, k=0)`` at `numba/np/arraymath.py:1452-1476 <https://github.com/numba/numba/blob/a41f4317f9169e42443bf32d433025552bdb562a/numba/np/arraymath.py#L1452-L1476>`_
 
 .. function:: numpy.tril_indices
 
 
-   - defined by ``np_tril_indices(n, k=0, m=None)`` at `numba/np/arraymath.py:1479-1490 <https://github.com/numba/numba/blob/3a659b2578e95d07f62fbe2f5d10316e17486109/numba/np/arraymath.py#L1479-L1490>`_
+   - defined by ``np_tril_indices(n, k=0, m=None)`` at `numba/np/arraymath.py:1479-1490 <https://github.com/numba/numba/blob/a41f4317f9169e42443bf32d433025552bdb562a/numba/np/arraymath.py#L1479-L1490>`_
 
 .. function:: numpy.tril_indices_from
 
 
-   - defined by ``np_tril_indices_from(arr, k=0)`` at `numba/np/arraymath.py:1493-1504 <https://github.com/numba/numba/blob/3a659b2578e95d07f62fbe2f5d10316e17486109/numba/np/arraymath.py#L1493-L1504>`_
+   - defined by ``np_tril_indices_from(arr, k=0)`` at `numba/np/arraymath.py:1493-1504 <https://github.com/numba/numba/blob/a41f4317f9169e42443bf32d433025552bdb562a/numba/np/arraymath.py#L1493-L1504>`_
 
 .. function:: numpy.triu
 
 
-   - defined by ``my_triu(m, k=0)`` at `numba/np/arraymath.py:1513-1536 <https://github.com/numba/numba/blob/3a659b2578e95d07f62fbe2f5d10316e17486109/numba/np/arraymath.py#L1513-L1536>`_
+   - defined by ``my_triu(m, k=0)`` at `numba/np/arraymath.py:1513-1536 <https://github.com/numba/numba/blob/a41f4317f9169e42443bf32d433025552bdb562a/numba/np/arraymath.py#L1513-L1536>`_
 
 .. function:: numpy.triu_indices
 
 
-   - defined by ``np_triu_indices(n, k=0, m=None)`` at `numba/np/arraymath.py:1539-1550 <https://github.com/numba/numba/blob/3a659b2578e95d07f62fbe2f5d10316e17486109/numba/np/arraymath.py#L1539-L1550>`_
+   - defined by ``np_triu_indices(n, k=0, m=None)`` at `numba/np/arraymath.py:1539-1550 <https://github.com/numba/numba/blob/a41f4317f9169e42443bf32d433025552bdb562a/numba/np/arraymath.py#L1539-L1550>`_
 
 .. function:: numpy.triu_indices_from
 
 
-   - defined by ``np_triu_indices_from(arr, k=0)`` at `numba/np/arraymath.py:1553-1564 <https://github.com/numba/numba/blob/3a659b2578e95d07f62fbe2f5d10316e17486109/numba/np/arraymath.py#L1553-L1564>`_
+   - defined by ``np_triu_indices_from(arr, k=0)`` at `numba/np/arraymath.py:1553-1564 <https://github.com/numba/numba/blob/a41f4317f9169e42443bf32d433025552bdb562a/numba/np/arraymath.py#L1553-L1564>`_
 
 .. function:: numpy.unique
 
 
-   - defined by ``np_unique(a)`` at `numba/np/arrayobj.py:1915-1922 <https://github.com/numba/numba/blob/3a659b2578e95d07f62fbe2f5d10316e17486109/numba/np/arrayobj.py#L1915-L1922>`_
+   - defined by ``np_unique(a)`` at `numba/np/arrayobj.py:1915-1922 <https://github.com/numba/numba/blob/a41f4317f9169e42443bf32d433025552bdb562a/numba/np/arrayobj.py#L1915-L1922>`_
 
 .. function:: numpy.vander
 
 
-   - defined by ``np_vander(x, N=None, increasing=False)`` at `numba/np/arraymath.py:1746-1783 <https://github.com/numba/numba/blob/3a659b2578e95d07f62fbe2f5d10316e17486109/numba/np/arraymath.py#L1746-L1783>`_
+   - defined by ``np_vander(x, N=None, increasing=False)`` at `numba/np/arraymath.py:1746-1783 <https://github.com/numba/numba/blob/a41f4317f9169e42443bf32d433025552bdb562a/numba/np/arraymath.py#L1746-L1783>`_
 
 .. function:: numpy.var
 
@@ -663,7 +663,7 @@ numpy.core
 
    Alias to: ``numpy.all``
 
-   - defined by ``np_all(a)`` at `numba/np/arraymath.py:631-640 <https://github.com/numba/numba/blob/3a659b2578e95d07f62fbe2f5d10316e17486109/numba/np/arraymath.py#L631-L640>`_
+   - defined by ``np_all(a)`` at `numba/np/arraymath.py:631-640 <https://github.com/numba/numba/blob/a41f4317f9169e42443bf32d433025552bdb562a/numba/np/arraymath.py#L631-L640>`_
 
 .. function:: numpy.core.amax
 
@@ -681,13 +681,13 @@ numpy.core
 
    Alias to: ``numpy.any``
 
-   - defined by ``np_any(a)`` at `numba/np/arraymath.py:643-652 <https://github.com/numba/numba/blob/3a659b2578e95d07f62fbe2f5d10316e17486109/numba/np/arraymath.py#L643-L652>`_
+   - defined by ``np_any(a)`` at `numba/np/arraymath.py:643-652 <https://github.com/numba/numba/blob/a41f4317f9169e42443bf32d433025552bdb562a/numba/np/arraymath.py#L643-L652>`_
 
 .. function:: numpy.core.arange
 
    Alias to: ``numpy.arange``
 
-   - defined by ``np_arange(start, stop=None, step=None, dtype=None)`` at `numba/np/arrayobj.py:3842-3908 <https://github.com/numba/numba/blob/3a659b2578e95d07f62fbe2f5d10316e17486109/numba/np/arrayobj.py#L3842-L3908>`_
+   - defined by ``np_arange(start, stop=None, step=None, dtype=None)`` at `numba/np/arrayobj.py:3842-3908 <https://github.com/numba/numba/blob/a41f4317f9169e42443bf32d433025552bdb562a/numba/np/arrayobj.py#L3842-L3908>`_
 
 .. function:: numpy.core.argmax
 
@@ -711,7 +711,7 @@ numpy.core
 
    Alias to: ``numpy.argwhere``
 
-   - defined by ``np_argwhere(a)`` at `numba/np/arraymath.py:2643-2657 <https://github.com/numba/numba/blob/3a659b2578e95d07f62fbe2f5d10316e17486109/numba/np/arraymath.py#L2643-L2657>`_
+   - defined by ``np_argwhere(a)`` at `numba/np/arraymath.py:2643-2657 <https://github.com/numba/numba/blob/a41f4317f9169e42443bf32d433025552bdb562a/numba/np/arraymath.py#L2643-L2657>`_
 
 .. function:: numpy.core.around
 
@@ -729,13 +729,13 @@ numpy.core
 
    Alias to: ``numpy.array_equal``
 
-   - defined by ``np_array_equal(a, b)`` at `numba/np/arraymath.py:3249-3268 <https://github.com/numba/numba/blob/3a659b2578e95d07f62fbe2f5d10316e17486109/numba/np/arraymath.py#L3249-L3268>`_
+   - defined by ``np_array_equal(a, b)`` at `numba/np/arraymath.py:3249-3268 <https://github.com/numba/numba/blob/a41f4317f9169e42443bf32d433025552bdb562a/numba/np/arraymath.py#L3249-L3268>`_
 
 .. function:: numpy.core.asarray
 
    Alias to: ``numpy.asarray``
 
-   - defined by ``np_asarray(a, dtype=None)`` at `numba/np/arraymath.py:3848-3881 <https://github.com/numba/numba/blob/3a659b2578e95d07f62fbe2f5d10316e17486109/numba/np/arraymath.py#L3848-L3881>`_
+   - defined by ``np_asarray(a, dtype=None)`` at `numba/np/arraymath.py:3848-3881 <https://github.com/numba/numba/blob/a41f4317f9169e42443bf32d433025552bdb562a/numba/np/arraymath.py#L3848-L3881>`_
 
 .. function:: numpy.core.ascontiguousarray
 
@@ -777,25 +777,25 @@ numpy.core
 
    Alias to: ``numpy.convolve``
 
-   - defined by ``np_convolve(a, v)`` at `numba/np/arraymath.py:3824-3845 <https://github.com/numba/numba/blob/3a659b2578e95d07f62fbe2f5d10316e17486109/numba/np/arraymath.py#L3824-L3845>`_
+   - defined by ``np_convolve(a, v)`` at `numba/np/arraymath.py:3824-3845 <https://github.com/numba/numba/blob/a41f4317f9169e42443bf32d433025552bdb562a/numba/np/arraymath.py#L3824-L3845>`_
 
 .. function:: numpy.core.correlate
 
    Alias to: ``numpy.correlate``
 
-   - defined by ``_np_correlate(a, v)`` at `numba/np/arraymath.py:3776-3821 <https://github.com/numba/numba/blob/3a659b2578e95d07f62fbe2f5d10316e17486109/numba/np/arraymath.py#L3776-L3821>`_
+   - defined by ``_np_correlate(a, v)`` at `numba/np/arraymath.py:3776-3821 <https://github.com/numba/numba/blob/a41f4317f9169e42443bf32d433025552bdb562a/numba/np/arraymath.py#L3776-L3821>`_
 
 .. function:: numpy.core.count_nonzero
 
    Alias to: ``numpy.count_nonzero``
 
-   - defined by ``np_count_nonzero(arr, axis=None)`` at `numba/np/arraymath.py:3142-3156 <https://github.com/numba/numba/blob/3a659b2578e95d07f62fbe2f5d10316e17486109/numba/np/arraymath.py#L3142-L3156>`_
+   - defined by ``np_count_nonzero(arr, axis=None)`` at `numba/np/arraymath.py:3142-3156 <https://github.com/numba/numba/blob/a41f4317f9169e42443bf32d433025552bdb562a/numba/np/arraymath.py#L3142-L3156>`_
 
 .. function:: numpy.core.cross
 
    Alias to: ``numpy.cross``
 
-   - defined by ``np_cross(a, b)`` at `numba/np/arraymath.py:4175-4197 <https://github.com/numba/numba/blob/3a659b2578e95d07f62fbe2f5d10316e17486109/numba/np/arraymath.py#L4175-L4197>`_
+   - defined by ``np_cross(a, b)`` at `numba/np/arraymath.py:4175-4197 <https://github.com/numba/numba/blob/a41f4317f9169e42443bf32d433025552bdb562a/numba/np/arraymath.py#L4175-L4197>`_
 
 .. function:: numpy.core.cumprod
 
@@ -831,7 +831,7 @@ numpy.core
 
    Alias to: ``numpy.flatnonzero``
 
-   - defined by ``np_flatnonzero(a)`` at `numba/np/arraymath.py:2660-2675 <https://github.com/numba/numba/blob/3a659b2578e95d07f62fbe2f5d10316e17486109/numba/np/arraymath.py#L2660-L2675>`_
+   - defined by ``np_flatnonzero(a)`` at `numba/np/arraymath.py:2660-2675 <https://github.com/numba/numba/blob/a41f4317f9169e42443bf32d433025552bdb562a/numba/np/arraymath.py#L2660-L2675>`_
 
 .. function:: numpy.core.frombuffer
 
@@ -909,13 +909,13 @@ numpy.core
 
    Alias to: ``numpy.outer``
 
-   - defined by ``outer_impl(a, b, out=None)`` at `numba/np/linalg.py:2649-2660 <https://github.com/numba/numba/blob/3a659b2578e95d07f62fbe2f5d10316e17486109/numba/np/linalg.py#L2649-L2660>`_
+   - defined by ``outer_impl(a, b, out=None)`` at `numba/np/linalg.py:2649-2660 <https://github.com/numba/numba/blob/a41f4317f9169e42443bf32d433025552bdb562a/numba/np/linalg.py#L2649-L2660>`_
 
 .. function:: numpy.core.partition
 
    Alias to: ``numpy.partition``
 
-   - defined by ``np_partition(a, kth)`` at `numba/np/arraymath.py:1374-1396 <https://github.com/numba/numba/blob/3a659b2578e95d07f62fbe2f5d10316e17486109/numba/np/arraymath.py#L1374-L1396>`_
+   - defined by ``np_partition(a, kth)`` at `numba/np/arraymath.py:1374-1396 <https://github.com/numba/numba/blob/a41f4317f9169e42443bf32d433025552bdb562a/numba/np/arraymath.py#L1374-L1396>`_
 
 .. function:: numpy.core.prod
 
@@ -927,7 +927,7 @@ numpy.core
 
    Alias to: ``numpy.ptp``
 
-   - defined by ``np_ptp(a)`` at `numba/np/arraymath.py:964-989 <https://github.com/numba/numba/blob/3a659b2578e95d07f62fbe2f5d10316e17486109/numba/np/arraymath.py#L964-L989>`_
+   - defined by ``np_ptp(a)`` at `numba/np/arraymath.py:964-989 <https://github.com/numba/numba/blob/a41f4317f9169e42443bf32d433025552bdb562a/numba/np/arraymath.py#L964-L989>`_
 
 .. function:: numpy.core.ravel
 
@@ -939,19 +939,19 @@ numpy.core
 
    Alias to: ``numpy.repeat``
 
-   - defined by ``np_repeat(a, repeats)`` at `numba/np/arrayobj.py:1925-1967 <https://github.com/numba/numba/blob/3a659b2578e95d07f62fbe2f5d10316e17486109/numba/np/arrayobj.py#L1925-L1967>`_
+   - defined by ``np_repeat(a, repeats)`` at `numba/np/arrayobj.py:1925-1967 <https://github.com/numba/numba/blob/a41f4317f9169e42443bf32d433025552bdb562a/numba/np/arrayobj.py#L1925-L1967>`_
 
 .. function:: numpy.core.reshape
 
    Alias to: ``numpy.reshape``
 
-   - defined by ``np_reshape(a, shape)`` at `numba/np/arrayobj.py:1702-1706 <https://github.com/numba/numba/blob/3a659b2578e95d07f62fbe2f5d10316e17486109/numba/np/arrayobj.py#L1702-L1706>`_
+   - defined by ``np_reshape(a, shape)`` at `numba/np/arrayobj.py:1702-1706 <https://github.com/numba/numba/blob/a41f4317f9169e42443bf32d433025552bdb562a/numba/np/arrayobj.py#L1702-L1706>`_
 
 .. function:: numpy.core.roll
 
    Alias to: ``numpy.roll``
 
-   - defined by ``np_roll(a, shift)`` at `numba/np/arraymath.py:1786-1806 <https://github.com/numba/numba/blob/3a659b2578e95d07f62fbe2f5d10316e17486109/numba/np/arraymath.py#L1786-L1806>`_
+   - defined by ``np_roll(a, shift)`` at `numba/np/arraymath.py:1786-1806 <https://github.com/numba/numba/blob/a41f4317f9169e42443bf32d433025552bdb562a/numba/np/arraymath.py#L1786-L1806>`_
 
 .. function:: numpy.core.round
 
@@ -969,13 +969,13 @@ numpy.core
 
    Alias to: ``numpy.searchsorted``
 
-   - defined by ``searchsorted(a, v, side='left')`` at `numba/np/arraymath.py:3363-3395 <https://github.com/numba/numba/blob/3a659b2578e95d07f62fbe2f5d10316e17486109/numba/np/arraymath.py#L3363-L3395>`_
+   - defined by ``searchsorted(a, v, side='left')`` at `numba/np/arraymath.py:3363-3395 <https://github.com/numba/numba/blob/a41f4317f9169e42443bf32d433025552bdb562a/numba/np/arraymath.py#L3363-L3395>`_
 
 .. function:: numpy.core.shape
 
    Alias to: ``numpy.shape``
 
-   - defined by ``np_shape(a)`` at `numba/np/arrayobj.py:1903-1910 <https://github.com/numba/numba/blob/3a659b2578e95d07f62fbe2f5d10316e17486109/numba/np/arrayobj.py#L1903-L1910>`_
+   - defined by ``np_shape(a)`` at `numba/np/arrayobj.py:1903-1910 <https://github.com/numba/numba/blob/a41f4317f9169e42443bf32d433025552bdb562a/numba/np/arrayobj.py#L1903-L1910>`_
 
 .. function:: numpy.core.sort
 
@@ -1011,13 +1011,13 @@ numpy.core
 
    Alias to: ``numpy.trace``
 
-   - defined by ``matrix_trace_impl(a, offset=0)`` at `numba/np/linalg.py:2571-2599 <https://github.com/numba/numba/blob/3a659b2578e95d07f62fbe2f5d10316e17486109/numba/np/linalg.py#L2571-L2599>`_
+   - defined by ``matrix_trace_impl(a, offset=0)`` at `numba/np/linalg.py:2571-2599 <https://github.com/numba/numba/blob/a41f4317f9169e42443bf32d433025552bdb562a/numba/np/linalg.py#L2571-L2599>`_
 
 .. function:: numpy.core.transpose
 
    Alias to: ``numpy.transpose``
 
-   - defined by ``numpy_transpose(a, axes=None)`` at `numba/np/arrayobj.py:1530-1542 <https://github.com/numba/numba/blob/3a659b2578e95d07f62fbe2f5d10316e17486109/numba/np/arrayobj.py#L1530-L1542>`_
+   - defined by ``numpy_transpose(a, axes=None)`` at `numba/np/arrayobj.py:1530-1542 <https://github.com/numba/numba/blob/a41f4317f9169e42443bf32d433025552bdb562a/numba/np/arrayobj.py#L1530-L1542>`_
 
 .. function:: numpy.core.var
 
@@ -1067,7 +1067,7 @@ numpy.core.arrayprint
 
    Alias to: ``numpy.any``
 
-   - defined by ``np_any(a)`` at `numba/np/arraymath.py:643-652 <https://github.com/numba/numba/blob/3a659b2578e95d07f62fbe2f5d10316e17486109/numba/np/arraymath.py#L643-L652>`_
+   - defined by ``np_any(a)`` at `numba/np/arraymath.py:643-652 <https://github.com/numba/numba/blob/a41f4317f9169e42443bf32d433025552bdb562a/numba/np/arraymath.py#L643-L652>`_
 
 .. function:: numpy.core.arrayprint.array
 
@@ -1079,7 +1079,7 @@ numpy.core.arrayprint
 
    Alias to: ``numpy.asarray``
 
-   - defined by ``np_asarray(a, dtype=None)`` at `numba/np/arraymath.py:3848-3881 <https://github.com/numba/numba/blob/3a659b2578e95d07f62fbe2f5d10316e17486109/numba/np/arraymath.py#L3848-L3881>`_
+   - defined by ``np_asarray(a, dtype=None)`` at `numba/np/arraymath.py:3848-3881 <https://github.com/numba/numba/blob/a41f4317f9169e42443bf32d433025552bdb562a/numba/np/arraymath.py#L3848-L3881>`_
 
 .. function:: numpy.core.arrayprint.concatenate
 
@@ -1125,7 +1125,7 @@ numpy.core.fromnumeric
 
    Alias to: ``numpy.all``
 
-   - defined by ``np_all(a)`` at `numba/np/arraymath.py:631-640 <https://github.com/numba/numba/blob/3a659b2578e95d07f62fbe2f5d10316e17486109/numba/np/arraymath.py#L631-L640>`_
+   - defined by ``np_all(a)`` at `numba/np/arraymath.py:631-640 <https://github.com/numba/numba/blob/a41f4317f9169e42443bf32d433025552bdb562a/numba/np/arraymath.py#L631-L640>`_
 
 .. function:: numpy.core.fromnumeric.amax
 
@@ -1143,7 +1143,7 @@ numpy.core.fromnumeric
 
    Alias to: ``numpy.any``
 
-   - defined by ``np_any(a)`` at `numba/np/arraymath.py:643-652 <https://github.com/numba/numba/blob/3a659b2578e95d07f62fbe2f5d10316e17486109/numba/np/arraymath.py#L643-L652>`_
+   - defined by ``np_any(a)`` at `numba/np/arraymath.py:643-652 <https://github.com/numba/numba/blob/a41f4317f9169e42443bf32d433025552bdb562a/numba/np/arraymath.py#L643-L652>`_
 
 .. function:: numpy.core.fromnumeric.argmax
 
@@ -1179,7 +1179,7 @@ numpy.core.fromnumeric
 
    Alias to: ``numpy.asarray``
 
-   - defined by ``np_asarray(a, dtype=None)`` at `numba/np/arraymath.py:3848-3881 <https://github.com/numba/numba/blob/3a659b2578e95d07f62fbe2f5d10316e17486109/numba/np/arraymath.py#L3848-L3881>`_
+   - defined by ``np_asarray(a, dtype=None)`` at `numba/np/arraymath.py:3848-3881 <https://github.com/numba/numba/blob/a41f4317f9169e42443bf32d433025552bdb562a/numba/np/arraymath.py#L3848-L3881>`_
 
 .. function:: numpy.core.fromnumeric.concatenate
 
@@ -1215,7 +1215,7 @@ numpy.core.fromnumeric
 
    Alias to: ``numpy.partition``
 
-   - defined by ``np_partition(a, kth)`` at `numba/np/arraymath.py:1374-1396 <https://github.com/numba/numba/blob/3a659b2578e95d07f62fbe2f5d10316e17486109/numba/np/arraymath.py#L1374-L1396>`_
+   - defined by ``np_partition(a, kth)`` at `numba/np/arraymath.py:1374-1396 <https://github.com/numba/numba/blob/a41f4317f9169e42443bf32d433025552bdb562a/numba/np/arraymath.py#L1374-L1396>`_
 
 .. function:: numpy.core.fromnumeric.prod
 
@@ -1227,7 +1227,7 @@ numpy.core.fromnumeric
 
    Alias to: ``numpy.ptp``
 
-   - defined by ``np_ptp(a)`` at `numba/np/arraymath.py:964-989 <https://github.com/numba/numba/blob/3a659b2578e95d07f62fbe2f5d10316e17486109/numba/np/arraymath.py#L964-L989>`_
+   - defined by ``np_ptp(a)`` at `numba/np/arraymath.py:964-989 <https://github.com/numba/numba/blob/a41f4317f9169e42443bf32d433025552bdb562a/numba/np/arraymath.py#L964-L989>`_
 
 .. function:: numpy.core.fromnumeric.ravel
 
@@ -1239,13 +1239,13 @@ numpy.core.fromnumeric
 
    Alias to: ``numpy.repeat``
 
-   - defined by ``np_repeat(a, repeats)`` at `numba/np/arrayobj.py:1925-1967 <https://github.com/numba/numba/blob/3a659b2578e95d07f62fbe2f5d10316e17486109/numba/np/arrayobj.py#L1925-L1967>`_
+   - defined by ``np_repeat(a, repeats)`` at `numba/np/arrayobj.py:1925-1967 <https://github.com/numba/numba/blob/a41f4317f9169e42443bf32d433025552bdb562a/numba/np/arrayobj.py#L1925-L1967>`_
 
 .. function:: numpy.core.fromnumeric.reshape
 
    Alias to: ``numpy.reshape``
 
-   - defined by ``np_reshape(a, shape)`` at `numba/np/arrayobj.py:1702-1706 <https://github.com/numba/numba/blob/3a659b2578e95d07f62fbe2f5d10316e17486109/numba/np/arrayobj.py#L1702-L1706>`_
+   - defined by ``np_reshape(a, shape)`` at `numba/np/arrayobj.py:1702-1706 <https://github.com/numba/numba/blob/a41f4317f9169e42443bf32d433025552bdb562a/numba/np/arrayobj.py#L1702-L1706>`_
 
 .. function:: numpy.core.fromnumeric.round_
 
@@ -1257,13 +1257,13 @@ numpy.core.fromnumeric
 
    Alias to: ``numpy.searchsorted``
 
-   - defined by ``searchsorted(a, v, side='left')`` at `numba/np/arraymath.py:3363-3395 <https://github.com/numba/numba/blob/3a659b2578e95d07f62fbe2f5d10316e17486109/numba/np/arraymath.py#L3363-L3395>`_
+   - defined by ``searchsorted(a, v, side='left')`` at `numba/np/arraymath.py:3363-3395 <https://github.com/numba/numba/blob/a41f4317f9169e42443bf32d433025552bdb562a/numba/np/arraymath.py#L3363-L3395>`_
 
 .. function:: numpy.core.fromnumeric.shape
 
    Alias to: ``numpy.shape``
 
-   - defined by ``np_shape(a)`` at `numba/np/arrayobj.py:1903-1910 <https://github.com/numba/numba/blob/3a659b2578e95d07f62fbe2f5d10316e17486109/numba/np/arrayobj.py#L1903-L1910>`_
+   - defined by ``np_shape(a)`` at `numba/np/arrayobj.py:1903-1910 <https://github.com/numba/numba/blob/a41f4317f9169e42443bf32d433025552bdb562a/numba/np/arrayobj.py#L1903-L1910>`_
 
 .. function:: numpy.core.fromnumeric.sort
 
@@ -1293,13 +1293,13 @@ numpy.core.fromnumeric
 
    Alias to: ``numpy.trace``
 
-   - defined by ``matrix_trace_impl(a, offset=0)`` at `numba/np/linalg.py:2571-2599 <https://github.com/numba/numba/blob/3a659b2578e95d07f62fbe2f5d10316e17486109/numba/np/linalg.py#L2571-L2599>`_
+   - defined by ``matrix_trace_impl(a, offset=0)`` at `numba/np/linalg.py:2571-2599 <https://github.com/numba/numba/blob/a41f4317f9169e42443bf32d433025552bdb562a/numba/np/linalg.py#L2571-L2599>`_
 
 .. function:: numpy.core.fromnumeric.transpose
 
    Alias to: ``numpy.transpose``
 
-   - defined by ``numpy_transpose(a, axes=None)`` at `numba/np/arrayobj.py:1530-1542 <https://github.com/numba/numba/blob/3a659b2578e95d07f62fbe2f5d10316e17486109/numba/np/arrayobj.py#L1530-L1542>`_
+   - defined by ``numpy_transpose(a, axes=None)`` at `numba/np/arrayobj.py:1530-1542 <https://github.com/numba/numba/blob/a41f4317f9169e42443bf32d433025552bdb562a/numba/np/arrayobj.py#L1530-L1542>`_
 
 .. function:: numpy.core.fromnumeric.var
 
@@ -1353,7 +1353,7 @@ numpy.core.machar
 
    Alias to: ``numpy.any``
 
-   - defined by ``np_any(a)`` at `numba/np/arraymath.py:643-652 <https://github.com/numba/numba/blob/3a659b2578e95d07f62fbe2f5d10316e17486109/numba/np/arraymath.py#L643-L652>`_
+   - defined by ``np_any(a)`` at `numba/np/arraymath.py:643-652 <https://github.com/numba/numba/blob/a41f4317f9169e42443bf32d433025552bdb562a/numba/np/arraymath.py#L643-L652>`_
 
 Not showing 1 unsupported functions.
 
@@ -1367,7 +1367,7 @@ numpy.core.multiarray
 
    Alias to: ``numpy.arange``
 
-   - defined by ``np_arange(start, stop=None, step=None, dtype=None)`` at `numba/np/arrayobj.py:3842-3908 <https://github.com/numba/numba/blob/3a659b2578e95d07f62fbe2f5d10316e17486109/numba/np/arrayobj.py#L3842-L3908>`_
+   - defined by ``np_arange(start, stop=None, step=None, dtype=None)`` at `numba/np/arrayobj.py:3842-3908 <https://github.com/numba/numba/blob/a41f4317f9169e42443bf32d433025552bdb562a/numba/np/arrayobj.py#L3842-L3908>`_
 
 .. function:: numpy.core.multiarray.array
 
@@ -1379,7 +1379,7 @@ numpy.core.multiarray
 
    Alias to: ``numpy.bincount``
 
-   - defined by ``np_bincount(a, weights=None)`` at `numba/np/arraymath.py:3281-3330 <https://github.com/numba/numba/blob/3a659b2578e95d07f62fbe2f5d10316e17486109/numba/np/arraymath.py#L3281-L3330>`_
+   - defined by ``np_bincount(a, weights=None)`` at `numba/np/arraymath.py:3281-3330 <https://github.com/numba/numba/blob/a41f4317f9169e42443bf32d433025552bdb562a/numba/np/arraymath.py#L3281-L3330>`_
 
 .. function:: numpy.core.multiarray.concatenate
 
@@ -1441,7 +1441,7 @@ numpy.core.numeric
 
    Alias to: ``numpy.all``
 
-   - defined by ``np_all(a)`` at `numba/np/arraymath.py:631-640 <https://github.com/numba/numba/blob/3a659b2578e95d07f62fbe2f5d10316e17486109/numba/np/arraymath.py#L631-L640>`_
+   - defined by ``np_all(a)`` at `numba/np/arraymath.py:631-640 <https://github.com/numba/numba/blob/a41f4317f9169e42443bf32d433025552bdb562a/numba/np/arraymath.py#L631-L640>`_
 
 .. function:: numpy.core.numeric.amax
 
@@ -1459,13 +1459,13 @@ numpy.core.numeric
 
    Alias to: ``numpy.any``
 
-   - defined by ``np_any(a)`` at `numba/np/arraymath.py:643-652 <https://github.com/numba/numba/blob/3a659b2578e95d07f62fbe2f5d10316e17486109/numba/np/arraymath.py#L643-L652>`_
+   - defined by ``np_any(a)`` at `numba/np/arraymath.py:643-652 <https://github.com/numba/numba/blob/a41f4317f9169e42443bf32d433025552bdb562a/numba/np/arraymath.py#L643-L652>`_
 
 .. function:: numpy.core.numeric.arange
 
    Alias to: ``numpy.arange``
 
-   - defined by ``np_arange(start, stop=None, step=None, dtype=None)`` at `numba/np/arrayobj.py:3842-3908 <https://github.com/numba/numba/blob/3a659b2578e95d07f62fbe2f5d10316e17486109/numba/np/arrayobj.py#L3842-L3908>`_
+   - defined by ``np_arange(start, stop=None, step=None, dtype=None)`` at `numba/np/arrayobj.py:3842-3908 <https://github.com/numba/numba/blob/a41f4317f9169e42443bf32d433025552bdb562a/numba/np/arrayobj.py#L3842-L3908>`_
 
 .. function:: numpy.core.numeric.argmax
 
@@ -1489,7 +1489,7 @@ numpy.core.numeric
 
    Alias to: ``numpy.argwhere``
 
-   - defined by ``np_argwhere(a)`` at `numba/np/arraymath.py:2643-2657 <https://github.com/numba/numba/blob/3a659b2578e95d07f62fbe2f5d10316e17486109/numba/np/arraymath.py#L2643-L2657>`_
+   - defined by ``np_argwhere(a)`` at `numba/np/arraymath.py:2643-2657 <https://github.com/numba/numba/blob/a41f4317f9169e42443bf32d433025552bdb562a/numba/np/arraymath.py#L2643-L2657>`_
 
 .. function:: numpy.core.numeric.around
 
@@ -1507,13 +1507,13 @@ numpy.core.numeric
 
    Alias to: ``numpy.array_equal``
 
-   - defined by ``np_array_equal(a, b)`` at `numba/np/arraymath.py:3249-3268 <https://github.com/numba/numba/blob/3a659b2578e95d07f62fbe2f5d10316e17486109/numba/np/arraymath.py#L3249-L3268>`_
+   - defined by ``np_array_equal(a, b)`` at `numba/np/arraymath.py:3249-3268 <https://github.com/numba/numba/blob/a41f4317f9169e42443bf32d433025552bdb562a/numba/np/arraymath.py#L3249-L3268>`_
 
 .. function:: numpy.core.numeric.asarray
 
    Alias to: ``numpy.asarray``
 
-   - defined by ``np_asarray(a, dtype=None)`` at `numba/np/arraymath.py:3848-3881 <https://github.com/numba/numba/blob/3a659b2578e95d07f62fbe2f5d10316e17486109/numba/np/arraymath.py#L3848-L3881>`_
+   - defined by ``np_asarray(a, dtype=None)`` at `numba/np/arraymath.py:3848-3881 <https://github.com/numba/numba/blob/a41f4317f9169e42443bf32d433025552bdb562a/numba/np/arraymath.py#L3848-L3881>`_
 
 .. function:: numpy.core.numeric.ascontiguousarray
 
@@ -1537,25 +1537,25 @@ numpy.core.numeric
 
    Alias to: ``numpy.convolve``
 
-   - defined by ``np_convolve(a, v)`` at `numba/np/arraymath.py:3824-3845 <https://github.com/numba/numba/blob/3a659b2578e95d07f62fbe2f5d10316e17486109/numba/np/arraymath.py#L3824-L3845>`_
+   - defined by ``np_convolve(a, v)`` at `numba/np/arraymath.py:3824-3845 <https://github.com/numba/numba/blob/a41f4317f9169e42443bf32d433025552bdb562a/numba/np/arraymath.py#L3824-L3845>`_
 
 .. function:: numpy.core.numeric.correlate
 
    Alias to: ``numpy.correlate``
 
-   - defined by ``_np_correlate(a, v)`` at `numba/np/arraymath.py:3776-3821 <https://github.com/numba/numba/blob/3a659b2578e95d07f62fbe2f5d10316e17486109/numba/np/arraymath.py#L3776-L3821>`_
+   - defined by ``_np_correlate(a, v)`` at `numba/np/arraymath.py:3776-3821 <https://github.com/numba/numba/blob/a41f4317f9169e42443bf32d433025552bdb562a/numba/np/arraymath.py#L3776-L3821>`_
 
 .. function:: numpy.core.numeric.count_nonzero
 
    Alias to: ``numpy.count_nonzero``
 
-   - defined by ``np_count_nonzero(arr, axis=None)`` at `numba/np/arraymath.py:3142-3156 <https://github.com/numba/numba/blob/3a659b2578e95d07f62fbe2f5d10316e17486109/numba/np/arraymath.py#L3142-L3156>`_
+   - defined by ``np_count_nonzero(arr, axis=None)`` at `numba/np/arraymath.py:3142-3156 <https://github.com/numba/numba/blob/a41f4317f9169e42443bf32d433025552bdb562a/numba/np/arraymath.py#L3142-L3156>`_
 
 .. function:: numpy.core.numeric.cross
 
    Alias to: ``numpy.cross``
 
-   - defined by ``np_cross(a, b)`` at `numba/np/arraymath.py:4175-4197 <https://github.com/numba/numba/blob/3a659b2578e95d07f62fbe2f5d10316e17486109/numba/np/arraymath.py#L4175-L4197>`_
+   - defined by ``np_cross(a, b)`` at `numba/np/arraymath.py:4175-4197 <https://github.com/numba/numba/blob/a41f4317f9169e42443bf32d433025552bdb562a/numba/np/arraymath.py#L4175-L4197>`_
 
 .. function:: numpy.core.numeric.cumprod
 
@@ -1591,7 +1591,7 @@ numpy.core.numeric
 
    Alias to: ``numpy.flatnonzero``
 
-   - defined by ``np_flatnonzero(a)`` at `numba/np/arraymath.py:2660-2675 <https://github.com/numba/numba/blob/3a659b2578e95d07f62fbe2f5d10316e17486109/numba/np/arraymath.py#L2660-L2675>`_
+   - defined by ``np_flatnonzero(a)`` at `numba/np/arraymath.py:2660-2675 <https://github.com/numba/numba/blob/a41f4317f9169e42443bf32d433025552bdb562a/numba/np/arraymath.py#L2660-L2675>`_
 
 .. function:: numpy.core.numeric.frombuffer
 
@@ -1645,13 +1645,13 @@ numpy.core.numeric
 
    Alias to: ``numpy.outer``
 
-   - defined by ``outer_impl(a, b, out=None)`` at `numba/np/linalg.py:2649-2660 <https://github.com/numba/numba/blob/3a659b2578e95d07f62fbe2f5d10316e17486109/numba/np/linalg.py#L2649-L2660>`_
+   - defined by ``outer_impl(a, b, out=None)`` at `numba/np/linalg.py:2649-2660 <https://github.com/numba/numba/blob/a41f4317f9169e42443bf32d433025552bdb562a/numba/np/linalg.py#L2649-L2660>`_
 
 .. function:: numpy.core.numeric.partition
 
    Alias to: ``numpy.partition``
 
-   - defined by ``np_partition(a, kth)`` at `numba/np/arraymath.py:1374-1396 <https://github.com/numba/numba/blob/3a659b2578e95d07f62fbe2f5d10316e17486109/numba/np/arraymath.py#L1374-L1396>`_
+   - defined by ``np_partition(a, kth)`` at `numba/np/arraymath.py:1374-1396 <https://github.com/numba/numba/blob/a41f4317f9169e42443bf32d433025552bdb562a/numba/np/arraymath.py#L1374-L1396>`_
 
 .. function:: numpy.core.numeric.prod
 
@@ -1663,7 +1663,7 @@ numpy.core.numeric
 
    Alias to: ``numpy.ptp``
 
-   - defined by ``np_ptp(a)`` at `numba/np/arraymath.py:964-989 <https://github.com/numba/numba/blob/3a659b2578e95d07f62fbe2f5d10316e17486109/numba/np/arraymath.py#L964-L989>`_
+   - defined by ``np_ptp(a)`` at `numba/np/arraymath.py:964-989 <https://github.com/numba/numba/blob/a41f4317f9169e42443bf32d433025552bdb562a/numba/np/arraymath.py#L964-L989>`_
 
 .. function:: numpy.core.numeric.ravel
 
@@ -1675,19 +1675,19 @@ numpy.core.numeric
 
    Alias to: ``numpy.repeat``
 
-   - defined by ``np_repeat(a, repeats)`` at `numba/np/arrayobj.py:1925-1967 <https://github.com/numba/numba/blob/3a659b2578e95d07f62fbe2f5d10316e17486109/numba/np/arrayobj.py#L1925-L1967>`_
+   - defined by ``np_repeat(a, repeats)`` at `numba/np/arrayobj.py:1925-1967 <https://github.com/numba/numba/blob/a41f4317f9169e42443bf32d433025552bdb562a/numba/np/arrayobj.py#L1925-L1967>`_
 
 .. function:: numpy.core.numeric.reshape
 
    Alias to: ``numpy.reshape``
 
-   - defined by ``np_reshape(a, shape)`` at `numba/np/arrayobj.py:1702-1706 <https://github.com/numba/numba/blob/3a659b2578e95d07f62fbe2f5d10316e17486109/numba/np/arrayobj.py#L1702-L1706>`_
+   - defined by ``np_reshape(a, shape)`` at `numba/np/arrayobj.py:1702-1706 <https://github.com/numba/numba/blob/a41f4317f9169e42443bf32d433025552bdb562a/numba/np/arrayobj.py#L1702-L1706>`_
 
 .. function:: numpy.core.numeric.roll
 
    Alias to: ``numpy.roll``
 
-   - defined by ``np_roll(a, shift)`` at `numba/np/arraymath.py:1786-1806 <https://github.com/numba/numba/blob/3a659b2578e95d07f62fbe2f5d10316e17486109/numba/np/arraymath.py#L1786-L1806>`_
+   - defined by ``np_roll(a, shift)`` at `numba/np/arraymath.py:1786-1806 <https://github.com/numba/numba/blob/a41f4317f9169e42443bf32d433025552bdb562a/numba/np/arraymath.py#L1786-L1806>`_
 
 .. function:: numpy.core.numeric.round_
 
@@ -1699,13 +1699,13 @@ numpy.core.numeric
 
    Alias to: ``numpy.searchsorted``
 
-   - defined by ``searchsorted(a, v, side='left')`` at `numba/np/arraymath.py:3363-3395 <https://github.com/numba/numba/blob/3a659b2578e95d07f62fbe2f5d10316e17486109/numba/np/arraymath.py#L3363-L3395>`_
+   - defined by ``searchsorted(a, v, side='left')`` at `numba/np/arraymath.py:3363-3395 <https://github.com/numba/numba/blob/a41f4317f9169e42443bf32d433025552bdb562a/numba/np/arraymath.py#L3363-L3395>`_
 
 .. function:: numpy.core.numeric.shape
 
    Alias to: ``numpy.shape``
 
-   - defined by ``np_shape(a)`` at `numba/np/arrayobj.py:1903-1910 <https://github.com/numba/numba/blob/3a659b2578e95d07f62fbe2f5d10316e17486109/numba/np/arrayobj.py#L1903-L1910>`_
+   - defined by ``np_shape(a)`` at `numba/np/arrayobj.py:1903-1910 <https://github.com/numba/numba/blob/a41f4317f9169e42443bf32d433025552bdb562a/numba/np/arrayobj.py#L1903-L1910>`_
 
 .. function:: numpy.core.numeric.sort
 
@@ -1735,13 +1735,13 @@ numpy.core.numeric
 
    Alias to: ``numpy.trace``
 
-   - defined by ``matrix_trace_impl(a, offset=0)`` at `numba/np/linalg.py:2571-2599 <https://github.com/numba/numba/blob/3a659b2578e95d07f62fbe2f5d10316e17486109/numba/np/linalg.py#L2571-L2599>`_
+   - defined by ``matrix_trace_impl(a, offset=0)`` at `numba/np/linalg.py:2571-2599 <https://github.com/numba/numba/blob/a41f4317f9169e42443bf32d433025552bdb562a/numba/np/linalg.py#L2571-L2599>`_
 
 .. function:: numpy.core.numeric.transpose
 
    Alias to: ``numpy.transpose``
 
-   - defined by ``numpy_transpose(a, axes=None)`` at `numba/np/arrayobj.py:1530-1542 <https://github.com/numba/numba/blob/3a659b2578e95d07f62fbe2f5d10316e17486109/numba/np/arrayobj.py#L1530-L1542>`_
+   - defined by ``numpy_transpose(a, axes=None)`` at `numba/np/arrayobj.py:1530-1542 <https://github.com/numba/numba/blob/a41f4317f9169e42443bf32d433025552bdb562a/numba/np/arrayobj.py#L1530-L1542>`_
 
 .. function:: numpy.core.numeric.var
 
@@ -1873,7 +1873,7 @@ numpy.core.umath
 
    Alias to: ``numpy.arange``
 
-   - defined by ``np_arange(start, stop=None, step=None, dtype=None)`` at `numba/np/arrayobj.py:3842-3908 <https://github.com/numba/numba/blob/3a659b2578e95d07f62fbe2f5d10316e17486109/numba/np/arrayobj.py#L3842-L3908>`_
+   - defined by ``np_arange(start, stop=None, step=None, dtype=None)`` at `numba/np/arrayobj.py:3842-3908 <https://github.com/numba/numba/blob/a41f4317f9169e42443bf32d433025552bdb562a/numba/np/arrayobj.py#L3842-L3908>`_
 
 .. function:: numpy.core.umath.array
 
@@ -2486,13 +2486,13 @@ numpy.fft.helper
 
    Alias to: ``numpy.arange``
 
-   - defined by ``np_arange(start, stop=None, step=None, dtype=None)`` at `numba/np/arrayobj.py:3842-3908 <https://github.com/numba/numba/blob/3a659b2578e95d07f62fbe2f5d10316e17486109/numba/np/arrayobj.py#L3842-L3908>`_
+   - defined by ``np_arange(start, stop=None, step=None, dtype=None)`` at `numba/np/arrayobj.py:3842-3908 <https://github.com/numba/numba/blob/a41f4317f9169e42443bf32d433025552bdb562a/numba/np/arrayobj.py#L3842-L3908>`_
 
 .. function:: numpy.fft.helper.asarray
 
    Alias to: ``numpy.asarray``
 
-   - defined by ``np_asarray(a, dtype=None)`` at `numba/np/arraymath.py:3848-3881 <https://github.com/numba/numba/blob/3a659b2578e95d07f62fbe2f5d10316e17486109/numba/np/arraymath.py#L3848-L3881>`_
+   - defined by ``np_asarray(a, dtype=None)`` at `numba/np/arraymath.py:3848-3881 <https://github.com/numba/numba/blob/a41f4317f9169e42443bf32d433025552bdb562a/numba/np/arraymath.py#L3848-L3881>`_
 
 .. function:: numpy.fft.helper.empty
 
@@ -2504,7 +2504,7 @@ numpy.fft.helper
 
    Alias to: ``numpy.roll``
 
-   - defined by ``np_roll(a, shift)`` at `numba/np/arraymath.py:1786-1806 <https://github.com/numba/numba/blob/3a659b2578e95d07f62fbe2f5d10316e17486109/numba/np/arraymath.py#L1786-L1806>`_
+   - defined by ``np_roll(a, shift)`` at `numba/np/arraymath.py:1786-1806 <https://github.com/numba/numba/blob/a41f4317f9169e42443bf32d433025552bdb562a/numba/np/arraymath.py#L1786-L1806>`_
 
 Not showing 6 unsupported functions.
 
@@ -2530,25 +2530,25 @@ numpy.lib
 
    Alias to: ``numpy.append``
 
-   - defined by ``np_append(arr, values, axis=None)`` at `numba/np/arrayobj.py:1709-1732 <https://github.com/numba/numba/blob/3a659b2578e95d07f62fbe2f5d10316e17486109/numba/np/arrayobj.py#L1709-L1732>`_
+   - defined by ``np_append(arr, values, axis=None)`` at `numba/np/arrayobj.py:1709-1732 <https://github.com/numba/numba/blob/a41f4317f9169e42443bf32d433025552bdb562a/numba/np/arrayobj.py#L1709-L1732>`_
 
 .. function:: numpy.lib.bartlett
 
    Alias to: ``numpy.bartlett``
 
-   - defined by ``window_generator.<locals>.window_overload(M)`` at `numba/np/arraymath.py:3994-4006 <https://github.com/numba/numba/blob/3a659b2578e95d07f62fbe2f5d10316e17486109/numba/np/arraymath.py#L3994-L4006>`_
+   - defined by ``window_generator.<locals>.window_overload(M)`` at `numba/np/arraymath.py:3994-4006 <https://github.com/numba/numba/blob/a41f4317f9169e42443bf32d433025552bdb562a/numba/np/arraymath.py#L3994-L4006>`_
 
 .. function:: numpy.lib.bincount
 
    Alias to: ``numpy.bincount``
 
-   - defined by ``np_bincount(a, weights=None)`` at `numba/np/arraymath.py:3281-3330 <https://github.com/numba/numba/blob/3a659b2578e95d07f62fbe2f5d10316e17486109/numba/np/arraymath.py#L3281-L3330>`_
+   - defined by ``np_bincount(a, weights=None)`` at `numba/np/arraymath.py:3281-3330 <https://github.com/numba/numba/blob/a41f4317f9169e42443bf32d433025552bdb562a/numba/np/arraymath.py#L3281-L3330>`_
 
 .. function:: numpy.lib.blackman
 
    Alias to: ``numpy.blackman``
 
-   - defined by ``window_generator.<locals>.window_overload(M)`` at `numba/np/arraymath.py:3994-4006 <https://github.com/numba/numba/blob/3a659b2578e95d07f62fbe2f5d10316e17486109/numba/np/arraymath.py#L3994-L4006>`_
+   - defined by ``window_generator.<locals>.window_overload(M)`` at `numba/np/arraymath.py:3994-4006 <https://github.com/numba/numba/blob/a41f4317f9169e42443bf32d433025552bdb562a/numba/np/arraymath.py#L3994-L4006>`_
 
 .. function:: numpy.lib.column_stack
 
@@ -2566,19 +2566,19 @@ numpy.lib
 
    Alias to: ``numpy.corrcoef``
 
-   - defined by ``np_corrcoef(x, y=None, rowvar=True)`` at `numba/np/arraymath.py:2607-2637 <https://github.com/numba/numba/blob/3a659b2578e95d07f62fbe2f5d10316e17486109/numba/np/arraymath.py#L2607-L2637>`_
+   - defined by ``np_corrcoef(x, y=None, rowvar=True)`` at `numba/np/arraymath.py:2607-2637 <https://github.com/numba/numba/blob/a41f4317f9169e42443bf32d433025552bdb562a/numba/np/arraymath.py#L2607-L2637>`_
 
 .. function:: numpy.lib.cov
 
    Alias to: ``numpy.cov``
 
-   - defined by ``np_cov(m, y=None, rowvar=True, bias=False, ddof=None)`` at `numba/np/arraymath.py:2548-2604 <https://github.com/numba/numba/blob/3a659b2578e95d07f62fbe2f5d10316e17486109/numba/np/arraymath.py#L2548-L2604>`_
+   - defined by ``np_cov(m, y=None, rowvar=True, bias=False, ddof=None)`` at `numba/np/arraymath.py:2548-2604 <https://github.com/numba/numba/blob/a41f4317f9169e42443bf32d433025552bdb562a/numba/np/arraymath.py#L2548-L2604>`_
 
 .. function:: numpy.lib.delete
 
    Alias to: ``numpy.delete``
 
-   - defined by ``np_delete(arr, obj)`` at `numba/np/arraymath.py:3163-3207 <https://github.com/numba/numba/blob/3a659b2578e95d07f62fbe2f5d10316e17486109/numba/np/arraymath.py#L3163-L3207>`_
+   - defined by ``np_delete(arr, obj)`` at `numba/np/arraymath.py:3163-3207 <https://github.com/numba/numba/blob/a41f4317f9169e42443bf32d433025552bdb562a/numba/np/arraymath.py#L3163-L3207>`_
 
 .. function:: numpy.lib.diag
 
@@ -2590,13 +2590,13 @@ numpy.lib
 
    Alias to: ``numpy.diff``
 
-   - defined by ``np_diff_impl(a, n=1)`` at `numba/np/arraymath.py:3210-3246 <https://github.com/numba/numba/blob/3a659b2578e95d07f62fbe2f5d10316e17486109/numba/np/arraymath.py#L3210-L3246>`_
+   - defined by ``np_diff_impl(a, n=1)`` at `numba/np/arraymath.py:3210-3246 <https://github.com/numba/numba/blob/a41f4317f9169e42443bf32d433025552bdb562a/numba/np/arraymath.py#L3210-L3246>`_
 
 .. function:: numpy.lib.digitize
 
    Alias to: ``numpy.digitize``
 
-   - defined by ``np_digitize(x, bins, right=False)`` at `numba/np/arraymath.py:3398-3524 <https://github.com/numba/numba/blob/3a659b2578e95d07f62fbe2f5d10316e17486109/numba/np/arraymath.py#L3398-L3524>`_
+   - defined by ``np_digitize(x, bins, right=False)`` at `numba/np/arraymath.py:3398-3524 <https://github.com/numba/numba/blob/a41f4317f9169e42443bf32d433025552bdb562a/numba/np/arraymath.py#L3398-L3524>`_
 
 .. function:: numpy.lib.dstack
 
@@ -2608,7 +2608,7 @@ numpy.lib
 
    Alias to: ``numpy.ediff1d``
 
-   - defined by ``np_ediff1d(ary, to_end=None, to_begin=None)`` at `numba/np/arraymath.py:1596-1651 <https://github.com/numba/numba/blob/3a659b2578e95d07f62fbe2f5d10316e17486109/numba/np/arraymath.py#L1596-L1651>`_
+   - defined by ``np_ediff1d(ary, to_end=None, to_begin=None)`` at `numba/np/arraymath.py:1596-1651 <https://github.com/numba/numba/blob/a41f4317f9169e42443bf32d433025552bdb562a/numba/np/arraymath.py#L1596-L1651>`_
 
 .. function:: numpy.lib.expand_dims
 
@@ -2620,181 +2620,181 @@ numpy.lib
 
    Alias to: ``numpy.extract``
 
-   - defined by ``np_extract(condition, arr)`` at `numba/np/arraymath.py:3884-3907 <https://github.com/numba/numba/blob/3a659b2578e95d07f62fbe2f5d10316e17486109/numba/np/arraymath.py#L3884-L3907>`_
+   - defined by ``np_extract(condition, arr)`` at `numba/np/arraymath.py:3884-3907 <https://github.com/numba/numba/blob/a41f4317f9169e42443bf32d433025552bdb562a/numba/np/arraymath.py#L3884-L3907>`_
 
 .. function:: numpy.lib.eye
 
    Alias to: ``numpy.eye``
 
-   - defined by ``numpy_eye(N, M=None, k=0, dtype=<class 'float'>)`` at `numba/np/arrayobj.py:3681-3704 <https://github.com/numba/numba/blob/3a659b2578e95d07f62fbe2f5d10316e17486109/numba/np/arrayobj.py#L3681-L3704>`_
+   - defined by ``numpy_eye(N, M=None, k=0, dtype=<class 'float'>)`` at `numba/np/arrayobj.py:3681-3704 <https://github.com/numba/numba/blob/a41f4317f9169e42443bf32d433025552bdb562a/numba/np/arrayobj.py#L3681-L3704>`_
 
 .. function:: numpy.lib.fill_diagonal
 
    Alias to: ``numpy.fill_diagonal``
 
-   - defined by ``np_fill_diagonal(a, val, wrap=False)`` at `numba/np/arraymath.py:2762-2792 <https://github.com/numba/numba/blob/3a659b2578e95d07f62fbe2f5d10316e17486109/numba/np/arraymath.py#L2762-L2792>`_
+   - defined by ``np_fill_diagonal(a, val, wrap=False)`` at `numba/np/arraymath.py:2762-2792 <https://github.com/numba/numba/blob/a41f4317f9169e42443bf32d433025552bdb562a/numba/np/arraymath.py#L2762-L2792>`_
 
 .. function:: numpy.lib.flip
 
    Alias to: ``numpy.flip``
 
-   - defined by ``np_flip(a)`` at `numba/np/arrayobj.py:4953-4964 <https://github.com/numba/numba/blob/3a659b2578e95d07f62fbe2f5d10316e17486109/numba/np/arrayobj.py#L4953-L4964>`_
+   - defined by ``np_flip(a)`` at `numba/np/arrayobj.py:4953-4964 <https://github.com/numba/numba/blob/a41f4317f9169e42443bf32d433025552bdb562a/numba/np/arrayobj.py#L4953-L4964>`_
 
 .. function:: numpy.lib.fliplr
 
    Alias to: ``numpy.fliplr``
 
-   - defined by ``np_flip_lr(a)`` at `numba/np/arrayobj.py:4891-4905 <https://github.com/numba/numba/blob/3a659b2578e95d07f62fbe2f5d10316e17486109/numba/np/arrayobj.py#L4891-L4905>`_
+   - defined by ``np_flip_lr(a)`` at `numba/np/arrayobj.py:4891-4905 <https://github.com/numba/numba/blob/a41f4317f9169e42443bf32d433025552bdb562a/numba/np/arrayobj.py#L4891-L4905>`_
 
 .. function:: numpy.lib.flipud
 
    Alias to: ``numpy.flipud``
 
-   - defined by ``np_flip_ud(a)`` at `numba/np/arrayobj.py:4908-4922 <https://github.com/numba/numba/blob/3a659b2578e95d07f62fbe2f5d10316e17486109/numba/np/arrayobj.py#L4908-L4922>`_
+   - defined by ``np_flip_ud(a)`` at `numba/np/arrayobj.py:4908-4922 <https://github.com/numba/numba/blob/a41f4317f9169e42443bf32d433025552bdb562a/numba/np/arrayobj.py#L4908-L4922>`_
 
 .. function:: numpy.lib.hamming
 
    Alias to: ``numpy.hamming``
 
-   - defined by ``window_generator.<locals>.window_overload(M)`` at `numba/np/arraymath.py:3994-4006 <https://github.com/numba/numba/blob/3a659b2578e95d07f62fbe2f5d10316e17486109/numba/np/arraymath.py#L3994-L4006>`_
+   - defined by ``window_generator.<locals>.window_overload(M)`` at `numba/np/arraymath.py:3994-4006 <https://github.com/numba/numba/blob/a41f4317f9169e42443bf32d433025552bdb562a/numba/np/arraymath.py#L3994-L4006>`_
 
 .. function:: numpy.lib.hanning
 
    Alias to: ``numpy.hanning``
 
-   - defined by ``window_generator.<locals>.window_overload(M)`` at `numba/np/arraymath.py:3994-4006 <https://github.com/numba/numba/blob/3a659b2578e95d07f62fbe2f5d10316e17486109/numba/np/arraymath.py#L3994-L4006>`_
+   - defined by ``window_generator.<locals>.window_overload(M)`` at `numba/np/arraymath.py:3994-4006 <https://github.com/numba/numba/blob/a41f4317f9169e42443bf32d433025552bdb562a/numba/np/arraymath.py#L3994-L4006>`_
 
 .. function:: numpy.lib.histogram
 
    Alias to: ``numpy.histogram``
 
-   - defined by ``np_histogram(a, bins=10, range=None)`` at `numba/np/arraymath.py:3530-3610 <https://github.com/numba/numba/blob/3a659b2578e95d07f62fbe2f5d10316e17486109/numba/np/arraymath.py#L3530-L3610>`_
+   - defined by ``np_histogram(a, bins=10, range=None)`` at `numba/np/arraymath.py:3530-3610 <https://github.com/numba/numba/blob/a41f4317f9169e42443bf32d433025552bdb562a/numba/np/arraymath.py#L3530-L3610>`_
 
 .. function:: numpy.lib.imag
 
    Alias to: ``numpy.imag``
 
-   - defined by ``np_imag(a)`` at `numba/np/arraymath.py:3131-3136 <https://github.com/numba/numba/blob/3a659b2578e95d07f62fbe2f5d10316e17486109/numba/np/arraymath.py#L3131-L3136>`_
+   - defined by ``np_imag(a)`` at `numba/np/arraymath.py:3131-3136 <https://github.com/numba/numba/blob/a41f4317f9169e42443bf32d433025552bdb562a/numba/np/arraymath.py#L3131-L3136>`_
 
 .. function:: numpy.lib.interp
 
    Alias to: ``numpy.interp``
 
-   - defined by ``np_interp(x, xp, fp)`` at `numba/np/arraymath.py:2299-2360 <https://github.com/numba/numba/blob/3a659b2578e95d07f62fbe2f5d10316e17486109/numba/np/arraymath.py#L2299-L2360>`_
+   - defined by ``np_interp(x, xp, fp)`` at `numba/np/arraymath.py:2299-2360 <https://github.com/numba/numba/blob/a41f4317f9169e42443bf32d433025552bdb562a/numba/np/arraymath.py#L2299-L2360>`_
 
 .. function:: numpy.lib.kaiser
 
    Alias to: ``numpy.kaiser``
 
-   - defined by ``np_kaiser(M, beta)`` at `numba/np/arraymath.py:4112-4131 <https://github.com/numba/numba/blob/3a659b2578e95d07f62fbe2f5d10316e17486109/numba/np/arraymath.py#L4112-L4131>`_
+   - defined by ``np_kaiser(M, beta)`` at `numba/np/arraymath.py:4112-4131 <https://github.com/numba/numba/blob/a41f4317f9169e42443bf32d433025552bdb562a/numba/np/arraymath.py#L4112-L4131>`_
 
 .. function:: numpy.lib.kron
 
    Alias to: ``numpy.kron``
 
-   - defined by ``kron_impl(a, b)`` at `numba/np/linalg.py:2726-2780 <https://github.com/numba/numba/blob/3a659b2578e95d07f62fbe2f5d10316e17486109/numba/np/linalg.py#L2726-L2780>`_
+   - defined by ``kron_impl(a, b)`` at `numba/np/linalg.py:2726-2780 <https://github.com/numba/numba/blob/a41f4317f9169e42443bf32d433025552bdb562a/numba/np/linalg.py#L2726-L2780>`_
 
 .. function:: numpy.lib.median
 
    Alias to: ``numpy.median``
 
-   - defined by ``np_median(a)`` at `numba/np/arraymath.py:1109-1121 <https://github.com/numba/numba/blob/3a659b2578e95d07f62fbe2f5d10316e17486109/numba/np/arraymath.py#L1109-L1121>`_
+   - defined by ``np_median(a)`` at `numba/np/arraymath.py:1109-1121 <https://github.com/numba/numba/blob/a41f4317f9169e42443bf32d433025552bdb562a/numba/np/arraymath.py#L1109-L1121>`_
 
 .. function:: numpy.lib.nancumprod
 
    Alias to: ``numpy.nancumprod``
 
-   - defined by ``np_nancumprod(a)`` at `numba/np/arraymath.py:855-877 <https://github.com/numba/numba/blob/3a659b2578e95d07f62fbe2f5d10316e17486109/numba/np/arraymath.py#L855-L877>`_
+   - defined by ``np_nancumprod(a)`` at `numba/np/arraymath.py:855-877 <https://github.com/numba/numba/blob/a41f4317f9169e42443bf32d433025552bdb562a/numba/np/arraymath.py#L855-L877>`_
 
 .. function:: numpy.lib.nancumsum
 
    Alias to: ``numpy.nancumsum``
 
-   - defined by ``np_nancumsum(a)`` at `numba/np/arraymath.py:880-902 <https://github.com/numba/numba/blob/3a659b2578e95d07f62fbe2f5d10316e17486109/numba/np/arraymath.py#L880-L902>`_
+   - defined by ``np_nancumsum(a)`` at `numba/np/arraymath.py:880-902 <https://github.com/numba/numba/blob/a41f4317f9169e42443bf32d433025552bdb562a/numba/np/arraymath.py#L880-L902>`_
 
 .. function:: numpy.lib.nanmax
 
    Alias to: ``numpy.nanmax``
 
-   - defined by ``np_nanmax(a)`` at `numba/np/arraymath.py:746-752 <https://github.com/numba/numba/blob/3a659b2578e95d07f62fbe2f5d10316e17486109/numba/np/arraymath.py#L746-L752>`_
+   - defined by ``np_nanmax(a)`` at `numba/np/arraymath.py:746-752 <https://github.com/numba/numba/blob/a41f4317f9169e42443bf32d433025552bdb562a/numba/np/arraymath.py#L746-L752>`_
 
 .. function:: numpy.lib.nanmean
 
    Alias to: ``numpy.nanmean``
 
-   - defined by ``np_nanmean(a)`` at `numba/np/arraymath.py:755-772 <https://github.com/numba/numba/blob/3a659b2578e95d07f62fbe2f5d10316e17486109/numba/np/arraymath.py#L755-L772>`_
+   - defined by ``np_nanmean(a)`` at `numba/np/arraymath.py:755-772 <https://github.com/numba/numba/blob/a41f4317f9169e42443bf32d433025552bdb562a/numba/np/arraymath.py#L755-L772>`_
 
 .. function:: numpy.lib.nanmedian
 
    Alias to: ``numpy.nanmedian``
 
-   - defined by ``np_nanmedian(a)`` at `numba/np/arraymath.py:1293-1315 <https://github.com/numba/numba/blob/3a659b2578e95d07f62fbe2f5d10316e17486109/numba/np/arraymath.py#L1293-L1315>`_
+   - defined by ``np_nanmedian(a)`` at `numba/np/arraymath.py:1293-1315 <https://github.com/numba/numba/blob/a41f4317f9169e42443bf32d433025552bdb562a/numba/np/arraymath.py#L1293-L1315>`_
 
 .. function:: numpy.lib.nanmin
 
    Alias to: ``numpy.nanmin``
 
-   - defined by ``np_nanmin(a)`` at `numba/np/arraymath.py:737-743 <https://github.com/numba/numba/blob/3a659b2578e95d07f62fbe2f5d10316e17486109/numba/np/arraymath.py#L737-L743>`_
+   - defined by ``np_nanmin(a)`` at `numba/np/arraymath.py:737-743 <https://github.com/numba/numba/blob/a41f4317f9169e42443bf32d433025552bdb562a/numba/np/arraymath.py#L737-L743>`_
 
 .. function:: numpy.lib.nanpercentile
 
    Alias to: ``numpy.nanpercentile``
 
-   - defined by ``np_nanpercentile(a, q)`` at `numba/np/arraymath.py:1272-1276 <https://github.com/numba/numba/blob/3a659b2578e95d07f62fbe2f5d10316e17486109/numba/np/arraymath.py#L1272-L1276>`_
+   - defined by ``np_nanpercentile(a, q)`` at `numba/np/arraymath.py:1272-1276 <https://github.com/numba/numba/blob/a41f4317f9169e42443bf32d433025552bdb562a/numba/np/arraymath.py#L1272-L1276>`_
 
 .. function:: numpy.lib.nanprod
 
    Alias to: ``numpy.nanprod``
 
-   - defined by ``np_nanprod(a)`` at `numba/np/arraymath.py:833-852 <https://github.com/numba/numba/blob/3a659b2578e95d07f62fbe2f5d10316e17486109/numba/np/arraymath.py#L833-L852>`_
+   - defined by ``np_nanprod(a)`` at `numba/np/arraymath.py:833-852 <https://github.com/numba/numba/blob/a41f4317f9169e42443bf32d433025552bdb562a/numba/np/arraymath.py#L833-L852>`_
 
 .. function:: numpy.lib.nanquantile
 
    Alias to: ``numpy.nanquantile``
 
-   - defined by ``np_nanquantile(a, q)`` at `numba/np/arraymath.py:1286-1290 <https://github.com/numba/numba/blob/3a659b2578e95d07f62fbe2f5d10316e17486109/numba/np/arraymath.py#L1286-L1290>`_
+   - defined by ``np_nanquantile(a, q)`` at `numba/np/arraymath.py:1286-1290 <https://github.com/numba/numba/blob/a41f4317f9169e42443bf32d433025552bdb562a/numba/np/arraymath.py#L1286-L1290>`_
 
 .. function:: numpy.lib.nanstd
 
    Alias to: ``numpy.nanstd``
 
-   - defined by ``np_nanstd(a)`` at `numba/np/arraymath.py:800-808 <https://github.com/numba/numba/blob/3a659b2578e95d07f62fbe2f5d10316e17486109/numba/np/arraymath.py#L800-L808>`_
+   - defined by ``np_nanstd(a)`` at `numba/np/arraymath.py:800-808 <https://github.com/numba/numba/blob/a41f4317f9169e42443bf32d433025552bdb562a/numba/np/arraymath.py#L800-L808>`_
 
 .. function:: numpy.lib.nansum
 
    Alias to: ``numpy.nansum``
 
-   - defined by ``np_nansum(a)`` at `numba/np/arraymath.py:811-830 <https://github.com/numba/numba/blob/3a659b2578e95d07f62fbe2f5d10316e17486109/numba/np/arraymath.py#L811-L830>`_
+   - defined by ``np_nansum(a)`` at `numba/np/arraymath.py:811-830 <https://github.com/numba/numba/blob/a41f4317f9169e42443bf32d433025552bdb562a/numba/np/arraymath.py#L811-L830>`_
 
 .. function:: numpy.lib.nanvar
 
    Alias to: ``numpy.nanvar``
 
-   - defined by ``np_nanvar(a)`` at `numba/np/arraymath.py:775-797 <https://github.com/numba/numba/blob/3a659b2578e95d07f62fbe2f5d10316e17486109/numba/np/arraymath.py#L775-L797>`_
+   - defined by ``np_nanvar(a)`` at `numba/np/arraymath.py:775-797 <https://github.com/numba/numba/blob/a41f4317f9169e42443bf32d433025552bdb562a/numba/np/arraymath.py#L775-L797>`_
 
 .. function:: numpy.lib.percentile
 
    Alias to: ``numpy.percentile``
 
-   - defined by ``np_percentile(a, q)`` at `numba/np/arraymath.py:1265-1269 <https://github.com/numba/numba/blob/3a659b2578e95d07f62fbe2f5d10316e17486109/numba/np/arraymath.py#L1265-L1269>`_
+   - defined by ``np_percentile(a, q)`` at `numba/np/arraymath.py:1265-1269 <https://github.com/numba/numba/blob/a41f4317f9169e42443bf32d433025552bdb562a/numba/np/arraymath.py#L1265-L1269>`_
 
 .. function:: numpy.lib.quantile
 
    Alias to: ``numpy.quantile``
 
-   - defined by ``np_quantile(a, q)`` at `numba/np/arraymath.py:1279-1283 <https://github.com/numba/numba/blob/3a659b2578e95d07f62fbe2f5d10316e17486109/numba/np/arraymath.py#L1279-L1283>`_
+   - defined by ``np_quantile(a, q)`` at `numba/np/arraymath.py:1279-1283 <https://github.com/numba/numba/blob/a41f4317f9169e42443bf32d433025552bdb562a/numba/np/arraymath.py#L1279-L1283>`_
 
 .. function:: numpy.lib.real
 
    Alias to: ``numpy.real``
 
-   - defined by ``np_real(a)`` at `numba/np/arraymath.py:3123-3128 <https://github.com/numba/numba/blob/3a659b2578e95d07f62fbe2f5d10316e17486109/numba/np/arraymath.py#L3123-L3128>`_
+   - defined by ``np_real(a)`` at `numba/np/arraymath.py:3123-3128 <https://github.com/numba/numba/blob/a41f4317f9169e42443bf32d433025552bdb562a/numba/np/arraymath.py#L3123-L3128>`_
 
 .. function:: numpy.lib.roots
 
    Alias to: ``numpy.roots``
 
-   - defined by ``roots_impl(p)`` at `numba/np/polynomial.py:14-59 <https://github.com/numba/numba/blob/3a659b2578e95d07f62fbe2f5d10316e17486109/numba/np/polynomial.py#L14-L59>`_
+   - defined by ``roots_impl(p)`` at `numba/np/polynomial.py:14-59 <https://github.com/numba/numba/blob/a41f4317f9169e42443bf32d433025552bdb562a/numba/np/polynomial.py#L14-L59>`_
 
 .. function:: numpy.lib.row_stack
 
@@ -2806,7 +2806,7 @@ numpy.lib
 
    Alias to: ``numpy.select``
 
-   - defined by ``np_select(condlist, choicelist, default=0)`` at `numba/np/arraymath.py:3910-3958 <https://github.com/numba/numba/blob/3a659b2578e95d07f62fbe2f5d10316e17486109/numba/np/arraymath.py#L3910-L3958>`_
+   - defined by ``np_select(condlist, choicelist, default=0)`` at `numba/np/arraymath.py:3910-3958 <https://github.com/numba/numba/blob/a41f4317f9169e42443bf32d433025552bdb562a/numba/np/arraymath.py#L3910-L3958>`_
 
 .. function:: numpy.lib.sinc
 
@@ -2818,61 +2818,61 @@ numpy.lib
 
    Alias to: ``numpy.trapz``
 
-   - defined by ``np_trapz(y, x=None, dx=1.0)`` at `numba/np/arraymath.py:1688-1707 <https://github.com/numba/numba/blob/3a659b2578e95d07f62fbe2f5d10316e17486109/numba/np/arraymath.py#L1688-L1707>`_
+   - defined by ``np_trapz(y, x=None, dx=1.0)`` at `numba/np/arraymath.py:1688-1707 <https://github.com/numba/numba/blob/a41f4317f9169e42443bf32d433025552bdb562a/numba/np/arraymath.py#L1688-L1707>`_
 
 .. function:: numpy.lib.tri
 
    Alias to: ``numpy.tri``
 
-   - defined by ``np_tri(N, M=None, k=0)`` at `numba/np/arraymath.py:1415-1426 <https://github.com/numba/numba/blob/3a659b2578e95d07f62fbe2f5d10316e17486109/numba/np/arraymath.py#L1415-L1426>`_
+   - defined by ``np_tri(N, M=None, k=0)`` at `numba/np/arraymath.py:1415-1426 <https://github.com/numba/numba/blob/a41f4317f9169e42443bf32d433025552bdb562a/numba/np/arraymath.py#L1415-L1426>`_
 
 .. function:: numpy.lib.tril
 
    Alias to: ``numpy.tril``
 
-   - defined by ``my_tril(m, k=0)`` at `numba/np/arraymath.py:1452-1476 <https://github.com/numba/numba/blob/3a659b2578e95d07f62fbe2f5d10316e17486109/numba/np/arraymath.py#L1452-L1476>`_
+   - defined by ``my_tril(m, k=0)`` at `numba/np/arraymath.py:1452-1476 <https://github.com/numba/numba/blob/a41f4317f9169e42443bf32d433025552bdb562a/numba/np/arraymath.py#L1452-L1476>`_
 
 .. function:: numpy.lib.tril_indices
 
    Alias to: ``numpy.tril_indices``
 
-   - defined by ``np_tril_indices(n, k=0, m=None)`` at `numba/np/arraymath.py:1479-1490 <https://github.com/numba/numba/blob/3a659b2578e95d07f62fbe2f5d10316e17486109/numba/np/arraymath.py#L1479-L1490>`_
+   - defined by ``np_tril_indices(n, k=0, m=None)`` at `numba/np/arraymath.py:1479-1490 <https://github.com/numba/numba/blob/a41f4317f9169e42443bf32d433025552bdb562a/numba/np/arraymath.py#L1479-L1490>`_
 
 .. function:: numpy.lib.tril_indices_from
 
    Alias to: ``numpy.tril_indices_from``
 
-   - defined by ``np_tril_indices_from(arr, k=0)`` at `numba/np/arraymath.py:1493-1504 <https://github.com/numba/numba/blob/3a659b2578e95d07f62fbe2f5d10316e17486109/numba/np/arraymath.py#L1493-L1504>`_
+   - defined by ``np_tril_indices_from(arr, k=0)`` at `numba/np/arraymath.py:1493-1504 <https://github.com/numba/numba/blob/a41f4317f9169e42443bf32d433025552bdb562a/numba/np/arraymath.py#L1493-L1504>`_
 
 .. function:: numpy.lib.triu
 
    Alias to: ``numpy.triu``
 
-   - defined by ``my_triu(m, k=0)`` at `numba/np/arraymath.py:1513-1536 <https://github.com/numba/numba/blob/3a659b2578e95d07f62fbe2f5d10316e17486109/numba/np/arraymath.py#L1513-L1536>`_
+   - defined by ``my_triu(m, k=0)`` at `numba/np/arraymath.py:1513-1536 <https://github.com/numba/numba/blob/a41f4317f9169e42443bf32d433025552bdb562a/numba/np/arraymath.py#L1513-L1536>`_
 
 .. function:: numpy.lib.triu_indices
 
    Alias to: ``numpy.triu_indices``
 
-   - defined by ``np_triu_indices(n, k=0, m=None)`` at `numba/np/arraymath.py:1539-1550 <https://github.com/numba/numba/blob/3a659b2578e95d07f62fbe2f5d10316e17486109/numba/np/arraymath.py#L1539-L1550>`_
+   - defined by ``np_triu_indices(n, k=0, m=None)`` at `numba/np/arraymath.py:1539-1550 <https://github.com/numba/numba/blob/a41f4317f9169e42443bf32d433025552bdb562a/numba/np/arraymath.py#L1539-L1550>`_
 
 .. function:: numpy.lib.triu_indices_from
 
    Alias to: ``numpy.triu_indices_from``
 
-   - defined by ``np_triu_indices_from(arr, k=0)`` at `numba/np/arraymath.py:1553-1564 <https://github.com/numba/numba/blob/3a659b2578e95d07f62fbe2f5d10316e17486109/numba/np/arraymath.py#L1553-L1564>`_
+   - defined by ``np_triu_indices_from(arr, k=0)`` at `numba/np/arraymath.py:1553-1564 <https://github.com/numba/numba/blob/a41f4317f9169e42443bf32d433025552bdb562a/numba/np/arraymath.py#L1553-L1564>`_
 
 .. function:: numpy.lib.unique
 
    Alias to: ``numpy.unique``
 
-   - defined by ``np_unique(a)`` at `numba/np/arrayobj.py:1915-1922 <https://github.com/numba/numba/blob/3a659b2578e95d07f62fbe2f5d10316e17486109/numba/np/arrayobj.py#L1915-L1922>`_
+   - defined by ``np_unique(a)`` at `numba/np/arrayobj.py:1915-1922 <https://github.com/numba/numba/blob/a41f4317f9169e42443bf32d433025552bdb562a/numba/np/arrayobj.py#L1915-L1922>`_
 
 .. function:: numpy.lib.vander
 
    Alias to: ``numpy.vander``
 
-   - defined by ``np_vander(x, N=None, increasing=False)`` at `numba/np/arraymath.py:1746-1783 <https://github.com/numba/numba/blob/3a659b2578e95d07f62fbe2f5d10316e17486109/numba/np/arraymath.py#L1746-L1783>`_
+   - defined by ``np_vander(x, N=None, increasing=False)`` at `numba/np/arraymath.py:1746-1783 <https://github.com/numba/numba/blob/a41f4317f9169e42443bf32d433025552bdb562a/numba/np/arraymath.py#L1746-L1783>`_
 
 Not showing 110 unsupported functions.
 
@@ -2892,13 +2892,13 @@ numpy.lib.arraysetops
 
    Alias to: ``numpy.ediff1d``
 
-   - defined by ``np_ediff1d(ary, to_end=None, to_begin=None)`` at `numba/np/arraymath.py:1596-1651 <https://github.com/numba/numba/blob/3a659b2578e95d07f62fbe2f5d10316e17486109/numba/np/arraymath.py#L1596-L1651>`_
+   - defined by ``np_ediff1d(ary, to_end=None, to_begin=None)`` at `numba/np/arraymath.py:1596-1651 <https://github.com/numba/numba/blob/a41f4317f9169e42443bf32d433025552bdb562a/numba/np/arraymath.py#L1596-L1651>`_
 
 .. function:: numpy.lib.arraysetops.unique
 
    Alias to: ``numpy.unique``
 
-   - defined by ``np_unique(a)`` at `numba/np/arrayobj.py:1915-1922 <https://github.com/numba/numba/blob/3a659b2578e95d07f62fbe2f5d10316e17486109/numba/np/arrayobj.py#L1915-L1922>`_
+   - defined by ``np_unique(a)`` at `numba/np/arrayobj.py:1915-1922 <https://github.com/numba/numba/blob/a41f4317f9169e42443bf32d433025552bdb562a/numba/np/arrayobj.py#L1915-L1922>`_
 
 Not showing 6 unsupported functions.
 
@@ -2914,8 +2914,8 @@ numpy.lib.arrayterator
    - defined by ``<class 'numba.core.typing.templates.Registry.register_global.<locals>.decorate.<locals>.Template'>``
    - defined by ``<class 'numba.core.typing.templates.Registry.register_global.<locals>.decorate.<locals>.Template'>``
    - defined by ``<class 'numba.core.typing.templates.Registry.register_global.<locals>.decorate.<locals>.Template'>``
-   - defined by ``unicode_repeat(a, b)`` at `numba/cpython/unicode.py:1714-1723 <https://github.com/numba/numba/blob/3a659b2578e95d07f62fbe2f5d10316e17486109/numba/cpython/unicode.py#L1714-L1723>`_
-   - defined by ``charseq_repeat(a, b)`` at `numba/cpython/charseq.py:399-416 <https://github.com/numba/numba/blob/3a659b2578e95d07f62fbe2f5d10316e17486109/numba/cpython/charseq.py#L399-L416>`_
+   - defined by ``unicode_repeat(a, b)`` at `numba/cpython/unicode.py:1714-1723 <https://github.com/numba/numba/blob/a41f4317f9169e42443bf32d433025552bdb562a/numba/cpython/unicode.py#L1714-L1723>`_
+   - defined by ``charseq_repeat(a, b)`` at `numba/cpython/charseq.py:399-416 <https://github.com/numba/numba/blob/a41f4317f9169e42443bf32d433025552bdb562a/numba/cpython/charseq.py#L399-L416>`_
    - defined by ``<class 'numba.core.typing.templates.Registry.register_global.<locals>.decorate.<locals>.Template'>``
 
 .. function:: numpy.lib.arrayterator.reduce
@@ -2954,19 +2954,19 @@ numpy.lib.function_base
 
    Alias to: ``numpy.any``
 
-   - defined by ``np_any(a)`` at `numba/np/arraymath.py:643-652 <https://github.com/numba/numba/blob/3a659b2578e95d07f62fbe2f5d10316e17486109/numba/np/arraymath.py#L643-L652>`_
+   - defined by ``np_any(a)`` at `numba/np/arraymath.py:643-652 <https://github.com/numba/numba/blob/a41f4317f9169e42443bf32d433025552bdb562a/numba/np/arraymath.py#L643-L652>`_
 
 .. function:: numpy.lib.function_base.append
 
    Alias to: ``numpy.append``
 
-   - defined by ``np_append(arr, values, axis=None)`` at `numba/np/arrayobj.py:1709-1732 <https://github.com/numba/numba/blob/3a659b2578e95d07f62fbe2f5d10316e17486109/numba/np/arrayobj.py#L1709-L1732>`_
+   - defined by ``np_append(arr, values, axis=None)`` at `numba/np/arrayobj.py:1709-1732 <https://github.com/numba/numba/blob/a41f4317f9169e42443bf32d433025552bdb562a/numba/np/arrayobj.py#L1709-L1732>`_
 
 .. function:: numpy.lib.function_base.arange
 
    Alias to: ``numpy.arange``
 
-   - defined by ``np_arange(start, stop=None, step=None, dtype=None)`` at `numba/np/arrayobj.py:3842-3908 <https://github.com/numba/numba/blob/3a659b2578e95d07f62fbe2f5d10316e17486109/numba/np/arrayobj.py#L3842-L3908>`_
+   - defined by ``np_arange(start, stop=None, step=None, dtype=None)`` at `numba/np/arrayobj.py:3842-3908 <https://github.com/numba/numba/blob/a41f4317f9169e42443bf32d433025552bdb562a/numba/np/arrayobj.py#L3842-L3908>`_
 
 .. function:: numpy.lib.function_base.around
 
@@ -2984,7 +2984,7 @@ numpy.lib.function_base
 
    Alias to: ``numpy.asarray``
 
-   - defined by ``np_asarray(a, dtype=None)`` at `numba/np/arraymath.py:3848-3881 <https://github.com/numba/numba/blob/3a659b2578e95d07f62fbe2f5d10316e17486109/numba/np/arraymath.py#L3848-L3881>`_
+   - defined by ``np_asarray(a, dtype=None)`` at `numba/np/arraymath.py:3848-3881 <https://github.com/numba/numba/blob/a41f4317f9169e42443bf32d433025552bdb562a/numba/np/arraymath.py#L3848-L3881>`_
 
 .. function:: numpy.lib.function_base.atleast_1d
 
@@ -2996,19 +2996,19 @@ numpy.lib.function_base
 
    Alias to: ``numpy.bartlett``
 
-   - defined by ``window_generator.<locals>.window_overload(M)`` at `numba/np/arraymath.py:3994-4006 <https://github.com/numba/numba/blob/3a659b2578e95d07f62fbe2f5d10316e17486109/numba/np/arraymath.py#L3994-L4006>`_
+   - defined by ``window_generator.<locals>.window_overload(M)`` at `numba/np/arraymath.py:3994-4006 <https://github.com/numba/numba/blob/a41f4317f9169e42443bf32d433025552bdb562a/numba/np/arraymath.py#L3994-L4006>`_
 
 .. function:: numpy.lib.function_base.bincount
 
    Alias to: ``numpy.bincount``
 
-   - defined by ``np_bincount(a, weights=None)`` at `numba/np/arraymath.py:3281-3330 <https://github.com/numba/numba/blob/3a659b2578e95d07f62fbe2f5d10316e17486109/numba/np/arraymath.py#L3281-L3330>`_
+   - defined by ``np_bincount(a, weights=None)`` at `numba/np/arraymath.py:3281-3330 <https://github.com/numba/numba/blob/a41f4317f9169e42443bf32d433025552bdb562a/numba/np/arraymath.py#L3281-L3330>`_
 
 .. function:: numpy.lib.function_base.blackman
 
    Alias to: ``numpy.blackman``
 
-   - defined by ``window_generator.<locals>.window_overload(M)`` at `numba/np/arraymath.py:3994-4006 <https://github.com/numba/numba/blob/3a659b2578e95d07f62fbe2f5d10316e17486109/numba/np/arraymath.py#L3994-L4006>`_
+   - defined by ``window_generator.<locals>.window_overload(M)`` at `numba/np/arraymath.py:3994-4006 <https://github.com/numba/numba/blob/a41f4317f9169e42443bf32d433025552bdb562a/numba/np/arraymath.py#L3994-L4006>`_
 
 .. function:: numpy.lib.function_base.concatenate
 
@@ -3026,19 +3026,19 @@ numpy.lib.function_base
 
    Alias to: ``numpy.corrcoef``
 
-   - defined by ``np_corrcoef(x, y=None, rowvar=True)`` at `numba/np/arraymath.py:2607-2637 <https://github.com/numba/numba/blob/3a659b2578e95d07f62fbe2f5d10316e17486109/numba/np/arraymath.py#L2607-L2637>`_
+   - defined by ``np_corrcoef(x, y=None, rowvar=True)`` at `numba/np/arraymath.py:2607-2637 <https://github.com/numba/numba/blob/a41f4317f9169e42443bf32d433025552bdb562a/numba/np/arraymath.py#L2607-L2637>`_
 
 .. function:: numpy.lib.function_base.cov
 
    Alias to: ``numpy.cov``
 
-   - defined by ``np_cov(m, y=None, rowvar=True, bias=False, ddof=None)`` at `numba/np/arraymath.py:2548-2604 <https://github.com/numba/numba/blob/3a659b2578e95d07f62fbe2f5d10316e17486109/numba/np/arraymath.py#L2548-L2604>`_
+   - defined by ``np_cov(m, y=None, rowvar=True, bias=False, ddof=None)`` at `numba/np/arraymath.py:2548-2604 <https://github.com/numba/numba/blob/a41f4317f9169e42443bf32d433025552bdb562a/numba/np/arraymath.py#L2548-L2604>`_
 
 .. function:: numpy.lib.function_base.delete
 
    Alias to: ``numpy.delete``
 
-   - defined by ``np_delete(arr, obj)`` at `numba/np/arraymath.py:3163-3207 <https://github.com/numba/numba/blob/3a659b2578e95d07f62fbe2f5d10316e17486109/numba/np/arraymath.py#L3163-L3207>`_
+   - defined by ``np_delete(arr, obj)`` at `numba/np/arraymath.py:3163-3207 <https://github.com/numba/numba/blob/a41f4317f9169e42443bf32d433025552bdb562a/numba/np/arraymath.py#L3163-L3207>`_
 
 .. function:: numpy.lib.function_base.diag
 
@@ -3050,13 +3050,13 @@ numpy.lib.function_base
 
    Alias to: ``numpy.diff``
 
-   - defined by ``np_diff_impl(a, n=1)`` at `numba/np/arraymath.py:3210-3246 <https://github.com/numba/numba/blob/3a659b2578e95d07f62fbe2f5d10316e17486109/numba/np/arraymath.py#L3210-L3246>`_
+   - defined by ``np_diff_impl(a, n=1)`` at `numba/np/arraymath.py:3210-3246 <https://github.com/numba/numba/blob/a41f4317f9169e42443bf32d433025552bdb562a/numba/np/arraymath.py#L3210-L3246>`_
 
 .. function:: numpy.lib.function_base.digitize
 
    Alias to: ``numpy.digitize``
 
-   - defined by ``np_digitize(x, bins, right=False)`` at `numba/np/arraymath.py:3398-3524 <https://github.com/numba/numba/blob/3a659b2578e95d07f62fbe2f5d10316e17486109/numba/np/arraymath.py#L3398-L3524>`_
+   - defined by ``np_digitize(x, bins, right=False)`` at `numba/np/arraymath.py:3398-3524 <https://github.com/numba/numba/blob/a41f4317f9169e42443bf32d433025552bdb562a/numba/np/arraymath.py#L3398-L3524>`_
 
 .. function:: numpy.lib.function_base.dot
 
@@ -3080,43 +3080,43 @@ numpy.lib.function_base
 
    Alias to: ``numpy.extract``
 
-   - defined by ``np_extract(condition, arr)`` at `numba/np/arraymath.py:3884-3907 <https://github.com/numba/numba/blob/3a659b2578e95d07f62fbe2f5d10316e17486109/numba/np/arraymath.py#L3884-L3907>`_
+   - defined by ``np_extract(condition, arr)`` at `numba/np/arraymath.py:3884-3907 <https://github.com/numba/numba/blob/a41f4317f9169e42443bf32d433025552bdb562a/numba/np/arraymath.py#L3884-L3907>`_
 
 .. function:: numpy.lib.function_base.flip
 
    Alias to: ``numpy.flip``
 
-   - defined by ``np_flip(a)`` at `numba/np/arrayobj.py:4953-4964 <https://github.com/numba/numba/blob/3a659b2578e95d07f62fbe2f5d10316e17486109/numba/np/arrayobj.py#L4953-L4964>`_
+   - defined by ``np_flip(a)`` at `numba/np/arrayobj.py:4953-4964 <https://github.com/numba/numba/blob/a41f4317f9169e42443bf32d433025552bdb562a/numba/np/arrayobj.py#L4953-L4964>`_
 
 .. function:: numpy.lib.function_base.hamming
 
    Alias to: ``numpy.hamming``
 
-   - defined by ``window_generator.<locals>.window_overload(M)`` at `numba/np/arraymath.py:3994-4006 <https://github.com/numba/numba/blob/3a659b2578e95d07f62fbe2f5d10316e17486109/numba/np/arraymath.py#L3994-L4006>`_
+   - defined by ``window_generator.<locals>.window_overload(M)`` at `numba/np/arraymath.py:3994-4006 <https://github.com/numba/numba/blob/a41f4317f9169e42443bf32d433025552bdb562a/numba/np/arraymath.py#L3994-L4006>`_
 
 .. function:: numpy.lib.function_base.hanning
 
    Alias to: ``numpy.hanning``
 
-   - defined by ``window_generator.<locals>.window_overload(M)`` at `numba/np/arraymath.py:3994-4006 <https://github.com/numba/numba/blob/3a659b2578e95d07f62fbe2f5d10316e17486109/numba/np/arraymath.py#L3994-L4006>`_
+   - defined by ``window_generator.<locals>.window_overload(M)`` at `numba/np/arraymath.py:3994-4006 <https://github.com/numba/numba/blob/a41f4317f9169e42443bf32d433025552bdb562a/numba/np/arraymath.py#L3994-L4006>`_
 
 .. function:: numpy.lib.function_base.histogram
 
    Alias to: ``numpy.histogram``
 
-   - defined by ``np_histogram(a, bins=10, range=None)`` at `numba/np/arraymath.py:3530-3610 <https://github.com/numba/numba/blob/3a659b2578e95d07f62fbe2f5d10316e17486109/numba/np/arraymath.py#L3530-L3610>`_
+   - defined by ``np_histogram(a, bins=10, range=None)`` at `numba/np/arraymath.py:3530-3610 <https://github.com/numba/numba/blob/a41f4317f9169e42443bf32d433025552bdb562a/numba/np/arraymath.py#L3530-L3610>`_
 
 .. function:: numpy.lib.function_base.interp
 
    Alias to: ``numpy.interp``
 
-   - defined by ``np_interp(x, xp, fp)`` at `numba/np/arraymath.py:2299-2360 <https://github.com/numba/numba/blob/3a659b2578e95d07f62fbe2f5d10316e17486109/numba/np/arraymath.py#L2299-L2360>`_
+   - defined by ``np_interp(x, xp, fp)`` at `numba/np/arraymath.py:2299-2360 <https://github.com/numba/numba/blob/a41f4317f9169e42443bf32d433025552bdb562a/numba/np/arraymath.py#L2299-L2360>`_
 
 .. function:: numpy.lib.function_base.kaiser
 
    Alias to: ``numpy.kaiser``
 
-   - defined by ``np_kaiser(M, beta)`` at `numba/np/arraymath.py:4112-4131 <https://github.com/numba/numba/blob/3a659b2578e95d07f62fbe2f5d10316e17486109/numba/np/arraymath.py#L4112-L4131>`_
+   - defined by ``np_kaiser(M, beta)`` at `numba/np/arraymath.py:4112-4131 <https://github.com/numba/numba/blob/a41f4317f9169e42443bf32d433025552bdb562a/numba/np/arraymath.py#L4112-L4131>`_
 
 .. function:: numpy.lib.function_base.mean
 
@@ -3128,7 +3128,7 @@ numpy.lib.function_base
 
    Alias to: ``numpy.median``
 
-   - defined by ``np_median(a)`` at `numba/np/arraymath.py:1109-1121 <https://github.com/numba/numba/blob/3a659b2578e95d07f62fbe2f5d10316e17486109/numba/np/arraymath.py#L1109-L1121>`_
+   - defined by ``np_median(a)`` at `numba/np/arraymath.py:1109-1121 <https://github.com/numba/numba/blob/a41f4317f9169e42443bf32d433025552bdb562a/numba/np/arraymath.py#L1109-L1121>`_
 
 .. function:: numpy.lib.function_base.nonzero
 
@@ -3146,19 +3146,19 @@ numpy.lib.function_base
 
    Alias to: ``numpy.partition``
 
-   - defined by ``np_partition(a, kth)`` at `numba/np/arraymath.py:1374-1396 <https://github.com/numba/numba/blob/3a659b2578e95d07f62fbe2f5d10316e17486109/numba/np/arraymath.py#L1374-L1396>`_
+   - defined by ``np_partition(a, kth)`` at `numba/np/arraymath.py:1374-1396 <https://github.com/numba/numba/blob/a41f4317f9169e42443bf32d433025552bdb562a/numba/np/arraymath.py#L1374-L1396>`_
 
 .. function:: numpy.lib.function_base.percentile
 
    Alias to: ``numpy.percentile``
 
-   - defined by ``np_percentile(a, q)`` at `numba/np/arraymath.py:1265-1269 <https://github.com/numba/numba/blob/3a659b2578e95d07f62fbe2f5d10316e17486109/numba/np/arraymath.py#L1265-L1269>`_
+   - defined by ``np_percentile(a, q)`` at `numba/np/arraymath.py:1265-1269 <https://github.com/numba/numba/blob/a41f4317f9169e42443bf32d433025552bdb562a/numba/np/arraymath.py#L1265-L1269>`_
 
 .. function:: numpy.lib.function_base.quantile
 
    Alias to: ``numpy.quantile``
 
-   - defined by ``np_quantile(a, q)`` at `numba/np/arraymath.py:1279-1283 <https://github.com/numba/numba/blob/3a659b2578e95d07f62fbe2f5d10316e17486109/numba/np/arraymath.py#L1279-L1283>`_
+   - defined by ``np_quantile(a, q)`` at `numba/np/arraymath.py:1279-1283 <https://github.com/numba/numba/blob/a41f4317f9169e42443bf32d433025552bdb562a/numba/np/arraymath.py#L1279-L1283>`_
 
 .. function:: numpy.lib.function_base.ravel
 
@@ -3170,7 +3170,7 @@ numpy.lib.function_base
 
    Alias to: ``numpy.select``
 
-   - defined by ``np_select(condlist, choicelist, default=0)`` at `numba/np/arraymath.py:3910-3958 <https://github.com/numba/numba/blob/3a659b2578e95d07f62fbe2f5d10316e17486109/numba/np/arraymath.py#L3910-L3958>`_
+   - defined by ``np_select(condlist, choicelist, default=0)`` at `numba/np/arraymath.py:3910-3958 <https://github.com/numba/numba/blob/a41f4317f9169e42443bf32d433025552bdb562a/numba/np/arraymath.py#L3910-L3958>`_
 
 .. function:: numpy.lib.function_base.sinc
 
@@ -3194,13 +3194,13 @@ numpy.lib.function_base
 
    Alias to: ``numpy.transpose``
 
-   - defined by ``numpy_transpose(a, axes=None)`` at `numba/np/arrayobj.py:1530-1542 <https://github.com/numba/numba/blob/3a659b2578e95d07f62fbe2f5d10316e17486109/numba/np/arrayobj.py#L1530-L1542>`_
+   - defined by ``numpy_transpose(a, axes=None)`` at `numba/np/arrayobj.py:1530-1542 <https://github.com/numba/numba/blob/a41f4317f9169e42443bf32d433025552bdb562a/numba/np/arrayobj.py#L1530-L1542>`_
 
 .. function:: numpy.lib.function_base.trapz
 
    Alias to: ``numpy.trapz``
 
-   - defined by ``np_trapz(y, x=None, dx=1.0)`` at `numba/np/arraymath.py:1688-1707 <https://github.com/numba/numba/blob/3a659b2578e95d07f62fbe2f5d10316e17486109/numba/np/arraymath.py#L1688-L1707>`_
+   - defined by ``np_trapz(y, x=None, dx=1.0)`` at `numba/np/arraymath.py:1688-1707 <https://github.com/numba/numba/blob/a41f4317f9169e42443bf32d433025552bdb562a/numba/np/arraymath.py#L1688-L1707>`_
 
 .. function:: numpy.lib.function_base.where
 
@@ -3226,7 +3226,7 @@ numpy.lib.histograms
 
    Alias to: ``numpy.histogram``
 
-   - defined by ``np_histogram(a, bins=10, range=None)`` at `numba/np/arraymath.py:3530-3610 <https://github.com/numba/numba/blob/3a659b2578e95d07f62fbe2f5d10316e17486109/numba/np/arraymath.py#L3530-L3610>`_
+   - defined by ``np_histogram(a, bins=10, range=None)`` at `numba/np/arraymath.py:3530-3610 <https://github.com/numba/numba/blob/a41f4317f9169e42443bf32d433025552bdb562a/numba/np/arraymath.py#L3530-L3610>`_
 
 Not showing 2 unsupported functions.
 
@@ -3240,7 +3240,7 @@ numpy.lib.index_tricks
 
    Alias to: ``numpy.arange``
 
-   - defined by ``np_arange(start, stop=None, step=None, dtype=None)`` at `numba/np/arrayobj.py:3842-3908 <https://github.com/numba/numba/blob/3a659b2578e95d07f62fbe2f5d10316e17486109/numba/np/arrayobj.py#L3842-L3908>`_
+   - defined by ``np_arange(start, stop=None, step=None, dtype=None)`` at `numba/np/arrayobj.py:3842-3908 <https://github.com/numba/numba/blob/a41f4317f9169e42443bf32d433025552bdb562a/numba/np/arrayobj.py#L3842-L3908>`_
 
 .. function:: numpy.lib.index_tricks.array
 
@@ -3251,13 +3251,13 @@ numpy.lib.index_tricks
 .. function:: numpy.lib.index_tricks.as_strided
 
 
-   - defined by ``as_strided(x, shape=None, strides=None)`` at `numba/np/arrayobj.py:5100-5126 <https://github.com/numba/numba/blob/3a659b2578e95d07f62fbe2f5d10316e17486109/numba/np/arrayobj.py#L5100-L5126>`_
+   - defined by ``as_strided(x, shape=None, strides=None)`` at `numba/np/arrayobj.py:5100-5126 <https://github.com/numba/numba/blob/a41f4317f9169e42443bf32d433025552bdb562a/numba/np/arrayobj.py#L5100-L5126>`_
 
 .. function:: numpy.lib.index_tricks.asarray
 
    Alias to: ``numpy.asarray``
 
-   - defined by ``np_asarray(a, dtype=None)`` at `numba/np/arraymath.py:3848-3881 <https://github.com/numba/numba/blob/3a659b2578e95d07f62fbe2f5d10316e17486109/numba/np/arraymath.py#L3848-L3881>`_
+   - defined by ``np_asarray(a, dtype=None)`` at `numba/np/arraymath.py:3848-3881 <https://github.com/numba/numba/blob/a41f4317f9169e42443bf32d433025552bdb562a/numba/np/arraymath.py#L3848-L3881>`_
 
 .. function:: numpy.lib.index_tricks.cumprod
 
@@ -3269,13 +3269,13 @@ numpy.lib.index_tricks
 
    Alias to: ``numpy.diff``
 
-   - defined by ``np_diff_impl(a, n=1)`` at `numba/np/arraymath.py:3210-3246 <https://github.com/numba/numba/blob/3a659b2578e95d07f62fbe2f5d10316e17486109/numba/np/arraymath.py#L3210-L3246>`_
+   - defined by ``np_diff_impl(a, n=1)`` at `numba/np/arraymath.py:3210-3246 <https://github.com/numba/numba/blob/a41f4317f9169e42443bf32d433025552bdb562a/numba/np/arraymath.py#L3210-L3246>`_
 
 .. function:: numpy.lib.index_tricks.fill_diagonal
 
    Alias to: ``numpy.fill_diagonal``
 
-   - defined by ``np_fill_diagonal(a, val, wrap=False)`` at `numba/np/arraymath.py:2762-2792 <https://github.com/numba/numba/blob/3a659b2578e95d07f62fbe2f5d10316e17486109/numba/np/arraymath.py#L2762-L2792>`_
+   - defined by ``np_fill_diagonal(a, val, wrap=False)`` at `numba/np/arraymath.py:2762-2792 <https://github.com/numba/numba/blob/a41f4317f9169e42443bf32d433025552bdb562a/numba/np/arraymath.py#L2762-L2792>`_
 
 .. function:: numpy.lib.index_tricks.linspace
 
@@ -3301,73 +3301,73 @@ numpy.lib.nanfunctions
 
    Alias to: ``numpy.nancumprod``
 
-   - defined by ``np_nancumprod(a)`` at `numba/np/arraymath.py:855-877 <https://github.com/numba/numba/blob/3a659b2578e95d07f62fbe2f5d10316e17486109/numba/np/arraymath.py#L855-L877>`_
+   - defined by ``np_nancumprod(a)`` at `numba/np/arraymath.py:855-877 <https://github.com/numba/numba/blob/a41f4317f9169e42443bf32d433025552bdb562a/numba/np/arraymath.py#L855-L877>`_
 
 .. function:: numpy.lib.nanfunctions.nancumsum
 
    Alias to: ``numpy.nancumsum``
 
-   - defined by ``np_nancumsum(a)`` at `numba/np/arraymath.py:880-902 <https://github.com/numba/numba/blob/3a659b2578e95d07f62fbe2f5d10316e17486109/numba/np/arraymath.py#L880-L902>`_
+   - defined by ``np_nancumsum(a)`` at `numba/np/arraymath.py:880-902 <https://github.com/numba/numba/blob/a41f4317f9169e42443bf32d433025552bdb562a/numba/np/arraymath.py#L880-L902>`_
 
 .. function:: numpy.lib.nanfunctions.nanmax
 
    Alias to: ``numpy.nanmax``
 
-   - defined by ``np_nanmax(a)`` at `numba/np/arraymath.py:746-752 <https://github.com/numba/numba/blob/3a659b2578e95d07f62fbe2f5d10316e17486109/numba/np/arraymath.py#L746-L752>`_
+   - defined by ``np_nanmax(a)`` at `numba/np/arraymath.py:746-752 <https://github.com/numba/numba/blob/a41f4317f9169e42443bf32d433025552bdb562a/numba/np/arraymath.py#L746-L752>`_
 
 .. function:: numpy.lib.nanfunctions.nanmean
 
    Alias to: ``numpy.nanmean``
 
-   - defined by ``np_nanmean(a)`` at `numba/np/arraymath.py:755-772 <https://github.com/numba/numba/blob/3a659b2578e95d07f62fbe2f5d10316e17486109/numba/np/arraymath.py#L755-L772>`_
+   - defined by ``np_nanmean(a)`` at `numba/np/arraymath.py:755-772 <https://github.com/numba/numba/blob/a41f4317f9169e42443bf32d433025552bdb562a/numba/np/arraymath.py#L755-L772>`_
 
 .. function:: numpy.lib.nanfunctions.nanmedian
 
    Alias to: ``numpy.nanmedian``
 
-   - defined by ``np_nanmedian(a)`` at `numba/np/arraymath.py:1293-1315 <https://github.com/numba/numba/blob/3a659b2578e95d07f62fbe2f5d10316e17486109/numba/np/arraymath.py#L1293-L1315>`_
+   - defined by ``np_nanmedian(a)`` at `numba/np/arraymath.py:1293-1315 <https://github.com/numba/numba/blob/a41f4317f9169e42443bf32d433025552bdb562a/numba/np/arraymath.py#L1293-L1315>`_
 
 .. function:: numpy.lib.nanfunctions.nanmin
 
    Alias to: ``numpy.nanmin``
 
-   - defined by ``np_nanmin(a)`` at `numba/np/arraymath.py:737-743 <https://github.com/numba/numba/blob/3a659b2578e95d07f62fbe2f5d10316e17486109/numba/np/arraymath.py#L737-L743>`_
+   - defined by ``np_nanmin(a)`` at `numba/np/arraymath.py:737-743 <https://github.com/numba/numba/blob/a41f4317f9169e42443bf32d433025552bdb562a/numba/np/arraymath.py#L737-L743>`_
 
 .. function:: numpy.lib.nanfunctions.nanpercentile
 
    Alias to: ``numpy.nanpercentile``
 
-   - defined by ``np_nanpercentile(a, q)`` at `numba/np/arraymath.py:1272-1276 <https://github.com/numba/numba/blob/3a659b2578e95d07f62fbe2f5d10316e17486109/numba/np/arraymath.py#L1272-L1276>`_
+   - defined by ``np_nanpercentile(a, q)`` at `numba/np/arraymath.py:1272-1276 <https://github.com/numba/numba/blob/a41f4317f9169e42443bf32d433025552bdb562a/numba/np/arraymath.py#L1272-L1276>`_
 
 .. function:: numpy.lib.nanfunctions.nanprod
 
    Alias to: ``numpy.nanprod``
 
-   - defined by ``np_nanprod(a)`` at `numba/np/arraymath.py:833-852 <https://github.com/numba/numba/blob/3a659b2578e95d07f62fbe2f5d10316e17486109/numba/np/arraymath.py#L833-L852>`_
+   - defined by ``np_nanprod(a)`` at `numba/np/arraymath.py:833-852 <https://github.com/numba/numba/blob/a41f4317f9169e42443bf32d433025552bdb562a/numba/np/arraymath.py#L833-L852>`_
 
 .. function:: numpy.lib.nanfunctions.nanquantile
 
    Alias to: ``numpy.nanquantile``
 
-   - defined by ``np_nanquantile(a, q)`` at `numba/np/arraymath.py:1286-1290 <https://github.com/numba/numba/blob/3a659b2578e95d07f62fbe2f5d10316e17486109/numba/np/arraymath.py#L1286-L1290>`_
+   - defined by ``np_nanquantile(a, q)`` at `numba/np/arraymath.py:1286-1290 <https://github.com/numba/numba/blob/a41f4317f9169e42443bf32d433025552bdb562a/numba/np/arraymath.py#L1286-L1290>`_
 
 .. function:: numpy.lib.nanfunctions.nanstd
 
    Alias to: ``numpy.nanstd``
 
-   - defined by ``np_nanstd(a)`` at `numba/np/arraymath.py:800-808 <https://github.com/numba/numba/blob/3a659b2578e95d07f62fbe2f5d10316e17486109/numba/np/arraymath.py#L800-L808>`_
+   - defined by ``np_nanstd(a)`` at `numba/np/arraymath.py:800-808 <https://github.com/numba/numba/blob/a41f4317f9169e42443bf32d433025552bdb562a/numba/np/arraymath.py#L800-L808>`_
 
 .. function:: numpy.lib.nanfunctions.nansum
 
    Alias to: ``numpy.nansum``
 
-   - defined by ``np_nansum(a)`` at `numba/np/arraymath.py:811-830 <https://github.com/numba/numba/blob/3a659b2578e95d07f62fbe2f5d10316e17486109/numba/np/arraymath.py#L811-L830>`_
+   - defined by ``np_nansum(a)`` at `numba/np/arraymath.py:811-830 <https://github.com/numba/numba/blob/a41f4317f9169e42443bf32d433025552bdb562a/numba/np/arraymath.py#L811-L830>`_
 
 .. function:: numpy.lib.nanfunctions.nanvar
 
    Alias to: ``numpy.nanvar``
 
-   - defined by ``np_nanvar(a)`` at `numba/np/arraymath.py:775-797 <https://github.com/numba/numba/blob/3a659b2578e95d07f62fbe2f5d10316e17486109/numba/np/arraymath.py#L775-L797>`_
+   - defined by ``np_nanvar(a)`` at `numba/np/arraymath.py:775-797 <https://github.com/numba/numba/blob/a41f4317f9169e42443bf32d433025552bdb562a/numba/np/arraymath.py#L775-L797>`_
 
 Not showing 2 unsupported functions.
 
@@ -3410,7 +3410,7 @@ numpy.lib.polynomial
 .. function:: numpy.lib.polynomial.eigvals
 
 
-   - defined by ``eigvals_impl(a)`` at `numba/np/linalg.py:1012-1137 <https://github.com/numba/numba/blob/3a659b2578e95d07f62fbe2f5d10316e17486109/numba/np/linalg.py#L1012-L1137>`_
+   - defined by ``eigvals_impl(a)`` at `numba/np/linalg.py:1012-1137 <https://github.com/numba/numba/blob/a41f4317f9169e42443bf32d433025552bdb562a/numba/np/linalg.py#L1012-L1137>`_
 
 .. function:: numpy.lib.polynomial.hstack
 
@@ -3422,17 +3422,17 @@ numpy.lib.polynomial
 
    Alias to: ``numpy.imag``
 
-   - defined by ``np_imag(a)`` at `numba/np/arraymath.py:3131-3136 <https://github.com/numba/numba/blob/3a659b2578e95d07f62fbe2f5d10316e17486109/numba/np/arraymath.py#L3131-L3136>`_
+   - defined by ``np_imag(a)`` at `numba/np/arraymath.py:3131-3136 <https://github.com/numba/numba/blob/a41f4317f9169e42443bf32d433025552bdb562a/numba/np/arraymath.py#L3131-L3136>`_
 
 .. function:: numpy.lib.polynomial.inv
 
 
-   - defined by ``inv_impl(a)`` at `numba/np/linalg.py:772-814 <https://github.com/numba/numba/blob/3a659b2578e95d07f62fbe2f5d10316e17486109/numba/np/linalg.py#L772-L814>`_
+   - defined by ``inv_impl(a)`` at `numba/np/linalg.py:772-814 <https://github.com/numba/numba/blob/a41f4317f9169e42443bf32d433025552bdb562a/numba/np/linalg.py#L772-L814>`_
 
 .. function:: numpy.lib.polynomial.lstsq
 
 
-   - defined by ``lstsq_impl(a, b, rcond=-1.0)`` at `numba/np/linalg.py:1563-1661 <https://github.com/numba/numba/blob/3a659b2578e95d07f62fbe2f5d10316e17486109/numba/np/linalg.py#L1563-L1661>`_
+   - defined by ``lstsq_impl(a, b, rcond=-1.0)`` at `numba/np/linalg.py:1563-1661 <https://github.com/numba/numba/blob/a41f4317f9169e42443bf32d433025552bdb562a/numba/np/linalg.py#L1563-L1661>`_
 
 .. function:: numpy.lib.polynomial.ones
 
@@ -3444,19 +3444,19 @@ numpy.lib.polynomial
 
    Alias to: ``numpy.real``
 
-   - defined by ``np_real(a)`` at `numba/np/arraymath.py:3123-3128 <https://github.com/numba/numba/blob/3a659b2578e95d07f62fbe2f5d10316e17486109/numba/np/arraymath.py#L3123-L3128>`_
+   - defined by ``np_real(a)`` at `numba/np/arraymath.py:3123-3128 <https://github.com/numba/numba/blob/a41f4317f9169e42443bf32d433025552bdb562a/numba/np/arraymath.py#L3123-L3128>`_
 
 .. function:: numpy.lib.polynomial.roots
 
    Alias to: ``numpy.roots``
 
-   - defined by ``roots_impl(p)`` at `numba/np/polynomial.py:14-59 <https://github.com/numba/numba/blob/3a659b2578e95d07f62fbe2f5d10316e17486109/numba/np/polynomial.py#L14-L59>`_
+   - defined by ``roots_impl(p)`` at `numba/np/polynomial.py:14-59 <https://github.com/numba/numba/blob/a41f4317f9169e42443bf32d433025552bdb562a/numba/np/polynomial.py#L14-L59>`_
 
 .. function:: numpy.lib.polynomial.vander
 
    Alias to: ``numpy.vander``
 
-   - defined by ``np_vander(x, N=None, increasing=False)`` at `numba/np/arraymath.py:1746-1783 <https://github.com/numba/numba/blob/3a659b2578e95d07f62fbe2f5d10316e17486109/numba/np/arraymath.py#L1746-L1783>`_
+   - defined by ``np_vander(x, N=None, increasing=False)`` at `numba/np/arraymath.py:1746-1783 <https://github.com/numba/numba/blob/a41f4317f9169e42443bf32d433025552bdb562a/numba/np/arraymath.py#L1746-L1783>`_
 
 Not showing 14 unsupported functions.
 
@@ -3476,13 +3476,13 @@ numpy.lib.scimath
 
    Alias to: ``numpy.any``
 
-   - defined by ``np_any(a)`` at `numba/np/arraymath.py:643-652 <https://github.com/numba/numba/blob/3a659b2578e95d07f62fbe2f5d10316e17486109/numba/np/arraymath.py#L643-L652>`_
+   - defined by ``np_any(a)`` at `numba/np/arraymath.py:643-652 <https://github.com/numba/numba/blob/a41f4317f9169e42443bf32d433025552bdb562a/numba/np/arraymath.py#L643-L652>`_
 
 .. function:: numpy.lib.scimath.asarray
 
    Alias to: ``numpy.asarray``
 
-   - defined by ``np_asarray(a, dtype=None)`` at `numba/np/arraymath.py:3848-3881 <https://github.com/numba/numba/blob/3a659b2578e95d07f62fbe2f5d10316e17486109/numba/np/arraymath.py#L3848-L3881>`_
+   - defined by ``np_asarray(a, dtype=None)`` at `numba/np/arraymath.py:3848-3881 <https://github.com/numba/numba/blob/a41f4317f9169e42443bf32d433025552bdb562a/numba/np/arraymath.py#L3848-L3881>`_
 
 Not showing 11 unsupported functions.
 
@@ -3508,7 +3508,7 @@ numpy.lib.shape_base
 
    Alias to: ``numpy.asarray``
 
-   - defined by ``np_asarray(a, dtype=None)`` at `numba/np/arraymath.py:3848-3881 <https://github.com/numba/numba/blob/3a659b2578e95d07f62fbe2f5d10316e17486109/numba/np/arraymath.py#L3848-L3881>`_
+   - defined by ``np_asarray(a, dtype=None)`` at `numba/np/arraymath.py:3848-3881 <https://github.com/numba/numba/blob/a41f4317f9169e42443bf32d433025552bdb562a/numba/np/arraymath.py#L3848-L3881>`_
 
 .. function:: numpy.lib.shape_base.atleast_3d
 
@@ -3544,19 +3544,19 @@ numpy.lib.shape_base
 
    Alias to: ``numpy.kron``
 
-   - defined by ``kron_impl(a, b)`` at `numba/np/linalg.py:2726-2780 <https://github.com/numba/numba/blob/3a659b2578e95d07f62fbe2f5d10316e17486109/numba/np/linalg.py#L2726-L2780>`_
+   - defined by ``kron_impl(a, b)`` at `numba/np/linalg.py:2726-2780 <https://github.com/numba/numba/blob/a41f4317f9169e42443bf32d433025552bdb562a/numba/np/linalg.py#L2726-L2780>`_
 
 .. function:: numpy.lib.shape_base.outer
 
    Alias to: ``numpy.outer``
 
-   - defined by ``outer_impl(a, b, out=None)`` at `numba/np/linalg.py:2649-2660 <https://github.com/numba/numba/blob/3a659b2578e95d07f62fbe2f5d10316e17486109/numba/np/linalg.py#L2649-L2660>`_
+   - defined by ``outer_impl(a, b, out=None)`` at `numba/np/linalg.py:2649-2660 <https://github.com/numba/numba/blob/a41f4317f9169e42443bf32d433025552bdb562a/numba/np/linalg.py#L2649-L2660>`_
 
 .. function:: numpy.lib.shape_base.reshape
 
    Alias to: ``numpy.reshape``
 
-   - defined by ``np_reshape(a, shape)`` at `numba/np/arrayobj.py:1702-1706 <https://github.com/numba/numba/blob/3a659b2578e95d07f62fbe2f5d10316e17486109/numba/np/arrayobj.py#L1702-L1706>`_
+   - defined by ``np_reshape(a, shape)`` at `numba/np/arrayobj.py:1702-1706 <https://github.com/numba/numba/blob/a41f4317f9169e42443bf32d433025552bdb562a/numba/np/arrayobj.py#L1702-L1706>`_
 
 .. function:: numpy.lib.shape_base.row_stack
 
@@ -3568,7 +3568,7 @@ numpy.lib.shape_base
 
    Alias to: ``numpy.transpose``
 
-   - defined by ``numpy_transpose(a, axes=None)`` at `numba/np/arrayobj.py:1530-1542 <https://github.com/numba/numba/blob/3a659b2578e95d07f62fbe2f5d10316e17486109/numba/np/arrayobj.py#L1530-L1542>`_
+   - defined by ``numpy_transpose(a, axes=None)`` at `numba/np/arrayobj.py:1530-1542 <https://github.com/numba/numba/blob/a41f4317f9169e42443bf32d433025552bdb562a/numba/np/arrayobj.py#L1530-L1542>`_
 
 .. function:: numpy.lib.shape_base.vstack
 
@@ -3594,7 +3594,7 @@ numpy.lib.stride_tricks
 
    Alias to: ``numpy.lib.index_tricks.as_strided``
 
-   - defined by ``as_strided(x, shape=None, strides=None)`` at `numba/np/arrayobj.py:5100-5126 <https://github.com/numba/numba/blob/3a659b2578e95d07f62fbe2f5d10316e17486109/numba/np/arrayobj.py#L5100-L5126>`_
+   - defined by ``as_strided(x, shape=None, strides=None)`` at `numba/np/arrayobj.py:5100-5126 <https://github.com/numba/numba/blob/a41f4317f9169e42443bf32d433025552bdb562a/numba/np/arrayobj.py#L5100-L5126>`_
 
 Not showing 3 unsupported functions.
 
@@ -3608,13 +3608,13 @@ numpy.lib.twodim_base
 
    Alias to: ``numpy.arange``
 
-   - defined by ``np_arange(start, stop=None, step=None, dtype=None)`` at `numba/np/arrayobj.py:3842-3908 <https://github.com/numba/numba/blob/3a659b2578e95d07f62fbe2f5d10316e17486109/numba/np/arrayobj.py#L3842-L3908>`_
+   - defined by ``np_arange(start, stop=None, step=None, dtype=None)`` at `numba/np/arrayobj.py:3842-3908 <https://github.com/numba/numba/blob/a41f4317f9169e42443bf32d433025552bdb562a/numba/np/arrayobj.py#L3842-L3908>`_
 
 .. function:: numpy.lib.twodim_base.asarray
 
    Alias to: ``numpy.asarray``
 
-   - defined by ``np_asarray(a, dtype=None)`` at `numba/np/arraymath.py:3848-3881 <https://github.com/numba/numba/blob/3a659b2578e95d07f62fbe2f5d10316e17486109/numba/np/arraymath.py#L3848-L3881>`_
+   - defined by ``np_asarray(a, dtype=None)`` at `numba/np/arraymath.py:3848-3881 <https://github.com/numba/numba/blob/a41f4317f9169e42443bf32d433025552bdb562a/numba/np/arraymath.py#L3848-L3881>`_
 
 .. function:: numpy.lib.twodim_base.diag
 
@@ -3632,19 +3632,19 @@ numpy.lib.twodim_base
 
    Alias to: ``numpy.eye``
 
-   - defined by ``numpy_eye(N, M=None, k=0, dtype=<class 'float'>)`` at `numba/np/arrayobj.py:3681-3704 <https://github.com/numba/numba/blob/3a659b2578e95d07f62fbe2f5d10316e17486109/numba/np/arrayobj.py#L3681-L3704>`_
+   - defined by ``numpy_eye(N, M=None, k=0, dtype=<class 'float'>)`` at `numba/np/arrayobj.py:3681-3704 <https://github.com/numba/numba/blob/a41f4317f9169e42443bf32d433025552bdb562a/numba/np/arrayobj.py#L3681-L3704>`_
 
 .. function:: numpy.lib.twodim_base.fliplr
 
    Alias to: ``numpy.fliplr``
 
-   - defined by ``np_flip_lr(a)`` at `numba/np/arrayobj.py:4891-4905 <https://github.com/numba/numba/blob/3a659b2578e95d07f62fbe2f5d10316e17486109/numba/np/arrayobj.py#L4891-L4905>`_
+   - defined by ``np_flip_lr(a)`` at `numba/np/arrayobj.py:4891-4905 <https://github.com/numba/numba/blob/a41f4317f9169e42443bf32d433025552bdb562a/numba/np/arrayobj.py#L4891-L4905>`_
 
 .. function:: numpy.lib.twodim_base.flipud
 
    Alias to: ``numpy.flipud``
 
-   - defined by ``np_flip_ud(a)`` at `numba/np/arrayobj.py:4908-4922 <https://github.com/numba/numba/blob/3a659b2578e95d07f62fbe2f5d10316e17486109/numba/np/arrayobj.py#L4908-L4922>`_
+   - defined by ``np_flip_ud(a)`` at `numba/np/arrayobj.py:4908-4922 <https://github.com/numba/numba/blob/a41f4317f9169e42443bf32d433025552bdb562a/numba/np/arrayobj.py#L4908-L4922>`_
 
 .. function:: numpy.lib.twodim_base.nonzero
 
@@ -3662,55 +3662,55 @@ numpy.lib.twodim_base
 
    Alias to: ``numpy.transpose``
 
-   - defined by ``numpy_transpose(a, axes=None)`` at `numba/np/arrayobj.py:1530-1542 <https://github.com/numba/numba/blob/3a659b2578e95d07f62fbe2f5d10316e17486109/numba/np/arrayobj.py#L1530-L1542>`_
+   - defined by ``numpy_transpose(a, axes=None)`` at `numba/np/arrayobj.py:1530-1542 <https://github.com/numba/numba/blob/a41f4317f9169e42443bf32d433025552bdb562a/numba/np/arrayobj.py#L1530-L1542>`_
 
 .. function:: numpy.lib.twodim_base.tri
 
    Alias to: ``numpy.tri``
 
-   - defined by ``np_tri(N, M=None, k=0)`` at `numba/np/arraymath.py:1415-1426 <https://github.com/numba/numba/blob/3a659b2578e95d07f62fbe2f5d10316e17486109/numba/np/arraymath.py#L1415-L1426>`_
+   - defined by ``np_tri(N, M=None, k=0)`` at `numba/np/arraymath.py:1415-1426 <https://github.com/numba/numba/blob/a41f4317f9169e42443bf32d433025552bdb562a/numba/np/arraymath.py#L1415-L1426>`_
 
 .. function:: numpy.lib.twodim_base.tril
 
    Alias to: ``numpy.tril``
 
-   - defined by ``my_tril(m, k=0)`` at `numba/np/arraymath.py:1452-1476 <https://github.com/numba/numba/blob/3a659b2578e95d07f62fbe2f5d10316e17486109/numba/np/arraymath.py#L1452-L1476>`_
+   - defined by ``my_tril(m, k=0)`` at `numba/np/arraymath.py:1452-1476 <https://github.com/numba/numba/blob/a41f4317f9169e42443bf32d433025552bdb562a/numba/np/arraymath.py#L1452-L1476>`_
 
 .. function:: numpy.lib.twodim_base.tril_indices
 
    Alias to: ``numpy.tril_indices``
 
-   - defined by ``np_tril_indices(n, k=0, m=None)`` at `numba/np/arraymath.py:1479-1490 <https://github.com/numba/numba/blob/3a659b2578e95d07f62fbe2f5d10316e17486109/numba/np/arraymath.py#L1479-L1490>`_
+   - defined by ``np_tril_indices(n, k=0, m=None)`` at `numba/np/arraymath.py:1479-1490 <https://github.com/numba/numba/blob/a41f4317f9169e42443bf32d433025552bdb562a/numba/np/arraymath.py#L1479-L1490>`_
 
 .. function:: numpy.lib.twodim_base.tril_indices_from
 
    Alias to: ``numpy.tril_indices_from``
 
-   - defined by ``np_tril_indices_from(arr, k=0)`` at `numba/np/arraymath.py:1493-1504 <https://github.com/numba/numba/blob/3a659b2578e95d07f62fbe2f5d10316e17486109/numba/np/arraymath.py#L1493-L1504>`_
+   - defined by ``np_tril_indices_from(arr, k=0)`` at `numba/np/arraymath.py:1493-1504 <https://github.com/numba/numba/blob/a41f4317f9169e42443bf32d433025552bdb562a/numba/np/arraymath.py#L1493-L1504>`_
 
 .. function:: numpy.lib.twodim_base.triu
 
    Alias to: ``numpy.triu``
 
-   - defined by ``my_triu(m, k=0)`` at `numba/np/arraymath.py:1513-1536 <https://github.com/numba/numba/blob/3a659b2578e95d07f62fbe2f5d10316e17486109/numba/np/arraymath.py#L1513-L1536>`_
+   - defined by ``my_triu(m, k=0)`` at `numba/np/arraymath.py:1513-1536 <https://github.com/numba/numba/blob/a41f4317f9169e42443bf32d433025552bdb562a/numba/np/arraymath.py#L1513-L1536>`_
 
 .. function:: numpy.lib.twodim_base.triu_indices
 
    Alias to: ``numpy.triu_indices``
 
-   - defined by ``np_triu_indices(n, k=0, m=None)`` at `numba/np/arraymath.py:1539-1550 <https://github.com/numba/numba/blob/3a659b2578e95d07f62fbe2f5d10316e17486109/numba/np/arraymath.py#L1539-L1550>`_
+   - defined by ``np_triu_indices(n, k=0, m=None)`` at `numba/np/arraymath.py:1539-1550 <https://github.com/numba/numba/blob/a41f4317f9169e42443bf32d433025552bdb562a/numba/np/arraymath.py#L1539-L1550>`_
 
 .. function:: numpy.lib.twodim_base.triu_indices_from
 
    Alias to: ``numpy.triu_indices_from``
 
-   - defined by ``np_triu_indices_from(arr, k=0)`` at `numba/np/arraymath.py:1553-1564 <https://github.com/numba/numba/blob/3a659b2578e95d07f62fbe2f5d10316e17486109/numba/np/arraymath.py#L1553-L1564>`_
+   - defined by ``np_triu_indices_from(arr, k=0)`` at `numba/np/arraymath.py:1553-1564 <https://github.com/numba/numba/blob/a41f4317f9169e42443bf32d433025552bdb562a/numba/np/arraymath.py#L1553-L1564>`_
 
 .. function:: numpy.lib.twodim_base.vander
 
    Alias to: ``numpy.vander``
 
-   - defined by ``np_vander(x, N=None, increasing=False)`` at `numba/np/arraymath.py:1746-1783 <https://github.com/numba/numba/blob/3a659b2578e95d07f62fbe2f5d10316e17486109/numba/np/arraymath.py#L1746-L1783>`_
+   - defined by ``np_vander(x, N=None, increasing=False)`` at `numba/np/arraymath.py:1746-1783 <https://github.com/numba/numba/blob/a41f4317f9169e42443bf32d433025552bdb562a/numba/np/arraymath.py#L1746-L1783>`_
 
 .. function:: numpy.lib.twodim_base.where
 
@@ -3736,19 +3736,19 @@ numpy.lib.type_check
 
    Alias to: ``numpy.asarray``
 
-   - defined by ``np_asarray(a, dtype=None)`` at `numba/np/arraymath.py:3848-3881 <https://github.com/numba/numba/blob/3a659b2578e95d07f62fbe2f5d10316e17486109/numba/np/arraymath.py#L3848-L3881>`_
+   - defined by ``np_asarray(a, dtype=None)`` at `numba/np/arraymath.py:3848-3881 <https://github.com/numba/numba/blob/a41f4317f9169e42443bf32d433025552bdb562a/numba/np/arraymath.py#L3848-L3881>`_
 
 .. function:: numpy.lib.type_check.imag
 
    Alias to: ``numpy.imag``
 
-   - defined by ``np_imag(a)`` at `numba/np/arraymath.py:3131-3136 <https://github.com/numba/numba/blob/3a659b2578e95d07f62fbe2f5d10316e17486109/numba/np/arraymath.py#L3131-L3136>`_
+   - defined by ``np_imag(a)`` at `numba/np/arraymath.py:3131-3136 <https://github.com/numba/numba/blob/a41f4317f9169e42443bf32d433025552bdb562a/numba/np/arraymath.py#L3131-L3136>`_
 
 .. function:: numpy.lib.type_check.real
 
    Alias to: ``numpy.real``
 
-   - defined by ``np_real(a)`` at `numba/np/arraymath.py:3123-3128 <https://github.com/numba/numba/blob/3a659b2578e95d07f62fbe2f5d10316e17486109/numba/np/arraymath.py#L3123-L3128>`_
+   - defined by ``np_real(a)`` at `numba/np/arraymath.py:3123-3128 <https://github.com/numba/numba/blob/a41f4317f9169e42443bf32d433025552bdb562a/numba/np/arraymath.py#L3123-L3128>`_
 
 .. function:: numpy.lib.type_check.zeros
 
@@ -3774,7 +3774,7 @@ numpy.lib.user_array
 
    Alias to: ``numpy.arange``
 
-   - defined by ``np_arange(start, stop=None, step=None, dtype=None)`` at `numba/np/arrayobj.py:3842-3908 <https://github.com/numba/numba/blob/3a659b2578e95d07f62fbe2f5d10316e17486109/numba/np/arrayobj.py#L3842-L3908>`_
+   - defined by ``np_arange(start, stop=None, step=None, dtype=None)`` at `numba/np/arrayobj.py:3842-3908 <https://github.com/numba/numba/blob/a41f4317f9169e42443bf32d433025552bdb562a/numba/np/arrayobj.py#L3842-L3908>`_
 
 .. function:: numpy.lib.user_array.array
 
@@ -3786,25 +3786,25 @@ numpy.lib.user_array
 
    Alias to: ``numpy.asarray``
 
-   - defined by ``np_asarray(a, dtype=None)`` at `numba/np/arraymath.py:3848-3881 <https://github.com/numba/numba/blob/3a659b2578e95d07f62fbe2f5d10316e17486109/numba/np/arraymath.py#L3848-L3881>`_
+   - defined by ``np_asarray(a, dtype=None)`` at `numba/np/arraymath.py:3848-3881 <https://github.com/numba/numba/blob/a41f4317f9169e42443bf32d433025552bdb562a/numba/np/arraymath.py#L3848-L3881>`_
 
 .. function:: numpy.lib.user_array.reshape
 
    Alias to: ``numpy.reshape``
 
-   - defined by ``np_reshape(a, shape)`` at `numba/np/arrayobj.py:1702-1706 <https://github.com/numba/numba/blob/3a659b2578e95d07f62fbe2f5d10316e17486109/numba/np/arrayobj.py#L1702-L1706>`_
+   - defined by ``np_reshape(a, shape)`` at `numba/np/arrayobj.py:1702-1706 <https://github.com/numba/numba/blob/a41f4317f9169e42443bf32d433025552bdb562a/numba/np/arrayobj.py#L1702-L1706>`_
 
 .. function:: numpy.lib.user_array.shape
 
    Alias to: ``numpy.shape``
 
-   - defined by ``np_shape(a)`` at `numba/np/arrayobj.py:1903-1910 <https://github.com/numba/numba/blob/3a659b2578e95d07f62fbe2f5d10316e17486109/numba/np/arrayobj.py#L1903-L1910>`_
+   - defined by ``np_shape(a)`` at `numba/np/arrayobj.py:1903-1910 <https://github.com/numba/numba/blob/a41f4317f9169e42443bf32d433025552bdb562a/numba/np/arrayobj.py#L1903-L1910>`_
 
 .. function:: numpy.lib.user_array.transpose
 
    Alias to: ``numpy.transpose``
 
-   - defined by ``numpy_transpose(a, axes=None)`` at `numba/np/arrayobj.py:1530-1542 <https://github.com/numba/numba/blob/3a659b2578e95d07f62fbe2f5d10316e17486109/numba/np/arrayobj.py#L1530-L1542>`_
+   - defined by ``numpy_transpose(a, axes=None)`` at `numba/np/arrayobj.py:1530-1542 <https://github.com/numba/numba/blob/a41f4317f9169e42443bf32d433025552bdb562a/numba/np/arrayobj.py#L1530-L1542>`_
 
 Not showing 0 unsupported functions.
 
@@ -3818,7 +3818,7 @@ numpy.lib.utils
 
    Alias to: ``numpy.asarray``
 
-   - defined by ``np_asarray(a, dtype=None)`` at `numba/np/arraymath.py:3848-3881 <https://github.com/numba/numba/blob/3a659b2578e95d07f62fbe2f5d10316e17486109/numba/np/arraymath.py#L3848-L3881>`_
+   - defined by ``np_asarray(a, dtype=None)`` at `numba/np/arraymath.py:3848-3881 <https://github.com/numba/numba/blob/a41f4317f9169e42443bf32d433025552bdb562a/numba/np/arraymath.py#L3848-L3881>`_
 
 Not showing 15 unsupported functions.
 
@@ -3831,90 +3831,90 @@ numpy.linalg
 .. function:: numpy.linalg.cholesky
 
 
-   - defined by ``cho_impl(a)`` at `numba/np/linalg.py:845-887 <https://github.com/numba/numba/blob/3a659b2578e95d07f62fbe2f5d10316e17486109/numba/np/linalg.py#L845-L887>`_
+   - defined by ``cho_impl(a)`` at `numba/np/linalg.py:845-887 <https://github.com/numba/numba/blob/a41f4317f9169e42443bf32d433025552bdb562a/numba/np/linalg.py#L845-L887>`_
 
 .. function:: numpy.linalg.cond
 
 
-   - defined by ``cond_impl(a, p=None)`` at `numba/np/linalg.py:2368-2410 <https://github.com/numba/numba/blob/3a659b2578e95d07f62fbe2f5d10316e17486109/numba/np/linalg.py#L2368-L2410>`_
+   - defined by ``cond_impl(a, p=None)`` at `numba/np/linalg.py:2368-2410 <https://github.com/numba/numba/blob/a41f4317f9169e42443bf32d433025552bdb562a/numba/np/linalg.py#L2368-L2410>`_
 
 .. function:: numpy.linalg.det
 
 
-   - defined by ``det_impl(a)`` at `numba/np/linalg.py:2020-2031 <https://github.com/numba/numba/blob/3a659b2578e95d07f62fbe2f5d10316e17486109/numba/np/linalg.py#L2020-L2031>`_
+   - defined by ``det_impl(a)`` at `numba/np/linalg.py:2020-2031 <https://github.com/numba/numba/blob/a41f4317f9169e42443bf32d433025552bdb562a/numba/np/linalg.py#L2020-L2031>`_
 
 .. function:: numpy.linalg.eig
 
 
-   - defined by ``eig_impl(a)`` at `numba/np/linalg.py:889-1010 <https://github.com/numba/numba/blob/3a659b2578e95d07f62fbe2f5d10316e17486109/numba/np/linalg.py#L889-L1010>`_
+   - defined by ``eig_impl(a)`` at `numba/np/linalg.py:889-1010 <https://github.com/numba/numba/blob/a41f4317f9169e42443bf32d433025552bdb562a/numba/np/linalg.py#L889-L1010>`_
 
 .. function:: numpy.linalg.eigh
 
 
-   - defined by ``eigh_impl(a)`` at `numba/np/linalg.py:1139-1191 <https://github.com/numba/numba/blob/3a659b2578e95d07f62fbe2f5d10316e17486109/numba/np/linalg.py#L1139-L1191>`_
+   - defined by ``eigh_impl(a)`` at `numba/np/linalg.py:1139-1191 <https://github.com/numba/numba/blob/a41f4317f9169e42443bf32d433025552bdb562a/numba/np/linalg.py#L1139-L1191>`_
 
 .. function:: numpy.linalg.eigvals
 
    Alias to: ``numpy.lib.polynomial.eigvals``
 
-   - defined by ``eigvals_impl(a)`` at `numba/np/linalg.py:1012-1137 <https://github.com/numba/numba/blob/3a659b2578e95d07f62fbe2f5d10316e17486109/numba/np/linalg.py#L1012-L1137>`_
+   - defined by ``eigvals_impl(a)`` at `numba/np/linalg.py:1012-1137 <https://github.com/numba/numba/blob/a41f4317f9169e42443bf32d433025552bdb562a/numba/np/linalg.py#L1012-L1137>`_
 
 .. function:: numpy.linalg.eigvalsh
 
 
-   - defined by ``eigvalsh_impl(a)`` at `numba/np/linalg.py:1193-1245 <https://github.com/numba/numba/blob/3a659b2578e95d07f62fbe2f5d10316e17486109/numba/np/linalg.py#L1193-L1245>`_
+   - defined by ``eigvalsh_impl(a)`` at `numba/np/linalg.py:1193-1245 <https://github.com/numba/numba/blob/a41f4317f9169e42443bf32d433025552bdb562a/numba/np/linalg.py#L1193-L1245>`_
 
 .. function:: numpy.linalg.inv
 
    Alias to: ``numpy.lib.polynomial.inv``
 
-   - defined by ``inv_impl(a)`` at `numba/np/linalg.py:772-814 <https://github.com/numba/numba/blob/3a659b2578e95d07f62fbe2f5d10316e17486109/numba/np/linalg.py#L772-L814>`_
+   - defined by ``inv_impl(a)`` at `numba/np/linalg.py:772-814 <https://github.com/numba/numba/blob/a41f4317f9169e42443bf32d433025552bdb562a/numba/np/linalg.py#L772-L814>`_
 
 .. function:: numpy.linalg.lstsq
 
    Alias to: ``numpy.lib.polynomial.lstsq``
 
-   - defined by ``lstsq_impl(a, b, rcond=-1.0)`` at `numba/np/linalg.py:1563-1661 <https://github.com/numba/numba/blob/3a659b2578e95d07f62fbe2f5d10316e17486109/numba/np/linalg.py#L1563-L1661>`_
+   - defined by ``lstsq_impl(a, b, rcond=-1.0)`` at `numba/np/linalg.py:1563-1661 <https://github.com/numba/numba/blob/a41f4317f9169e42443bf32d433025552bdb562a/numba/np/linalg.py#L1563-L1661>`_
 
 .. function:: numpy.linalg.matrix_power
 
 
-   - defined by ``matrix_power_impl(a, n)`` at `numba/np/linalg.py:2493-2566 <https://github.com/numba/numba/blob/3a659b2578e95d07f62fbe2f5d10316e17486109/numba/np/linalg.py#L2493-L2566>`_
+   - defined by ``matrix_power_impl(a, n)`` at `numba/np/linalg.py:2493-2566 <https://github.com/numba/numba/blob/a41f4317f9169e42443bf32d433025552bdb562a/numba/np/linalg.py#L2493-L2566>`_
 
 .. function:: numpy.linalg.matrix_rank
 
 
-   - defined by ``matrix_rank_impl(a, tol=None)`` at `numba/np/linalg.py:2427-2490 <https://github.com/numba/numba/blob/3a659b2578e95d07f62fbe2f5d10316e17486109/numba/np/linalg.py#L2427-L2490>`_
+   - defined by ``matrix_rank_impl(a, tol=None)`` at `numba/np/linalg.py:2427-2490 <https://github.com/numba/numba/blob/a41f4317f9169e42443bf32d433025552bdb562a/numba/np/linalg.py#L2427-L2490>`_
 
 .. function:: numpy.linalg.norm
 
 
-   - defined by ``norm_impl(a, ord=None)`` at `numba/np/linalg.py:2359-2365 <https://github.com/numba/numba/blob/3a659b2578e95d07f62fbe2f5d10316e17486109/numba/np/linalg.py#L2359-L2365>`_
+   - defined by ``norm_impl(a, ord=None)`` at `numba/np/linalg.py:2359-2365 <https://github.com/numba/numba/blob/a41f4317f9169e42443bf32d433025552bdb562a/numba/np/linalg.py#L2359-L2365>`_
 
 .. function:: numpy.linalg.pinv
 
 
-   - defined by ``pinv_impl(a, rcond=1e-15)`` at `numba/np/linalg.py:1751-1917 <https://github.com/numba/numba/blob/3a659b2578e95d07f62fbe2f5d10316e17486109/numba/np/linalg.py#L1751-L1917>`_
+   - defined by ``pinv_impl(a, rcond=1e-15)`` at `numba/np/linalg.py:1751-1917 <https://github.com/numba/numba/blob/a41f4317f9169e42443bf32d433025552bdb562a/numba/np/linalg.py#L1751-L1917>`_
 
 .. function:: numpy.linalg.qr
 
 
-   - defined by ``qr_impl(a)`` at `numba/np/linalg.py:1318-1397 <https://github.com/numba/numba/blob/3a659b2578e95d07f62fbe2f5d10316e17486109/numba/np/linalg.py#L1318-L1397>`_
+   - defined by ``qr_impl(a)`` at `numba/np/linalg.py:1318-1397 <https://github.com/numba/numba/blob/a41f4317f9169e42443bf32d433025552bdb562a/numba/np/linalg.py#L1318-L1397>`_
 
 .. function:: numpy.linalg.slogdet
 
 
-   - defined by ``slogdet_impl(a)`` at `numba/np/linalg.py:1956-2017 <https://github.com/numba/numba/blob/3a659b2578e95d07f62fbe2f5d10316e17486109/numba/np/linalg.py#L1956-L2017>`_
+   - defined by ``slogdet_impl(a)`` at `numba/np/linalg.py:1956-2017 <https://github.com/numba/numba/blob/a41f4317f9169e42443bf32d433025552bdb562a/numba/np/linalg.py#L1956-L2017>`_
 
 .. function:: numpy.linalg.solve
 
 
-   - defined by ``solve_impl(a, b)`` at `numba/np/linalg.py:1684-1748 <https://github.com/numba/numba/blob/3a659b2578e95d07f62fbe2f5d10316e17486109/numba/np/linalg.py#L1684-L1748>`_
+   - defined by ``solve_impl(a, b)`` at `numba/np/linalg.py:1684-1748 <https://github.com/numba/numba/blob/a41f4317f9169e42443bf32d433025552bdb562a/numba/np/linalg.py#L1684-L1748>`_
 
 .. function:: numpy.linalg.svd
 
 
-   - defined by ``svd_impl(a, full_matrices=1)`` at `numba/np/linalg.py:1247-1315 <https://github.com/numba/numba/blob/3a659b2578e95d07f62fbe2f5d10316e17486109/numba/np/linalg.py#L1247-L1315>`_
+   - defined by ``svd_impl(a, full_matrices=1)`` at `numba/np/linalg.py:1247-1315 <https://github.com/numba/numba/blob/a41f4317f9169e42443bf32d433025552bdb562a/numba/np/linalg.py#L1247-L1315>`_
 
 Not showing 3 unsupported functions.
 
@@ -3940,7 +3940,7 @@ numpy.linalg.linalg
 
    Alias to: ``numpy.all``
 
-   - defined by ``np_all(a)`` at `numba/np/arraymath.py:631-640 <https://github.com/numba/numba/blob/3a659b2578e95d07f62fbe2f5d10316e17486109/numba/np/arraymath.py#L631-L640>`_
+   - defined by ``np_all(a)`` at `numba/np/arraymath.py:631-640 <https://github.com/numba/numba/blob/a41f4317f9169e42443bf32d433025552bdb562a/numba/np/arraymath.py#L631-L640>`_
 
 .. function:: numpy.linalg.linalg.amax
 
@@ -3964,7 +3964,7 @@ numpy.linalg.linalg
 
    Alias to: ``numpy.asarray``
 
-   - defined by ``np_asarray(a, dtype=None)`` at `numba/np/arraymath.py:3848-3881 <https://github.com/numba/numba/blob/3a659b2578e95d07f62fbe2f5d10316e17486109/numba/np/arraymath.py#L3848-L3881>`_
+   - defined by ``np_asarray(a, dtype=None)`` at `numba/np/arraymath.py:3848-3881 <https://github.com/numba/numba/blob/a41f4317f9169e42443bf32d433025552bdb562a/numba/np/arraymath.py#L3848-L3881>`_
 
 .. function:: numpy.linalg.linalg.atleast_2d
 
@@ -3976,25 +3976,25 @@ numpy.linalg.linalg
 
    Alias to: ``numpy.linalg.cholesky``
 
-   - defined by ``cho_impl(a)`` at `numba/np/linalg.py:845-887 <https://github.com/numba/numba/blob/3a659b2578e95d07f62fbe2f5d10316e17486109/numba/np/linalg.py#L845-L887>`_
+   - defined by ``cho_impl(a)`` at `numba/np/linalg.py:845-887 <https://github.com/numba/numba/blob/a41f4317f9169e42443bf32d433025552bdb562a/numba/np/linalg.py#L845-L887>`_
 
 .. function:: numpy.linalg.linalg.cond
 
    Alias to: ``numpy.linalg.cond``
 
-   - defined by ``cond_impl(a, p=None)`` at `numba/np/linalg.py:2368-2410 <https://github.com/numba/numba/blob/3a659b2578e95d07f62fbe2f5d10316e17486109/numba/np/linalg.py#L2368-L2410>`_
+   - defined by ``cond_impl(a, p=None)`` at `numba/np/linalg.py:2368-2410 <https://github.com/numba/numba/blob/a41f4317f9169e42443bf32d433025552bdb562a/numba/np/linalg.py#L2368-L2410>`_
 
 .. function:: numpy.linalg.linalg.count_nonzero
 
    Alias to: ``numpy.count_nonzero``
 
-   - defined by ``np_count_nonzero(arr, axis=None)`` at `numba/np/arraymath.py:3142-3156 <https://github.com/numba/numba/blob/3a659b2578e95d07f62fbe2f5d10316e17486109/numba/np/arraymath.py#L3142-L3156>`_
+   - defined by ``np_count_nonzero(arr, axis=None)`` at `numba/np/arraymath.py:3142-3156 <https://github.com/numba/numba/blob/a41f4317f9169e42443bf32d433025552bdb562a/numba/np/arraymath.py#L3142-L3156>`_
 
 .. function:: numpy.linalg.linalg.det
 
    Alias to: ``numpy.linalg.det``
 
-   - defined by ``det_impl(a)`` at `numba/np/linalg.py:2020-2031 <https://github.com/numba/numba/blob/3a659b2578e95d07f62fbe2f5d10316e17486109/numba/np/linalg.py#L2020-L2031>`_
+   - defined by ``det_impl(a)`` at `numba/np/linalg.py:2020-2031 <https://github.com/numba/numba/blob/a41f4317f9169e42443bf32d433025552bdb562a/numba/np/linalg.py#L2020-L2031>`_
 
 .. function:: numpy.linalg.linalg.dot
 
@@ -4006,25 +4006,25 @@ numpy.linalg.linalg
 
    Alias to: ``numpy.linalg.eig``
 
-   - defined by ``eig_impl(a)`` at `numba/np/linalg.py:889-1010 <https://github.com/numba/numba/blob/3a659b2578e95d07f62fbe2f5d10316e17486109/numba/np/linalg.py#L889-L1010>`_
+   - defined by ``eig_impl(a)`` at `numba/np/linalg.py:889-1010 <https://github.com/numba/numba/blob/a41f4317f9169e42443bf32d433025552bdb562a/numba/np/linalg.py#L889-L1010>`_
 
 .. function:: numpy.linalg.linalg.eigh
 
    Alias to: ``numpy.linalg.eigh``
 
-   - defined by ``eigh_impl(a)`` at `numba/np/linalg.py:1139-1191 <https://github.com/numba/numba/blob/3a659b2578e95d07f62fbe2f5d10316e17486109/numba/np/linalg.py#L1139-L1191>`_
+   - defined by ``eigh_impl(a)`` at `numba/np/linalg.py:1139-1191 <https://github.com/numba/numba/blob/a41f4317f9169e42443bf32d433025552bdb562a/numba/np/linalg.py#L1139-L1191>`_
 
 .. function:: numpy.linalg.linalg.eigvals
 
    Alias to: ``numpy.lib.polynomial.eigvals``
 
-   - defined by ``eigvals_impl(a)`` at `numba/np/linalg.py:1012-1137 <https://github.com/numba/numba/blob/3a659b2578e95d07f62fbe2f5d10316e17486109/numba/np/linalg.py#L1012-L1137>`_
+   - defined by ``eigvals_impl(a)`` at `numba/np/linalg.py:1012-1137 <https://github.com/numba/numba/blob/a41f4317f9169e42443bf32d433025552bdb562a/numba/np/linalg.py#L1012-L1137>`_
 
 .. function:: numpy.linalg.linalg.eigvalsh
 
    Alias to: ``numpy.linalg.eigvalsh``
 
-   - defined by ``eigvalsh_impl(a)`` at `numba/np/linalg.py:1193-1245 <https://github.com/numba/numba/blob/3a659b2578e95d07f62fbe2f5d10316e17486109/numba/np/linalg.py#L1193-L1245>`_
+   - defined by ``eigvalsh_impl(a)`` at `numba/np/linalg.py:1193-1245 <https://github.com/numba/numba/blob/a41f4317f9169e42443bf32d433025552bdb562a/numba/np/linalg.py#L1193-L1245>`_
 
 .. function:: numpy.linalg.linalg.empty
 
@@ -4042,61 +4042,61 @@ numpy.linalg.linalg
 
    Alias to: ``numpy.eye``
 
-   - defined by ``numpy_eye(N, M=None, k=0, dtype=<class 'float'>)`` at `numba/np/arrayobj.py:3681-3704 <https://github.com/numba/numba/blob/3a659b2578e95d07f62fbe2f5d10316e17486109/numba/np/arrayobj.py#L3681-L3704>`_
+   - defined by ``numpy_eye(N, M=None, k=0, dtype=<class 'float'>)`` at `numba/np/arrayobj.py:3681-3704 <https://github.com/numba/numba/blob/a41f4317f9169e42443bf32d433025552bdb562a/numba/np/arrayobj.py#L3681-L3704>`_
 
 .. function:: numpy.linalg.linalg.inv
 
    Alias to: ``numpy.lib.polynomial.inv``
 
-   - defined by ``inv_impl(a)`` at `numba/np/linalg.py:772-814 <https://github.com/numba/numba/blob/3a659b2578e95d07f62fbe2f5d10316e17486109/numba/np/linalg.py#L772-L814>`_
+   - defined by ``inv_impl(a)`` at `numba/np/linalg.py:772-814 <https://github.com/numba/numba/blob/a41f4317f9169e42443bf32d433025552bdb562a/numba/np/linalg.py#L772-L814>`_
 
 .. function:: numpy.linalg.linalg.lstsq
 
    Alias to: ``numpy.lib.polynomial.lstsq``
 
-   - defined by ``lstsq_impl(a, b, rcond=-1.0)`` at `numba/np/linalg.py:1563-1661 <https://github.com/numba/numba/blob/3a659b2578e95d07f62fbe2f5d10316e17486109/numba/np/linalg.py#L1563-L1661>`_
+   - defined by ``lstsq_impl(a, b, rcond=-1.0)`` at `numba/np/linalg.py:1563-1661 <https://github.com/numba/numba/blob/a41f4317f9169e42443bf32d433025552bdb562a/numba/np/linalg.py#L1563-L1661>`_
 
 .. function:: numpy.linalg.linalg.matrix_power
 
    Alias to: ``numpy.linalg.matrix_power``
 
-   - defined by ``matrix_power_impl(a, n)`` at `numba/np/linalg.py:2493-2566 <https://github.com/numba/numba/blob/3a659b2578e95d07f62fbe2f5d10316e17486109/numba/np/linalg.py#L2493-L2566>`_
+   - defined by ``matrix_power_impl(a, n)`` at `numba/np/linalg.py:2493-2566 <https://github.com/numba/numba/blob/a41f4317f9169e42443bf32d433025552bdb562a/numba/np/linalg.py#L2493-L2566>`_
 
 .. function:: numpy.linalg.linalg.matrix_rank
 
    Alias to: ``numpy.linalg.matrix_rank``
 
-   - defined by ``matrix_rank_impl(a, tol=None)`` at `numba/np/linalg.py:2427-2490 <https://github.com/numba/numba/blob/3a659b2578e95d07f62fbe2f5d10316e17486109/numba/np/linalg.py#L2427-L2490>`_
+   - defined by ``matrix_rank_impl(a, tol=None)`` at `numba/np/linalg.py:2427-2490 <https://github.com/numba/numba/blob/a41f4317f9169e42443bf32d433025552bdb562a/numba/np/linalg.py#L2427-L2490>`_
 
 .. function:: numpy.linalg.linalg.norm
 
    Alias to: ``numpy.linalg.norm``
 
-   - defined by ``norm_impl(a, ord=None)`` at `numba/np/linalg.py:2359-2365 <https://github.com/numba/numba/blob/3a659b2578e95d07f62fbe2f5d10316e17486109/numba/np/linalg.py#L2359-L2365>`_
+   - defined by ``norm_impl(a, ord=None)`` at `numba/np/linalg.py:2359-2365 <https://github.com/numba/numba/blob/a41f4317f9169e42443bf32d433025552bdb562a/numba/np/linalg.py#L2359-L2365>`_
 
 .. function:: numpy.linalg.linalg.pinv
 
    Alias to: ``numpy.linalg.pinv``
 
-   - defined by ``pinv_impl(a, rcond=1e-15)`` at `numba/np/linalg.py:1751-1917 <https://github.com/numba/numba/blob/3a659b2578e95d07f62fbe2f5d10316e17486109/numba/np/linalg.py#L1751-L1917>`_
+   - defined by ``pinv_impl(a, rcond=1e-15)`` at `numba/np/linalg.py:1751-1917 <https://github.com/numba/numba/blob/a41f4317f9169e42443bf32d433025552bdb562a/numba/np/linalg.py#L1751-L1917>`_
 
 .. function:: numpy.linalg.linalg.qr
 
    Alias to: ``numpy.linalg.qr``
 
-   - defined by ``qr_impl(a)`` at `numba/np/linalg.py:1318-1397 <https://github.com/numba/numba/blob/3a659b2578e95d07f62fbe2f5d10316e17486109/numba/np/linalg.py#L1318-L1397>`_
+   - defined by ``qr_impl(a)`` at `numba/np/linalg.py:1318-1397 <https://github.com/numba/numba/blob/a41f4317f9169e42443bf32d433025552bdb562a/numba/np/linalg.py#L1318-L1397>`_
 
 .. function:: numpy.linalg.linalg.slogdet
 
    Alias to: ``numpy.linalg.slogdet``
 
-   - defined by ``slogdet_impl(a)`` at `numba/np/linalg.py:1956-2017 <https://github.com/numba/numba/blob/3a659b2578e95d07f62fbe2f5d10316e17486109/numba/np/linalg.py#L1956-L2017>`_
+   - defined by ``slogdet_impl(a)`` at `numba/np/linalg.py:1956-2017 <https://github.com/numba/numba/blob/a41f4317f9169e42443bf32d433025552bdb562a/numba/np/linalg.py#L1956-L2017>`_
 
 .. function:: numpy.linalg.linalg.solve
 
    Alias to: ``numpy.linalg.solve``
 
-   - defined by ``solve_impl(a, b)`` at `numba/np/linalg.py:1684-1748 <https://github.com/numba/numba/blob/3a659b2578e95d07f62fbe2f5d10316e17486109/numba/np/linalg.py#L1684-L1748>`_
+   - defined by ``solve_impl(a, b)`` at `numba/np/linalg.py:1684-1748 <https://github.com/numba/numba/blob/a41f4317f9169e42443bf32d433025552bdb562a/numba/np/linalg.py#L1684-L1748>`_
 
 .. function:: numpy.linalg.linalg.sum
 
@@ -4108,13 +4108,13 @@ numpy.linalg.linalg
 
    Alias to: ``numpy.linalg.svd``
 
-   - defined by ``svd_impl(a, full_matrices=1)`` at `numba/np/linalg.py:1247-1315 <https://github.com/numba/numba/blob/3a659b2578e95d07f62fbe2f5d10316e17486109/numba/np/linalg.py#L1247-L1315>`_
+   - defined by ``svd_impl(a, full_matrices=1)`` at `numba/np/linalg.py:1247-1315 <https://github.com/numba/numba/blob/a41f4317f9169e42443bf32d433025552bdb562a/numba/np/linalg.py#L1247-L1315>`_
 
 .. function:: numpy.linalg.linalg.triu
 
    Alias to: ``numpy.triu``
 
-   - defined by ``my_triu(m, k=0)`` at `numba/np/arraymath.py:1513-1536 <https://github.com/numba/numba/blob/3a659b2578e95d07f62fbe2f5d10316e17486109/numba/np/arraymath.py#L1513-L1536>`_
+   - defined by ``my_triu(m, k=0)`` at `numba/np/arraymath.py:1513-1536 <https://github.com/numba/numba/blob/a41f4317f9169e42443bf32d433025552bdb562a/numba/np/arraymath.py#L1513-L1536>`_
 
 .. function:: numpy.linalg.linalg.zeros
 
@@ -4152,7 +4152,7 @@ numpy.ma
 
    Alias to: ``numpy.diff``
 
-   - defined by ``np_diff_impl(a, n=1)`` at `numba/np/arraymath.py:3210-3246 <https://github.com/numba/numba/blob/3a659b2578e95d07f62fbe2f5d10316e17486109/numba/np/arraymath.py#L3210-L3246>`_
+   - defined by ``np_diff_impl(a, n=1)`` at `numba/np/arraymath.py:3210-3246 <https://github.com/numba/numba/blob/a41f4317f9169e42443bf32d433025552bdb562a/numba/np/arraymath.py#L3210-L3246>`_
 
 .. function:: numpy.ma.expand_dims
 
@@ -4190,7 +4190,7 @@ numpy.ma.core
 
    Alias to: ``numpy.diff``
 
-   - defined by ``np_diff_impl(a, n=1)`` at `numba/np/arraymath.py:3210-3246 <https://github.com/numba/numba/blob/3a659b2578e95d07f62fbe2f5d10316e17486109/numba/np/arraymath.py#L3210-L3246>`_
+   - defined by ``np_diff_impl(a, n=1)`` at `numba/np/arraymath.py:3210-3246 <https://github.com/numba/numba/blob/a41f4317f9169e42443bf32d433025552bdb562a/numba/np/arraymath.py#L3210-L3246>`_
 
 .. function:: numpy.ma.core.expand_dims
 
@@ -4288,7 +4288,7 @@ numpy.matlib
 
    Alias to: ``numpy.all``
 
-   - defined by ``np_all(a)`` at `numba/np/arraymath.py:631-640 <https://github.com/numba/numba/blob/3a659b2578e95d07f62fbe2f5d10316e17486109/numba/np/arraymath.py#L631-L640>`_
+   - defined by ``np_all(a)`` at `numba/np/arraymath.py:631-640 <https://github.com/numba/numba/blob/a41f4317f9169e42443bf32d433025552bdb562a/numba/np/arraymath.py#L631-L640>`_
 
 .. function:: numpy.matlib.amax
 
@@ -4312,19 +4312,19 @@ numpy.matlib
 
    Alias to: ``numpy.any``
 
-   - defined by ``np_any(a)`` at `numba/np/arraymath.py:643-652 <https://github.com/numba/numba/blob/3a659b2578e95d07f62fbe2f5d10316e17486109/numba/np/arraymath.py#L643-L652>`_
+   - defined by ``np_any(a)`` at `numba/np/arraymath.py:643-652 <https://github.com/numba/numba/blob/a41f4317f9169e42443bf32d433025552bdb562a/numba/np/arraymath.py#L643-L652>`_
 
 .. function:: numpy.matlib.append
 
    Alias to: ``numpy.append``
 
-   - defined by ``np_append(arr, values, axis=None)`` at `numba/np/arrayobj.py:1709-1732 <https://github.com/numba/numba/blob/3a659b2578e95d07f62fbe2f5d10316e17486109/numba/np/arrayobj.py#L1709-L1732>`_
+   - defined by ``np_append(arr, values, axis=None)`` at `numba/np/arrayobj.py:1709-1732 <https://github.com/numba/numba/blob/a41f4317f9169e42443bf32d433025552bdb562a/numba/np/arrayobj.py#L1709-L1732>`_
 
 .. function:: numpy.matlib.arange
 
    Alias to: ``numpy.arange``
 
-   - defined by ``np_arange(start, stop=None, step=None, dtype=None)`` at `numba/np/arrayobj.py:3842-3908 <https://github.com/numba/numba/blob/3a659b2578e95d07f62fbe2f5d10316e17486109/numba/np/arrayobj.py#L3842-L3908>`_
+   - defined by ``np_arange(start, stop=None, step=None, dtype=None)`` at `numba/np/arrayobj.py:3842-3908 <https://github.com/numba/numba/blob/a41f4317f9169e42443bf32d433025552bdb562a/numba/np/arrayobj.py#L3842-L3908>`_
 
 .. function:: numpy.matlib.argmax
 
@@ -4348,7 +4348,7 @@ numpy.matlib
 
    Alias to: ``numpy.argwhere``
 
-   - defined by ``np_argwhere(a)`` at `numba/np/arraymath.py:2643-2657 <https://github.com/numba/numba/blob/3a659b2578e95d07f62fbe2f5d10316e17486109/numba/np/arraymath.py#L2643-L2657>`_
+   - defined by ``np_argwhere(a)`` at `numba/np/arraymath.py:2643-2657 <https://github.com/numba/numba/blob/a41f4317f9169e42443bf32d433025552bdb562a/numba/np/arraymath.py#L2643-L2657>`_
 
 .. function:: numpy.matlib.around
 
@@ -4366,13 +4366,13 @@ numpy.matlib
 
    Alias to: ``numpy.array_equal``
 
-   - defined by ``np_array_equal(a, b)`` at `numba/np/arraymath.py:3249-3268 <https://github.com/numba/numba/blob/3a659b2578e95d07f62fbe2f5d10316e17486109/numba/np/arraymath.py#L3249-L3268>`_
+   - defined by ``np_array_equal(a, b)`` at `numba/np/arraymath.py:3249-3268 <https://github.com/numba/numba/blob/a41f4317f9169e42443bf32d433025552bdb562a/numba/np/arraymath.py#L3249-L3268>`_
 
 .. function:: numpy.matlib.asarray
 
    Alias to: ``numpy.asarray``
 
-   - defined by ``np_asarray(a, dtype=None)`` at `numba/np/arraymath.py:3848-3881 <https://github.com/numba/numba/blob/3a659b2578e95d07f62fbe2f5d10316e17486109/numba/np/arraymath.py#L3848-L3881>`_
+   - defined by ``np_asarray(a, dtype=None)`` at `numba/np/arraymath.py:3848-3881 <https://github.com/numba/numba/blob/a41f4317f9169e42443bf32d433025552bdb562a/numba/np/arraymath.py#L3848-L3881>`_
 
 .. function:: numpy.matlib.ascontiguousarray
 
@@ -4408,19 +4408,19 @@ numpy.matlib
 
    Alias to: ``numpy.bartlett``
 
-   - defined by ``window_generator.<locals>.window_overload(M)`` at `numba/np/arraymath.py:3994-4006 <https://github.com/numba/numba/blob/3a659b2578e95d07f62fbe2f5d10316e17486109/numba/np/arraymath.py#L3994-L4006>`_
+   - defined by ``window_generator.<locals>.window_overload(M)`` at `numba/np/arraymath.py:3994-4006 <https://github.com/numba/numba/blob/a41f4317f9169e42443bf32d433025552bdb562a/numba/np/arraymath.py#L3994-L4006>`_
 
 .. function:: numpy.matlib.bincount
 
    Alias to: ``numpy.bincount``
 
-   - defined by ``np_bincount(a, weights=None)`` at `numba/np/arraymath.py:3281-3330 <https://github.com/numba/numba/blob/3a659b2578e95d07f62fbe2f5d10316e17486109/numba/np/arraymath.py#L3281-L3330>`_
+   - defined by ``np_bincount(a, weights=None)`` at `numba/np/arraymath.py:3281-3330 <https://github.com/numba/numba/blob/a41f4317f9169e42443bf32d433025552bdb562a/numba/np/arraymath.py#L3281-L3330>`_
 
 .. function:: numpy.matlib.blackman
 
    Alias to: ``numpy.blackman``
 
-   - defined by ``window_generator.<locals>.window_overload(M)`` at `numba/np/arraymath.py:3994-4006 <https://github.com/numba/numba/blob/3a659b2578e95d07f62fbe2f5d10316e17486109/numba/np/arraymath.py#L3994-L4006>`_
+   - defined by ``window_generator.<locals>.window_overload(M)`` at `numba/np/arraymath.py:3994-4006 <https://github.com/numba/numba/blob/a41f4317f9169e42443bf32d433025552bdb562a/numba/np/arraymath.py#L3994-L4006>`_
 
 .. function:: numpy.matlib.column_stack
 
@@ -4438,7 +4438,7 @@ numpy.matlib
 
    Alias to: ``numpy.convolve``
 
-   - defined by ``np_convolve(a, v)`` at `numba/np/arraymath.py:3824-3845 <https://github.com/numba/numba/blob/3a659b2578e95d07f62fbe2f5d10316e17486109/numba/np/arraymath.py#L3824-L3845>`_
+   - defined by ``np_convolve(a, v)`` at `numba/np/arraymath.py:3824-3845 <https://github.com/numba/numba/blob/a41f4317f9169e42443bf32d433025552bdb562a/numba/np/arraymath.py#L3824-L3845>`_
 
 .. function:: numpy.matlib.copy
 
@@ -4450,31 +4450,31 @@ numpy.matlib
 
    Alias to: ``numpy.corrcoef``
 
-   - defined by ``np_corrcoef(x, y=None, rowvar=True)`` at `numba/np/arraymath.py:2607-2637 <https://github.com/numba/numba/blob/3a659b2578e95d07f62fbe2f5d10316e17486109/numba/np/arraymath.py#L2607-L2637>`_
+   - defined by ``np_corrcoef(x, y=None, rowvar=True)`` at `numba/np/arraymath.py:2607-2637 <https://github.com/numba/numba/blob/a41f4317f9169e42443bf32d433025552bdb562a/numba/np/arraymath.py#L2607-L2637>`_
 
 .. function:: numpy.matlib.correlate
 
    Alias to: ``numpy.correlate``
 
-   - defined by ``_np_correlate(a, v)`` at `numba/np/arraymath.py:3776-3821 <https://github.com/numba/numba/blob/3a659b2578e95d07f62fbe2f5d10316e17486109/numba/np/arraymath.py#L3776-L3821>`_
+   - defined by ``_np_correlate(a, v)`` at `numba/np/arraymath.py:3776-3821 <https://github.com/numba/numba/blob/a41f4317f9169e42443bf32d433025552bdb562a/numba/np/arraymath.py#L3776-L3821>`_
 
 .. function:: numpy.matlib.count_nonzero
 
    Alias to: ``numpy.count_nonzero``
 
-   - defined by ``np_count_nonzero(arr, axis=None)`` at `numba/np/arraymath.py:3142-3156 <https://github.com/numba/numba/blob/3a659b2578e95d07f62fbe2f5d10316e17486109/numba/np/arraymath.py#L3142-L3156>`_
+   - defined by ``np_count_nonzero(arr, axis=None)`` at `numba/np/arraymath.py:3142-3156 <https://github.com/numba/numba/blob/a41f4317f9169e42443bf32d433025552bdb562a/numba/np/arraymath.py#L3142-L3156>`_
 
 .. function:: numpy.matlib.cov
 
    Alias to: ``numpy.cov``
 
-   - defined by ``np_cov(m, y=None, rowvar=True, bias=False, ddof=None)`` at `numba/np/arraymath.py:2548-2604 <https://github.com/numba/numba/blob/3a659b2578e95d07f62fbe2f5d10316e17486109/numba/np/arraymath.py#L2548-L2604>`_
+   - defined by ``np_cov(m, y=None, rowvar=True, bias=False, ddof=None)`` at `numba/np/arraymath.py:2548-2604 <https://github.com/numba/numba/blob/a41f4317f9169e42443bf32d433025552bdb562a/numba/np/arraymath.py#L2548-L2604>`_
 
 .. function:: numpy.matlib.cross
 
    Alias to: ``numpy.cross``
 
-   - defined by ``np_cross(a, b)`` at `numba/np/arraymath.py:4175-4197 <https://github.com/numba/numba/blob/3a659b2578e95d07f62fbe2f5d10316e17486109/numba/np/arraymath.py#L4175-L4197>`_
+   - defined by ``np_cross(a, b)`` at `numba/np/arraymath.py:4175-4197 <https://github.com/numba/numba/blob/a41f4317f9169e42443bf32d433025552bdb562a/numba/np/arraymath.py#L4175-L4197>`_
 
 .. function:: numpy.matlib.cumprod
 
@@ -4492,7 +4492,7 @@ numpy.matlib
 
    Alias to: ``numpy.delete``
 
-   - defined by ``np_delete(arr, obj)`` at `numba/np/arraymath.py:3163-3207 <https://github.com/numba/numba/blob/3a659b2578e95d07f62fbe2f5d10316e17486109/numba/np/arraymath.py#L3163-L3207>`_
+   - defined by ``np_delete(arr, obj)`` at `numba/np/arraymath.py:3163-3207 <https://github.com/numba/numba/blob/a41f4317f9169e42443bf32d433025552bdb562a/numba/np/arraymath.py#L3163-L3207>`_
 
 .. function:: numpy.matlib.diag
 
@@ -4504,13 +4504,13 @@ numpy.matlib
 
    Alias to: ``numpy.diff``
 
-   - defined by ``np_diff_impl(a, n=1)`` at `numba/np/arraymath.py:3210-3246 <https://github.com/numba/numba/blob/3a659b2578e95d07f62fbe2f5d10316e17486109/numba/np/arraymath.py#L3210-L3246>`_
+   - defined by ``np_diff_impl(a, n=1)`` at `numba/np/arraymath.py:3210-3246 <https://github.com/numba/numba/blob/a41f4317f9169e42443bf32d433025552bdb562a/numba/np/arraymath.py#L3210-L3246>`_
 
 .. function:: numpy.matlib.digitize
 
    Alias to: ``numpy.digitize``
 
-   - defined by ``np_digitize(x, bins, right=False)`` at `numba/np/arraymath.py:3398-3524 <https://github.com/numba/numba/blob/3a659b2578e95d07f62fbe2f5d10316e17486109/numba/np/arraymath.py#L3398-L3524>`_
+   - defined by ``np_digitize(x, bins, right=False)`` at `numba/np/arraymath.py:3398-3524 <https://github.com/numba/numba/blob/a41f4317f9169e42443bf32d433025552bdb562a/numba/np/arraymath.py#L3398-L3524>`_
 
 .. function:: numpy.matlib.dot
 
@@ -4528,7 +4528,7 @@ numpy.matlib
 
    Alias to: ``numpy.ediff1d``
 
-   - defined by ``np_ediff1d(ary, to_end=None, to_begin=None)`` at `numba/np/arraymath.py:1596-1651 <https://github.com/numba/numba/blob/3a659b2578e95d07f62fbe2f5d10316e17486109/numba/np/arraymath.py#L1596-L1651>`_
+   - defined by ``np_ediff1d(ary, to_end=None, to_begin=None)`` at `numba/np/arraymath.py:1596-1651 <https://github.com/numba/numba/blob/a41f4317f9169e42443bf32d433025552bdb562a/numba/np/arraymath.py#L1596-L1651>`_
 
 .. function:: numpy.matlib.empty_like
 
@@ -4546,37 +4546,37 @@ numpy.matlib
 
    Alias to: ``numpy.extract``
 
-   - defined by ``np_extract(condition, arr)`` at `numba/np/arraymath.py:3884-3907 <https://github.com/numba/numba/blob/3a659b2578e95d07f62fbe2f5d10316e17486109/numba/np/arraymath.py#L3884-L3907>`_
+   - defined by ``np_extract(condition, arr)`` at `numba/np/arraymath.py:3884-3907 <https://github.com/numba/numba/blob/a41f4317f9169e42443bf32d433025552bdb562a/numba/np/arraymath.py#L3884-L3907>`_
 
 .. function:: numpy.matlib.fill_diagonal
 
    Alias to: ``numpy.fill_diagonal``
 
-   - defined by ``np_fill_diagonal(a, val, wrap=False)`` at `numba/np/arraymath.py:2762-2792 <https://github.com/numba/numba/blob/3a659b2578e95d07f62fbe2f5d10316e17486109/numba/np/arraymath.py#L2762-L2792>`_
+   - defined by ``np_fill_diagonal(a, val, wrap=False)`` at `numba/np/arraymath.py:2762-2792 <https://github.com/numba/numba/blob/a41f4317f9169e42443bf32d433025552bdb562a/numba/np/arraymath.py#L2762-L2792>`_
 
 .. function:: numpy.matlib.flatnonzero
 
    Alias to: ``numpy.flatnonzero``
 
-   - defined by ``np_flatnonzero(a)`` at `numba/np/arraymath.py:2660-2675 <https://github.com/numba/numba/blob/3a659b2578e95d07f62fbe2f5d10316e17486109/numba/np/arraymath.py#L2660-L2675>`_
+   - defined by ``np_flatnonzero(a)`` at `numba/np/arraymath.py:2660-2675 <https://github.com/numba/numba/blob/a41f4317f9169e42443bf32d433025552bdb562a/numba/np/arraymath.py#L2660-L2675>`_
 
 .. function:: numpy.matlib.flip
 
    Alias to: ``numpy.flip``
 
-   - defined by ``np_flip(a)`` at `numba/np/arrayobj.py:4953-4964 <https://github.com/numba/numba/blob/3a659b2578e95d07f62fbe2f5d10316e17486109/numba/np/arrayobj.py#L4953-L4964>`_
+   - defined by ``np_flip(a)`` at `numba/np/arrayobj.py:4953-4964 <https://github.com/numba/numba/blob/a41f4317f9169e42443bf32d433025552bdb562a/numba/np/arrayobj.py#L4953-L4964>`_
 
 .. function:: numpy.matlib.fliplr
 
    Alias to: ``numpy.fliplr``
 
-   - defined by ``np_flip_lr(a)`` at `numba/np/arrayobj.py:4891-4905 <https://github.com/numba/numba/blob/3a659b2578e95d07f62fbe2f5d10316e17486109/numba/np/arrayobj.py#L4891-L4905>`_
+   - defined by ``np_flip_lr(a)`` at `numba/np/arrayobj.py:4891-4905 <https://github.com/numba/numba/blob/a41f4317f9169e42443bf32d433025552bdb562a/numba/np/arrayobj.py#L4891-L4905>`_
 
 .. function:: numpy.matlib.flipud
 
    Alias to: ``numpy.flipud``
 
-   - defined by ``np_flip_ud(a)`` at `numba/np/arrayobj.py:4908-4922 <https://github.com/numba/numba/blob/3a659b2578e95d07f62fbe2f5d10316e17486109/numba/np/arrayobj.py#L4908-L4922>`_
+   - defined by ``np_flip_ud(a)`` at `numba/np/arrayobj.py:4908-4922 <https://github.com/numba/numba/blob/a41f4317f9169e42443bf32d433025552bdb562a/numba/np/arrayobj.py#L4908-L4922>`_
 
 .. function:: numpy.matlib.frombuffer
 
@@ -4600,19 +4600,19 @@ numpy.matlib
 
    Alias to: ``numpy.hamming``
 
-   - defined by ``window_generator.<locals>.window_overload(M)`` at `numba/np/arraymath.py:3994-4006 <https://github.com/numba/numba/blob/3a659b2578e95d07f62fbe2f5d10316e17486109/numba/np/arraymath.py#L3994-L4006>`_
+   - defined by ``window_generator.<locals>.window_overload(M)`` at `numba/np/arraymath.py:3994-4006 <https://github.com/numba/numba/blob/a41f4317f9169e42443bf32d433025552bdb562a/numba/np/arraymath.py#L3994-L4006>`_
 
 .. function:: numpy.matlib.hanning
 
    Alias to: ``numpy.hanning``
 
-   - defined by ``window_generator.<locals>.window_overload(M)`` at `numba/np/arraymath.py:3994-4006 <https://github.com/numba/numba/blob/3a659b2578e95d07f62fbe2f5d10316e17486109/numba/np/arraymath.py#L3994-L4006>`_
+   - defined by ``window_generator.<locals>.window_overload(M)`` at `numba/np/arraymath.py:3994-4006 <https://github.com/numba/numba/blob/a41f4317f9169e42443bf32d433025552bdb562a/numba/np/arraymath.py#L3994-L4006>`_
 
 .. function:: numpy.matlib.histogram
 
    Alias to: ``numpy.histogram``
 
-   - defined by ``np_histogram(a, bins=10, range=None)`` at `numba/np/arraymath.py:3530-3610 <https://github.com/numba/numba/blob/3a659b2578e95d07f62fbe2f5d10316e17486109/numba/np/arraymath.py#L3530-L3610>`_
+   - defined by ``np_histogram(a, bins=10, range=None)`` at `numba/np/arraymath.py:3530-3610 <https://github.com/numba/numba/blob/a41f4317f9169e42443bf32d433025552bdb562a/numba/np/arraymath.py#L3530-L3610>`_
 
 .. function:: numpy.matlib.hstack
 
@@ -4624,25 +4624,25 @@ numpy.matlib
 
    Alias to: ``numpy.imag``
 
-   - defined by ``np_imag(a)`` at `numba/np/arraymath.py:3131-3136 <https://github.com/numba/numba/blob/3a659b2578e95d07f62fbe2f5d10316e17486109/numba/np/arraymath.py#L3131-L3136>`_
+   - defined by ``np_imag(a)`` at `numba/np/arraymath.py:3131-3136 <https://github.com/numba/numba/blob/a41f4317f9169e42443bf32d433025552bdb562a/numba/np/arraymath.py#L3131-L3136>`_
 
 .. function:: numpy.matlib.interp
 
    Alias to: ``numpy.interp``
 
-   - defined by ``np_interp(x, xp, fp)`` at `numba/np/arraymath.py:2299-2360 <https://github.com/numba/numba/blob/3a659b2578e95d07f62fbe2f5d10316e17486109/numba/np/arraymath.py#L2299-L2360>`_
+   - defined by ``np_interp(x, xp, fp)`` at `numba/np/arraymath.py:2299-2360 <https://github.com/numba/numba/blob/a41f4317f9169e42443bf32d433025552bdb562a/numba/np/arraymath.py#L2299-L2360>`_
 
 .. function:: numpy.matlib.kaiser
 
    Alias to: ``numpy.kaiser``
 
-   - defined by ``np_kaiser(M, beta)`` at `numba/np/arraymath.py:4112-4131 <https://github.com/numba/numba/blob/3a659b2578e95d07f62fbe2f5d10316e17486109/numba/np/arraymath.py#L4112-L4131>`_
+   - defined by ``np_kaiser(M, beta)`` at `numba/np/arraymath.py:4112-4131 <https://github.com/numba/numba/blob/a41f4317f9169e42443bf32d433025552bdb562a/numba/np/arraymath.py#L4112-L4131>`_
 
 .. function:: numpy.matlib.kron
 
    Alias to: ``numpy.kron``
 
-   - defined by ``kron_impl(a, b)`` at `numba/np/linalg.py:2726-2780 <https://github.com/numba/numba/blob/3a659b2578e95d07f62fbe2f5d10316e17486109/numba/np/linalg.py#L2726-L2780>`_
+   - defined by ``kron_impl(a, b)`` at `numba/np/linalg.py:2726-2780 <https://github.com/numba/numba/blob/a41f4317f9169e42443bf32d433025552bdb562a/numba/np/linalg.py#L2726-L2780>`_
 
 .. function:: numpy.matlib.linspace
 
@@ -4660,79 +4660,79 @@ numpy.matlib
 
    Alias to: ``numpy.median``
 
-   - defined by ``np_median(a)`` at `numba/np/arraymath.py:1109-1121 <https://github.com/numba/numba/blob/3a659b2578e95d07f62fbe2f5d10316e17486109/numba/np/arraymath.py#L1109-L1121>`_
+   - defined by ``np_median(a)`` at `numba/np/arraymath.py:1109-1121 <https://github.com/numba/numba/blob/a41f4317f9169e42443bf32d433025552bdb562a/numba/np/arraymath.py#L1109-L1121>`_
 
 .. function:: numpy.matlib.nancumprod
 
    Alias to: ``numpy.nancumprod``
 
-   - defined by ``np_nancumprod(a)`` at `numba/np/arraymath.py:855-877 <https://github.com/numba/numba/blob/3a659b2578e95d07f62fbe2f5d10316e17486109/numba/np/arraymath.py#L855-L877>`_
+   - defined by ``np_nancumprod(a)`` at `numba/np/arraymath.py:855-877 <https://github.com/numba/numba/blob/a41f4317f9169e42443bf32d433025552bdb562a/numba/np/arraymath.py#L855-L877>`_
 
 .. function:: numpy.matlib.nancumsum
 
    Alias to: ``numpy.nancumsum``
 
-   - defined by ``np_nancumsum(a)`` at `numba/np/arraymath.py:880-902 <https://github.com/numba/numba/blob/3a659b2578e95d07f62fbe2f5d10316e17486109/numba/np/arraymath.py#L880-L902>`_
+   - defined by ``np_nancumsum(a)`` at `numba/np/arraymath.py:880-902 <https://github.com/numba/numba/blob/a41f4317f9169e42443bf32d433025552bdb562a/numba/np/arraymath.py#L880-L902>`_
 
 .. function:: numpy.matlib.nanmax
 
    Alias to: ``numpy.nanmax``
 
-   - defined by ``np_nanmax(a)`` at `numba/np/arraymath.py:746-752 <https://github.com/numba/numba/blob/3a659b2578e95d07f62fbe2f5d10316e17486109/numba/np/arraymath.py#L746-L752>`_
+   - defined by ``np_nanmax(a)`` at `numba/np/arraymath.py:746-752 <https://github.com/numba/numba/blob/a41f4317f9169e42443bf32d433025552bdb562a/numba/np/arraymath.py#L746-L752>`_
 
 .. function:: numpy.matlib.nanmean
 
    Alias to: ``numpy.nanmean``
 
-   - defined by ``np_nanmean(a)`` at `numba/np/arraymath.py:755-772 <https://github.com/numba/numba/blob/3a659b2578e95d07f62fbe2f5d10316e17486109/numba/np/arraymath.py#L755-L772>`_
+   - defined by ``np_nanmean(a)`` at `numba/np/arraymath.py:755-772 <https://github.com/numba/numba/blob/a41f4317f9169e42443bf32d433025552bdb562a/numba/np/arraymath.py#L755-L772>`_
 
 .. function:: numpy.matlib.nanmedian
 
    Alias to: ``numpy.nanmedian``
 
-   - defined by ``np_nanmedian(a)`` at `numba/np/arraymath.py:1293-1315 <https://github.com/numba/numba/blob/3a659b2578e95d07f62fbe2f5d10316e17486109/numba/np/arraymath.py#L1293-L1315>`_
+   - defined by ``np_nanmedian(a)`` at `numba/np/arraymath.py:1293-1315 <https://github.com/numba/numba/blob/a41f4317f9169e42443bf32d433025552bdb562a/numba/np/arraymath.py#L1293-L1315>`_
 
 .. function:: numpy.matlib.nanmin
 
    Alias to: ``numpy.nanmin``
 
-   - defined by ``np_nanmin(a)`` at `numba/np/arraymath.py:737-743 <https://github.com/numba/numba/blob/3a659b2578e95d07f62fbe2f5d10316e17486109/numba/np/arraymath.py#L737-L743>`_
+   - defined by ``np_nanmin(a)`` at `numba/np/arraymath.py:737-743 <https://github.com/numba/numba/blob/a41f4317f9169e42443bf32d433025552bdb562a/numba/np/arraymath.py#L737-L743>`_
 
 .. function:: numpy.matlib.nanpercentile
 
    Alias to: ``numpy.nanpercentile``
 
-   - defined by ``np_nanpercentile(a, q)`` at `numba/np/arraymath.py:1272-1276 <https://github.com/numba/numba/blob/3a659b2578e95d07f62fbe2f5d10316e17486109/numba/np/arraymath.py#L1272-L1276>`_
+   - defined by ``np_nanpercentile(a, q)`` at `numba/np/arraymath.py:1272-1276 <https://github.com/numba/numba/blob/a41f4317f9169e42443bf32d433025552bdb562a/numba/np/arraymath.py#L1272-L1276>`_
 
 .. function:: numpy.matlib.nanprod
 
    Alias to: ``numpy.nanprod``
 
-   - defined by ``np_nanprod(a)`` at `numba/np/arraymath.py:833-852 <https://github.com/numba/numba/blob/3a659b2578e95d07f62fbe2f5d10316e17486109/numba/np/arraymath.py#L833-L852>`_
+   - defined by ``np_nanprod(a)`` at `numba/np/arraymath.py:833-852 <https://github.com/numba/numba/blob/a41f4317f9169e42443bf32d433025552bdb562a/numba/np/arraymath.py#L833-L852>`_
 
 .. function:: numpy.matlib.nanquantile
 
    Alias to: ``numpy.nanquantile``
 
-   - defined by ``np_nanquantile(a, q)`` at `numba/np/arraymath.py:1286-1290 <https://github.com/numba/numba/blob/3a659b2578e95d07f62fbe2f5d10316e17486109/numba/np/arraymath.py#L1286-L1290>`_
+   - defined by ``np_nanquantile(a, q)`` at `numba/np/arraymath.py:1286-1290 <https://github.com/numba/numba/blob/a41f4317f9169e42443bf32d433025552bdb562a/numba/np/arraymath.py#L1286-L1290>`_
 
 .. function:: numpy.matlib.nanstd
 
    Alias to: ``numpy.nanstd``
 
-   - defined by ``np_nanstd(a)`` at `numba/np/arraymath.py:800-808 <https://github.com/numba/numba/blob/3a659b2578e95d07f62fbe2f5d10316e17486109/numba/np/arraymath.py#L800-L808>`_
+   - defined by ``np_nanstd(a)`` at `numba/np/arraymath.py:800-808 <https://github.com/numba/numba/blob/a41f4317f9169e42443bf32d433025552bdb562a/numba/np/arraymath.py#L800-L808>`_
 
 .. function:: numpy.matlib.nansum
 
    Alias to: ``numpy.nansum``
 
-   - defined by ``np_nansum(a)`` at `numba/np/arraymath.py:811-830 <https://github.com/numba/numba/blob/3a659b2578e95d07f62fbe2f5d10316e17486109/numba/np/arraymath.py#L811-L830>`_
+   - defined by ``np_nansum(a)`` at `numba/np/arraymath.py:811-830 <https://github.com/numba/numba/blob/a41f4317f9169e42443bf32d433025552bdb562a/numba/np/arraymath.py#L811-L830>`_
 
 .. function:: numpy.matlib.nanvar
 
    Alias to: ``numpy.nanvar``
 
-   - defined by ``np_nanvar(a)`` at `numba/np/arraymath.py:775-797 <https://github.com/numba/numba/blob/3a659b2578e95d07f62fbe2f5d10316e17486109/numba/np/arraymath.py#L775-L797>`_
+   - defined by ``np_nanvar(a)`` at `numba/np/arraymath.py:775-797 <https://github.com/numba/numba/blob/a41f4317f9169e42443bf32d433025552bdb562a/numba/np/arraymath.py#L775-L797>`_
 
 .. function:: numpy.matlib.nonzero
 
@@ -4750,19 +4750,19 @@ numpy.matlib
 
    Alias to: ``numpy.outer``
 
-   - defined by ``outer_impl(a, b, out=None)`` at `numba/np/linalg.py:2649-2660 <https://github.com/numba/numba/blob/3a659b2578e95d07f62fbe2f5d10316e17486109/numba/np/linalg.py#L2649-L2660>`_
+   - defined by ``outer_impl(a, b, out=None)`` at `numba/np/linalg.py:2649-2660 <https://github.com/numba/numba/blob/a41f4317f9169e42443bf32d433025552bdb562a/numba/np/linalg.py#L2649-L2660>`_
 
 .. function:: numpy.matlib.partition
 
    Alias to: ``numpy.partition``
 
-   - defined by ``np_partition(a, kth)`` at `numba/np/arraymath.py:1374-1396 <https://github.com/numba/numba/blob/3a659b2578e95d07f62fbe2f5d10316e17486109/numba/np/arraymath.py#L1374-L1396>`_
+   - defined by ``np_partition(a, kth)`` at `numba/np/arraymath.py:1374-1396 <https://github.com/numba/numba/blob/a41f4317f9169e42443bf32d433025552bdb562a/numba/np/arraymath.py#L1374-L1396>`_
 
 .. function:: numpy.matlib.percentile
 
    Alias to: ``numpy.percentile``
 
-   - defined by ``np_percentile(a, q)`` at `numba/np/arraymath.py:1265-1269 <https://github.com/numba/numba/blob/3a659b2578e95d07f62fbe2f5d10316e17486109/numba/np/arraymath.py#L1265-L1269>`_
+   - defined by ``np_percentile(a, q)`` at `numba/np/arraymath.py:1265-1269 <https://github.com/numba/numba/blob/a41f4317f9169e42443bf32d433025552bdb562a/numba/np/arraymath.py#L1265-L1269>`_
 
 .. function:: numpy.matlib.prod
 
@@ -4774,13 +4774,13 @@ numpy.matlib
 
    Alias to: ``numpy.ptp``
 
-   - defined by ``np_ptp(a)`` at `numba/np/arraymath.py:964-989 <https://github.com/numba/numba/blob/3a659b2578e95d07f62fbe2f5d10316e17486109/numba/np/arraymath.py#L964-L989>`_
+   - defined by ``np_ptp(a)`` at `numba/np/arraymath.py:964-989 <https://github.com/numba/numba/blob/a41f4317f9169e42443bf32d433025552bdb562a/numba/np/arraymath.py#L964-L989>`_
 
 .. function:: numpy.matlib.quantile
 
    Alias to: ``numpy.quantile``
 
-   - defined by ``np_quantile(a, q)`` at `numba/np/arraymath.py:1279-1283 <https://github.com/numba/numba/blob/3a659b2578e95d07f62fbe2f5d10316e17486109/numba/np/arraymath.py#L1279-L1283>`_
+   - defined by ``np_quantile(a, q)`` at `numba/np/arraymath.py:1279-1283 <https://github.com/numba/numba/blob/a41f4317f9169e42443bf32d433025552bdb562a/numba/np/arraymath.py#L1279-L1283>`_
 
 .. function:: numpy.matlib.ravel
 
@@ -4792,31 +4792,31 @@ numpy.matlib
 
    Alias to: ``numpy.real``
 
-   - defined by ``np_real(a)`` at `numba/np/arraymath.py:3123-3128 <https://github.com/numba/numba/blob/3a659b2578e95d07f62fbe2f5d10316e17486109/numba/np/arraymath.py#L3123-L3128>`_
+   - defined by ``np_real(a)`` at `numba/np/arraymath.py:3123-3128 <https://github.com/numba/numba/blob/a41f4317f9169e42443bf32d433025552bdb562a/numba/np/arraymath.py#L3123-L3128>`_
 
 .. function:: numpy.matlib.repeat
 
    Alias to: ``numpy.repeat``
 
-   - defined by ``np_repeat(a, repeats)`` at `numba/np/arrayobj.py:1925-1967 <https://github.com/numba/numba/blob/3a659b2578e95d07f62fbe2f5d10316e17486109/numba/np/arrayobj.py#L1925-L1967>`_
+   - defined by ``np_repeat(a, repeats)`` at `numba/np/arrayobj.py:1925-1967 <https://github.com/numba/numba/blob/a41f4317f9169e42443bf32d433025552bdb562a/numba/np/arrayobj.py#L1925-L1967>`_
 
 .. function:: numpy.matlib.reshape
 
    Alias to: ``numpy.reshape``
 
-   - defined by ``np_reshape(a, shape)`` at `numba/np/arrayobj.py:1702-1706 <https://github.com/numba/numba/blob/3a659b2578e95d07f62fbe2f5d10316e17486109/numba/np/arrayobj.py#L1702-L1706>`_
+   - defined by ``np_reshape(a, shape)`` at `numba/np/arrayobj.py:1702-1706 <https://github.com/numba/numba/blob/a41f4317f9169e42443bf32d433025552bdb562a/numba/np/arrayobj.py#L1702-L1706>`_
 
 .. function:: numpy.matlib.roll
 
    Alias to: ``numpy.roll``
 
-   - defined by ``np_roll(a, shift)`` at `numba/np/arraymath.py:1786-1806 <https://github.com/numba/numba/blob/3a659b2578e95d07f62fbe2f5d10316e17486109/numba/np/arraymath.py#L1786-L1806>`_
+   - defined by ``np_roll(a, shift)`` at `numba/np/arraymath.py:1786-1806 <https://github.com/numba/numba/blob/a41f4317f9169e42443bf32d433025552bdb562a/numba/np/arraymath.py#L1786-L1806>`_
 
 .. function:: numpy.matlib.roots
 
    Alias to: ``numpy.roots``
 
-   - defined by ``roots_impl(p)`` at `numba/np/polynomial.py:14-59 <https://github.com/numba/numba/blob/3a659b2578e95d07f62fbe2f5d10316e17486109/numba/np/polynomial.py#L14-L59>`_
+   - defined by ``roots_impl(p)`` at `numba/np/polynomial.py:14-59 <https://github.com/numba/numba/blob/a41f4317f9169e42443bf32d433025552bdb562a/numba/np/polynomial.py#L14-L59>`_
 
 .. function:: numpy.matlib.round_
 
@@ -4834,19 +4834,19 @@ numpy.matlib
 
    Alias to: ``numpy.searchsorted``
 
-   - defined by ``searchsorted(a, v, side='left')`` at `numba/np/arraymath.py:3363-3395 <https://github.com/numba/numba/blob/3a659b2578e95d07f62fbe2f5d10316e17486109/numba/np/arraymath.py#L3363-L3395>`_
+   - defined by ``searchsorted(a, v, side='left')`` at `numba/np/arraymath.py:3363-3395 <https://github.com/numba/numba/blob/a41f4317f9169e42443bf32d433025552bdb562a/numba/np/arraymath.py#L3363-L3395>`_
 
 .. function:: numpy.matlib.select
 
    Alias to: ``numpy.select``
 
-   - defined by ``np_select(condlist, choicelist, default=0)`` at `numba/np/arraymath.py:3910-3958 <https://github.com/numba/numba/blob/3a659b2578e95d07f62fbe2f5d10316e17486109/numba/np/arraymath.py#L3910-L3958>`_
+   - defined by ``np_select(condlist, choicelist, default=0)`` at `numba/np/arraymath.py:3910-3958 <https://github.com/numba/numba/blob/a41f4317f9169e42443bf32d433025552bdb562a/numba/np/arraymath.py#L3910-L3958>`_
 
 .. function:: numpy.matlib.shape
 
    Alias to: ``numpy.shape``
 
-   - defined by ``np_shape(a)`` at `numba/np/arrayobj.py:1903-1910 <https://github.com/numba/numba/blob/3a659b2578e95d07f62fbe2f5d10316e17486109/numba/np/arrayobj.py#L1903-L1910>`_
+   - defined by ``np_shape(a)`` at `numba/np/arrayobj.py:1903-1910 <https://github.com/numba/numba/blob/a41f4317f9169e42443bf32d433025552bdb562a/numba/np/arrayobj.py#L1903-L1910>`_
 
 .. function:: numpy.matlib.sinc
 
@@ -4888,73 +4888,73 @@ numpy.matlib
 
    Alias to: ``numpy.trace``
 
-   - defined by ``matrix_trace_impl(a, offset=0)`` at `numba/np/linalg.py:2571-2599 <https://github.com/numba/numba/blob/3a659b2578e95d07f62fbe2f5d10316e17486109/numba/np/linalg.py#L2571-L2599>`_
+   - defined by ``matrix_trace_impl(a, offset=0)`` at `numba/np/linalg.py:2571-2599 <https://github.com/numba/numba/blob/a41f4317f9169e42443bf32d433025552bdb562a/numba/np/linalg.py#L2571-L2599>`_
 
 .. function:: numpy.matlib.transpose
 
    Alias to: ``numpy.transpose``
 
-   - defined by ``numpy_transpose(a, axes=None)`` at `numba/np/arrayobj.py:1530-1542 <https://github.com/numba/numba/blob/3a659b2578e95d07f62fbe2f5d10316e17486109/numba/np/arrayobj.py#L1530-L1542>`_
+   - defined by ``numpy_transpose(a, axes=None)`` at `numba/np/arrayobj.py:1530-1542 <https://github.com/numba/numba/blob/a41f4317f9169e42443bf32d433025552bdb562a/numba/np/arrayobj.py#L1530-L1542>`_
 
 .. function:: numpy.matlib.trapz
 
    Alias to: ``numpy.trapz``
 
-   - defined by ``np_trapz(y, x=None, dx=1.0)`` at `numba/np/arraymath.py:1688-1707 <https://github.com/numba/numba/blob/3a659b2578e95d07f62fbe2f5d10316e17486109/numba/np/arraymath.py#L1688-L1707>`_
+   - defined by ``np_trapz(y, x=None, dx=1.0)`` at `numba/np/arraymath.py:1688-1707 <https://github.com/numba/numba/blob/a41f4317f9169e42443bf32d433025552bdb562a/numba/np/arraymath.py#L1688-L1707>`_
 
 .. function:: numpy.matlib.tri
 
    Alias to: ``numpy.tri``
 
-   - defined by ``np_tri(N, M=None, k=0)`` at `numba/np/arraymath.py:1415-1426 <https://github.com/numba/numba/blob/3a659b2578e95d07f62fbe2f5d10316e17486109/numba/np/arraymath.py#L1415-L1426>`_
+   - defined by ``np_tri(N, M=None, k=0)`` at `numba/np/arraymath.py:1415-1426 <https://github.com/numba/numba/blob/a41f4317f9169e42443bf32d433025552bdb562a/numba/np/arraymath.py#L1415-L1426>`_
 
 .. function:: numpy.matlib.tril
 
    Alias to: ``numpy.tril``
 
-   - defined by ``my_tril(m, k=0)`` at `numba/np/arraymath.py:1452-1476 <https://github.com/numba/numba/blob/3a659b2578e95d07f62fbe2f5d10316e17486109/numba/np/arraymath.py#L1452-L1476>`_
+   - defined by ``my_tril(m, k=0)`` at `numba/np/arraymath.py:1452-1476 <https://github.com/numba/numba/blob/a41f4317f9169e42443bf32d433025552bdb562a/numba/np/arraymath.py#L1452-L1476>`_
 
 .. function:: numpy.matlib.tril_indices
 
    Alias to: ``numpy.tril_indices``
 
-   - defined by ``np_tril_indices(n, k=0, m=None)`` at `numba/np/arraymath.py:1479-1490 <https://github.com/numba/numba/blob/3a659b2578e95d07f62fbe2f5d10316e17486109/numba/np/arraymath.py#L1479-L1490>`_
+   - defined by ``np_tril_indices(n, k=0, m=None)`` at `numba/np/arraymath.py:1479-1490 <https://github.com/numba/numba/blob/a41f4317f9169e42443bf32d433025552bdb562a/numba/np/arraymath.py#L1479-L1490>`_
 
 .. function:: numpy.matlib.tril_indices_from
 
    Alias to: ``numpy.tril_indices_from``
 
-   - defined by ``np_tril_indices_from(arr, k=0)`` at `numba/np/arraymath.py:1493-1504 <https://github.com/numba/numba/blob/3a659b2578e95d07f62fbe2f5d10316e17486109/numba/np/arraymath.py#L1493-L1504>`_
+   - defined by ``np_tril_indices_from(arr, k=0)`` at `numba/np/arraymath.py:1493-1504 <https://github.com/numba/numba/blob/a41f4317f9169e42443bf32d433025552bdb562a/numba/np/arraymath.py#L1493-L1504>`_
 
 .. function:: numpy.matlib.triu
 
    Alias to: ``numpy.triu``
 
-   - defined by ``my_triu(m, k=0)`` at `numba/np/arraymath.py:1513-1536 <https://github.com/numba/numba/blob/3a659b2578e95d07f62fbe2f5d10316e17486109/numba/np/arraymath.py#L1513-L1536>`_
+   - defined by ``my_triu(m, k=0)`` at `numba/np/arraymath.py:1513-1536 <https://github.com/numba/numba/blob/a41f4317f9169e42443bf32d433025552bdb562a/numba/np/arraymath.py#L1513-L1536>`_
 
 .. function:: numpy.matlib.triu_indices
 
    Alias to: ``numpy.triu_indices``
 
-   - defined by ``np_triu_indices(n, k=0, m=None)`` at `numba/np/arraymath.py:1539-1550 <https://github.com/numba/numba/blob/3a659b2578e95d07f62fbe2f5d10316e17486109/numba/np/arraymath.py#L1539-L1550>`_
+   - defined by ``np_triu_indices(n, k=0, m=None)`` at `numba/np/arraymath.py:1539-1550 <https://github.com/numba/numba/blob/a41f4317f9169e42443bf32d433025552bdb562a/numba/np/arraymath.py#L1539-L1550>`_
 
 .. function:: numpy.matlib.triu_indices_from
 
    Alias to: ``numpy.triu_indices_from``
 
-   - defined by ``np_triu_indices_from(arr, k=0)`` at `numba/np/arraymath.py:1553-1564 <https://github.com/numba/numba/blob/3a659b2578e95d07f62fbe2f5d10316e17486109/numba/np/arraymath.py#L1553-L1564>`_
+   - defined by ``np_triu_indices_from(arr, k=0)`` at `numba/np/arraymath.py:1553-1564 <https://github.com/numba/numba/blob/a41f4317f9169e42443bf32d433025552bdb562a/numba/np/arraymath.py#L1553-L1564>`_
 
 .. function:: numpy.matlib.unique
 
    Alias to: ``numpy.unique``
 
-   - defined by ``np_unique(a)`` at `numba/np/arrayobj.py:1915-1922 <https://github.com/numba/numba/blob/3a659b2578e95d07f62fbe2f5d10316e17486109/numba/np/arrayobj.py#L1915-L1922>`_
+   - defined by ``np_unique(a)`` at `numba/np/arrayobj.py:1915-1922 <https://github.com/numba/numba/blob/a41f4317f9169e42443bf32d433025552bdb562a/numba/np/arrayobj.py#L1915-L1922>`_
 
 .. function:: numpy.matlib.vander
 
    Alias to: ``numpy.vander``
 
-   - defined by ``np_vander(x, N=None, increasing=False)`` at `numba/np/arraymath.py:1746-1783 <https://github.com/numba/numba/blob/3a659b2578e95d07f62fbe2f5d10316e17486109/numba/np/arraymath.py#L1746-L1783>`_
+   - defined by ``np_vander(x, N=None, increasing=False)`` at `numba/np/arraymath.py:1746-1783 <https://github.com/numba/numba/blob/a41f4317f9169e42443bf32d433025552bdb562a/numba/np/arraymath.py#L1746-L1783>`_
 
 .. function:: numpy.matlib.var
 
@@ -5010,7 +5010,7 @@ numpy.matrixlib.defmatrix
 
    Alias to: ``numpy.linalg.matrix_power``
 
-   - defined by ``matrix_power_impl(a, n)`` at `numba/np/linalg.py:2493-2566 <https://github.com/numba/numba/blob/3a659b2578e95d07f62fbe2f5d10316e17486109/numba/np/linalg.py#L2493-L2566>`_
+   - defined by ``matrix_power_impl(a, n)`` at `numba/np/linalg.py:2493-2566 <https://github.com/numba/numba/blob/a41f4317f9169e42443bf32d433025552bdb562a/numba/np/linalg.py#L2493-L2566>`_
 
 Not showing 5 unsupported functions.
 
@@ -5098,7 +5098,7 @@ numpy.random
 .. function:: numpy.random.choice
 
 
-   - defined by ``choice(a, size=None, replace=True)`` at `numba/cpython/randomimpl.py:1346-1427 <https://github.com/numba/numba/blob/3a659b2578e95d07f62fbe2f5d10316e17486109/numba/cpython/randomimpl.py#L1346-L1427>`_
+   - defined by ``choice(a, size=None, replace=True)`` at `numba/cpython/randomimpl.py:1346-1427 <https://github.com/numba/numba/blob/a41f4317f9169e42443bf32d433025552bdb562a/numba/cpython/randomimpl.py#L1346-L1427>`_
 
 .. function:: numpy.random.exponential
 
@@ -5153,7 +5153,7 @@ numpy.random
 .. function:: numpy.random.multinomial
 
 
-   - defined by ``multinomial(n, pvals, size=None)`` at `numba/cpython/randomimpl.py:1433-1508 <https://github.com/numba/numba/blob/3a659b2578e95d07f62fbe2f5d10316e17486109/numba/cpython/randomimpl.py#L1433-L1508>`_
+   - defined by ``multinomial(n, pvals, size=None)`` at `numba/cpython/randomimpl.py:1433-1508 <https://github.com/numba/numba/blob/a41f4317f9169e42443bf32d433025552bdb562a/numba/cpython/randomimpl.py#L1433-L1508>`_
 
 .. function:: numpy.random.negative_binomial
 
@@ -5173,7 +5173,7 @@ numpy.random
 .. function:: numpy.random.permutation
 
 
-   - defined by ``permutation_impl(x)`` at `numba/cpython/randomimpl.py:1231-1245 <https://github.com/numba/numba/blob/3a659b2578e95d07f62fbe2f5d10316e17486109/numba/cpython/randomimpl.py#L1231-L1245>`_
+   - defined by ``permutation_impl(x)`` at `numba/cpython/randomimpl.py:1231-1245 <https://github.com/numba/numba/blob/a41f4317f9169e42443bf32d433025552bdb562a/numba/cpython/randomimpl.py#L1231-L1245>`_
 
 .. function:: numpy.random.poisson
 
@@ -5188,7 +5188,7 @@ numpy.random
 .. function:: numpy.random.rand
 
 
-   - defined by ``rand(*size)`` at `numba/cpython/randomimpl.py:1314-1326 <https://github.com/numba/numba/blob/3a659b2578e95d07f62fbe2f5d10316e17486109/numba/cpython/randomimpl.py#L1314-L1326>`_
+   - defined by ``rand(*size)`` at `numba/cpython/randomimpl.py:1314-1326 <https://github.com/numba/numba/blob/a41f4317f9169e42443bf32d433025552bdb562a/numba/cpython/randomimpl.py#L1314-L1326>`_
 
 .. function:: numpy.random.randint
 
@@ -5198,7 +5198,7 @@ numpy.random
 .. function:: numpy.random.randn
 
 
-   - defined by ``randn(*size)`` at `numba/cpython/randomimpl.py:1328-1340 <https://github.com/numba/numba/blob/3a659b2578e95d07f62fbe2f5d10316e17486109/numba/cpython/randomimpl.py#L1328-L1340>`_
+   - defined by ``randn(*size)`` at `numba/cpython/randomimpl.py:1328-1340 <https://github.com/numba/numba/blob/a41f4317f9169e42443bf32d433025552bdb562a/numba/cpython/randomimpl.py#L1328-L1340>`_
 
 .. function:: numpy.random.random
 
@@ -5233,7 +5233,7 @@ numpy.random
 .. function:: numpy.random.shuffle
 
 
-   - defined by ``shuffle_impl(arr)`` at `numba/cpython/randomimpl.py:1227-1229 <https://github.com/numba/numba/blob/3a659b2578e95d07f62fbe2f5d10316e17486109/numba/cpython/randomimpl.py#L1227-L1229>`_
+   - defined by ``shuffle_impl(arr)`` at `numba/cpython/randomimpl.py:1227-1229 <https://github.com/numba/numba/blob/a41f4317f9169e42443bf32d433025552bdb562a/numba/cpython/randomimpl.py#L1227-L1229>`_
 
 .. function:: numpy.random.standard_cauchy
 
@@ -5356,7 +5356,7 @@ numpy.random.mtrand
 
    Alias to: ``numpy.random.choice``
 
-   - defined by ``choice(a, size=None, replace=True)`` at `numba/cpython/randomimpl.py:1346-1427 <https://github.com/numba/numba/blob/3a659b2578e95d07f62fbe2f5d10316e17486109/numba/cpython/randomimpl.py#L1346-L1427>`_
+   - defined by ``choice(a, size=None, replace=True)`` at `numba/cpython/randomimpl.py:1346-1427 <https://github.com/numba/numba/blob/a41f4317f9169e42443bf32d433025552bdb562a/numba/cpython/randomimpl.py#L1346-L1427>`_
 
 .. function:: numpy.random.mtrand.exponential
 
@@ -5422,7 +5422,7 @@ numpy.random.mtrand
 
    Alias to: ``numpy.random.multinomial``
 
-   - defined by ``multinomial(n, pvals, size=None)`` at `numba/cpython/randomimpl.py:1433-1508 <https://github.com/numba/numba/blob/3a659b2578e95d07f62fbe2f5d10316e17486109/numba/cpython/randomimpl.py#L1433-L1508>`_
+   - defined by ``multinomial(n, pvals, size=None)`` at `numba/cpython/randomimpl.py:1433-1508 <https://github.com/numba/numba/blob/a41f4317f9169e42443bf32d433025552bdb562a/numba/cpython/randomimpl.py#L1433-L1508>`_
 
 .. function:: numpy.random.mtrand.negative_binomial
 
@@ -5446,7 +5446,7 @@ numpy.random.mtrand
 
    Alias to: ``numpy.random.permutation``
 
-   - defined by ``permutation_impl(x)`` at `numba/cpython/randomimpl.py:1231-1245 <https://github.com/numba/numba/blob/3a659b2578e95d07f62fbe2f5d10316e17486109/numba/cpython/randomimpl.py#L1231-L1245>`_
+   - defined by ``permutation_impl(x)`` at `numba/cpython/randomimpl.py:1231-1245 <https://github.com/numba/numba/blob/a41f4317f9169e42443bf32d433025552bdb562a/numba/cpython/randomimpl.py#L1231-L1245>`_
 
 .. function:: numpy.random.mtrand.poisson
 
@@ -5464,7 +5464,7 @@ numpy.random.mtrand
 
    Alias to: ``numpy.random.rand``
 
-   - defined by ``rand(*size)`` at `numba/cpython/randomimpl.py:1314-1326 <https://github.com/numba/numba/blob/3a659b2578e95d07f62fbe2f5d10316e17486109/numba/cpython/randomimpl.py#L1314-L1326>`_
+   - defined by ``rand(*size)`` at `numba/cpython/randomimpl.py:1314-1326 <https://github.com/numba/numba/blob/a41f4317f9169e42443bf32d433025552bdb562a/numba/cpython/randomimpl.py#L1314-L1326>`_
 
 .. function:: numpy.random.mtrand.randint
 
@@ -5476,7 +5476,7 @@ numpy.random.mtrand
 
    Alias to: ``numpy.random.randn``
 
-   - defined by ``randn(*size)`` at `numba/cpython/randomimpl.py:1328-1340 <https://github.com/numba/numba/blob/3a659b2578e95d07f62fbe2f5d10316e17486109/numba/cpython/randomimpl.py#L1328-L1340>`_
+   - defined by ``randn(*size)`` at `numba/cpython/randomimpl.py:1328-1340 <https://github.com/numba/numba/blob/a41f4317f9169e42443bf32d433025552bdb562a/numba/cpython/randomimpl.py#L1328-L1340>`_
 
 .. function:: numpy.random.mtrand.random
 
@@ -5518,7 +5518,7 @@ numpy.random.mtrand
 
    Alias to: ``numpy.random.shuffle``
 
-   - defined by ``shuffle_impl(arr)`` at `numba/cpython/randomimpl.py:1227-1229 <https://github.com/numba/numba/blob/3a659b2578e95d07f62fbe2f5d10316e17486109/numba/cpython/randomimpl.py#L1227-L1229>`_
+   - defined by ``shuffle_impl(arr)`` at `numba/cpython/randomimpl.py:1227-1229 <https://github.com/numba/numba/blob/a41f4317f9169e42443bf32d433025552bdb562a/numba/cpython/randomimpl.py#L1227-L1229>`_
 
 .. function:: numpy.random.mtrand.standard_cauchy
 
