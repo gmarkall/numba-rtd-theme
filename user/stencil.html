@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>1.11. Using the @stencil decorator &mdash; Numba 0.49.0dev0+639.gacb93f6ea.dirty documentation</title>
+  <title>1.11. Using the @stencil decorator &mdash; Numba 0.49.0dev0+848.g3bc439ad5 documentation</title>
   
 
   
@@ -142,7 +142,7 @@
 <li class="toctree-l3"><a class="reference internal" href="generated-jit.html#compilation-options">1.5.2. Compilation options</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="vectorize.html">1.6. Creating Numpy universal functions</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="vectorize.html">1.6. Creating NumPy universal functions</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="vectorize.html#the-vectorize-decorator">1.6.1. The <code class="docutils literal notranslate"><span class="pre">&#64;vectorize</span></code> decorator</a></li>
 <li class="toctree-l3"><a class="reference internal" href="vectorize.html#the-guvectorize-decorator">1.6.2. The <code class="docutils literal notranslate"><span class="pre">&#64;guvectorize</span></code> decorator</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="vectorize.html#overwriting-input-values">1.6.2.1. Overwriting input values</a></li>
@@ -595,15 +595,42 @@
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../cuda/cuda_array_interface.html">3.15. CUDA Array Interface (Version 2)</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="../cuda/cuda_array_interface.html#python-interface-specification">3.15.1. Python Interface Specification</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="../cuda/cuda_array_interface.html#differences-with-cuda-array-interface-version-0">3.15.1.1. Differences with CUDA Array Interface (Version 0)</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../cuda/cuda_array_interface.html#differences-with-cuda-array-interface-version-1">3.15.1.2. Differences with CUDA Array Interface (Version 1)</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../cuda/cuda_array_interface.html#interoperability">3.15.1.3. Interoperability</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../cuda/cuda_array_interface.html#lifetime-management">3.15.1.1. Lifetime management</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../cuda/cuda_array_interface.html#lifetime-management-in-numba">3.15.1.2. Lifetime management in Numba</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../cuda/cuda_array_interface.html#pointer-attributes">3.15.1.3. Pointer Attributes</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../cuda/cuda_array_interface.html#differences-with-cuda-array-interface-version-0">3.15.1.4. Differences with CUDA Array Interface (Version 0)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../cuda/cuda_array_interface.html#differences-with-cuda-array-interface-version-1">3.15.1.5. Differences with CUDA Array Interface (Version 1)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../cuda/cuda_array_interface.html#interoperability">3.15.1.6. Interoperability</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="../cuda/faq.html">3.16. CUDA Frequently Asked Questions</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="../cuda/faq.html#nvprof-reports-no-kernels-were-profiled">3.16.1. nvprof reports “No kernels were profiled”</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../cuda/external-memory.html">3.16. External Memory Management (EMM) Plugin interface</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../cuda/external-memory.html#overview-of-external-memory-management">3.16.1. Overview of External Memory Management</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../cuda/external-memory.html#effects-on-deallocation-strategies">3.16.1.1. Effects on Deallocation Strategies</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../cuda/external-memory.html#management-of-other-objects">3.16.1.2. Management of other objects</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../cuda/external-memory.html#asynchronous-allocation-and-deallocation">3.16.1.3. Asynchronous allocation and deallocation</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../cuda/external-memory.html#implementing-an-emm-plugin">3.16.2. Implementing an EMM Plugin</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../cuda/external-memory.html#the-host-only-cuda-memory-manager">3.16.2.1. The Host-Only CUDA Memory Manager</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../cuda/external-memory.html#classes-and-structures-of-returned-objects">3.16.3. Classes and structures of returned objects</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../cuda/external-memory.html#memory-pointers">3.16.3.1. Memory Pointers</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../cuda/external-memory.html#memory-info">3.16.3.2. Memory Info</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../cuda/external-memory.html#ipc">3.16.3.3. IPC</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../cuda/external-memory.html#setting-the-emm-plugin">3.16.4. Setting the EMM Plugin</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../cuda/external-memory.html#environment-variable">3.16.4.1. Environment variable</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../cuda/external-memory.html#function">3.16.4.2. Function</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../cuda/faq.html">3.17. CUDA Frequently Asked Questions</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../cuda/faq.html#nvprof-reports-no-kernels-were-profiled">3.17.1. nvprof reports “No kernels were profiled”</a></li>
 </ul>
 </li>
 </ul>
@@ -1007,6 +1034,15 @@
 <li class="toctree-l4"><a class="reference internal" href="../proposals/integer-typing.html#current-semantics">8.1.1.1. Current semantics</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../proposals/integer-typing.html#proposal-predictable-width-conserving-typing">8.1.1.2. Proposal: predictable width-conserving typing</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../proposals/integer-typing.html#proposal-impact">8.1.1.3. Proposal impact</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../proposals/external-memory-management.html">8.1.2. NBEP 7: CUDA External Memory Management Plugins</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../proposals/external-memory-management.html#background-and-goals">8.1.2.1. Background and goals</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../proposals/external-memory-management.html#requirements">8.1.2.2. Requirements</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../proposals/external-memory-management.html#interface-for-plugin-developers">8.1.2.3. Interface for Plugin developers</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../proposals/external-memory-management.html#example-implementation-a-rapids-memory-manager-rmm-plugin">8.1.2.4. Example implementation - A RAPIDS Memory Manager (RMM) Plugin</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../proposals/external-memory-management.html#numba-internal-changes">8.1.2.5. Numba internal changes</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../proposals/external-memory-management.html#prototyping-experimental-implementation">8.1.2.6. Prototyping / experimental implementation</a></li>
 </ul>
 </li>
 </ul>
