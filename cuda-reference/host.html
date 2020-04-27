@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>CUDA Host API &mdash; Numba 0.50.0dev0+89.g238c2ecb7.dirty documentation</title>
+  <title>CUDA Host API &mdash; Numba 0.50.0dev0+100.ga68198514 documentation</title>
   
 
   
@@ -25,10 +25,10 @@
   
     
       <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
-        <script type="text/javascript" src="../_static/jquery.js"></script>
-        <script type="text/javascript" src="../_static/underscore.js"></script>
-        <script type="text/javascript" src="../_static/doctools.js"></script>
-        <script type="text/javascript" src="../_static/language_data.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/language_data.js"></script>
     
     <script type="text/javascript" src="../_static/js/theme.js"></script>
 
@@ -1431,38 +1431,54 @@ allocations, events, and streams created within the context.</p>
 <div class="section" id="compilation">
 <h2>Compilation<a class="headerlink" href="#compilation" title="Permalink to this headline">¶</a></h2>
 <p>Numba provides an entry point for compiling a Python function to PTX without
-invoking any of the driver API. This can be useful for generating PTX that is to
-be inlined into other PTX code (e.g. from outside the Numba / Python ecosystem).</p>
+invoking any of the driver API. This can be useful for:</p>
+<ul class="simple">
+<li><p>Generating PTX that is to be inlined into other PTX code (e.g. from outside
+the Numba / Python ecosystem).</p></li>
+<li><p>Generating code when there is no device present.</p></li>
+<li><p>Generating code prior to a fork without initializing CUDA.</p></li>
+</ul>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>It is the user’s responsiblity to manage any ABI issues arising from
+<p>It is the user’s responsibility to manage any ABI issues arising from
 the use of compilation to PTX.</p>
 </div>
 <dl class="function">
 <dt id="numba.cuda.compile_ptx">
-<code class="sig-prename descclassname">numba.cuda.</code><code class="sig-name descname">compile_ptx</code><span class="sig-paren">(</span><em class="sig-param">pyfunc</em>, <em class="sig-param">args</em>, <em class="sig-param">debug=False</em>, <em class="sig-param">fastmath=False</em>, <em class="sig-param">cc=None</em>, <em class="sig-param">opt=3</em><span class="sig-paren">)</span><a class="headerlink" href="#numba.cuda.compile_ptx" title="Permalink to this definition">¶</a></dt>
-<dd><p>Compile a Python function to PTX for the given arguments.</p>
+<code class="sig-prename descclassname">numba.cuda.</code><code class="sig-name descname">compile_ptx</code><span class="sig-paren">(</span><em class="sig-param">pyfunc</em>, <em class="sig-param">args</em>, <em class="sig-param">debug=False</em>, <em class="sig-param">device=False</em>, <em class="sig-param">fastmath=False</em>, <em class="sig-param">cc=(5</em>, <em class="sig-param">2)</em>, <em class="sig-param">opt=True</em><span class="sig-paren">)</span><a class="headerlink" href="#numba.cuda.compile_ptx" title="Permalink to this definition">¶</a></dt>
+<dd><p>Compile a Python function to PTX for a given set of argument types.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>pyfunc</strong> – The Python function to compile.</p></li>
 <li><p><strong>args</strong> – A tuple of argument types to compile for.</p></li>
 <li><p><strong>debug</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.8)"><em>bool</em></a>) – Whether to include debug info in the generated PTX.</p></li>
+<li><p><strong>device</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.8)"><em>bool</em></a>) – Whether to compile a device function. Defaults to <code class="docutils literal notranslate"><span class="pre">False</span></code>,
+to compile global kernel functions.</p></li>
 <li><p><strong>fastmath</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.8)"><em>bool</em></a>) – Whether to enable fast math flags (ftz=1, prec_sqrt=0,
 prec_div=, and fma=1)</p></li>
 <li><p><strong>cc</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#tuple" title="(in Python v3.8)"><em>tuple</em></a>) – Compute capability to compile for, as a tuple <code class="docutils literal notranslate"><span class="pre">(MAJOR,</span> <span class="pre">MINOR)</span></code>.
-Defaults to <code class="docutils literal notranslate"><span class="pre">(5,</span> <span class="pre">0)</span></code>.</p></li>
-<li><p><strong>opt</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.8)"><em>int</em></a>) – Enable (<code class="docutils literal notranslate"><span class="pre">3</span></code>) or disable (<code class="docutils literal notranslate"><span class="pre">0</span></code>) optimizations. Defaults to
-<code class="docutils literal notranslate"><span class="pre">3</span></code>.</p></li>
+Defaults to <code class="docutils literal notranslate"><span class="pre">(5,</span> <span class="pre">2)</span></code>.</p></li>
+<li><p><strong>opt</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.8)"><em>bool</em></a>) – Enable optimizations. Defaults to <code class="docutils literal notranslate"><span class="pre">True</span></code>.</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns</dt>
-<dd class="field-even"><p>PTX code generated by NVVM.</p>
+<dd class="field-even"><p>(ptx, resty): The PTX code and inferred return type</p>
 </dd>
 <dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#bytes" title="(in Python v3.8)">bytes</a></p>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#tuple" title="(in Python v3.8)">tuple</a></p>
 </dd>
 </dl>
+</dd></dl>
+
+<p>If PTX for the compute capability of the current device is required, the
+<code class="docutils literal notranslate"><span class="pre">compile_ptx_for_current_device</span></code> function can be used:</p>
+<dl class="function">
+<dt id="numba.cuda.compile_ptx_for_current_device">
+<code class="sig-prename descclassname">numba.cuda.</code><code class="sig-name descname">compile_ptx_for_current_device</code><span class="sig-paren">(</span><em class="sig-param">pyfunc</em>, <em class="sig-param">args</em>, <em class="sig-param">debug=False</em>, <em class="sig-param">device=False</em>, <em class="sig-param">fastmath=False</em>, <em class="sig-param">opt=True</em><span class="sig-paren">)</span><a class="headerlink" href="#numba.cuda.compile_ptx_for_current_device" title="Permalink to this definition">¶</a></dt>
+<dd><p>Compile a Python function to PTX for a given set of argument types for
+the current device’s compute capabilility. This calls <a class="reference internal" href="#numba.cuda.compile_ptx" title="numba.cuda.compile_ptx"><code class="xref py py-func docutils literal notranslate"><span class="pre">compile_ptx()</span></code></a>
+with an appropriate <code class="docutils literal notranslate"><span class="pre">cc</span></code> value for the current device.</p>
 </dd></dl>
 
 </div>

@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Notes on Literal Types &mdash; Numba 0.50.0dev0+89.g238c2ecb7.dirty documentation</title>
+  <title>Notes on Literal Types &mdash; Numba 0.50.0dev0+100.ga68198514 documentation</title>
   
 
   
@@ -25,10 +25,10 @@
   
     
       <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
-        <script type="text/javascript" src="../_static/jquery.js"></script>
-        <script type="text/javascript" src="../_static/underscore.js"></script>
-        <script type="text/javascript" src="../_static/doctools.js"></script>
-        <script type="text/javascript" src="../_static/language_data.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/language_data.js"></script>
     
     <script type="text/javascript" src="../_static/js/theme.js"></script>
 
@@ -1466,11 +1466,11 @@ following:</p>
 </dl>
 <p class="rubric">Examples</p>
 <p>The following line:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">SentryLiteralArgs</span><span class="p">(</span><span class="n">literal_args</span><span class="p">)</span><span class="o">.</span><span class="n">for_pysig</span><span class="p">(</span><span class="n">pysig</span><span class="p">)</span><span class="o">.</span><span class="n">bind</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">SentryLiteralArgs</span><span class="p">(</span><span class="n">literal_args</span><span class="p">)</span><span class="o">.</span><span class="n">for_pysig</span><span class="p">(</span><span class="n">pysig</span><span class="p">)</span><span class="o">.</span><span class="n">bind</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>is equivalent to:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">sentry_literal_args</span><span class="p">(</span><span class="n">pysig</span><span class="p">,</span> <span class="n">literal_args</span><span class="p">,</span> <span class="n">args</span><span class="p">,</span> <span class="n">kwargs</span><span class="p">)</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">sentry_literal_args</span><span class="p">(</span><span class="n">pysig</span><span class="p">,</span> <span class="n">literal_args</span><span class="p">,</span> <span class="n">args</span><span class="p">,</span> <span class="n">kwargs</span><span class="p">)</span>
 </pre></div>
 </div>
 <dl class="method">
