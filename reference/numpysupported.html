@@ -1,15 +1,19 @@
 
 
 <!DOCTYPE html>
-<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<html class="writer-html5" lang="en" >
 <head>
   <meta charset="utf-8">
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Supported NumPy features &mdash; Numba 0.50.0dev0+100.ga68198514 documentation</title>
+  <title>Supported NumPy features &mdash; Numba 0.53.0dev0+234.g2a34659be documentation</title>
   
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/rtd-overrides.css" type="text/css" />
 
   
   
@@ -17,11 +21,13 @@
   
   
   
-    <link rel="canonical" href="http://numba.pydata.org/numba-doc/latest/index.htmlreference/numpysupported.html"/>
+    <link rel="canonical" href="https://numba.pydata.org/numba-doc/latest/index.htmlreference/numpysupported.html"/>
   
 
   
-  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
   
     
       <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
@@ -33,11 +39,6 @@
     <script type="text/javascript" src="../_static/js/theme.js"></script>
 
     
-
-  
-  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
-  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-  <link rel="stylesheet" href="../_static/rtd-overrides.css" type="text/css" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Deviations from Python Semantics" href="pysemantics.html" />
@@ -55,7 +56,7 @@
           
 
           
-            <a href="../index.html" class="icon icon-home"> Numba
+            <a href="../index.html" class="icon icon-home" alt="Documentation Home"> Numba
           
 
           
@@ -68,7 +69,7 @@
             
             
               <div class="version">
-                0.50
+                0.53
               </div>
             
           
@@ -85,6 +86,7 @@
           
         </div>
 
+        
         <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
           
             
@@ -116,7 +118,10 @@
 <li class="toctree-l3"><a class="reference internal" href="../user/installing.html#enabling-amd-rocm-gpu-support">Enabling AMD ROCm GPU Support</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../user/installing.html#installing-on-linux-armv7-platforms">Installing on Linux ARMv7 Platforms</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../user/installing.html#installing-on-linux-armv8-aarch64-platforms">Installing on Linux ARMv8 (AArch64) Platforms</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../user/installing.html#installing-from-source">Installing from source</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../user/installing.html#installing-from-source">Installing from source</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../user/installing.html#build-time-environment-variables-and-configuration-of-optional-components">Build time environment variables and configuration of optional components</a></li>
+</ul>
+</li>
 <li class="toctree-l3"><a class="reference internal" href="../user/installing.html#dependency-list">Dependency List</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../user/installing.html#checking-your-installation">Checking your installation</a></li>
 </ul>
@@ -154,7 +159,8 @@
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../user/jitclass.html">Compiling Python classes with <code class="docutils literal notranslate"><span class="pre">&#64;jitclass</span></code></a><ul>
 <li class="toctree-l3"><a class="reference internal" href="../user/jitclass.html#basic-usage">Basic usage</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../user/jitclass.html#specifying-numba-typed-containers-as-class-members">Specifying <code class="docutils literal notranslate"><span class="pre">numba.typed</span></code> containers as class members</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../user/jitclass.html#inferred-class-member-types-from-type-annotations-with-as-numba-type">Inferred class member types from type annotations with <code class="docutils literal notranslate"><span class="pre">as_numba_type</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../user/jitclass.html#specifying-numba-typed-containers-as-class-members-explicitly">Specifying <code class="docutils literal notranslate"><span class="pre">numba.typed</span></code> containers as class members explicitly</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../user/jitclass.html#support-operations">Support operations</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../user/jitclass.html#limitations">Limitations</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../user/jitclass.html#the-decorator-jitclass">The decorator: <code class="docutils literal notranslate"><span class="pre">&#64;jitclass</span></code></a></li>
@@ -312,12 +318,13 @@
 <li class="toctree-l4"><a class="reference internal" href="../user/faq.html#can-i-freeze-an-application-which-uses-numba">Can I “freeze” an application which uses Numba?</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../user/faq.html#i-get-errors-when-running-a-script-twice-under-spyder">I get errors when running a script twice under Spyder</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../user/faq.html#why-does-numba-complain-about-the-current-locale">Why does Numba complain about the current locale?</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../user/faq.html#how-do-i-get-numba-development-builds">How do I get Numba development builds?</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="../user/faq.html#miscellaneous">Miscellaneous</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="../user/faq.html#where-does-the-project-name-numba-come-from">Where does the project name “Numba” come from?</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../user/faq.html#how-do-i-reference-cite-acknowledge-numba-in-other-work">How do I reference/cite/acknowledge Numba in other work?</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../user/faq.html#other-related-papers">Other related papers</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../user/faq.html#how-do-i-write-a-minimal-working-reproducer-for-a-problem-with-numba">How do I write a minimal working reproducer for a problem with Numba?</a></li>
 </ul>
 </li>
 </ul>
@@ -352,6 +359,7 @@
 <li class="toctree-l4"><a class="reference internal" href="types.html#numpy-scalars">Numpy scalars</a></li>
 <li class="toctree-l4"><a class="reference internal" href="types.html#id1">Arrays</a></li>
 <li class="toctree-l4"><a class="reference internal" href="types.html#optional-types">Optional types</a></li>
+<li class="toctree-l4"><a class="reference internal" href="types.html#type-annotations">Type annotations</a></li>
 </ul>
 </li>
 </ul>
@@ -395,6 +403,8 @@
 <li class="toctree-l4"><a class="reference internal" href="pysupported.html#heterogeneous-tuples">heterogeneous tuples</a></li>
 <li class="toctree-l4"><a class="reference internal" href="pysupported.html#list">list</a></li>
 <li class="toctree-l4"><a class="reference internal" href="pysupported.html#set">set</a></li>
+<li class="toctree-l4"><a class="reference internal" href="pysupported.html#typed-dict">Typed Dict</a></li>
+<li class="toctree-l4"><a class="reference internal" href="pysupported.html#heterogeneous-literal-string-key-dictionary">Heterogeneous Literal String Key Dictionary</a></li>
 <li class="toctree-l4"><a class="reference internal" href="pysupported.html#none">None</a></li>
 <li class="toctree-l4"><a class="reference internal" href="pysupported.html#bytes-bytearray-memoryview">bytes, bytearray, memoryview</a></li>
 </ul>
@@ -423,9 +433,13 @@
 </ul>
 </li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">Supported NumPy features</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#scalar-types">Scalar types</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#scalar-types">Scalar types</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#record-subtyping">Record subtyping</a></li>
+</ul>
+</li>
 <li class="toctree-l3"><a class="reference internal" href="#array-types">Array types</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#array-access">Array access</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#structured-array-access">Structured array access</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#attributes">Attributes</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#calculation">Calculation</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#other-methods">Other methods</a></li>
@@ -456,6 +470,7 @@
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="pysemantics.html">Deviations from Python Semantics</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="pysemantics.html#bounds-checking">Bounds Checking</a></li>
 <li class="toctree-l3"><a class="reference internal" href="pysemantics.html#exceptions-and-memory-allocation">Exceptions and Memory Allocation</a></li>
 <li class="toctree-l3"><a class="reference internal" href="pysemantics.html#integer-width">Integer width</a></li>
 <li class="toctree-l3"><a class="reference internal" href="pysemantics.html#boolean-inversion">Boolean inversion</a></li>
@@ -470,10 +485,6 @@
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="fpsemantics.html#warnings-and-errors">Warnings and errors</a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="python27-eol.html">Python 2.7 End of Life Plan</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="python27-eol.html#timeline">Timeline</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="deprecation.html">Deprecation Notices</a><ul>
@@ -493,10 +504,9 @@
 <li class="toctree-l4"><a class="reference internal" href="deprecation.html#id4">Recommendations</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="deprecation.html#change-of-jitclass-location">Change of jitclass location</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="deprecation.html#id5">Example(s) of the impact</a></li>
-<li class="toctree-l4"><a class="reference internal" href="deprecation.html#id6">Recommendations</a></li>
-<li class="toctree-l4"><a class="reference internal" href="deprecation.html#id7">Schedule</a></li>
+<li class="toctree-l3"><a class="reference internal" href="deprecation.html#deprecation-of-the-target-kwarg">Deprecation of the target kwarg</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="deprecation.html#id5">Recommendations</a></li>
+<li class="toctree-l4"><a class="reference internal" href="deprecation.html#id6">Schedule</a></li>
 </ul>
 </li>
 </ul>
@@ -539,6 +549,8 @@
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="../cuda/memory.html#pinned-memory">Pinned memory</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../cuda/memory.html#mapped-memory">Mapped memory</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../cuda/memory.html#managed-memory">Managed memory</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../cuda/memory.html#streams">Streams</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../cuda/memory.html#shared-memory-and-thread-synchronization">Shared memory and thread synchronization</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../cuda/memory.html#local-memory">Local memory</a></li>
@@ -568,6 +580,13 @@
 <li class="toctree-l3"><a class="reference internal" href="../cuda/intrinsics.html#example">Example</a></li>
 </ul>
 </li>
+<li class="toctree-l2"><a class="reference internal" href="../cuda/cooperative_groups.html">Cooperative Groups</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../cuda/cooperative_groups.html#supported-features">Supported features</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../cuda/cooperative_groups.html#using-grid-groups">Using Grid Groups</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../cuda/cooperative_groups.html#cooperative-launches">Cooperative Launches</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../cuda/cooperative_groups.html#applications-and-example">Applications and Example</a></li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="../cuda/random.html">Random Number Generation</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="../cuda/random.html#example">Example</a></li>
 </ul>
@@ -587,8 +606,7 @@
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../cuda/reduction.html">GPU Reduction</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="../cuda/reduction.html#reduce"><code class="docutils literal notranslate"><span class="pre">&#64;reduce</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="../cuda/reduction.html#class-reduce">class Reduce</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../cuda/reduction.html#the-reduce-class">The Reduce class</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../cuda/ufunc.html">CUDA Ufuncs and Generalized Ufuncs</a><ul>
@@ -605,13 +623,15 @@
 </li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="../cuda/cuda_array_interface.html">CUDA Array Interface (Version 2)</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../cuda/cuda_array_interface.html">CUDA Array Interface (Version 3)</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="../cuda/cuda_array_interface.html#python-interface-specification">Python Interface Specification</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../cuda/cuda_array_interface.html#synchronization">Synchronization</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../cuda/cuda_array_interface.html#lifetime-management">Lifetime management</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../cuda/cuda_array_interface.html#lifetime-management-in-numba">Lifetime management in Numba</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../cuda/cuda_array_interface.html#pointer-attributes">Pointer Attributes</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../cuda/cuda_array_interface.html#differences-with-cuda-array-interface-version-0">Differences with CUDA Array Interface (Version 0)</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../cuda/cuda_array_interface.html#differences-with-cuda-array-interface-version-1">Differences with CUDA Array Interface (Version 1)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../cuda/cuda_array_interface.html#differences-with-cuda-array-interface-version-2">Differences with CUDA Array Interface (Version 2)</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../cuda/cuda_array_interface.html#interoperability">Interoperability</a></li>
 </ul>
 </li>
@@ -626,6 +646,7 @@
 </li>
 <li class="toctree-l3"><a class="reference internal" href="../cuda/external-memory.html#implementing-an-emm-plugin">Implementing an EMM Plugin</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="../cuda/external-memory.html#the-host-only-cuda-memory-manager">The Host-Only CUDA Memory Manager</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../cuda/external-memory.html#the-ipc-handle-mixin">The IPC Handle Mixin</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="../cuda/external-memory.html#classes-and-structures-of-returned-objects">Classes and structures of returned objects</a><ul>
@@ -662,14 +683,17 @@
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="../cuda-reference/host.html#stream-management">Stream Management</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../cuda-reference/host.html#runtime">Runtime</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../cuda-reference/kernel.html">CUDA Kernel API</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="../cuda-reference/kernel.html#kernel-declaration">Kernel declaration</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../cuda-reference/kernel.html#dispatcher-objects">Dispatcher objects</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../cuda-reference/kernel.html#intrinsic-attributes-and-functions">Intrinsic Attributes and Functions</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="../cuda-reference/kernel.html#thread-indexing">Thread Indexing</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../cuda-reference/kernel.html#memory-management">Memory Management</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../cuda-reference/kernel.html#synchronization-and-atomic-operations">Synchronization and Atomic Operations</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../cuda-reference/kernel.html#cooperative-groups">Cooperative Groups</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../cuda-reference/kernel.html#memory-fences">Memory Fences</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../cuda-reference/kernel.html#warp-intrinsics">Warp Intrinsics</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../cuda-reference/kernel.html#integer-intrinsics">Integer Intrinsics</a></li>
@@ -681,6 +705,10 @@
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../cuda-reference/memory.html">Memory Management</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="../cuda-reference/memory.html#device-objects">Device Objects</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../cuda-reference/libdevice.html">Libdevice functions</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../cuda-reference/libdevice.html#module-numba.cuda.libdevice">Wrapped functions</a></li>
 </ul>
 </li>
 </ul>
@@ -746,6 +774,13 @@
 <li class="toctree-l3"><a class="reference internal" href="../extending/high-level.html#implementing-attributes">Implementing attributes</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../extending/high-level.html#importing-cython-functions">Importing Cython Functions</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../extending/high-level.html#implementing-intrinsics">Implementing intrinsics</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../extending/high-level.html#implementing-mutable-structures">Implementing mutable structures</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../extending/high-level.html#defining-a-structref">Defining a StructRef</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../extending/high-level.html#defining-a-method-on-structref">Defining a method on StructRef</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../extending/high-level.html#module-numba.experimental.structref"><code class="docutils literal notranslate"><span class="pre">numba.experimental.structref</span></code> API Reference</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../extending/high-level.html#determining-if-a-function-is-already-wrapped-by-a-jit-family-decorator">Determining if a function is already wrapped by a <code class="docutils literal notranslate"><span class="pre">jit</span></code> family decorator</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../extending/low-level.html">Low-level extension API</a><ul>
@@ -762,6 +797,7 @@
 <li class="toctree-l3"><a class="reference internal" href="../extending/interval-example.html#extending-the-typing-layer">Extending the typing layer</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="../extending/interval-example.html#creating-a-new-numba-type">Creating a new Numba type</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../extending/interval-example.html#type-inference-for-python-values">Type inference for Python values</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../extending/interval-example.html#type-inference-for-python-annotations">Type inference for Python annotations</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../extending/interval-example.html#type-inference-for-operations">Type inference for operations</a></li>
 </ul>
 </li>
@@ -792,8 +828,8 @@
 <li class="toctree-l1"><a class="reference internal" href="../developer/index.html">Developer Manual</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../developer/contributing.html">Contributing to Numba</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="../developer/contributing.html#communication">Communication</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="../developer/contributing.html#mailing-list">Mailing-list</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../developer/contributing.html#real-time-chat">Real-time Chat</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../developer/contributing.html#mailing-list">Mailing-list</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../developer/contributing.html#weekly-meetings">Weekly Meetings</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../developer/contributing.html#bug-tracker">Bug tracker</a></li>
 </ul>
@@ -809,6 +845,8 @@
 <li class="toctree-l4"><a class="reference internal" href="../developer/contributing.html#coding-conventions">Coding conventions</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../developer/contributing.html#stability">Stability</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../developer/contributing.html#platform-support">Platform support</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../developer/contributing.html#continuous-integration-testing">Continuous integration testing</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../developer/contributing.html#things-that-help-with-pull-requests">Things that help with pull requests</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="../developer/contributing.html#documentation">Documentation</a><ul>
@@ -822,7 +860,7 @@
 <li class="toctree-l3"><a class="reference internal" href="../developer/repomap.html#support-files">Support Files</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="../developer/repomap.html#build-and-packaging">Build and Packaging</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../developer/repomap.html#continuous-integration">Continuous Integration</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../developer/repomap.html#documentation-examples">Documentation / Examples</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../developer/repomap.html#documentation">Documentation</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="../developer/repomap.html#numba-source-code">Numba Source Code</a><ul>
@@ -855,14 +893,13 @@
 <li class="toctree-l3"><a class="reference internal" href="../developer/architecture.html#compiler-stages">Compiler stages</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="../developer/architecture.html#stage-1-analyze-bytecode">Stage 1: Analyze bytecode</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../developer/architecture.html#stage-2-generate-the-numba-ir">Stage 2: Generate the Numba IR</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../developer/architecture.html#stage-3-macro-expansion">Stage 3: Macro expansion</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../developer/architecture.html#stage-4-rewrite-untyped-ir">Stage 4: Rewrite untyped IR</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../developer/architecture.html#stage-5-infer-types">Stage 5: Infer types</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../developer/architecture.html#stage-6a-rewrite-typed-ir">Stage 6a: Rewrite typed IR</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../developer/architecture.html#stage-6b-perform-automatic-parallelization">Stage 6b: Perform Automatic Parallelization</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../developer/architecture.html#stage-7a-generate-nopython-llvm-ir">Stage 7a: Generate nopython LLVM IR</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../developer/architecture.html#stage-7b-generate-object-mode-llvm-ir">Stage 7b: Generate object mode LLVM IR</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../developer/architecture.html#stage-8-compile-llvm-ir-to-machine-code">Stage 8: Compile LLVM IR to machine code</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../developer/architecture.html#stage-3-rewrite-untyped-ir">Stage 3: Rewrite untyped IR</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../developer/architecture.html#stage-4-infer-types">Stage 4: Infer types</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../developer/architecture.html#stage-5a-rewrite-typed-ir">Stage 5a: Rewrite typed IR</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../developer/architecture.html#stage-5b-perform-automatic-parallelization">Stage 5b: Perform Automatic Parallelization</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../developer/architecture.html#stage-6a-generate-nopython-llvm-ir">Stage 6a: Generate nopython LLVM IR</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../developer/architecture.html#stage-6b-generate-object-mode-llvm-ir">Stage 6b: Generate object mode LLVM IR</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../developer/architecture.html#stage-7-compile-llvm-ir-to-machine-code">Stage 7: Compile LLVM IR to machine code</a></li>
 </ul>
 </li>
 </ul>
@@ -908,7 +945,8 @@
 <li class="toctree-l4"><a class="reference internal" href="../developer/numba-runtime.html#cooperating-with-cpython">Cooperating with CPython</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../developer/numba-runtime.html#compiler-side-cooperation">Compiler-side Cooperation</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../developer/numba-runtime.html#optimizations">Optimizations</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../developer/numba-runtime.html#quirks">Quirks</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../developer/numba-runtime.html#important-assumptions">Important assumptions</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../developer/numba-runtime.html#quirks-of-the-old-optimization-pass">Quirks of the old optimization pass</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../developer/numba-runtime.html#debugging-leaks">Debugging Leaks</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../developer/numba-runtime.html#debugging-leaks-in-c">Debugging Leaks in C</a></li>
 </ul>
@@ -985,6 +1023,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../developer/inlining.html">Notes on Inlining</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="../developer/inlining.html#example-using-numba-jit">Example using <code class="xref py py-func docutils literal notranslate"><span class="pre">numba.jit()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="../developer/inlining.html#example-using-numba-extending-overload">Example using <code class="xref py py-func docutils literal notranslate"><span class="pre">numba.extending.overload()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../developer/inlining.html#using-a-function-to-limit-the-inlining-depth-of-a-recursive-function">Using a function to limit the inlining depth of a recursive function</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../developer/environment.html">Environment Object</a><ul>
@@ -1104,7 +1143,13 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../glossary.html">Glossary</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../release-notes.html">Release Notes</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="../release-notes.html#version-0-50-0">Version 0.50.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../release-notes.html#version-0-52-0-14-october-2020">Version 0.52.0 (14 October, 2020)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../release-notes.html#version-0-51-2-september-2-2020">Version 0.51.2 (September 2, 2020)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../release-notes.html#version-0-51-1-august-26-2020">Version 0.51.1 (August 26, 2020)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../release-notes.html#version-0-51-0-august-12-2020">Version 0.51.0 (August 12, 2020)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../release-notes.html#version-0-50-1-jun-24-2020">Version 0.50.1 (Jun 24, 2020)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../release-notes.html#version-0-50-0-jun-10-2020">Version 0.50.0 (Jun 10, 2020)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../release-notes.html#version-0-49-1-may-7-2020">Version 0.49.1 (May 7, 2020)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../release-notes.html#version-0-49-0-apr-16-2020">Version 0.49.0 (Apr 16, 2020)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../release-notes.html#version-0-48-0-jan-27-2020">Version 0.48.0 (Jan 27, 2020)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../release-notes.html#version-0-47-0-jan-2-2020">Version 0.47.0  (Jan 2, 2020)</a></li>
@@ -1185,6 +1230,7 @@
             
           
         </div>
+        
       </div>
     </nav>
 
@@ -1223,7 +1269,7 @@
 
   <ul class="wy-breadcrumbs">
     
-      <li><a href="../index.html">Docs</a> &raquo;</li>
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
         
           <li><a href="index.html">Reference Manual</a> &raquo;</li>
         
@@ -1325,41 +1371,71 @@ constructor within a jitted function. For example, the following will work:</p>
 <p>Structured scalars support attribute getting and setting, as well as
 member lookup using constant strings. Strings stored in a local or global tuple
 are considered constant strings and can be used for member lookup.</p>
-<div class="highlight-pycon notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">numba</span> <span class="kn">import</span> <span class="n">njit</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">arr</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="n">dtype</span><span class="o">=</span><span class="p">[(</span><span class="s1">&#39;a1&#39;</span><span class="p">,</span> <span class="s1">&#39;f8&#39;</span><span class="p">),</span> <span class="p">(</span><span class="s1">&#39;a2&#39;</span><span class="p">,</span> <span class="s1">&#39;f8&#39;</span><span class="p">)])</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">fields_gl</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;a1&#39;</span><span class="p">,</span> <span class="s1">&#39;a2&#39;</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="nd">@njit</span>
-<span class="gp">... </span><span class="k">def</span> <span class="nf">get_field_sum</span><span class="p">(</span><span class="n">rec</span><span class="p">):</span>
-<span class="gp">... </span>    <span class="n">fields_lc</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;a1&#39;</span><span class="p">,</span> <span class="s1">&#39;a2&#39;</span><span class="p">)</span>
-<span class="gp">... </span>    <span class="n">field_name1</span> <span class="o">=</span> <span class="n">fields_lc</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
-<span class="gp">... </span>    <span class="n">field_name2</span> <span class="o">=</span> <span class="n">fields_gl</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
-<span class="gp">... </span>    <span class="k">return</span> <span class="n">rec</span><span class="p">[</span><span class="n">field_name1</span><span class="p">]</span> <span class="o">+</span> <span class="n">rec</span><span class="p">[</span><span class="n">field_name2</span><span class="p">]</span>
-<span class="gp">...</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">get_field_sum</span><span class="p">(</span><span class="n">arr</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
-<span class="go">3</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">from</span> <span class="nn">numba</span> <span class="kn">import</span> <span class="n">njit</span>
+
+<span class="n">arr</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">)],</span> <span class="n">dtype</span><span class="o">=</span><span class="p">[(</span><span class="s1">&#39;a1&#39;</span><span class="p">,</span> <span class="s1">&#39;f8&#39;</span><span class="p">),</span> <span class="p">(</span><span class="s1">&#39;a2&#39;</span><span class="p">,</span> <span class="s1">&#39;f8&#39;</span><span class="p">)])</span>
+<span class="n">fields_gl</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;a1&#39;</span><span class="p">,</span> <span class="s1">&#39;a2&#39;</span><span class="p">)</span>
+
+<span class="nd">@njit</span>
+<span class="k">def</span> <span class="nf">get_field_sum</span><span class="p">(</span><span class="n">rec</span><span class="p">):</span>
+    <span class="n">fields_lc</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;a1&#39;</span><span class="p">,</span> <span class="s1">&#39;a2&#39;</span><span class="p">)</span>
+    <span class="n">field_name1</span> <span class="o">=</span> <span class="n">fields_lc</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="n">field_name2</span> <span class="o">=</span> <span class="n">fields_gl</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+    <span class="k">return</span> <span class="n">rec</span><span class="p">[</span><span class="n">field_name1</span><span class="p">]</span> <span class="o">+</span> <span class="n">rec</span><span class="p">[</span><span class="n">field_name2</span><span class="p">]</span>
+
+<span class="n">get_field_sum</span><span class="p">(</span><span class="n">arr</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>  <span class="c1"># returns 3</span>
 </pre></div>
 </div>
 <p>It is also possible to use local or global tuples together with <code class="docutils literal notranslate"><span class="pre">literal_unroll</span></code>:</p>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">numba</span> <span class="kn">import</span> <span class="n">njit</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">arr</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="n">dtype</span><span class="o">=</span><span class="p">[(</span><span class="s1">&#39;a1&#39;</span><span class="p">,</span> <span class="s1">&#39;f8&#39;</span><span class="p">),</span> <span class="p">(</span><span class="s1">&#39;a2&#39;</span><span class="p">,</span> <span class="s1">&#39;f8&#39;</span><span class="p">)])</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">fields_gl</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;a1&#39;</span><span class="p">,</span> <span class="s1">&#39;a2&#39;</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="nd">@njit</span>
-<span class="gp">... </span><span class="k">def</span> <span class="nf">get_field_sum</span><span class="p">(</span><span class="n">rec</span><span class="p">):</span>
-<span class="gp">... </span>    <span class="n">out</span> <span class="o">=</span> <span class="mi">0</span>
-<span class="gp">... </span>    <span class="k">for</span> <span class="n">f</span> <span class="ow">in</span> <span class="n">literal_unroll</span><span class="p">(</span><span class="n">fields_gl</span><span class="p">):</span>
-<span class="gp">... </span>       <span class="n">out</span> <span class="o">+=</span> <span class="n">rec</span><span class="p">[</span><span class="n">f</span><span class="p">]</span>
-<span class="gp">... </span>    <span class="k">return</span> <span class="n">out</span>
-<span class="gp">...</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">get_field_sum</span><span class="p">(</span><span class="n">arr</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
-<span class="go">3</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">from</span> <span class="nn">numba</span> <span class="kn">import</span> <span class="n">njit</span><span class="p">,</span> <span class="n">literal_unroll</span>
+
+<span class="n">arr</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">)],</span> <span class="n">dtype</span><span class="o">=</span><span class="p">[(</span><span class="s1">&#39;a1&#39;</span><span class="p">,</span> <span class="s1">&#39;f8&#39;</span><span class="p">),</span> <span class="p">(</span><span class="s1">&#39;a2&#39;</span><span class="p">,</span> <span class="s1">&#39;f8&#39;</span><span class="p">)])</span>
+<span class="n">fields_gl</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;a1&#39;</span><span class="p">,</span> <span class="s1">&#39;a2&#39;</span><span class="p">)</span>
+
+<span class="nd">@njit</span>
+<span class="k">def</span> <span class="nf">get_field_sum</span><span class="p">(</span><span class="n">rec</span><span class="p">):</span>
+    <span class="n">out</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">for</span> <span class="n">f</span> <span class="ow">in</span> <span class="n">literal_unroll</span><span class="p">(</span><span class="n">fields_gl</span><span class="p">):</span>
+        <span class="n">out</span> <span class="o">+=</span> <span class="n">rec</span><span class="p">[</span><span class="n">f</span><span class="p">]</span>
+    <span class="k">return</span> <span class="n">out</span>
+
+<span class="n">get_field_sum</span><span class="p">(</span><span class="n">arr</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>   <span class="c1"># returns 3</span>
 </pre></div>
 </div>
+<div class="section" id="record-subtyping">
+<h3>Record subtyping<a class="headerlink" href="#record-subtyping" title="Permalink to this headline">¶</a></h3>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>This is an experimental feature.</p>
+</div>
+<p>Numba allows <a class="reference external" href="https://en.wikipedia.org/wiki/Subtyping#Record_types">width subtyping</a> of structured scalars.
+For example, <code class="docutils literal notranslate"><span class="pre">dtype([('a',</span> <span class="pre">'f8'),</span> <span class="pre">('b',</span> <span class="pre">'i8')])</span></code> will be considered a subtype of <code class="docutils literal notranslate"><span class="pre">dtype([('a',</span> <span class="pre">'f8')]</span></code>, because
+the second is a strict subset of the first, i.e. field <code class="docutils literal notranslate"><span class="pre">a</span></code> is of the same type and is in the same position in both
+types. The subtyping relationship will matter in cases where compilation for a certain input is not allowed, but the
+input is a subtype of another, allowed type.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">from</span> <span class="nn">numba</span> <span class="kn">import</span> <span class="n">njit</span><span class="p">,</span> <span class="n">typeof</span>
+<span class="kn">from</span> <span class="nn">numba.core</span> <span class="kn">import</span> <span class="n">types</span>
+<span class="n">record1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">],</span> <span class="n">dtype</span><span class="o">=</span><span class="p">[(</span><span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="s1">&#39;f8&#39;</span><span class="p">)])[</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">record2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([(</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">)],</span> <span class="n">dtype</span><span class="o">=</span><span class="p">[(</span><span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="s1">&#39;f8&#39;</span><span class="p">),</span> <span class="p">(</span><span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="s1">&#39;f8&#39;</span><span class="p">)])[</span><span class="mi">0</span><span class="p">]</span>
+
+<span class="nd">@njit</span><span class="p">(</span><span class="n">types</span><span class="o">.</span><span class="n">float64</span><span class="p">(</span><span class="n">typeof</span><span class="p">(</span><span class="n">record1</span><span class="p">)))</span>
+<span class="k">def</span> <span class="nf">foo</span><span class="p">(</span><span class="n">rec</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">rec</span><span class="p">[</span><span class="s1">&#39;a&#39;</span><span class="p">]</span>
+
+<span class="n">foo</span><span class="p">(</span><span class="n">record1</span><span class="p">)</span>
+<span class="n">foo</span><span class="p">(</span><span class="n">record2</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Without subtyping the last line would fail. With subtyping, no new compilation will be triggered, but the
+compiled function for <code class="docutils literal notranslate"><span class="pre">record1</span></code> will be used for <code class="docutils literal notranslate"><span class="pre">record2</span></code>.</p>
 <div class="admonition seealso">
 <p class="admonition-title">See also</p>
 <p><a class="reference external" href="http://docs.scipy.org/doc/numpy/reference/arrays.scalars.html">Numpy scalars</a>
 reference.</p>
+</div>
 </div>
 </div>
 <div class="section" id="array-types">
@@ -1379,30 +1455,75 @@ advanced index is allowed, and it has to be a one-dimensional array
 reference.</p>
 </div>
 </div>
+<div class="section" id="structured-array-access">
+<span id="id1"></span><h3>Structured array access<a class="headerlink" href="#structured-array-access" title="Permalink to this headline">¶</a></h3>
+<p>Numba presently supports accessing fields of individual elements in structured
+arrays by attribute as well as by getting and setting. This goes slightly
+beyond the NumPy API, which only allows accessing fields by getting and
+setting. For example:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">numba</span> <span class="kn">import</span> <span class="n">njit</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="n">record_type</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">dtype</span><span class="p">([(</span><span class="s2">&quot;ival&quot;</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">int32</span><span class="p">),</span> <span class="p">(</span><span class="s2">&quot;fval&quot;</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">)],</span> <span class="n">align</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">f</span><span class="p">(</span><span class="n">rec</span><span class="p">):</span>
+    <span class="n">value</span> <span class="o">=</span> <span class="mf">2.5</span>
+    <span class="n">rec</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">ival</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
+    <span class="n">rec</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">fval</span> <span class="o">=</span> <span class="n">value</span>
+    <span class="k">return</span> <span class="n">rec</span>
+
+<span class="n">arr</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">record_type</span><span class="p">)</span>
+
+<span class="n">cfunc</span> <span class="o">=</span> <span class="n">njit</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
+
+<span class="c1"># Works</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">cfunc</span><span class="p">(</span><span class="n">arr</span><span class="p">))</span>
+
+<span class="c1"># Does not work</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">f</span><span class="p">(</span><span class="n">arr</span><span class="p">))</span>
+</pre></div>
+</div>
+<p>The above code results in the output:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>[(2, 2.5)]
+Traceback (most recent call last):
+  File &quot;repro.py&quot;, line 22, in &lt;module&gt;
+    print(f(arr))
+  File &quot;repro.py&quot;, line 9, in f
+    rec[0].ival = int(value)
+AttributeError: &#39;numpy.void&#39; object has no attribute &#39;ival&#39;
+</pre></div>
+</div>
+<p>The Numba-compiled version of the function executes, but the pure Python
+version raises an error because of the unsupported use of attribute access.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This behavior will eventually be deprecated and removed.</p>
+</div>
+</div>
 <div class="section" id="attributes">
 <h3>Attributes<a class="headerlink" href="#attributes" title="Permalink to this headline">¶</a></h3>
 <p>The following attributes of Numpy arrays are supported:</p>
 <ul class="simple">
-<li><p><a class="reference external" href="https://docs.scipy.org/doc/numpy/reference/generated/numpy.ndarray.dtype.html#numpy.ndarray.dtype" title="(in NumPy v1.17)"><code class="xref py py-attr docutils literal notranslate"><span class="pre">dtype</span></code></a></p></li>
-<li><p><a class="reference external" href="https://docs.scipy.org/doc/numpy/reference/generated/numpy.ndarray.flags.html#numpy.ndarray.flags" title="(in NumPy v1.17)"><code class="xref py py-attr docutils literal notranslate"><span class="pre">flags</span></code></a></p></li>
-<li><p><a class="reference external" href="https://docs.scipy.org/doc/numpy/reference/generated/numpy.ndarray.flat.html#numpy.ndarray.flat" title="(in NumPy v1.17)"><code class="xref py py-attr docutils literal notranslate"><span class="pre">flat</span></code></a></p></li>
-<li><p><a class="reference external" href="https://docs.scipy.org/doc/numpy/reference/generated/numpy.ndarray.itemsize.html#numpy.ndarray.itemsize" title="(in NumPy v1.17)"><code class="xref py py-attr docutils literal notranslate"><span class="pre">itemsize</span></code></a></p></li>
-<li><p><a class="reference external" href="https://docs.scipy.org/doc/numpy/reference/generated/numpy.ndarray.ndim.html#numpy.ndarray.ndim" title="(in NumPy v1.17)"><code class="xref py py-attr docutils literal notranslate"><span class="pre">ndim</span></code></a></p></li>
-<li><p><a class="reference external" href="https://docs.scipy.org/doc/numpy/reference/generated/numpy.ndarray.shape.html#numpy.ndarray.shape" title="(in NumPy v1.17)"><code class="xref py py-attr docutils literal notranslate"><span class="pre">shape</span></code></a></p></li>
-<li><p><a class="reference external" href="https://docs.scipy.org/doc/numpy/reference/generated/numpy.ndarray.size.html#numpy.ndarray.size" title="(in NumPy v1.17)"><code class="xref py py-attr docutils literal notranslate"><span class="pre">size</span></code></a></p></li>
-<li><p><a class="reference external" href="https://docs.scipy.org/doc/numpy/reference/generated/numpy.ndarray.strides.html#numpy.ndarray.strides" title="(in NumPy v1.17)"><code class="xref py py-attr docutils literal notranslate"><span class="pre">strides</span></code></a></p></li>
-<li><p><a class="reference external" href="https://docs.scipy.org/doc/numpy/reference/generated/numpy.ndarray.T.html#numpy.ndarray.T" title="(in NumPy v1.17)"><code class="xref py py-attr docutils literal notranslate"><span class="pre">T</span></code></a></p></li>
-<li><p><a class="reference external" href="https://docs.scipy.org/doc/numpy/reference/generated/numpy.ndarray.real.html#numpy.ndarray.real" title="(in NumPy v1.17)"><code class="xref py py-attr docutils literal notranslate"><span class="pre">real</span></code></a></p></li>
-<li><p><a class="reference external" href="https://docs.scipy.org/doc/numpy/reference/generated/numpy.ndarray.imag.html#numpy.ndarray.imag" title="(in NumPy v1.17)"><code class="xref py py-attr docutils literal notranslate"><span class="pre">imag</span></code></a></p></li>
+<li><p><a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.dtype.html#numpy.ndarray.dtype" title="(in NumPy v1.19)"><code class="xref py py-attr docutils literal notranslate"><span class="pre">dtype</span></code></a></p></li>
+<li><p><a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.flags.html#numpy.ndarray.flags" title="(in NumPy v1.19)"><code class="xref py py-attr docutils literal notranslate"><span class="pre">flags</span></code></a></p></li>
+<li><p><a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.flat.html#numpy.ndarray.flat" title="(in NumPy v1.19)"><code class="xref py py-attr docutils literal notranslate"><span class="pre">flat</span></code></a></p></li>
+<li><p><a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.itemsize.html#numpy.ndarray.itemsize" title="(in NumPy v1.19)"><code class="xref py py-attr docutils literal notranslate"><span class="pre">itemsize</span></code></a></p></li>
+<li><p><a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.ndim.html#numpy.ndarray.ndim" title="(in NumPy v1.19)"><code class="xref py py-attr docutils literal notranslate"><span class="pre">ndim</span></code></a></p></li>
+<li><p><a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.shape.html#numpy.ndarray.shape" title="(in NumPy v1.19)"><code class="xref py py-attr docutils literal notranslate"><span class="pre">shape</span></code></a></p></li>
+<li><p><a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.size.html#numpy.ndarray.size" title="(in NumPy v1.19)"><code class="xref py py-attr docutils literal notranslate"><span class="pre">size</span></code></a></p></li>
+<li><p><a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.strides.html#numpy.ndarray.strides" title="(in NumPy v1.19)"><code class="xref py py-attr docutils literal notranslate"><span class="pre">strides</span></code></a></p></li>
+<li><p><a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.T.html#numpy.ndarray.T" title="(in NumPy v1.19)"><code class="xref py py-attr docutils literal notranslate"><span class="pre">T</span></code></a></p></li>
+<li><p><a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.real.html#numpy.ndarray.real" title="(in NumPy v1.19)"><code class="xref py py-attr docutils literal notranslate"><span class="pre">real</span></code></a></p></li>
+<li><p><a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.imag.html#numpy.ndarray.imag" title="(in NumPy v1.19)"><code class="xref py py-attr docutils literal notranslate"><span class="pre">imag</span></code></a></p></li>
 </ul>
 <div class="section" id="the-flags-object">
 <h4>The <code class="docutils literal notranslate"><span class="pre">flags</span></code> object<a class="headerlink" href="#the-flags-object" title="Permalink to this headline">¶</a></h4>
-<p>The object returned by the <a class="reference external" href="https://docs.scipy.org/doc/numpy/reference/generated/numpy.ndarray.flags.html#numpy.ndarray.flags" title="(in NumPy v1.17)"><code class="xref py py-attr docutils literal notranslate"><span class="pre">flags</span></code></a> attribute supports
+<p>The object returned by the <a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.flags.html#numpy.ndarray.flags" title="(in NumPy v1.19)"><code class="xref py py-attr docutils literal notranslate"><span class="pre">flags</span></code></a> attribute supports
 the <code class="docutils literal notranslate"><span class="pre">contiguous</span></code>, <code class="docutils literal notranslate"><span class="pre">c_contiguous</span></code> and <code class="docutils literal notranslate"><span class="pre">f_contiguous</span></code> attributes.</p>
 </div>
 <div class="section" id="the-flat-object">
 <h4>The <code class="docutils literal notranslate"><span class="pre">flat</span></code> object<a class="headerlink" href="#the-flat-object" title="Permalink to this headline">¶</a></h4>
-<p>The object returned by the <a class="reference external" href="https://docs.scipy.org/doc/numpy/reference/generated/numpy.ndarray.flat.html#numpy.ndarray.flat" title="(in NumPy v1.17)"><code class="xref py py-attr docutils literal notranslate"><span class="pre">flat</span></code></a> attribute supports
+<p>The object returned by the <a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.flat.html#numpy.ndarray.flat" title="(in NumPy v1.19)"><code class="xref py py-attr docutils literal notranslate"><span class="pre">flat</span></code></a> attribute supports
 iteration and indexing, but be careful: indexing is very slow on
 non-C-contiguous arrays.</p>
 </div>
@@ -1410,9 +1531,9 @@ non-C-contiguous arrays.</p>
 <h4>The <code class="docutils literal notranslate"><span class="pre">real</span></code> and <code class="docutils literal notranslate"><span class="pre">imag</span></code> attributes<a class="headerlink" href="#the-real-and-imag-attributes" title="Permalink to this headline">¶</a></h4>
 <p>Numpy supports these attributes regardless of the dtype but Numba chooses to
 limit their support to avoid potential user error.  For numeric dtypes,
-Numba follows Numpy’s behavior.  The <a class="reference external" href="https://docs.scipy.org/doc/numpy/reference/generated/numpy.ndarray.real.html#numpy.ndarray.real" title="(in NumPy v1.17)"><code class="xref py py-attr docutils literal notranslate"><span class="pre">real</span></code></a> attribute
+Numba follows Numpy’s behavior.  The <a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.real.html#numpy.ndarray.real" title="(in NumPy v1.19)"><code class="xref py py-attr docutils literal notranslate"><span class="pre">real</span></code></a> attribute
 returns a view of the real part of the complex array and it behaves as an identity
-function for other numeric dtypes.  The <a class="reference external" href="https://docs.scipy.org/doc/numpy/reference/generated/numpy.ndarray.imag.html#numpy.ndarray.imag" title="(in NumPy v1.17)"><code class="xref py py-attr docutils literal notranslate"><span class="pre">imag</span></code></a> attribute
+function for other numeric dtypes.  The <a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.imag.html#numpy.ndarray.imag" title="(in NumPy v1.19)"><code class="xref py py-attr docutils literal notranslate"><span class="pre">imag</span></code></a> attribute
 returns a view of the imaginary part of the complex array and it returns a zero
 array with the same shape and dtype for other numeric dtypes.  For non-numeric
 dtypes, including all structured/record dtypes, using these attributes will
@@ -1426,22 +1547,22 @@ overlap these attributes.</p>
 <p>The following methods of Numpy arrays are supported in their basic form
 (without any optional arguments):</p>
 <ul class="simple">
-<li><p><a class="reference external" href="https://docs.scipy.org/doc/numpy/reference/generated/numpy.ndarray.all.html#numpy.ndarray.all" title="(in NumPy v1.17)"><code class="xref py py-meth docutils literal notranslate"><span class="pre">all()</span></code></a></p></li>
-<li><p><a class="reference external" href="https://docs.scipy.org/doc/numpy/reference/generated/numpy.ndarray.any.html#numpy.ndarray.any" title="(in NumPy v1.17)"><code class="xref py py-meth docutils literal notranslate"><span class="pre">any()</span></code></a></p></li>
-<li><p><a class="reference external" href="https://docs.scipy.org/doc/numpy/reference/generated/numpy.ndarray.argmax.html#numpy.ndarray.argmax" title="(in NumPy v1.17)"><code class="xref py py-meth docutils literal notranslate"><span class="pre">argmax()</span></code></a></p></li>
-<li><p><a class="reference external" href="https://docs.scipy.org/doc/numpy/reference/generated/numpy.ndarray.argmin.html#numpy.ndarray.argmin" title="(in NumPy v1.17)"><code class="xref py py-meth docutils literal notranslate"><span class="pre">argmin()</span></code></a></p></li>
-<li><p><a class="reference external" href="https://docs.scipy.org/doc/numpy/reference/generated/numpy.ndarray.conj.html#numpy.ndarray.conj" title="(in NumPy v1.17)"><code class="xref py py-meth docutils literal notranslate"><span class="pre">conj()</span></code></a></p></li>
-<li><p><a class="reference external" href="https://docs.scipy.org/doc/numpy/reference/generated/numpy.ndarray.conjugate.html#numpy.ndarray.conjugate" title="(in NumPy v1.17)"><code class="xref py py-meth docutils literal notranslate"><span class="pre">conjugate()</span></code></a></p></li>
-<li><p><a class="reference external" href="https://docs.scipy.org/doc/numpy/reference/generated/numpy.ndarray.cumprod.html#numpy.ndarray.cumprod" title="(in NumPy v1.17)"><code class="xref py py-meth docutils literal notranslate"><span class="pre">cumprod()</span></code></a></p></li>
-<li><p><a class="reference external" href="https://docs.scipy.org/doc/numpy/reference/generated/numpy.ndarray.cumsum.html#numpy.ndarray.cumsum" title="(in NumPy v1.17)"><code class="xref py py-meth docutils literal notranslate"><span class="pre">cumsum()</span></code></a></p></li>
-<li><p><a class="reference external" href="https://docs.scipy.org/doc/numpy/reference/generated/numpy.ndarray.max.html#numpy.ndarray.max" title="(in NumPy v1.17)"><code class="xref py py-meth docutils literal notranslate"><span class="pre">max()</span></code></a></p></li>
-<li><p><a class="reference external" href="https://docs.scipy.org/doc/numpy/reference/generated/numpy.ndarray.mean.html#numpy.ndarray.mean" title="(in NumPy v1.17)"><code class="xref py py-meth docutils literal notranslate"><span class="pre">mean()</span></code></a></p></li>
-<li><p><a class="reference external" href="https://docs.scipy.org/doc/numpy/reference/generated/numpy.ndarray.min.html#numpy.ndarray.min" title="(in NumPy v1.17)"><code class="xref py py-meth docutils literal notranslate"><span class="pre">min()</span></code></a></p></li>
-<li><p><a class="reference external" href="https://docs.scipy.org/doc/numpy/reference/generated/numpy.ndarray.nonzero.html#numpy.ndarray.nonzero" title="(in NumPy v1.17)"><code class="xref py py-meth docutils literal notranslate"><span class="pre">nonzero()</span></code></a></p></li>
-<li><p><a class="reference external" href="https://docs.scipy.org/doc/numpy/reference/generated/numpy.ndarray.prod.html#numpy.ndarray.prod" title="(in NumPy v1.17)"><code class="xref py py-meth docutils literal notranslate"><span class="pre">prod()</span></code></a></p></li>
-<li><p><a class="reference external" href="https://docs.scipy.org/doc/numpy/reference/generated/numpy.ndarray.std.html#numpy.ndarray.std" title="(in NumPy v1.17)"><code class="xref py py-meth docutils literal notranslate"><span class="pre">std()</span></code></a></p></li>
-<li><p><a class="reference external" href="https://docs.scipy.org/doc/numpy/reference/generated/numpy.ndarray.take.html#numpy.ndarray.take" title="(in NumPy v1.17)"><code class="xref py py-meth docutils literal notranslate"><span class="pre">take()</span></code></a></p></li>
-<li><p><a class="reference external" href="https://docs.scipy.org/doc/numpy/reference/generated/numpy.ndarray.var.html#numpy.ndarray.var" title="(in NumPy v1.17)"><code class="xref py py-meth docutils literal notranslate"><span class="pre">var()</span></code></a></p></li>
+<li><p><a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.all.html#numpy.ndarray.all" title="(in NumPy v1.19)"><code class="xref py py-meth docutils literal notranslate"><span class="pre">all()</span></code></a></p></li>
+<li><p><a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.any.html#numpy.ndarray.any" title="(in NumPy v1.19)"><code class="xref py py-meth docutils literal notranslate"><span class="pre">any()</span></code></a></p></li>
+<li><p><a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.argmax.html#numpy.ndarray.argmax" title="(in NumPy v1.19)"><code class="xref py py-meth docutils literal notranslate"><span class="pre">argmax()</span></code></a></p></li>
+<li><p><a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.argmin.html#numpy.ndarray.argmin" title="(in NumPy v1.19)"><code class="xref py py-meth docutils literal notranslate"><span class="pre">argmin()</span></code></a></p></li>
+<li><p><a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.conj.html#numpy.ndarray.conj" title="(in NumPy v1.19)"><code class="xref py py-meth docutils literal notranslate"><span class="pre">conj()</span></code></a></p></li>
+<li><p><a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.conjugate.html#numpy.ndarray.conjugate" title="(in NumPy v1.19)"><code class="xref py py-meth docutils literal notranslate"><span class="pre">conjugate()</span></code></a></p></li>
+<li><p><a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.cumprod.html#numpy.ndarray.cumprod" title="(in NumPy v1.19)"><code class="xref py py-meth docutils literal notranslate"><span class="pre">cumprod()</span></code></a></p></li>
+<li><p><a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.cumsum.html#numpy.ndarray.cumsum" title="(in NumPy v1.19)"><code class="xref py py-meth docutils literal notranslate"><span class="pre">cumsum()</span></code></a></p></li>
+<li><p><a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.max.html#numpy.ndarray.max" title="(in NumPy v1.19)"><code class="xref py py-meth docutils literal notranslate"><span class="pre">max()</span></code></a></p></li>
+<li><p><a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.mean.html#numpy.ndarray.mean" title="(in NumPy v1.19)"><code class="xref py py-meth docutils literal notranslate"><span class="pre">mean()</span></code></a></p></li>
+<li><p><a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.min.html#numpy.ndarray.min" title="(in NumPy v1.19)"><code class="xref py py-meth docutils literal notranslate"><span class="pre">min()</span></code></a></p></li>
+<li><p><a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.nonzero.html#numpy.ndarray.nonzero" title="(in NumPy v1.19)"><code class="xref py py-meth docutils literal notranslate"><span class="pre">nonzero()</span></code></a></p></li>
+<li><p><a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.prod.html#numpy.ndarray.prod" title="(in NumPy v1.19)"><code class="xref py py-meth docutils literal notranslate"><span class="pre">prod()</span></code></a></p></li>
+<li><p><a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.std.html#numpy.ndarray.std" title="(in NumPy v1.19)"><code class="xref py py-meth docutils literal notranslate"><span class="pre">std()</span></code></a></p></li>
+<li><p><a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.take.html#numpy.ndarray.take" title="(in NumPy v1.19)"><code class="xref py py-meth docutils literal notranslate"><span class="pre">take()</span></code></a></p></li>
+<li><p><a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.var.html#numpy.ndarray.var" title="(in NumPy v1.19)"><code class="xref py py-meth docutils literal notranslate"><span class="pre">var()</span></code></a></p></li>
 </ul>
 <p>The corresponding top-level Numpy functions (such as <a class="reference internal" href="../developer/autogen_numpy_listing.html#numpy.prod" title="numpy.prod"><code class="xref py py-func docutils literal notranslate"><span class="pre">numpy.prod()</span></code></a>)
 are similarly supported.</p>
@@ -1450,19 +1571,20 @@ are similarly supported.</p>
 <h3>Other methods<a class="headerlink" href="#other-methods" title="Permalink to this headline">¶</a></h3>
 <p>The following methods of Numpy arrays are supported:</p>
 <ul class="simple">
-<li><p><a class="reference external" href="https://docs.scipy.org/doc/numpy/reference/generated/numpy.ndarray.argsort.html#numpy.ndarray.argsort" title="(in NumPy v1.17)"><code class="xref py py-meth docutils literal notranslate"><span class="pre">argsort()</span></code></a> (<code class="docutils literal notranslate"><span class="pre">kind</span></code> key word argument supported for
+<li><p><a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.argsort.html#numpy.ndarray.argsort" title="(in NumPy v1.19)"><code class="xref py py-meth docutils literal notranslate"><span class="pre">argsort()</span></code></a> (<code class="docutils literal notranslate"><span class="pre">kind</span></code> key word argument supported for
 values <code class="docutils literal notranslate"><span class="pre">'quicksort'</span></code> and <code class="docutils literal notranslate"><span class="pre">'mergesort'</span></code>)</p></li>
-<li><p><a class="reference external" href="https://docs.scipy.org/doc/numpy/reference/generated/numpy.ndarray.astype.html#numpy.ndarray.astype" title="(in NumPy v1.17)"><code class="xref py py-meth docutils literal notranslate"><span class="pre">astype()</span></code></a> (only the 1-argument form)</p></li>
-<li><p><a class="reference external" href="https://docs.scipy.org/doc/numpy/reference/generated/numpy.ndarray.copy.html#numpy.ndarray.copy" title="(in NumPy v1.17)"><code class="xref py py-meth docutils literal notranslate"><span class="pre">copy()</span></code></a> (without arguments)</p></li>
-<li><p><a class="reference external" href="https://docs.scipy.org/doc/numpy/reference/generated/numpy.ndarray.dot.html#numpy.ndarray.dot" title="(in NumPy v1.17)"><code class="xref py py-meth docutils literal notranslate"><span class="pre">dot()</span></code></a> (only the 1-argument form)</p></li>
-<li><p><a class="reference external" href="https://docs.scipy.org/doc/numpy/reference/generated/numpy.ndarray.flatten.html#numpy.ndarray.flatten" title="(in NumPy v1.17)"><code class="xref py py-meth docutils literal notranslate"><span class="pre">flatten()</span></code></a> (no order argument; ‘C’ order only)</p></li>
-<li><p><a class="reference external" href="https://docs.scipy.org/doc/numpy/reference/generated/numpy.ndarray.item.html#numpy.ndarray.item" title="(in NumPy v1.17)"><code class="xref py py-meth docutils literal notranslate"><span class="pre">item()</span></code></a> (without arguments)</p></li>
-<li><p><a class="reference external" href="https://docs.scipy.org/doc/numpy/reference/generated/numpy.ndarray.itemset.html#numpy.ndarray.itemset" title="(in NumPy v1.17)"><code class="xref py py-meth docutils literal notranslate"><span class="pre">itemset()</span></code></a> (only the 1-argument form)</p></li>
-<li><p><a class="reference external" href="https://docs.scipy.org/doc/numpy/reference/generated/numpy.ndarray.ravel.html#numpy.ndarray.ravel" title="(in NumPy v1.17)"><code class="xref py py-meth docutils literal notranslate"><span class="pre">ravel()</span></code></a> (no order argument; ‘C’ order only)</p></li>
-<li><p><a class="reference external" href="https://docs.scipy.org/doc/numpy/reference/generated/numpy.ndarray.repeat.html#numpy.ndarray.repeat" title="(in NumPy v1.17)"><code class="xref py py-meth docutils literal notranslate"><span class="pre">repeat()</span></code></a> (no axis argument)</p></li>
-<li><p><a class="reference external" href="https://docs.scipy.org/doc/numpy/reference/generated/numpy.ndarray.reshape.html#numpy.ndarray.reshape" title="(in NumPy v1.17)"><code class="xref py py-meth docutils literal notranslate"><span class="pre">reshape()</span></code></a> (only the 1-argument form)</p></li>
-<li><p><a class="reference external" href="https://docs.scipy.org/doc/numpy/reference/generated/numpy.ndarray.sort.html#numpy.ndarray.sort" title="(in NumPy v1.17)"><code class="xref py py-meth docutils literal notranslate"><span class="pre">sort()</span></code></a> (without arguments)</p></li>
-<li><p><a class="reference external" href="https://docs.scipy.org/doc/numpy/reference/generated/numpy.ndarray.sum.html#numpy.ndarray.sum" title="(in NumPy v1.17)"><code class="xref py py-meth docutils literal notranslate"><span class="pre">sum()</span></code></a> (with or without the <code class="docutils literal notranslate"><span class="pre">axis</span></code> and/or <code class="docutils literal notranslate"><span class="pre">dtype</span></code>
+<li><p><a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.astype.html#numpy.ndarray.astype" title="(in NumPy v1.19)"><code class="xref py py-meth docutils literal notranslate"><span class="pre">astype()</span></code></a> (only the 1-argument form)</p></li>
+<li><p><a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.copy.html#numpy.ndarray.copy" title="(in NumPy v1.19)"><code class="xref py py-meth docutils literal notranslate"><span class="pre">copy()</span></code></a> (without arguments)</p></li>
+<li><p><a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.dot.html#numpy.ndarray.dot" title="(in NumPy v1.19)"><code class="xref py py-meth docutils literal notranslate"><span class="pre">dot()</span></code></a> (only the 1-argument form)</p></li>
+<li><p><a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.flatten.html#numpy.ndarray.flatten" title="(in NumPy v1.19)"><code class="xref py py-meth docutils literal notranslate"><span class="pre">flatten()</span></code></a> (no order argument; ‘C’ order only)</p></li>
+<li><p><a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.item.html#numpy.ndarray.item" title="(in NumPy v1.19)"><code class="xref py py-meth docutils literal notranslate"><span class="pre">item()</span></code></a> (without arguments)</p></li>
+<li><p><a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.itemset.html#numpy.ndarray.itemset" title="(in NumPy v1.19)"><code class="xref py py-meth docutils literal notranslate"><span class="pre">itemset()</span></code></a> (only the 1-argument form)</p></li>
+<li><p><a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.ptp.html#numpy.ndarray.ptp" title="(in NumPy v1.19)"><code class="xref py py-meth docutils literal notranslate"><span class="pre">ptp()</span></code></a> (without arguments)</p></li>
+<li><p><a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.ravel.html#numpy.ndarray.ravel" title="(in NumPy v1.19)"><code class="xref py py-meth docutils literal notranslate"><span class="pre">ravel()</span></code></a> (no order argument; ‘C’ order only)</p></li>
+<li><p><a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.repeat.html#numpy.ndarray.repeat" title="(in NumPy v1.19)"><code class="xref py py-meth docutils literal notranslate"><span class="pre">repeat()</span></code></a> (no axis argument)</p></li>
+<li><p><a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.reshape.html#numpy.ndarray.reshape" title="(in NumPy v1.19)"><code class="xref py py-meth docutils literal notranslate"><span class="pre">reshape()</span></code></a> (only the 1-argument form)</p></li>
+<li><p><a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.sort.html#numpy.ndarray.sort" title="(in NumPy v1.19)"><code class="xref py py-meth docutils literal notranslate"><span class="pre">sort()</span></code></a> (without arguments)</p></li>
+<li><p><a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.sum.html#numpy.ndarray.sum" title="(in NumPy v1.19)"><code class="xref py py-meth docutils literal notranslate"><span class="pre">sum()</span></code></a> (with or without the <code class="docutils literal notranslate"><span class="pre">axis</span></code> and/or <code class="docutils literal notranslate"><span class="pre">dtype</span></code>
 arguments.)</p>
 <ul>
 <li><p><code class="docutils literal notranslate"><span class="pre">axis</span></code> only supports <code class="docutils literal notranslate"><span class="pre">integer</span></code> values.</p></li>
@@ -1483,8 +1605,9 @@ inputs (<code class="docutils literal notranslate"><span class="pre">int64</span
 inputs), while NumPy would use a 32-bit accumulator in those cases.</p></li>
 </ul>
 </li>
-<li><p><a class="reference external" href="https://docs.scipy.org/doc/numpy/reference/generated/numpy.ndarray.transpose.html#numpy.ndarray.transpose" title="(in NumPy v1.17)"><code class="xref py py-meth docutils literal notranslate"><span class="pre">transpose()</span></code></a></p></li>
-<li><p><a class="reference external" href="https://docs.scipy.org/doc/numpy/reference/generated/numpy.ndarray.view.html#numpy.ndarray.view" title="(in NumPy v1.17)"><code class="xref py py-meth docutils literal notranslate"><span class="pre">view()</span></code></a> (only the 1-argument form)</p></li>
+<li><p><a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.transpose.html#numpy.ndarray.transpose" title="(in NumPy v1.19)"><code class="xref py py-meth docutils literal notranslate"><span class="pre">transpose()</span></code></a></p></li>
+<li><p><a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.view.html#numpy.ndarray.view" title="(in NumPy v1.19)"><code class="xref py py-meth docutils literal notranslate"><span class="pre">view()</span></code></a> (only the 1-argument form)</p></li>
+<li><p><a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.__contains__.html#numpy.ndarray.__contains__" title="(in NumPy v1.19)"><code class="xref py py-meth docutils literal notranslate"><span class="pre">__contains__()</span></code></a></p></li>
 </ul>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
@@ -1571,13 +1694,16 @@ complex dtypes unsupported)</p></li>
 <li><p><a class="reference internal" href="../developer/autogen_numpy_listing.html#numpy.argwhere" title="numpy.argwhere"><code class="xref py py-func docutils literal notranslate"><span class="pre">numpy.argwhere()</span></code></a></p></li>
 <li><p><a class="reference internal" href="../developer/autogen_numpy_listing.html#numpy.array" title="numpy.array"><code class="xref py py-func docutils literal notranslate"><span class="pre">numpy.array()</span></code></a> (only the 2 first arguments)</p></li>
 <li><p><a class="reference internal" href="../developer/autogen_numpy_listing.html#numpy.array_equal" title="numpy.array_equal"><code class="xref py py-func docutils literal notranslate"><span class="pre">numpy.array_equal()</span></code></a></p></li>
+<li><p><a class="reference internal" href="../developer/autogen_numpy_listing.html#numpy.array_split" title="numpy.array_split"><code class="xref py py-func docutils literal notranslate"><span class="pre">numpy.array_split()</span></code></a></p></li>
 <li><p><a class="reference internal" href="../developer/autogen_numpy_listing.html#numpy.asarray" title="numpy.asarray"><code class="xref py py-func docutils literal notranslate"><span class="pre">numpy.asarray()</span></code></a> (only the 2 first arguments)</p></li>
+<li><p><a class="reference internal" href="../developer/autogen_numpy_listing.html#numpy.asarray_chkfinite" title="numpy.asarray_chkfinite"><code class="xref py py-func docutils literal notranslate"><span class="pre">numpy.asarray_chkfinite()</span></code></a> (only the 2 first arguments)</p></li>
+<li><p><a class="reference internal" href="../developer/autogen_numpy_listing.html#numpy.asfarray" title="numpy.asfarray"><code class="xref py py-func docutils literal notranslate"><span class="pre">numpy.asfarray()</span></code></a></p></li>
 <li><p><a class="reference internal" href="../developer/autogen_numpy_listing.html#numpy.asfortranarray" title="numpy.asfortranarray"><code class="xref py py-func docutils literal notranslate"><span class="pre">numpy.asfortranarray()</span></code></a> (only the first argument)</p></li>
 <li><p><a class="reference internal" href="../developer/autogen_numpy_listing.html#numpy.atleast_1d" title="numpy.atleast_1d"><code class="xref py py-func docutils literal notranslate"><span class="pre">numpy.atleast_1d()</span></code></a></p></li>
 <li><p><a class="reference internal" href="../developer/autogen_numpy_listing.html#numpy.atleast_2d" title="numpy.atleast_2d"><code class="xref py py-func docutils literal notranslate"><span class="pre">numpy.atleast_2d()</span></code></a></p></li>
 <li><p><a class="reference internal" href="../developer/autogen_numpy_listing.html#numpy.atleast_3d" title="numpy.atleast_3d"><code class="xref py py-func docutils literal notranslate"><span class="pre">numpy.atleast_3d()</span></code></a></p></li>
 <li><p><a class="reference internal" href="../developer/autogen_numpy_listing.html#numpy.bartlett" title="numpy.bartlett"><code class="xref py py-func docutils literal notranslate"><span class="pre">numpy.bartlett()</span></code></a></p></li>
-<li><p><a class="reference internal" href="../developer/autogen_numpy_listing.html#numpy.bincount" title="numpy.bincount"><code class="xref py py-func docutils literal notranslate"><span class="pre">numpy.bincount()</span></code></a> (only the 2 first arguments)</p></li>
+<li><p><a class="reference internal" href="../developer/autogen_numpy_listing.html#numpy.bincount" title="numpy.bincount"><code class="xref py py-func docutils literal notranslate"><span class="pre">numpy.bincount()</span></code></a></p></li>
 <li><p><a class="reference internal" href="../developer/autogen_numpy_listing.html#numpy.blackman" title="numpy.blackman"><code class="xref py py-func docutils literal notranslate"><span class="pre">numpy.blackman()</span></code></a></p></li>
 <li><p><a class="reference internal" href="../developer/autogen_numpy_listing.html#numpy.column_stack" title="numpy.column_stack"><code class="xref py py-func docutils literal notranslate"><span class="pre">numpy.column_stack()</span></code></a></p></li>
 <li><p><a class="reference internal" href="../developer/autogen_numpy_listing.html#numpy.concatenate" title="numpy.concatenate"><code class="xref py py-func docutils literal notranslate"><span class="pre">numpy.concatenate()</span></code></a></p></li>
@@ -1622,9 +1748,9 @@ arrays should have <code class="docutils literal notranslate"><span class="pre">
 <li><p><a class="reference internal" href="../developer/autogen_numpy_listing.html#numpy.kaiser" title="numpy.kaiser"><code class="xref py py-func docutils literal notranslate"><span class="pre">numpy.kaiser()</span></code></a></p></li>
 <li><p><a class="reference internal" href="../developer/autogen_numpy_listing.html#numpy.interp" title="numpy.interp"><code class="xref py py-func docutils literal notranslate"><span class="pre">numpy.interp()</span></code></a> (only the 3 first arguments; requires NumPy &gt;= 1.10)</p></li>
 <li><p><a class="reference internal" href="../developer/autogen_numpy_listing.html#numpy.linspace" title="numpy.linspace"><code class="xref py py-func docutils literal notranslate"><span class="pre">numpy.linspace()</span></code></a> (only the 3-argument form)</p></li>
-<li><p><a class="reference external" href="https://docs.scipy.org/doc/numpy/reference/generated/numpy.ndenumerate.html#numpy.ndenumerate" title="(in NumPy v1.17)"><code class="xref py py-class docutils literal notranslate"><span class="pre">numpy.ndenumerate</span></code></a></p></li>
-<li><p><a class="reference external" href="https://docs.scipy.org/doc/numpy/reference/generated/numpy.ndindex.html#numpy.ndindex" title="(in NumPy v1.17)"><code class="xref py py-class docutils literal notranslate"><span class="pre">numpy.ndindex</span></code></a></p></li>
-<li><p><a class="reference external" href="https://docs.scipy.org/doc/numpy/reference/generated/numpy.nditer.html#numpy.nditer" title="(in NumPy v1.17)"><code class="xref py py-class docutils literal notranslate"><span class="pre">numpy.nditer</span></code></a> (only the first argument)</p></li>
+<li><p><a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndenumerate.html#numpy.ndenumerate" title="(in NumPy v1.19)"><code class="xref py py-class docutils literal notranslate"><span class="pre">numpy.ndenumerate</span></code></a></p></li>
+<li><p><a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndindex.html#numpy.ndindex" title="(in NumPy v1.19)"><code class="xref py py-class docutils literal notranslate"><span class="pre">numpy.ndindex</span></code></a></p></li>
+<li><p><a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.nditer.html#numpy.nditer" title="(in NumPy v1.19)"><code class="xref py py-class docutils literal notranslate"><span class="pre">numpy.nditer</span></code></a> (only the first argument)</p></li>
 <li><p><a class="reference internal" href="../developer/autogen_numpy_listing.html#numpy.ones" title="numpy.ones"><code class="xref py py-func docutils literal notranslate"><span class="pre">numpy.ones()</span></code></a> (only the 2 first arguments)</p></li>
 <li><p><a class="reference internal" href="../developer/autogen_numpy_listing.html#numpy.ones_like" title="numpy.ones_like"><code class="xref py py-func docutils literal notranslate"><span class="pre">numpy.ones_like()</span></code></a> (only the 2 first arguments)</p></li>
 <li><p><a class="reference internal" href="../developer/autogen_numpy_listing.html#numpy.partition" title="numpy.partition"><code class="xref py py-func docutils literal notranslate"><span class="pre">numpy.partition()</span></code></a> (only the 2 first arguments)</p></li>
@@ -1643,6 +1769,7 @@ can only contain arrays (unlike Numpy that also accepts tuples).</p></li>
 <li><p><a class="reference internal" href="../developer/autogen_numpy_listing.html#numpy.shape" title="numpy.shape"><code class="xref py py-func docutils literal notranslate"><span class="pre">numpy.shape()</span></code></a></p></li>
 <li><p><a class="reference internal" href="../developer/autogen_numpy_listing.html#numpy.sinc" title="numpy.sinc"><code class="xref py py-func docutils literal notranslate"><span class="pre">numpy.sinc()</span></code></a></p></li>
 <li><p><a class="reference internal" href="../developer/autogen_numpy_listing.html#numpy.sort" title="numpy.sort"><code class="xref py py-func docutils literal notranslate"><span class="pre">numpy.sort()</span></code></a> (no optional arguments)</p></li>
+<li><p><a class="reference internal" href="../developer/autogen_numpy_listing.html#numpy.split" title="numpy.split"><code class="xref py py-func docutils literal notranslate"><span class="pre">numpy.split()</span></code></a></p></li>
 <li><p><a class="reference internal" href="../developer/autogen_numpy_listing.html#numpy.stack" title="numpy.stack"><code class="xref py py-func docutils literal notranslate"><span class="pre">numpy.stack()</span></code></a></p></li>
 <li><p><a class="reference internal" href="../developer/autogen_numpy_listing.html#numpy.take" title="numpy.take"><code class="xref py py-func docutils literal notranslate"><span class="pre">numpy.take()</span></code></a> (only the 2 first arguments)</p></li>
 <li><p><a class="reference internal" href="../developer/autogen_numpy_listing.html#numpy.transpose" title="numpy.transpose"><code class="xref py py-func docutils literal notranslate"><span class="pre">numpy.transpose()</span></code></a></p></li>
@@ -1685,9 +1812,9 @@ construct a scalar) or a sequence (to construct an array):</p>
 <p>The following machine parameter classes are supported, with all purely numerical
 attributes:</p>
 <ul class="simple">
-<li><p><a class="reference external" href="https://docs.scipy.org/doc/numpy/reference/generated/numpy.iinfo.html#numpy.iinfo" title="(in NumPy v1.17)"><code class="xref py py-class docutils literal notranslate"><span class="pre">numpy.iinfo</span></code></a></p></li>
-<li><p><a class="reference external" href="https://docs.scipy.org/doc/numpy/reference/generated/numpy.finfo.html#numpy.finfo" title="(in NumPy v1.17)"><code class="xref py py-class docutils literal notranslate"><span class="pre">numpy.finfo</span></code></a> (<code class="docutils literal notranslate"><span class="pre">machar</span></code> attribute not supported)</p></li>
-<li><p><a class="reference external" href="https://docs.scipy.org/doc/numpy/reference/generated/numpy.MachAr.html#numpy.MachAr" title="(in NumPy v1.17)"><code class="xref py py-class docutils literal notranslate"><span class="pre">numpy.MachAr</span></code></a> (with no arguments to the constructor)</p></li>
+<li><p><a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.iinfo.html#numpy.iinfo" title="(in NumPy v1.19)"><code class="xref py py-class docutils literal notranslate"><span class="pre">numpy.iinfo</span></code></a></p></li>
+<li><p><a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.finfo.html#numpy.finfo" title="(in NumPy v1.19)"><code class="xref py py-class docutils literal notranslate"><span class="pre">numpy.finfo</span></code></a> (<code class="docutils literal notranslate"><span class="pre">machar</span></code> attribute not supported)</p></li>
+<li><p><a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.MachAr.html#numpy.MachAr" title="(in NumPy v1.19)"><code class="xref py py-class docutils literal notranslate"><span class="pre">numpy.MachAr</span></code></a> (with no arguments to the constructor)</p></li>
 </ul>
 </div>
 <div class="section" id="literal-arrays">
@@ -1737,8 +1864,8 @@ one generator won’t affect the other.</p>
 array) is not supported</p></li>
 <li><p><a class="reference internal" href="../developer/autogen_numpy_listing.html#numpy.random.permutation" title="numpy.random.permutation"><code class="xref py py-func docutils literal notranslate"><span class="pre">numpy.random.permutation()</span></code></a></p></li>
 <li><p><a class="reference internal" href="../developer/autogen_numpy_listing.html#numpy.random.shuffle" title="numpy.random.shuffle"><code class="xref py py-func docutils literal notranslate"><span class="pre">numpy.random.shuffle()</span></code></a>: the sequence argument must be a one-dimension
-Numpy array or buffer-providing object (such as a <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#bytearray" title="(in Python v3.8)"><code class="xref py py-class docutils literal notranslate"><span class="pre">bytearray</span></code></a>
-or <a class="reference external" href="https://docs.python.org/3/library/array.html#array.array" title="(in Python v3.8)"><code class="xref py py-class docutils literal notranslate"><span class="pre">array.array</span></code></a>)</p></li>
+Numpy array or buffer-providing object (such as a <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#bytearray" title="(in Python v3.9)"><code class="xref py py-class docutils literal notranslate"><span class="pre">bytearray</span></code></a>
+or <a class="reference external" href="https://docs.python.org/3/library/array.html#array.array" title="(in Python v3.9)"><code class="xref py py-class docutils literal notranslate"><span class="pre">array.array</span></code></a>)</p></li>
 </ul>
 </div>
 <div class="section" id="distributions">
@@ -1886,84 +2013,89 @@ sorted in the same way as in the NumPy documentation.</p>
 <td><p>Yes</p></td>
 <td><p>Yes</p></td>
 </tr>
-<tr class="row-even"><td><p>abs</p></td>
+<tr class="row-even"><td><p>divmod (*)</p></td>
 <td><p>Yes</p></td>
 <td><p>Yes</p></td>
 </tr>
-<tr class="row-odd"><td><p>absolute</p></td>
+<tr class="row-odd"><td><p>abs</p></td>
 <td><p>Yes</p></td>
 <td><p>Yes</p></td>
 </tr>
-<tr class="row-even"><td><p>fabs</p></td>
+<tr class="row-even"><td><p>absolute</p></td>
 <td><p>Yes</p></td>
 <td><p>Yes</p></td>
 </tr>
-<tr class="row-odd"><td><p>rint</p></td>
+<tr class="row-odd"><td><p>fabs</p></td>
 <td><p>Yes</p></td>
 <td><p>Yes</p></td>
 </tr>
-<tr class="row-even"><td><p>sign</p></td>
+<tr class="row-even"><td><p>rint</p></td>
 <td><p>Yes</p></td>
 <td><p>Yes</p></td>
 </tr>
-<tr class="row-odd"><td><p>conj</p></td>
+<tr class="row-odd"><td><p>sign</p></td>
 <td><p>Yes</p></td>
 <td><p>Yes</p></td>
 </tr>
-<tr class="row-even"><td><p>exp</p></td>
+<tr class="row-even"><td><p>conj</p></td>
 <td><p>Yes</p></td>
 <td><p>Yes</p></td>
 </tr>
-<tr class="row-odd"><td><p>exp2</p></td>
+<tr class="row-odd"><td><p>exp</p></td>
 <td><p>Yes</p></td>
 <td><p>Yes</p></td>
 </tr>
-<tr class="row-even"><td><p>log</p></td>
+<tr class="row-even"><td><p>exp2</p></td>
 <td><p>Yes</p></td>
 <td><p>Yes</p></td>
 </tr>
-<tr class="row-odd"><td><p>log2</p></td>
+<tr class="row-odd"><td><p>log</p></td>
 <td><p>Yes</p></td>
 <td><p>Yes</p></td>
 </tr>
-<tr class="row-even"><td><p>log10</p></td>
+<tr class="row-even"><td><p>log2</p></td>
 <td><p>Yes</p></td>
 <td><p>Yes</p></td>
 </tr>
-<tr class="row-odd"><td><p>expm1</p></td>
+<tr class="row-odd"><td><p>log10</p></td>
 <td><p>Yes</p></td>
 <td><p>Yes</p></td>
 </tr>
-<tr class="row-even"><td><p>log1p</p></td>
+<tr class="row-even"><td><p>expm1</p></td>
 <td><p>Yes</p></td>
 <td><p>Yes</p></td>
 </tr>
-<tr class="row-odd"><td><p>sqrt</p></td>
+<tr class="row-odd"><td><p>log1p</p></td>
 <td><p>Yes</p></td>
 <td><p>Yes</p></td>
 </tr>
-<tr class="row-even"><td><p>square</p></td>
+<tr class="row-even"><td><p>sqrt</p></td>
 <td><p>Yes</p></td>
 <td><p>Yes</p></td>
 </tr>
-<tr class="row-odd"><td><p>reciprocal</p></td>
+<tr class="row-odd"><td><p>square</p></td>
 <td><p>Yes</p></td>
 <td><p>Yes</p></td>
 </tr>
-<tr class="row-even"><td><p>conjugate</p></td>
+<tr class="row-even"><td><p>reciprocal</p></td>
 <td><p>Yes</p></td>
 <td><p>Yes</p></td>
 </tr>
-<tr class="row-odd"><td><p>gcd</p></td>
+<tr class="row-odd"><td><p>conjugate</p></td>
 <td><p>Yes</p></td>
 <td><p>Yes</p></td>
 </tr>
-<tr class="row-even"><td><p>lcm</p></td>
+<tr class="row-even"><td><p>gcd</p></td>
+<td><p>Yes</p></td>
+<td><p>Yes</p></td>
+</tr>
+<tr class="row-odd"><td><p>lcm</p></td>
 <td><p>Yes</p></td>
 <td><p>Yes</p></td>
 </tr>
 </tbody>
 </table>
+<p>(*) not supported on timedelta types</p>
 </div>
 <div class="section" id="trigonometric-functions">
 <h3>Trigonometric functions<a class="headerlink" href="#trigonometric-functions" title="Permalink to this headline">¶</a></h3>
@@ -2306,11 +2438,19 @@ sorted in the same way as in the NumPy documentation.</p>
 
   <div role="contentinfo">
     <p>
+        
         &copy; Copyright 2012-2020, Anaconda, Inc. and others
 
     </p>
   </div>
-  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
 </footer>
 
@@ -2321,7 +2461,6 @@ sorted in the same way as in the NumPy documentation.</p>
 
   </div>
   
-
 
   <script type="text/javascript">
       jQuery(function () {

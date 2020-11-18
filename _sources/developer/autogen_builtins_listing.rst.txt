@@ -13,7 +13,7 @@ builtins
 .. function:: builtins.chr
 
 
-   - defined by ``ol_chr(i)`` at `numba/cpython/unicode.py:2337-2342 <https://github.com/numba/numba/blob/a68198514528773d2368e203491121b5c34f956d/numba/cpython/unicode.py#L2337-L2342>`_
+   - defined by ``ol_chr(i)`` at `numba/cpython/unicode.py:2370-2375 <https://github.com/numba/numba/blob/2a34659be0a935d992dec808137deb00a5cc15a9/numba/cpython/unicode.py#L2370-L2375>`_
 
 .. function:: builtins.divmod
 
@@ -23,7 +23,7 @@ builtins
 .. function:: builtins.hash
 
 
-   - defined by ``hash_overload(obj)`` at `numba/cpython/hashing.py:46-50 <https://github.com/numba/numba/blob/a68198514528773d2368e203491121b5c34f956d/numba/cpython/hashing.py#L46-L50>`_
+   - defined by ``hash_overload(obj)`` at `numba/cpython/hashing.py:46-50 <https://github.com/numba/numba/blob/2a34659be0a935d992dec808137deb00a5cc15a9/numba/cpython/hashing.py#L46-L50>`_
 
 .. function:: builtins.iter
 
@@ -34,25 +34,27 @@ builtins
 
 
    - defined by ``<class 'numba.core.typing.templates.Registry.register_global.<locals>.decorate.<locals>.Template'>``
-   - defined by ``unicode_len(s)`` at `numba/cpython/unicode.py:442-447 <https://github.com/numba/numba/blob/a68198514528773d2368e203491121b5c34f956d/numba/cpython/unicode.py#L442-L447>`_
-   - defined by ``charseq_len(s)`` at `numba/cpython/charseq.py:348-369 <https://github.com/numba/numba/blob/a68198514528773d2368e203491121b5c34f956d/numba/cpython/charseq.py#L348-L369>`_
-   - defined by ``impl_len(d)`` at `numba/typed/dictobject.py:656-666 <https://github.com/numba/numba/blob/a68198514528773d2368e203491121b5c34f956d/numba/typed/dictobject.py#L656-L666>`_
-   - defined by ``impl_len(l)`` at `numba/typed/listobject.py:402-410 <https://github.com/numba/numba/blob/a68198514528773d2368e203491121b5c34f956d/numba/typed/listobject.py#L402-L410>`_
+   - defined by ``literal_list_len(lst)`` at `numba/cpython/listobj.py:1218-1223 <https://github.com/numba/numba/blob/2a34659be0a935d992dec808137deb00a5cc15a9/numba/cpython/listobj.py#L1218-L1223>`_
+   - defined by ``unicode_len(s)`` at `numba/cpython/unicode.py:442-447 <https://github.com/numba/numba/blob/2a34659be0a935d992dec808137deb00a5cc15a9/numba/cpython/unicode.py#L442-L447>`_
+   - defined by ``impl_len(d)`` at `numba/typed/dictobject.py:658-668 <https://github.com/numba/numba/blob/2a34659be0a935d992dec808137deb00a5cc15a9/numba/typed/dictobject.py#L658-L668>`_
+   - defined by ``literalstrkeydict_impl_len(d)`` at `numba/typed/dictobject.py:1250-1255 <https://github.com/numba/numba/blob/2a34659be0a935d992dec808137deb00a5cc15a9/numba/typed/dictobject.py#L1250-L1255>`_
+   - defined by ``charseq_len(s)`` at `numba/cpython/charseq.py:348-369 <https://github.com/numba/numba/blob/2a34659be0a935d992dec808137deb00a5cc15a9/numba/cpython/charseq.py#L348-L369>`_
+   - defined by ``impl_len(l)`` at `numba/typed/listobject.py:400-408 <https://github.com/numba/numba/blob/2a34659be0a935d992dec808137deb00a5cc15a9/numba/typed/listobject.py#L400-L408>`_
    - defined by ``<class 'numba.core.typing.templates.Registry.register_global.<locals>.decorate.<locals>.Template'>``
 
 .. function:: builtins.max
 
 
    - defined by ``<class 'numba.core.typing.templates.Registry.register_global.<locals>.decorate.<locals>.Template'>``
-   - defined by ``indval_max(indval1, indval2)`` at `numba/cpython/builtins.py:504-512 <https://github.com/numba/numba/blob/a68198514528773d2368e203491121b5c34f956d/numba/cpython/builtins.py#L504-L512>`_
-   - defined by ``iterable_max(iterable)`` at `numba/cpython/builtins.py:537-539 <https://github.com/numba/numba/blob/a68198514528773d2368e203491121b5c34f956d/numba/cpython/builtins.py#L537-L539>`_
+   - defined by ``indval_max(indval1, indval2)`` at `numba/cpython/builtins.py:536-544 <https://github.com/numba/numba/blob/2a34659be0a935d992dec808137deb00a5cc15a9/numba/cpython/builtins.py#L536-L544>`_
+   - defined by ``iterable_max(iterable)`` at `numba/cpython/builtins.py:569-571 <https://github.com/numba/numba/blob/2a34659be0a935d992dec808137deb00a5cc15a9/numba/cpython/builtins.py#L569-L571>`_
 
 .. function:: builtins.min
 
 
    - defined by ``<class 'numba.core.typing.templates.Registry.register_global.<locals>.decorate.<locals>.Template'>``
-   - defined by ``indval_min(indval1, indval2)`` at `numba/cpython/builtins.py:493-501 <https://github.com/numba/numba/blob/a68198514528773d2368e203491121b5c34f956d/numba/cpython/builtins.py#L493-L501>`_
-   - defined by ``iterable_min(iterable)`` at `numba/cpython/builtins.py:532-534 <https://github.com/numba/numba/blob/a68198514528773d2368e203491121b5c34f956d/numba/cpython/builtins.py#L532-L534>`_
+   - defined by ``indval_min(indval1, indval2)`` at `numba/cpython/builtins.py:525-533 <https://github.com/numba/numba/blob/2a34659be0a935d992dec808137deb00a5cc15a9/numba/cpython/builtins.py#L525-L533>`_
+   - defined by ``iterable_min(iterable)`` at `numba/cpython/builtins.py:564-566 <https://github.com/numba/numba/blob/2a34659be0a935d992dec808137deb00a5cc15a9/numba/cpython/builtins.py#L564-L566>`_
 
 .. function:: builtins.next
 
@@ -62,7 +64,7 @@ builtins
 .. function:: builtins.ord
 
 
-   - defined by ``ol_ord(c)`` at `numba/cpython/unicode.py:2297-2306 <https://github.com/numba/numba/blob/a68198514528773d2368e203491121b5c34f956d/numba/cpython/unicode.py#L2297-L2306>`_
+   - defined by ``ol_ord(c)`` at `numba/cpython/unicode.py:2330-2339 <https://github.com/numba/numba/blob/2a34659be0a935d992dec808137deb00a5cc15a9/numba/cpython/unicode.py#L2330-L2339>`_
 
 .. function:: builtins.pow
 
@@ -82,7 +84,7 @@ builtins
 .. function:: builtins.sorted
 
 
-   - defined by ``ol_sorted(iterable, key=None, reverse=False)`` at `numba/cpython/listobj.py:1099-1112 <https://github.com/numba/numba/blob/a68198514528773d2368e203491121b5c34f956d/numba/cpython/listobj.py#L1099-L1112>`_
+   - defined by ``ol_sorted(iterable, key=None, reverse=False)`` at `numba/cpython/listobj.py:1100-1113 <https://github.com/numba/numba/blob/2a34659be0a935d992dec808137deb00a5cc15a9/numba/cpython/listobj.py#L1100-L1113>`_
 
 Not showing 27 unsupported functions.
 

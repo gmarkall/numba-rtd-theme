@@ -1,15 +1,19 @@
 
 
 <!DOCTYPE html>
-<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<html class="writer-html5" lang="en" >
 <head>
   <meta charset="utf-8">
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Types and signatures &mdash; Numba 0.50.0dev0+100.ga68198514 documentation</title>
+  <title>Types and signatures &mdash; Numba 0.53.0dev0+234.g2a34659be documentation</title>
   
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/rtd-overrides.css" type="text/css" />
 
   
   
@@ -17,11 +21,13 @@
   
   
   
-    <link rel="canonical" href="http://numba.pydata.org/numba-doc/latest/index.htmlreference/types.html"/>
+    <link rel="canonical" href="https://numba.pydata.org/numba-doc/latest/index.htmlreference/types.html"/>
   
 
   
-  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
   
     
       <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
@@ -33,11 +39,6 @@
     <script type="text/javascript" src="../_static/js/theme.js"></script>
 
     
-
-  
-  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
-  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-  <link rel="stylesheet" href="../_static/rtd-overrides.css" type="text/css" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Just-in-Time compilation" href="jit-compilation.html" />
@@ -55,7 +56,7 @@
           
 
           
-            <a href="../index.html" class="icon icon-home"> Numba
+            <a href="../index.html" class="icon icon-home" alt="Documentation Home"> Numba
           
 
           
@@ -68,7 +69,7 @@
             
             
               <div class="version">
-                0.50
+                0.53
               </div>
             
           
@@ -85,6 +86,7 @@
           
         </div>
 
+        
         <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
           
             
@@ -116,7 +118,10 @@
 <li class="toctree-l3"><a class="reference internal" href="../user/installing.html#enabling-amd-rocm-gpu-support">Enabling AMD ROCm GPU Support</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../user/installing.html#installing-on-linux-armv7-platforms">Installing on Linux ARMv7 Platforms</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../user/installing.html#installing-on-linux-armv8-aarch64-platforms">Installing on Linux ARMv8 (AArch64) Platforms</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../user/installing.html#installing-from-source">Installing from source</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../user/installing.html#installing-from-source">Installing from source</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../user/installing.html#build-time-environment-variables-and-configuration-of-optional-components">Build time environment variables and configuration of optional components</a></li>
+</ul>
+</li>
 <li class="toctree-l3"><a class="reference internal" href="../user/installing.html#dependency-list">Dependency List</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../user/installing.html#checking-your-installation">Checking your installation</a></li>
 </ul>
@@ -154,7 +159,8 @@
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../user/jitclass.html">Compiling Python classes with <code class="docutils literal notranslate"><span class="pre">&#64;jitclass</span></code></a><ul>
 <li class="toctree-l3"><a class="reference internal" href="../user/jitclass.html#basic-usage">Basic usage</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../user/jitclass.html#specifying-numba-typed-containers-as-class-members">Specifying <code class="docutils literal notranslate"><span class="pre">numba.typed</span></code> containers as class members</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../user/jitclass.html#inferred-class-member-types-from-type-annotations-with-as-numba-type">Inferred class member types from type annotations with <code class="docutils literal notranslate"><span class="pre">as_numba_type</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../user/jitclass.html#specifying-numba-typed-containers-as-class-members-explicitly">Specifying <code class="docutils literal notranslate"><span class="pre">numba.typed</span></code> containers as class members explicitly</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../user/jitclass.html#support-operations">Support operations</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../user/jitclass.html#limitations">Limitations</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../user/jitclass.html#the-decorator-jitclass">The decorator: <code class="docutils literal notranslate"><span class="pre">&#64;jitclass</span></code></a></li>
@@ -312,12 +318,13 @@
 <li class="toctree-l4"><a class="reference internal" href="../user/faq.html#can-i-freeze-an-application-which-uses-numba">Can I “freeze” an application which uses Numba?</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../user/faq.html#i-get-errors-when-running-a-script-twice-under-spyder">I get errors when running a script twice under Spyder</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../user/faq.html#why-does-numba-complain-about-the-current-locale">Why does Numba complain about the current locale?</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../user/faq.html#how-do-i-get-numba-development-builds">How do I get Numba development builds?</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="../user/faq.html#miscellaneous">Miscellaneous</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="../user/faq.html#where-does-the-project-name-numba-come-from">Where does the project name “Numba” come from?</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../user/faq.html#how-do-i-reference-cite-acknowledge-numba-in-other-work">How do I reference/cite/acknowledge Numba in other work?</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../user/faq.html#other-related-papers">Other related papers</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../user/faq.html#how-do-i-write-a-minimal-working-reproducer-for-a-problem-with-numba">How do I write a minimal working reproducer for a problem with Numba?</a></li>
 </ul>
 </li>
 </ul>
@@ -352,6 +359,7 @@
 <li class="toctree-l4"><a class="reference internal" href="#numpy-scalars">Numpy scalars</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#id1">Arrays</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#optional-types">Optional types</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#type-annotations">Type annotations</a></li>
 </ul>
 </li>
 </ul>
@@ -395,6 +403,8 @@
 <li class="toctree-l4"><a class="reference internal" href="pysupported.html#heterogeneous-tuples">heterogeneous tuples</a></li>
 <li class="toctree-l4"><a class="reference internal" href="pysupported.html#list">list</a></li>
 <li class="toctree-l4"><a class="reference internal" href="pysupported.html#set">set</a></li>
+<li class="toctree-l4"><a class="reference internal" href="pysupported.html#typed-dict">Typed Dict</a></li>
+<li class="toctree-l4"><a class="reference internal" href="pysupported.html#heterogeneous-literal-string-key-dictionary">Heterogeneous Literal String Key Dictionary</a></li>
 <li class="toctree-l4"><a class="reference internal" href="pysupported.html#none">None</a></li>
 <li class="toctree-l4"><a class="reference internal" href="pysupported.html#bytes-bytearray-memoryview">bytes, bytearray, memoryview</a></li>
 </ul>
@@ -423,9 +433,13 @@
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="numpysupported.html">Supported NumPy features</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="numpysupported.html#scalar-types">Scalar types</a></li>
+<li class="toctree-l3"><a class="reference internal" href="numpysupported.html#scalar-types">Scalar types</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="numpysupported.html#record-subtyping">Record subtyping</a></li>
+</ul>
+</li>
 <li class="toctree-l3"><a class="reference internal" href="numpysupported.html#array-types">Array types</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="numpysupported.html#array-access">Array access</a></li>
+<li class="toctree-l4"><a class="reference internal" href="numpysupported.html#structured-array-access">Structured array access</a></li>
 <li class="toctree-l4"><a class="reference internal" href="numpysupported.html#attributes">Attributes</a></li>
 <li class="toctree-l4"><a class="reference internal" href="numpysupported.html#calculation">Calculation</a></li>
 <li class="toctree-l4"><a class="reference internal" href="numpysupported.html#other-methods">Other methods</a></li>
@@ -456,6 +470,7 @@
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="pysemantics.html">Deviations from Python Semantics</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="pysemantics.html#bounds-checking">Bounds Checking</a></li>
 <li class="toctree-l3"><a class="reference internal" href="pysemantics.html#exceptions-and-memory-allocation">Exceptions and Memory Allocation</a></li>
 <li class="toctree-l3"><a class="reference internal" href="pysemantics.html#integer-width">Integer width</a></li>
 <li class="toctree-l3"><a class="reference internal" href="pysemantics.html#boolean-inversion">Boolean inversion</a></li>
@@ -470,10 +485,6 @@
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="fpsemantics.html#warnings-and-errors">Warnings and errors</a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="python27-eol.html">Python 2.7 End of Life Plan</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="python27-eol.html#timeline">Timeline</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="deprecation.html">Deprecation Notices</a><ul>
@@ -493,10 +504,9 @@
 <li class="toctree-l4"><a class="reference internal" href="deprecation.html#id4">Recommendations</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="deprecation.html#change-of-jitclass-location">Change of jitclass location</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="deprecation.html#id5">Example(s) of the impact</a></li>
-<li class="toctree-l4"><a class="reference internal" href="deprecation.html#id6">Recommendations</a></li>
-<li class="toctree-l4"><a class="reference internal" href="deprecation.html#id7">Schedule</a></li>
+<li class="toctree-l3"><a class="reference internal" href="deprecation.html#deprecation-of-the-target-kwarg">Deprecation of the target kwarg</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="deprecation.html#id5">Recommendations</a></li>
+<li class="toctree-l4"><a class="reference internal" href="deprecation.html#id6">Schedule</a></li>
 </ul>
 </li>
 </ul>
@@ -539,6 +549,8 @@
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="../cuda/memory.html#pinned-memory">Pinned memory</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../cuda/memory.html#mapped-memory">Mapped memory</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../cuda/memory.html#managed-memory">Managed memory</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../cuda/memory.html#streams">Streams</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../cuda/memory.html#shared-memory-and-thread-synchronization">Shared memory and thread synchronization</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../cuda/memory.html#local-memory">Local memory</a></li>
@@ -568,6 +580,13 @@
 <li class="toctree-l3"><a class="reference internal" href="../cuda/intrinsics.html#example">Example</a></li>
 </ul>
 </li>
+<li class="toctree-l2"><a class="reference internal" href="../cuda/cooperative_groups.html">Cooperative Groups</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../cuda/cooperative_groups.html#supported-features">Supported features</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../cuda/cooperative_groups.html#using-grid-groups">Using Grid Groups</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../cuda/cooperative_groups.html#cooperative-launches">Cooperative Launches</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../cuda/cooperative_groups.html#applications-and-example">Applications and Example</a></li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="../cuda/random.html">Random Number Generation</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="../cuda/random.html#example">Example</a></li>
 </ul>
@@ -587,8 +606,7 @@
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../cuda/reduction.html">GPU Reduction</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="../cuda/reduction.html#reduce"><code class="docutils literal notranslate"><span class="pre">&#64;reduce</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="../cuda/reduction.html#class-reduce">class Reduce</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../cuda/reduction.html#the-reduce-class">The Reduce class</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../cuda/ufunc.html">CUDA Ufuncs and Generalized Ufuncs</a><ul>
@@ -605,13 +623,15 @@
 </li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="../cuda/cuda_array_interface.html">CUDA Array Interface (Version 2)</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../cuda/cuda_array_interface.html">CUDA Array Interface (Version 3)</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="../cuda/cuda_array_interface.html#python-interface-specification">Python Interface Specification</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../cuda/cuda_array_interface.html#synchronization">Synchronization</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../cuda/cuda_array_interface.html#lifetime-management">Lifetime management</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../cuda/cuda_array_interface.html#lifetime-management-in-numba">Lifetime management in Numba</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../cuda/cuda_array_interface.html#pointer-attributes">Pointer Attributes</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../cuda/cuda_array_interface.html#differences-with-cuda-array-interface-version-0">Differences with CUDA Array Interface (Version 0)</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../cuda/cuda_array_interface.html#differences-with-cuda-array-interface-version-1">Differences with CUDA Array Interface (Version 1)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../cuda/cuda_array_interface.html#differences-with-cuda-array-interface-version-2">Differences with CUDA Array Interface (Version 2)</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../cuda/cuda_array_interface.html#interoperability">Interoperability</a></li>
 </ul>
 </li>
@@ -626,6 +646,7 @@
 </li>
 <li class="toctree-l3"><a class="reference internal" href="../cuda/external-memory.html#implementing-an-emm-plugin">Implementing an EMM Plugin</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="../cuda/external-memory.html#the-host-only-cuda-memory-manager">The Host-Only CUDA Memory Manager</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../cuda/external-memory.html#the-ipc-handle-mixin">The IPC Handle Mixin</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="../cuda/external-memory.html#classes-and-structures-of-returned-objects">Classes and structures of returned objects</a><ul>
@@ -662,14 +683,17 @@
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="../cuda-reference/host.html#stream-management">Stream Management</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../cuda-reference/host.html#runtime">Runtime</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../cuda-reference/kernel.html">CUDA Kernel API</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="../cuda-reference/kernel.html#kernel-declaration">Kernel declaration</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../cuda-reference/kernel.html#dispatcher-objects">Dispatcher objects</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../cuda-reference/kernel.html#intrinsic-attributes-and-functions">Intrinsic Attributes and Functions</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="../cuda-reference/kernel.html#thread-indexing">Thread Indexing</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../cuda-reference/kernel.html#memory-management">Memory Management</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../cuda-reference/kernel.html#synchronization-and-atomic-operations">Synchronization and Atomic Operations</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../cuda-reference/kernel.html#cooperative-groups">Cooperative Groups</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../cuda-reference/kernel.html#memory-fences">Memory Fences</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../cuda-reference/kernel.html#warp-intrinsics">Warp Intrinsics</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../cuda-reference/kernel.html#integer-intrinsics">Integer Intrinsics</a></li>
@@ -681,6 +705,10 @@
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../cuda-reference/memory.html">Memory Management</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="../cuda-reference/memory.html#device-objects">Device Objects</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../cuda-reference/libdevice.html">Libdevice functions</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../cuda-reference/libdevice.html#module-numba.cuda.libdevice">Wrapped functions</a></li>
 </ul>
 </li>
 </ul>
@@ -746,6 +774,13 @@
 <li class="toctree-l3"><a class="reference internal" href="../extending/high-level.html#implementing-attributes">Implementing attributes</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../extending/high-level.html#importing-cython-functions">Importing Cython Functions</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../extending/high-level.html#implementing-intrinsics">Implementing intrinsics</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../extending/high-level.html#implementing-mutable-structures">Implementing mutable structures</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../extending/high-level.html#defining-a-structref">Defining a StructRef</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../extending/high-level.html#defining-a-method-on-structref">Defining a method on StructRef</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../extending/high-level.html#module-numba.experimental.structref"><code class="docutils literal notranslate"><span class="pre">numba.experimental.structref</span></code> API Reference</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../extending/high-level.html#determining-if-a-function-is-already-wrapped-by-a-jit-family-decorator">Determining if a function is already wrapped by a <code class="docutils literal notranslate"><span class="pre">jit</span></code> family decorator</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../extending/low-level.html">Low-level extension API</a><ul>
@@ -762,6 +797,7 @@
 <li class="toctree-l3"><a class="reference internal" href="../extending/interval-example.html#extending-the-typing-layer">Extending the typing layer</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="../extending/interval-example.html#creating-a-new-numba-type">Creating a new Numba type</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../extending/interval-example.html#type-inference-for-python-values">Type inference for Python values</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../extending/interval-example.html#type-inference-for-python-annotations">Type inference for Python annotations</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../extending/interval-example.html#type-inference-for-operations">Type inference for operations</a></li>
 </ul>
 </li>
@@ -792,8 +828,8 @@
 <li class="toctree-l1"><a class="reference internal" href="../developer/index.html">Developer Manual</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../developer/contributing.html">Contributing to Numba</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="../developer/contributing.html#communication">Communication</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="../developer/contributing.html#mailing-list">Mailing-list</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../developer/contributing.html#real-time-chat">Real-time Chat</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../developer/contributing.html#mailing-list">Mailing-list</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../developer/contributing.html#weekly-meetings">Weekly Meetings</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../developer/contributing.html#bug-tracker">Bug tracker</a></li>
 </ul>
@@ -809,6 +845,8 @@
 <li class="toctree-l4"><a class="reference internal" href="../developer/contributing.html#coding-conventions">Coding conventions</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../developer/contributing.html#stability">Stability</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../developer/contributing.html#platform-support">Platform support</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../developer/contributing.html#continuous-integration-testing">Continuous integration testing</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../developer/contributing.html#things-that-help-with-pull-requests">Things that help with pull requests</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="../developer/contributing.html#documentation">Documentation</a><ul>
@@ -822,7 +860,7 @@
 <li class="toctree-l3"><a class="reference internal" href="../developer/repomap.html#support-files">Support Files</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="../developer/repomap.html#build-and-packaging">Build and Packaging</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../developer/repomap.html#continuous-integration">Continuous Integration</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../developer/repomap.html#documentation-examples">Documentation / Examples</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../developer/repomap.html#documentation">Documentation</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="../developer/repomap.html#numba-source-code">Numba Source Code</a><ul>
@@ -855,14 +893,13 @@
 <li class="toctree-l3"><a class="reference internal" href="../developer/architecture.html#compiler-stages">Compiler stages</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="../developer/architecture.html#stage-1-analyze-bytecode">Stage 1: Analyze bytecode</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../developer/architecture.html#stage-2-generate-the-numba-ir">Stage 2: Generate the Numba IR</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../developer/architecture.html#stage-3-macro-expansion">Stage 3: Macro expansion</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../developer/architecture.html#stage-4-rewrite-untyped-ir">Stage 4: Rewrite untyped IR</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../developer/architecture.html#stage-5-infer-types">Stage 5: Infer types</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../developer/architecture.html#stage-6a-rewrite-typed-ir">Stage 6a: Rewrite typed IR</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../developer/architecture.html#stage-6b-perform-automatic-parallelization">Stage 6b: Perform Automatic Parallelization</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../developer/architecture.html#stage-7a-generate-nopython-llvm-ir">Stage 7a: Generate nopython LLVM IR</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../developer/architecture.html#stage-7b-generate-object-mode-llvm-ir">Stage 7b: Generate object mode LLVM IR</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../developer/architecture.html#stage-8-compile-llvm-ir-to-machine-code">Stage 8: Compile LLVM IR to machine code</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../developer/architecture.html#stage-3-rewrite-untyped-ir">Stage 3: Rewrite untyped IR</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../developer/architecture.html#stage-4-infer-types">Stage 4: Infer types</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../developer/architecture.html#stage-5a-rewrite-typed-ir">Stage 5a: Rewrite typed IR</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../developer/architecture.html#stage-5b-perform-automatic-parallelization">Stage 5b: Perform Automatic Parallelization</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../developer/architecture.html#stage-6a-generate-nopython-llvm-ir">Stage 6a: Generate nopython LLVM IR</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../developer/architecture.html#stage-6b-generate-object-mode-llvm-ir">Stage 6b: Generate object mode LLVM IR</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../developer/architecture.html#stage-7-compile-llvm-ir-to-machine-code">Stage 7: Compile LLVM IR to machine code</a></li>
 </ul>
 </li>
 </ul>
@@ -908,7 +945,8 @@
 <li class="toctree-l4"><a class="reference internal" href="../developer/numba-runtime.html#cooperating-with-cpython">Cooperating with CPython</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../developer/numba-runtime.html#compiler-side-cooperation">Compiler-side Cooperation</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../developer/numba-runtime.html#optimizations">Optimizations</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../developer/numba-runtime.html#quirks">Quirks</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../developer/numba-runtime.html#important-assumptions">Important assumptions</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../developer/numba-runtime.html#quirks-of-the-old-optimization-pass">Quirks of the old optimization pass</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../developer/numba-runtime.html#debugging-leaks">Debugging Leaks</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../developer/numba-runtime.html#debugging-leaks-in-c">Debugging Leaks in C</a></li>
 </ul>
@@ -985,6 +1023,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../developer/inlining.html">Notes on Inlining</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="../developer/inlining.html#example-using-numba-jit">Example using <code class="xref py py-func docutils literal notranslate"><span class="pre">numba.jit()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="../developer/inlining.html#example-using-numba-extending-overload">Example using <code class="xref py py-func docutils literal notranslate"><span class="pre">numba.extending.overload()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../developer/inlining.html#using-a-function-to-limit-the-inlining-depth-of-a-recursive-function">Using a function to limit the inlining depth of a recursive function</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../developer/environment.html">Environment Object</a><ul>
@@ -1104,7 +1143,13 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../glossary.html">Glossary</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../release-notes.html">Release Notes</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="../release-notes.html#version-0-50-0">Version 0.50.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../release-notes.html#version-0-52-0-14-october-2020">Version 0.52.0 (14 October, 2020)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../release-notes.html#version-0-51-2-september-2-2020">Version 0.51.2 (September 2, 2020)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../release-notes.html#version-0-51-1-august-26-2020">Version 0.51.1 (August 26, 2020)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../release-notes.html#version-0-51-0-august-12-2020">Version 0.51.0 (August 12, 2020)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../release-notes.html#version-0-50-1-jun-24-2020">Version 0.50.1 (Jun 24, 2020)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../release-notes.html#version-0-50-0-jun-10-2020">Version 0.50.0 (Jun 10, 2020)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../release-notes.html#version-0-49-1-may-7-2020">Version 0.49.1 (May 7, 2020)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../release-notes.html#version-0-49-0-apr-16-2020">Version 0.49.0 (Apr 16, 2020)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../release-notes.html#version-0-48-0-jan-27-2020">Version 0.48.0 (Jan 27, 2020)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../release-notes.html#version-0-47-0-jan-2-2020">Version 0.47.0  (Jan 2, 2020)</a></li>
@@ -1185,6 +1230,7 @@
             
           
         </div>
+        
       </div>
     </nav>
 
@@ -1223,7 +1269,7 @@
 
   <ul class="wy-breadcrumbs">
     
-      <li><a href="../index.html">Docs</a> &raquo;</li>
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
         
           <li><a href="index.html">Reference Manual</a> &raquo;</li>
         
@@ -1262,7 +1308,7 @@ types explicitly if compiling code <a class="reference internal" href="../user/p
 <div class="section" id="signatures">
 <h2>Signatures<a class="headerlink" href="#signatures" title="Permalink to this headline">¶</a></h2>
 <p>A signature specifies the type of a function.  Exactly which kind
-of signature is allowed depends on the context (<a class="reference internal" href="../glossary.html#term-aot"><span class="xref std std-term">AOT</span></a> or <a class="reference internal" href="../glossary.html#term-jit"><span class="xref std std-term">JIT</span></a>
+of signature is allowed depends on the context (<a class="reference internal" href="../glossary.html#term-AOT"><span class="xref std std-term">AOT</span></a> or <a class="reference internal" href="../glossary.html#term-JIT"><span class="xref std std-term">JIT</span></a>
 compilation), but signatures always involve some representation of Numba
 types to specify the concrete types for the function’s arguments and,
 if required, the function’s return type.</p>
@@ -1400,19 +1446,21 @@ the beginning or the end of the index specification:</p>
 under development.</p>
 </div>
 <p>Functions are often considered as certain transformations of
-input arguments to output values. Within Numba <a class="reference internal" href="../glossary.html#term-jit"><span class="xref std std-term">JIT</span></a> compiled
+input arguments to output values. Within Numba <a class="reference internal" href="../glossary.html#term-JIT"><span class="xref std std-term">JIT</span></a> compiled
 functions, the functions can also be considered as objects, that is,
 functions can be passed around as arguments or return values, or used
 as items in sequences, in addition to being callable.</p>
-<p>First-class function support is enabled for all Numba <a class="reference internal" href="../glossary.html#term-jit"><span class="xref std std-term">JIT</span></a>
-compiled functions and Numba <code class="docutils literal notranslate"><span class="pre">cfunc</span></code> compiled functions except when:
-- using a non-CPU compiler,
-- the compiled function is a Python generator,
-- the compiled function has Omitted arguments,
-- or the compiled function returns Optional value.</p>
+<p>First-class function support is enabled for all Numba <a class="reference internal" href="../glossary.html#term-JIT"><span class="xref std std-term">JIT</span></a>
+compiled functions and Numba <code class="docutils literal notranslate"><span class="pre">cfunc</span></code> compiled functions except when:</p>
+<ul class="simple">
+<li><p>using a non-CPU compiler,</p></li>
+<li><p>the compiled function is a Python generator,</p></li>
+<li><p>the compiled function has Omitted arguments,</p></li>
+<li><p>or the compiled function returns Optional value.</p></li>
+</ul>
 <p>To disable first-class function support, use <code class="docutils literal notranslate"><span class="pre">no_cfunc_wrapper=True</span></code>
 decorator option.</p>
-<p>For instance, consider an example where the Numba <a class="reference internal" href="../glossary.html#term-jit"><span class="xref std std-term">JIT</span></a> compiled
+<p>For instance, consider an example where the Numba <a class="reference internal" href="../glossary.html#term-JIT"><span class="xref std std-term">JIT</span></a> compiled
 function applies user-specified functions as a composition to an input
 argument:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nd">@numba</span><span class="o">.</span><span class="n">njit</span>
@@ -1438,11 +1486,11 @@ argument:</p>
 </div>
 <p>Here, <code class="docutils literal notranslate"><span class="pre">cfunc</span></code> compiled functions <code class="docutils literal notranslate"><span class="pre">a</span></code> and <code class="docutils literal notranslate"><span class="pre">b</span></code> are considered as
 first-class function objects because these are passed in to the Numba
-<a class="reference internal" href="../glossary.html#term-jit"><span class="xref std std-term">JIT</span></a> compiled function <code class="docutils literal notranslate"><span class="pre">composition</span></code> as arguments, that is, the
-<code class="docutils literal notranslate"><span class="pre">composition</span></code> is <a class="reference internal" href="../glossary.html#term-jit"><span class="xref std std-term">JIT</span></a> compiled independently from its argument function
+<a class="reference internal" href="../glossary.html#term-JIT"><span class="xref std std-term">JIT</span></a> compiled function <code class="docutils literal notranslate"><span class="pre">composition</span></code> as arguments, that is, the
+<code class="docutils literal notranslate"><span class="pre">composition</span></code> is <a class="reference internal" href="../glossary.html#term-JIT"><span class="xref std std-term">JIT</span></a> compiled independently from its argument function
 objects (that are collected in the input argument <code class="docutils literal notranslate"><span class="pre">funcs</span></code>).</p>
 <p>Currently, first-class function objects can be Numba <code class="docutils literal notranslate"><span class="pre">cfunc</span></code> compiled
-functions, <a class="reference internal" href="../glossary.html#term-jit"><span class="xref std std-term">JIT</span></a> compiled functions, and objects that implement the
+functions, <a class="reference internal" href="../glossary.html#term-JIT"><span class="xref std std-term">JIT</span></a> compiled functions, and objects that implement the
 Wrapper Address Protocol (WAP, see below) with the following restrictions:</p>
 <table class="docutils align-default">
 <colgroup>
@@ -1496,32 +1544,32 @@ have a precise type.</p>
 <div class="section" id="wrapper-address-protocol-wap">
 <h4>Wrapper Address Protocol - WAP<a class="headerlink" href="#wrapper-address-protocol-wap" title="Permalink to this headline">¶</a></h4>
 <p>Wrapper Address Protocol provides an API for making any Python object
-a first-class function for Numba <a class="reference internal" href="../glossary.html#term-jit"><span class="xref std std-term">JIT</span></a> compiled functions. This assumes
+a first-class function for Numba <a class="reference internal" href="../glossary.html#term-JIT"><span class="xref std std-term">JIT</span></a> compiled functions. This assumes
 that the Python object represents a compiled function that can be
-called via its memory address (function pointer value) from Numba <a class="reference internal" href="../glossary.html#term-jit"><span class="xref std std-term">JIT</span></a>
+called via its memory address (function pointer value) from Numba <a class="reference internal" href="../glossary.html#term-JIT"><span class="xref std std-term">JIT</span></a>
 compiled functions. The so-called WAP objects must define the
 following two methods:</p>
-<dl class="method">
-<dt id="__wrapper_address__">
-<code class="sig-name descname">__wrapper_address__</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span> &#x2192; int<a class="headerlink" href="#__wrapper_address__" title="Permalink to this definition">¶</a></dt>
+<dl class="py method">
+<dt id="wrapper_address__">
+<span id="__wrapper_address__"></span><code class="sig-name descname">__wrapper_address__</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em><span class="sig-paren">)</span> &#x2192; <a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.9)">int</a><a class="headerlink" href="#wrapper_address__" title="Permalink to this definition">¶</a></dt>
 <dd><p>Return the memory address of a first-class function. This
-method is used when a Numba <a class="reference internal" href="../glossary.html#term-jit"><span class="xref std std-term">JIT</span></a> compiled function tries to
+method is used when a Numba <a class="reference internal" href="../glossary.html#term-JIT"><span class="xref std std-term">JIT</span></a> compiled function tries to
 call the given WAP instance.</p>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="signature">
-<code class="sig-name descname">signature</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span> &#x2192; numba.typing.Signature<a class="headerlink" href="#signature" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">signature</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em><span class="sig-paren">)</span> &#x2192; numba.typing.Signature<a class="headerlink" href="#signature" title="Permalink to this definition">¶</a></dt>
 <dd><p>Return the signature of the given first-class
 function. This method is used when passing in the given
-WAP instance to a Numba <a class="reference internal" href="../glossary.html#term-jit"><span class="xref std std-term">JIT</span></a> compiled function.</p>
+WAP instance to a Numba <a class="reference internal" href="../glossary.html#term-JIT"><span class="xref std std-term">JIT</span></a> compiled function.</p>
 </dd></dl>
 
 <p>In addition, the WAP object may implement the <code class="docutils literal notranslate"><span class="pre">__call__</span></code>
 method. This is necessary when calling WAP objects from Numba
-<a class="reference internal" href="../glossary.html#term-jit"><span class="xref std std-term">JIT</span></a> compiled functions in <a class="reference internal" href="../glossary.html#term-object-mode"><span class="xref std std-term">object mode</span></a>.</p>
+<a class="reference internal" href="../glossary.html#term-JIT"><span class="xref std std-term">JIT</span></a> compiled functions in <a class="reference internal" href="../glossary.html#term-object-mode"><span class="xref std std-term">object mode</span></a>.</p>
 <p>As an example, let us call the standard math library function <code class="docutils literal notranslate"><span class="pre">cos</span></code>
-within a Numba <a class="reference internal" href="../glossary.html#term-jit"><span class="xref std std-term">JIT</span></a> compiled function. The memory address of <code class="docutils literal notranslate"><span class="pre">cos</span></code> can
+within a Numba <a class="reference internal" href="../glossary.html#term-JIT"><span class="xref std std-term">JIT</span></a> compiled function. The memory address of <code class="docutils literal notranslate"><span class="pre">cos</span></code> can
 be established after loading the math library and using the <code class="docutils literal notranslate"><span class="pre">ctypes</span></code>
 package:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">numba</span><span class="o">,</span> <span class="nn">ctypes</span><span class="o">,</span> <span class="nn">ctypes.util</span><span class="o">,</span> <span class="nn">math</span>
@@ -1580,9 +1628,9 @@ the <a class="reference internal" href="../user/jit.html#jit-lazy"><span class="
 </div>
 <div class="section" id="inference">
 <h3>Inference<a class="headerlink" href="#inference" title="Permalink to this headline">¶</a></h3>
-<dl class="function">
+<dl class="py function">
 <dt id="numba.typeof">
-<code class="sig-prename descclassname">numba.</code><code class="sig-name descname">typeof</code><span class="sig-paren">(</span><em class="sig-param">value</em><span class="sig-paren">)</span><a class="headerlink" href="#numba.typeof" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">numba.</code><code class="sig-name descname">typeof</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">value</span></em><span class="sig-paren">)</span><a class="headerlink" href="#numba.typeof" title="Permalink to this definition">¶</a></dt>
 <dd><p>Create a Numba type accurately describing the given Python <em>value</em>.
 <code class="docutils literal notranslate"><span class="pre">ValueError</span></code> is raised if the value isn’t supported in
 <a class="reference internal" href="../glossary.html#term-nopython-mode"><span class="xref std std-term">nopython mode</span></a>.</p>
@@ -1601,9 +1649,9 @@ the <a class="reference internal" href="../user/jit.html#jit-lazy"><span class="
 <h3>Numpy scalars<a class="headerlink" href="#numpy-scalars" title="Permalink to this headline">¶</a></h3>
 <p>Instead of using <a class="reference internal" href="#numba.typeof" title="numba.typeof"><code class="xref py py-func docutils literal notranslate"><span class="pre">typeof()</span></code></a>, non-trivial scalars such as
 structured types can also be constructed programmatically.</p>
-<dl class="function">
+<dl class="py function">
 <dt id="numba.from_dtype">
-<code class="sig-prename descclassname">numba.</code><code class="sig-name descname">from_dtype</code><span class="sig-paren">(</span><em class="sig-param">dtype</em><span class="sig-paren">)</span><a class="headerlink" href="#numba.from_dtype" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">numba.</code><code class="sig-name descname">from_dtype</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">dtype</span></em><span class="sig-paren">)</span><a class="headerlink" href="#numba.from_dtype" title="Permalink to this definition">¶</a></dt>
 <dd><p>Create a Numba type corresponding to the given Numpy <em>dtype</em>:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">struct_dtype</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">dtype</span><span class="p">([(</span><span class="s1">&#39;row&#39;</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">),</span> <span class="p">(</span><span class="s1">&#39;col&#39;</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">)])</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">ty</span> <span class="o">=</span> <span class="n">numba</span><span class="o">.</span><span class="n">from_dtype</span><span class="p">(</span><span class="n">struct_dtype</span><span class="p">)</span>
@@ -1615,17 +1663,17 @@ structured types can also be constructed programmatically.</p>
 </div>
 </dd></dl>
 
-<dl class="class">
+<dl class="py class">
 <dt id="numba.types.NPDatetime">
-<em class="property">class </em><code class="sig-prename descclassname">numba.types.</code><code class="sig-name descname">NPDatetime</code><span class="sig-paren">(</span><em class="sig-param">unit</em><span class="sig-paren">)</span><a class="headerlink" href="#numba.types.NPDatetime" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="sig-prename descclassname">numba.types.</code><code class="sig-name descname">NPDatetime</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">unit</span></em><span class="sig-paren">)</span><a class="headerlink" href="#numba.types.NPDatetime" title="Permalink to this definition">¶</a></dt>
 <dd><p>Create a Numba type for Numpy datetimes of the given <em>unit</em>.  <em>unit</em>
 should be a string amongst the codes recognized by Numpy (e.g.
 <code class="docutils literal notranslate"><span class="pre">Y</span></code>, <code class="docutils literal notranslate"><span class="pre">M</span></code>, <code class="docutils literal notranslate"><span class="pre">D</span></code>, etc.).</p>
 </dd></dl>
 
-<dl class="class">
+<dl class="py class">
 <dt id="numba.types.NPTimedelta">
-<em class="property">class </em><code class="sig-prename descclassname">numba.types.</code><code class="sig-name descname">NPTimedelta</code><span class="sig-paren">(</span><em class="sig-param">unit</em><span class="sig-paren">)</span><a class="headerlink" href="#numba.types.NPTimedelta" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="sig-prename descclassname">numba.types.</code><code class="sig-name descname">NPTimedelta</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">unit</span></em><span class="sig-paren">)</span><a class="headerlink" href="#numba.types.NPTimedelta" title="Permalink to this definition">¶</a></dt>
 <dd><p>Create a Numba type for Numpy timedeltas of the given <em>unit</em>.  <em>unit</em>
 should be a string amongst the codes recognized by Numpy (e.g.
 <code class="docutils literal notranslate"><span class="pre">Y</span></code>, <code class="docutils literal notranslate"><span class="pre">M</span></code>, <code class="docutils literal notranslate"><span class="pre">D</span></code>, etc.).</p>
@@ -1638,9 +1686,9 @@ should be a string amongst the codes recognized by Numpy (e.g.
 </div>
 <div class="section" id="id1">
 <h3>Arrays<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
-<dl class="class">
+<dl class="py class">
 <dt id="numba.types.Array">
-<em class="property">class </em><code class="sig-prename descclassname">numba.types.</code><code class="sig-name descname">Array</code><span class="sig-paren">(</span><em class="sig-param">dtype</em>, <em class="sig-param">ndim</em>, <em class="sig-param">layout</em><span class="sig-paren">)</span><a class="headerlink" href="#numba.types.Array" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="sig-prename descclassname">numba.types.</code><code class="sig-name descname">Array</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">dtype</span></em>, <em class="sig-param"><span class="n">ndim</span></em>, <em class="sig-param"><span class="n">layout</span></em><span class="sig-paren">)</span><a class="headerlink" href="#numba.types.Array" title="Permalink to this definition">¶</a></dt>
 <dd><p>Create an array type.  <em>dtype</em> should be a Numba type.  <em>ndim</em> is the
 number of dimensions of the array (a positive integer).  <em>layout</em>
 is a string giving the layout of the array: <code class="docutils literal notranslate"><span class="pre">A</span></code> means any layout, <code class="docutils literal notranslate"><span class="pre">C</span></code>
@@ -1650,9 +1698,9 @@ means C-contiguous and <code class="docutils literal notranslate"><span class="p
 </div>
 <div class="section" id="optional-types">
 <h3>Optional types<a class="headerlink" href="#optional-types" title="Permalink to this headline">¶</a></h3>
-<dl class="class">
+<dl class="py class">
 <dt id="numba.optional">
-<em class="property">class </em><code class="sig-prename descclassname">numba.</code><code class="sig-name descname">optional</code><span class="sig-paren">(</span><em class="sig-param">typ</em><span class="sig-paren">)</span><a class="headerlink" href="#numba.optional" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="sig-prename descclassname">numba.</code><code class="sig-name descname">optional</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">typ</span></em><span class="sig-paren">)</span><a class="headerlink" href="#numba.optional" title="Permalink to this definition">¶</a></dt>
 <dd><p>Create an optional type based on the underlying Numba type <em>typ</em>.
 The optional type will allow any value of either <em>typ</em> or <code class="xref py py-const docutils literal notranslate"><span class="pre">None</span></code>.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nd">@jit</span><span class="p">((</span><span class="n">optional</span><span class="p">(</span><span class="n">intp</span><span class="p">),))</span>
@@ -1665,6 +1713,47 @@ The optional type will allow any value of either <em>typ</em> or <code class="xr
 <span class="go">False</span>
 </pre></div>
 </div>
+</dd></dl>
+
+</div>
+<div class="section" id="type-annotations">
+<h3>Type annotations<a class="headerlink" href="#type-annotations" title="Permalink to this headline">¶</a></h3>
+<dl class="py function">
+<dt id="numba.extending.as_numba_type">
+<code class="sig-prename descclassname">numba.extending.</code><code class="sig-name descname">as_numba_type</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">py_type</span></em><span class="sig-paren">)</span><a class="headerlink" href="#numba.extending.as_numba_type" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create a Numba type corresponding to the given Python <em>type annotation</em>.
+<code class="docutils literal notranslate"><span class="pre">TypingError</span></code> is raised if the type annotation can’t be mapped to a Numba
+type.  This function is meant to be used at statically compile time to
+evaluate Python type annotations.  For runtime checking of Python objects
+see <code class="docutils literal notranslate"><span class="pre">typeof</span></code> above.</p>
+<p>For any numba type, <code class="docutils literal notranslate"><span class="pre">as_numba_type(nb_type)</span> <span class="pre">==</span> <span class="pre">nb_type</span></code>.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">numba</span><span class="o">.</span><span class="n">extending</span><span class="o">.</span><span class="n">as_numba_type</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
+<span class="go">int64</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">typing</span>  <span class="c1"># the Python library, not the Numba one</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">numba</span><span class="o">.</span><span class="n">extending</span><span class="o">.</span><span class="n">as_numba_type</span><span class="p">(</span><span class="n">typing</span><span class="o">.</span><span class="n">List</span><span class="p">[</span><span class="nb">float</span><span class="p">])</span>
+<span class="go">ListType[float64]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">numba</span><span class="o">.</span><span class="n">extending</span><span class="o">.</span><span class="n">as_numba_type</span><span class="p">(</span><span class="n">numba</span><span class="o">.</span><span class="n">int32</span><span class="p">)</span>
+<span class="go">int32</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">as_numba_type</span></code> is automatically updated to include any <code class="docutils literal notranslate"><span class="pre">&#64;jitclass</span></code>.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nd">@jitclass</span>
+<span class="gp">... </span><span class="k">class</span> <span class="nc">Counter</span><span class="p">:</span>
+<span class="gp">... </span>    <span class="n">x</span><span class="p">:</span> <span class="nb">int</span>
+<span class="gp">...</span>
+<span class="gp">... </span>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="gp">... </span>        <span class="bp">self</span><span class="o">.</span><span class="n">x</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="gp">...</span>
+<span class="gp">... </span>    <span class="k">def</span> <span class="nf">inc</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="gp">... </span>        <span class="n">old_val</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">x</span>
+<span class="gp">... </span>        <span class="bp">self</span><span class="o">.</span><span class="n">x</span> <span class="o">+=</span> <span class="mi">1</span>
+<span class="gp">... </span>        <span class="k">return</span> <span class="n">old_val</span>
+<span class="gp">...</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">numba</span><span class="o">.</span><span class="n">extending</span><span class="o">.</span><span class="n">as_numba_type</span><span class="p">(</span><span class="n">Counter</span><span class="p">)</span>
+<span class="go">instance.jitclass.Counter#11bad4278&lt;x:int64&gt;</span>
+</pre></div>
+</div>
+<p>Currently <code class="docutils literal notranslate"><span class="pre">as_numba_type</span></code> is only used to infer fields for <code class="docutils literal notranslate"><span class="pre">&#64;jitclass</span></code>.</p>
 </dd></dl>
 
 </div>
@@ -1691,11 +1780,19 @@ The optional type will allow any value of either <em>typ</em> or <code class="xr
 
   <div role="contentinfo">
     <p>
+        
         &copy; Copyright 2012-2020, Anaconda, Inc. and others
 
     </p>
   </div>
-  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
 </footer>
 
@@ -1706,7 +1803,6 @@ The optional type will allow any value of either <em>typ</em> or <code class="xr
 
   </div>
   
-
 
   <script type="text/javascript">
       jQuery(function () {
